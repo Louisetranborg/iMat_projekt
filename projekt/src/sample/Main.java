@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("IMat");
-        primaryStage.setScene(new Scene(root, 1440, 900));
+        primaryStage.setScene(new Scene(root, 1440, 900));  //storleken på fömstret
         primaryStage.show();
     }
 
