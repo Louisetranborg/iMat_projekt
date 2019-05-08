@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane stylesheets="@CSS_files/main_theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0">
+         <children>
+            <Pane prefHeight="80.0" prefWidth="1440.0" styleClass="pane">
+               <children>
+                  <TextField fx:id="searchBox" layoutX="370.0" layoutY="15.0" prefHeight="50.0" prefWidth="700.0" styleClass="search-box">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="minSidaButton" layoutX="1305.0" layoutY="15.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="minSidaButton" text="Min sida">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="300.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/baseline_help_outline_black_18dp.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ScrollPane layoutY="80.0" prefHeight="775.0" prefWidth="250.0">
+               <content>
+                  <FlowPane fx:id="categoryPane" prefHeight="775.0" prefWidth="230.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

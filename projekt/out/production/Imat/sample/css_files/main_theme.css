@@ -1,0 +1,28 @@
+    .search-box{
+    -fx-border-radius: 25px;
+    -fx-background-radius: 25px;
+    -fx-font-family: "Avenir Book";
+    -fx-font-size: 18px;
+    -fx-background-image: url("css_images/search_icon.png");
+    -fx-background-size: 27px;
+    -fx-background-position: 13px 13px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0 0 0 45;
+    }
+
+    .minSidaButton{
+    -fx-border-radius: 10px;
+        -fx-background-radius: 10px;
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 18px;
+        -fx-background-color: #FFFFFF;
+        -fx-background-image: url("css_images/person_black.png");
+        -fx-background-size: 25px;
+        -fx-background-position: 13px 13px;
+        -fx-background-repeat: no-repeat;
+        -fx-padding: 0 0 0 30;
+    }
+
+    .pane{
+    -fx-background-color: #b0c4de;
+    }
