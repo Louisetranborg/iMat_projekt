@@ -45,14 +45,14 @@
                   </ImageView>
                </children>
             </Pane>
-            <ScrollPane layoutY="80.0" prefHeight="775.0" prefWidth="250.0">
+            <ScrollPane layoutY="80.0" prefHeight="775.0" prefWidth="250.0" styleClass="scrollPane">
                <content>
-                  <FlowPane fx:id="categoryPane" prefHeight="775.0" prefWidth="230.0" />
+                  <FlowPane fx:id="categoryPane" prefHeight="775.0" prefWidth="250.0" styleClass="flowPane" />
                </content>
             </ScrollPane>
-            <ScrollPane layoutX="1190.0" layoutY="80.0" prefHeight="775.0" prefWidth="250.0">
+            <ScrollPane layoutX="1190.0" layoutY="80.0" prefHeight="775.0" prefWidth="250.0" styleClass="scrollPane">
                <content>
-                  <FlowPane fx:id="cartPane" prefHeight="775.0" prefWidth="230.0" />
+                  <FlowPane fx:id="cartPane" prefHeight="775.0" prefWidth="250.0" styleClass="flowPane" />
                </content>
             </ScrollPane>
          </children>

@@ -29,3 +29,37 @@
     -fx-background-position: 13px 13px;
     -fx-background-repeat: no-repeat;
     }
+
+    .scrollPane{
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: never;
+    }
+
+    .scrollPane:hover{
+    -fx-vbar-policy: always;
+    }
+
+    .scroll-bar: vertical .thumb{
+    -fx-background-color: #555555; //Ändra färg på scroll-bar
+    }
+
+    .scroll-bar:vertical .increment-button ,
+    .scroll-bar:vertical .decrement-button {
+        -fx-background-color :white;
+        -fx-background-radius : 0.0em;
+        -fx-padding :0.0 10.0 0.0 0.0;
+    }
+
+     .scroll-bar .increment-arrow,
+     .scroll-bar .decrement-arrow{
+        -fx-shape : " ";
+        -fx-padding :0.0em 0.0;
+    }
+
+    .scroll-pane .track{
+        -fx-background-color: #FFFFFF;
+    }
+
+    .flowPane{
+    -fx-background-color: white;
+    }

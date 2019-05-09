@@ -24,7 +24,7 @@ public class SearchController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        iMatDataHandler.getCustomer().setFirstName("Hjördis"); //Sätter namnet till Hjärdis sålänge. 
+        iMatDataHandler.getCustomer().setFirstName("Hjördis"); //Sätter namnet till Hjärdis sålänge.
         loginLable.setText("Inloggad som " + iMatDataHandler.getCustomer().getFirstName()); //hämtar användarens namn och skriver ut det i headern.
 
     }
