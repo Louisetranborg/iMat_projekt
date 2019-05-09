@@ -1,6 +1,6 @@
     .search-box{
-    -fx-border-radius: 25px;
-    -fx-background-radius: 25px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
     -fx-font-family: "Avenir Book";
     -fx-font-size: 18px;
     -fx-background-image: url("css_images/search_icon.png");
@@ -11,18 +11,21 @@
     }
 
     .minSidaButton{
-    -fx-border-radius: 10px;
-        -fx-background-radius: 10px;
-        -fx-font-family: "Avenir Book";
-        -fx-font-size: 18px;
-        -fx-background-color: #FFFFFF;
-        -fx-background-image: url("css_images/person_black.png");
-        -fx-background-size: 25px;
-        -fx-background-position: 13px 13px;
-        -fx-background-repeat: no-repeat;
-        -fx-padding: 0 0 0 30;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Avenir Book";
+    -fx-font-size: 18px;
+    -fx-background-color: #FFFFFF;
+    -fx-background-image: url("css_images/person_black.png");
+    -fx-background-size: 25px;
+    -fx-background-position: 13px 13px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0 0 0 30;
     }
 
-    .pane{
-    -fx-background-color: #b0c4de;
+    .header{
+    -fx-background-image: url("css_images/header.png");
+    -fx-background-size: 25px;
+    -fx-background-position: 13px 13px;
+    -fx-background-repeat: no-repeat;
     }
