@@ -33,7 +33,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Label fx:id="loginLable" layoutX="1080.0" layoutY="30.0" text="Inloggad som användare">
+                  <Label fx:id="loginLable" layoutX="1080.0" layoutY="30.0" text="Inloggad som användare" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -45,7 +45,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <ScrollPane layoutY="80.0" prefHeight="775.0" prefWidth="250.0" styleClass="scrollPane">
+            <ScrollPane fx:id="categoryScrollPane" layoutY="80.0" prefHeight="775.0" prefWidth="250.0" styleClass="scrollPane">
                <content>
                   <FlowPane fx:id="categoryPane" prefHeight="775.0" prefWidth="250.0" styleClass="flowPane" />
                </content>
