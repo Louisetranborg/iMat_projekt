@@ -55,6 +55,11 @@
                   <FlowPane fx:id="cartPane" prefHeight="775.0" prefWidth="250.0" styleClass="flowPane" />
                </content>
             </ScrollPane>
+            <ScrollPane fx:id="productScrollPane" layoutX="250.0" layoutY="80.0" prefHeight="775.0" prefWidth="940.0" styleClass="scrollPane">
+               <content>
+                  <FlowPane fx:id="productFlowPane" alignment="CENTER" prefHeight="775.0" prefWidth="940.0" />
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
    </children>
