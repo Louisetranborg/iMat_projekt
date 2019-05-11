@@ -12,6 +12,7 @@ import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -28,7 +29,7 @@ public class SearchController implements Initializable {
     @FXML private ScrollPane productScrollPane; //ScrollPane för produkterna i mitten av sidan
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();    //Vår iMatDataHandler
-    private Map<String, ProductItem> categoryItemMap = new HashMap<String, ProductItem>();    //Skall användas för att få rätt på produkterna i mitten
+    private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();    //Skall användas för att få rätt på produkterna i mitten
     ToggleGroup toggleGroup = new ToggleGroup(); //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
 
     private void fillCategoryPane(){    //Fyller categoryPane med alla kategorierna
@@ -38,12 +39,22 @@ public class SearchController implements Initializable {
         }
     }
 
-    private void createProductItems(){
+    private void createProductItems(){ //Tillverkar alla varorna och lägger dem i vår Map(categoryItemMap)
         for(Product product: iMatDataHandler.getProducts()){
             ProductItem productItem = new ProductItem(product,this);
-            categoryItemMap.put(product.getName(), productItem);
-            productFlowPane.getChildren().add(productItem);
+            productItemMap.put(product.getName(), productItem);
+            productFlowPane.getChildren().add(productItem); //Lägger ut alla varorna på framsidan, ändra om vi vill ha annan förstasida
         }
+    }
+
+    protected void updateProductPaneFromCategory(ProductCategory category){       //Uppdaterar productFlowPane utifrån kategorierna
+        productFlowPane.getChildren().clear();                                    //Clear flowpane
+        List<Product> products = iMatDataHandler.getProducts(category);           //Hämtar en lista med produkterna utifrån dess kategori
+
+        for(Product product1: products){                                                    //Loopar igenom listan med de utvalda produkterna
+            productFlowPane.getChildren().add(productItemMap.get(product1.getName()));      //Lägger ut dem i flowPane
+        }
+
     }
 
     @Override
@@ -51,9 +62,9 @@ public class SearchController implements Initializable {
         iMatDataHandler.getCustomer().setFirstName("Hjördis"); //Sätter namnet till Hjördis sålänge.
         loginLable.setText("Inloggad som " + iMatDataHandler.getCustomer().getFirstName()); //hämtar användarens namn och skriver ut det i headern.
         fillCategoryPane(); //kalla på metoden som fyller categoryPane
-        createProductItems();
-        productFlowPane.setHgap(10);
-        productFlowPane.setVgap(10);
+        createProductItems(); //kalla på metod som skapar varorna
+        productFlowPane.setHgap(42); //Avstånd mellan varu-bilderna
+        productFlowPane.setVgap(42); //Avstånd mellan varu-bilderna
 
 
         categoryScrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() { //Gör så att man inte kan skrolla horisontiellt

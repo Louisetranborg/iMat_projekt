@@ -1,6 +1,10 @@
 package sample;
 
+import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -8,10 +12,13 @@ import java.io.IOException;
 
 public class ProductItem extends AnchorPane {
 
-    private SearchController searchController;
+    private SearchController parentController;
     private Product product;
+    @FXML private Label name;
+    @FXML private ImageView image;
 
-    public ProductItem(Product product, SearchController searchController){
+
+    public ProductItem(Product product, SearchController parentController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("productItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -22,8 +29,10 @@ public class ProductItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        this.searchController = searchController;
+        this.parentController = parentController;
         this.product = product;
+        name.setText(product.getName());
+        image.setImage(parentController.iMatDataHandler.getFXImage(product));
 
     }
 }

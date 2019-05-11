@@ -45,19 +45,19 @@
                   </ImageView>
                </children>
             </Pane>
-            <ScrollPane fx:id="categoryScrollPane" layoutY="80.0" prefHeight="775.0" prefWidth="250.0" styleClass="scrollPane">
+            <ScrollPane fx:id="categoryScrollPane" layoutY="80.0" prefHeight="775.0" prefWidth="260.0" styleClass="scrollPane">
                <content>
-                  <FlowPane fx:id="categoryPane" prefHeight="775.0" prefWidth="250.0" styleClass="flowPane" />
+                  <FlowPane fx:id="categoryPane" prefHeight="775.0" prefWidth="260.0" styleClass="flowPane" />
                </content>
             </ScrollPane>
-            <ScrollPane fx:id="cartScrollPane" layoutX="1190.0" layoutY="80.0" prefHeight="775.0" prefWidth="250.0" styleClass="scrollPane">
+            <ScrollPane fx:id="cartScrollPane" layoutX="1180.0" layoutY="80.0" prefHeight="775.0" prefWidth="260.0" styleClass="scrollPane">
                <content>
-                  <FlowPane fx:id="cartPane" prefHeight="775.0" prefWidth="250.0" styleClass="flowPane" />
+                  <FlowPane fx:id="cartPane" prefHeight="775.0" prefWidth="260.0" styleClass="flowPane" />
                </content>
             </ScrollPane>
-            <ScrollPane fx:id="productScrollPane" layoutX="250.0" layoutY="80.0" prefHeight="775.0" prefWidth="940.0" styleClass="scrollPane">
+            <ScrollPane fx:id="productScrollPane" layoutX="260.0" layoutY="80.0" prefHeight="775.0" prefWidth="920.0" styleClass="scrollPane">
                <content>
-                  <FlowPane fx:id="productFlowPane" alignment="CENTER" prefHeight="775.0" prefWidth="940.0" />
+                  <FlowPane fx:id="productFlowPane" alignment="CENTER" prefHeight="775.0" prefWidth="920.0" />
                </content>
             </ScrollPane>
          </children>
