@@ -57,18 +57,28 @@ public class SearchController implements Initializable {
 
     }
 
-    protected void updateProductPaneFromSearchBox(String string){ //Uppdaterar productFlowPane utifrån en string (sökning i sökrutan)
+    protected void updateProductPaneFromString(String string){ //Uppdaterar productFlowPane utifrån en string (sökning i sökrutan)
         productFlowPane.getChildren().clear();
-        List<Product> products = iMatDataHandler.findProducts(string);
+        List<Product> products = iMatDataHandler.findProducts(string); // skapar en lista med produkter utifrån en redan skriven metod som hittar passande produkter
 
-        for(Product product: products){
+        for(Product product: products){ //Loopar igenom listan och lägger till dem i productFlowPane
             productFlowPane.getChildren().add(productItemMap.get(product.getName()));
+        }
+        //Följande for-loopar är för att varorna inom en kategori skall komma upp om man söker på denna kategori
+        //Exempelvis om man söker på pasta, så skall alla pastasorter komma upp, trots att de inte innehåller pasta i sin rubrik, utan för att de ingår i den kategorin 
+        for(ProductCategory productCategory: ProductCategory.values()){ //Loopar igenom alla kategorierna
+            if(productCategory.toString().toLowerCase().contains(string.toLowerCase())){ //Kollar om ens string matchar med någon kategori
+                List<Product> productsByCategory = iMatDataHandler.getProducts(productCategory); //Skapar en lista med alla produkter inom denna kategori
+            for(Product product: productsByCategory){ //Loopar igenom denna lista med produkter
+                    productFlowPane.getChildren().add(productItemMap.get(product.getName())); //Lägger till dem i productFlowPane
+                }
+            }
         }
     }
 
     @FXML
     private void searchInSearchBox(){  //När man söker skall productFlowPane uppdateras efter sökning
-        updateProductPaneFromSearchBox(searchBox.getCharacters().toString());
+        updateProductPaneFromString(searchBox.getCharacters().toString());
     }
 
     @Override
