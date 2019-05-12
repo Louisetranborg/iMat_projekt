@@ -3,9 +3,7 @@ package sample;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
@@ -18,7 +16,7 @@ public class CategoryItem extends AnchorPane {
     @FXML private RadioButton categoryButton;   //Detta är kategoriknappen med dess kategorinamn
 
     @FXML
-    protected void onClick(Event event){        //När man klickar på en kategori skall varorna i mitten uppdateras 
+    protected void onClick(Event event){        //När man klickar på en kategori skall varorna i mitten uppdateras
         parentController.updateProductPaneFromCategory(productCategory);
     }
 

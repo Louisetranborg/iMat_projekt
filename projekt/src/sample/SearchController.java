@@ -57,6 +57,20 @@ public class SearchController implements Initializable {
 
     }
 
+    protected void updateProductPaneFromSearchBox(String string){ //Uppdaterar productFlowPane utifrån en string (sökning i sökrutan)
+        productFlowPane.getChildren().clear();
+        List<Product> products = iMatDataHandler.findProducts(string);
+
+        for(Product product: products){
+            productFlowPane.getChildren().add(productItemMap.get(product.getName()));
+        }
+    }
+
+    @FXML
+    private void searchInSearchBox(){  //När man söker skall productFlowPane uppdateras efter sökning
+        updateProductPaneFromSearchBox(searchBox.getCharacters().toString());
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         iMatDataHandler.getCustomer().setFirstName("Hjördis"); //Sätter namnet till Hjördis sålänge.
@@ -65,7 +79,6 @@ public class SearchController implements Initializable {
         createProductItems(); //kalla på metod som skapar varorna
         productFlowPane.setHgap(42); //Avstånd mellan varu-bilderna
         productFlowPane.setVgap(42); //Avstånd mellan varu-bilderna
-
 
         categoryScrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() { //Gör så att man inte kan skrolla horisontiellt
             @Override
