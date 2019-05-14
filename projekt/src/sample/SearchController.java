@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -33,13 +34,16 @@ public class SearchController implements Initializable {
     @FXML private ScrollPane productScrollPane; //ScrollPane för produkterna i mitten av sidan
     @FXML private AnchorPane productDetailView;
     @FXML private AnchorPane frontPane;
+    @FXML private ImageView closeUpImage;
+    @FXML private Label closeUpName;
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();    //Vår iMatDataHandler
     private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();    //Skall användas för att få rätt på produkterna i mitten
     ToggleGroup toggleGroup = new ToggleGroup(); //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
 
-   protected void openProductDetailView(){ //Öppnar mer info om en produkt
-        productDetailView.toFront();
+   protected void openProductDetailView(Product product){ //Öppnar mer info om en produkt
+       populateProductDetailView(product);
+       productDetailView.toFront();
     }
 
     @FXML
@@ -48,8 +52,13 @@ public class SearchController implements Initializable {
     }
 
     @FXML
-    private void mouseTrap(Event event){ //
+    private void mouseTrap(Event event){ //konsumerar ett event
         event.consume();
+    }
+
+    private void populateProductDetailView(Product product){
+       closeUpImage.setImage(iMatDataHandler.getFXImage(product));
+       closeUpName.setText(product.getName());
     }
 
     private void fillCategoryPane(){    //Fyller categoryPane med alla kategorierna

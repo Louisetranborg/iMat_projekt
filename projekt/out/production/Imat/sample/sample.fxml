@@ -14,10 +14,6 @@
 
 <StackPane stylesheets="@css_files/main_theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
    <children>
-      <AnchorPane fx:id="productDetailView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeProductDetailView" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
-         <children>
-            <AnchorPane layoutX="120.0" layoutY="80.0" onMouseClicked="#mouseTrap" prefHeight="695.0" prefWidth="1200.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;" />
-         </children></AnchorPane>
       <AnchorPane fx:id="frontPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0">
          <children>
             <Pane prefHeight="80.0" prefWidth="1440.0">
@@ -66,5 +62,18 @@
             </ScrollPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="productDetailView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeProductDetailView" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
+         <children>
+            <AnchorPane layoutX="120.0" layoutY="80.0" onMouseClicked="#mouseTrap" prefHeight="695.0" prefWidth="1200.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;">
+               <children>
+                  <ImageView fx:id="closeUpImage" fitHeight="350.0" fitWidth="400.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="closeUpName" alignment="CENTER" layoutX="10.0" layoutY="360.0" prefHeight="22.0" prefWidth="400.0" text="Namn">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
    </children>
 </StackPane>

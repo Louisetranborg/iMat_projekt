@@ -19,8 +19,8 @@ public class ProductItem extends AnchorPane {
     @FXML private Label price;
 
     @FXML
-    protected void onClick(){
-        parentController.openProductDetailView();
+    protected void onClick(){ //När man klickar på ett productItem skall info om produkten komma upp
+        parentController.openProductDetailView(product);
     }
 
     public ProductItem(Product product, SearchController parentController){
