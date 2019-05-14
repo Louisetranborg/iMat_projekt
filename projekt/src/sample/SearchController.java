@@ -65,7 +65,7 @@ public class SearchController implements Initializable {
             productFlowPane.getChildren().add(productItemMap.get(product.getName()));
         }
         //Följande for-loopar är för att varorna inom en kategori skall komma upp om man söker på denna kategori
-        //Exempelvis om man söker på pasta, så skall alla pastasorter komma upp, trots att de inte innehåller pasta i sin rubrik, utan för att de ingår i den kategorin 
+        //Exempelvis om man söker på pasta, så skall alla pastasorter komma upp, trots att de inte innehåller pasta i sin rubrik, utan för att de ingår i den kategorin
         for(ProductCategory productCategory: ProductCategory.values()){ //Loopar igenom alla kategorierna
             if(productCategory.toString().toLowerCase().contains(string.toLowerCase())){ //Kollar om ens string matchar med någon kategori
                 List<Product> productsByCategory = iMatDataHandler.getProducts(productCategory); //Skapar en lista med alla produkter inom denna kategori

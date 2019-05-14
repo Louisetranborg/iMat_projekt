@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -16,6 +15,7 @@ public class ProductItem extends AnchorPane {
     private Product product;
     @FXML private Label name;
     @FXML private ImageView image;
+    @FXML private Label price;
 
 
     public ProductItem(Product product, SearchController parentController){
@@ -33,6 +33,7 @@ public class ProductItem extends AnchorPane {
         this.product = product;
         name.setText(product.getName());
         image.setImage(parentController.iMatDataHandler.getFXImage(product));
+        price.setText(product.getPrice() + " " + product.getUnit());
 
     }
 }

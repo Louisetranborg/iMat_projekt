@@ -63,3 +63,11 @@
     .flowPane{
     -fx-background-color: white;
     }
+
+    .category-button:selected{
+            -fx-background-color: white;
+        }
+
+    .category-button:pressed{
+        -fx-background-color: white;
+    }
