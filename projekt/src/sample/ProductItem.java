@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class ProductItem extends AnchorPane {
@@ -17,6 +18,10 @@ public class ProductItem extends AnchorPane {
     @FXML private ImageView image;
     @FXML private Label price;
 
+    @FXML
+    protected void onClick(){
+        parentController.openProductDetailView();
+    }
 
     public ProductItem(Product product, SearchController parentController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("productItem.fxml"));
@@ -36,4 +41,5 @@ public class ProductItem extends AnchorPane {
         price.setText(product.getPrice() + " " + product.getUnit());
 
     }
+
 }

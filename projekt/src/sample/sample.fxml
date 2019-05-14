@@ -12,9 +12,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane stylesheets="@CSS_files/main_theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
+<StackPane stylesheets="@css_files/main_theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0">
+      <AnchorPane fx:id="productDetailView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeProductDetailView" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
+         <children>
+            <AnchorPane layoutX="120.0" layoutY="80.0" onMouseClicked="#mouseTrap" prefHeight="695.0" prefWidth="1200.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="frontPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0">
          <children>
             <Pane prefHeight="80.0" prefWidth="1440.0">
                <children>
@@ -47,12 +51,12 @@
             </Pane>
             <ScrollPane fx:id="categoryScrollPane" layoutY="80.0" prefHeight="775.0" prefWidth="260.0" styleClass="scrollPane">
                <content>
-                  <FlowPane fx:id="categoryPane" prefHeight="775.0" prefWidth="260.0" styleClass="flowPane" />
+                  <FlowPane fx:id="categoryFlowPane" prefHeight="775.0" prefWidth="260.0" styleClass="flowPane" />
                </content>
             </ScrollPane>
             <ScrollPane fx:id="cartScrollPane" layoutX="1180.0" layoutY="80.0" prefHeight="775.0" prefWidth="260.0" styleClass="scrollPane">
                <content>
-                  <FlowPane fx:id="cartPane" prefHeight="775.0" prefWidth="260.0" styleClass="flowPane" />
+                  <FlowPane fx:id="cartFlowPane" prefHeight="775.0" prefWidth="260.0" styleClass="flowPane" />
                </content>
             </ScrollPane>
             <ScrollPane fx:id="productScrollPane" layoutX="260.0" layoutY="80.0" prefHeight="775.0" prefWidth="920.0" styleClass="scrollPane">

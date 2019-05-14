@@ -1,14 +1,18 @@
 package sample;
 
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
+import se.chalmers.cse.dat216.project.ShoppingCart;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -19,23 +23,39 @@ import java.util.ResourceBundle;
 public class SearchController implements Initializable {
 
     @FXML private TextField searchBox;          //Detta är sökrutan
-    @FXML private FlowPane categoryPane;        //Detta är FlowPane för kategorierna, där vi stoppar in CategoryItem
-    @FXML private FlowPane cartPane;            //Detta är FlowPane för varukorgen
+    @FXML private FlowPane categoryFlowPane;        //Detta är FlowPane för kategorierna, där vi stoppar in CategoryItem
+    @FXML private FlowPane cartFlowPane;          //Detta är FlowPane för varukorgen
     @FXML private FlowPane productFlowPane;
     @FXML private Button minSidaButton;         //Detta är min sida-knappen
     @FXML private Label loginLable;             //Detta är texten i headers som just nu säger "inloggad som..."
     @FXML private ScrollPane categoryScrollPane;//ScrollPane för kategorierna
     @FXML private ScrollPane cartScrollPane;    //ScrollPane för varukorgen
     @FXML private ScrollPane productScrollPane; //ScrollPane för produkterna i mitten av sidan
+    @FXML private AnchorPane productDetailView;
+    @FXML private AnchorPane frontPane;
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();    //Vår iMatDataHandler
     private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();    //Skall användas för att få rätt på produkterna i mitten
     ToggleGroup toggleGroup = new ToggleGroup(); //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
 
+   protected void openProductDetailView(){ //Öppnar mer info om en produkt
+        productDetailView.toFront();
+    }
+
+    @FXML
+    private void closeProductDetailView(){ //Stänger rutan med mer info om en produkt
+        frontPane.toFront();
+    }
+
+    @FXML
+    private void mouseTrap(Event event){ //
+        event.consume();
+    }
+
     private void fillCategoryPane(){    //Fyller categoryPane med alla kategorierna
         for(ProductCategory productCategory: ProductCategory.values()){
             CategoryItem categoryItem = new CategoryItem(productCategory,this);
-            categoryPane.getChildren().add(categoryItem);
+            categoryFlowPane.getChildren().add(categoryItem);
         }
     }
 
@@ -54,8 +74,8 @@ public class SearchController implements Initializable {
         for(Product product1: products){                                                    //Loopar igenom listan med de utvalda produkterna
             productFlowPane.getChildren().add(productItemMap.get(product1.getName()));      //Lägger ut dem i flowPane
         }
-
     }
+
 
     protected void updateProductPaneFromString(String string){ //Uppdaterar productFlowPane utifrån en string (sökning i sökrutan)
         productFlowPane.getChildren().clear();
@@ -81,6 +101,7 @@ public class SearchController implements Initializable {
         updateProductPaneFromString(searchBox.getCharacters().toString());
     }
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         iMatDataHandler.getCustomer().setFirstName("Hjördis"); //Sätter namnet till Hjördis sålänge.
@@ -89,6 +110,7 @@ public class SearchController implements Initializable {
         createProductItems(); //kalla på metod som skapar varorna
         productFlowPane.setHgap(42); //Avstånd mellan varu-bilderna
         productFlowPane.setVgap(42); //Avstånd mellan varu-bilderna
+
 
         categoryScrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() { //Gör så att man inte kan skrolla horisontiellt
             @Override
