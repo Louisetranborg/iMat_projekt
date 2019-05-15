@@ -7,7 +7,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class ProductItem extends AnchorPane {

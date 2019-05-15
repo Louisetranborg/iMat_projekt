@@ -13,7 +13,6 @@ import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
-import se.chalmers.cse.dat216.project.ShoppingCart;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -25,21 +24,21 @@ public class SearchController implements Initializable {
 
     @FXML private TextField searchBox;          //Detta är sökrutan
     @FXML private FlowPane categoryFlowPane;        //Detta är FlowPane för kategorierna, där vi stoppar in CategoryItem
-    @FXML private FlowPane cartFlowPane;          //Detta är FlowPane för varukorgen
     @FXML private FlowPane productFlowPane;
-    @FXML private Button minSidaButton;         //Detta är min sida-knappen
-    @FXML private Label loginLable;             //Detta är texten i headers som just nu säger "inloggad som..."
-    @FXML private ScrollPane categoryScrollPane;//ScrollPane för kategorierna
-    @FXML private ScrollPane cartScrollPane;    //ScrollPane för varukorgen
+    @FXML private Button minSidaButton;              //Detta är min sida-knappen
+    @FXML private Label loginLable;                 //Detta är texten i headers som just nu säger "inloggad som..."
+    @FXML private ScrollPane categoryScrollPane;    //ScrollPane för kategorierna
     @FXML private ScrollPane productScrollPane; //ScrollPane för produkterna i mitten av sidan
     @FXML private AnchorPane productDetailView;
     @FXML private AnchorPane frontPane;
     @FXML private ImageView closeUpImage;
     @FXML private Label closeUpName;
+    @FXML private AnchorPane cartPaneWrap;
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();    //Vår iMatDataHandler
     private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();    //Skall användas för att få rätt på produkterna i mitten
     ToggleGroup toggleGroup = new ToggleGroup(); //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
+    ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);
 
    protected void openProductDetailView(Product product){ //Öppnar mer info om en produkt
        populateProductDetailView(product);
@@ -120,6 +119,8 @@ public class SearchController implements Initializable {
         productFlowPane.setHgap(42); //Avstånd mellan varu-bilderna
         productFlowPane.setVgap(42); //Avstånd mellan varu-bilderna
 
+        cartPaneWrap.getChildren().add(shoppingCartPane);
+
 
         categoryScrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() { //Gör så att man inte kan skrolla horisontiellt
             @Override
@@ -130,6 +131,7 @@ public class SearchController implements Initializable {
             }
         });
 
+        /*
         cartScrollPane.addEventFilter(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() { //Gör så att man inte kan skrolla horisontiellt
             @Override
             public void handle(ScrollEvent event) {
@@ -138,6 +140,9 @@ public class SearchController implements Initializable {
                 }
             }
         });
+
+         */
+
 
         productScrollPane.addEventFilter(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() { //Gör så att man inte kan skrolla horisontiellt.
             @Override
