@@ -34,6 +34,7 @@ public class SearchController implements Initializable {
     @FXML private ImageView closeUpImage;
     @FXML private Label closeUpName;
     @FXML private AnchorPane cartPaneWrap;
+    @FXML private AnchorPane checkoutWrap;
     @FXML private Label itemNumber;
     @FXML private Label priceOfproductInfo;
     @FXML private Label ekologiskInfo;
@@ -42,6 +43,7 @@ public class SearchController implements Initializable {
     private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();    //Skall användas för att få rätt på produkterna i mitten
     ToggleGroup toggleGroup = new ToggleGroup(); //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);
+    //CheckoutPane checkoutPane = new CheckoutPane();
 
    protected void openProductDetailView(Product product){ //Öppnar mer info om en produkt
        populateProductDetailView(product);
@@ -133,6 +135,7 @@ public class SearchController implements Initializable {
         productFlowPane.setVgap(42); //Avstånd mellan varu-bilderna
 
         cartPaneWrap.getChildren().add(shoppingCartPane);
+        //checkoutWrap.getChildren().add(checkoutPane);
 
 
         categoryScrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() { //Gör så att man inte kan skrolla horisontiellt
