@@ -34,6 +34,7 @@ public class SearchController implements Initializable {
     @FXML private ImageView closeUpImage;
     @FXML private Label closeUpName;
     @FXML private AnchorPane cartPaneWrap;
+    @FXML private Label itemNumber;
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();    //Vår iMatDataHandler
     private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();    //Skall användas för att få rätt på produkterna i mitten
