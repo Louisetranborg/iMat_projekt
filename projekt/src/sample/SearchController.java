@@ -22,20 +22,20 @@ import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
 
-    @FXML private TextField searchBox;          //Detta är sökrutan
-    @FXML private FlowPane categoryFlowPane;        //Detta är FlowPane för kategorierna, där vi stoppar in CategoryItem
-    @FXML private FlowPane productFlowPane;
-    @FXML private Button minSidaButton;              //Detta är min sida-knappen
-    @FXML private Label loginLable;                 //Detta är texten i headers som just nu säger "inloggad som..."
-    @FXML private ScrollPane categoryScrollPane;    //ScrollPane för kategorierna
-    @FXML private ScrollPane productScrollPane; //ScrollPane för produkterna i mitten av sidan
+    @FXML private TextField searchBox;                                          //Detta är sökrutan
+    @FXML private FlowPane categoryFlowPane;                                    //Detta är FlowPane för kategorierna, där vi stoppar in CategoryItem
+    @FXML private FlowPane productFlowPane;                                     //FlowPane för produkterna, mittenraden där vi stoppar in ProductItem
+    @FXML private Button minSidaButton;                                         //Detta är min sida-knappen
+    @FXML private Label loginLable;                                             //Detta är texten i headers som just nu säger "inloggad som..."
+    @FXML private ScrollPane categoryScrollPane;                                //ScrollPane för kategorierna
+    @FXML private ScrollPane productScrollPane;                                 //ScrollPane för produkterna i mitten av sidan
     @FXML private AnchorPane productDetailView;
     @FXML private AnchorPane frontPane;
     @FXML private ImageView closeUpImage;
     @FXML private Label closeUpName;
     @FXML private AnchorPane cartPaneWrap;
 
-    IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();    //Vår iMatDataHandler
+    IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();     //Vår iMatDataHandler
     private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();    //Skall användas för att få rätt på produkterna i mitten
     ToggleGroup toggleGroup = new ToggleGroup(); //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);
@@ -87,7 +87,7 @@ public class SearchController implements Initializable {
 
     protected void updateProductPaneFromString(String string){ //Uppdaterar productFlowPane utifrån en string (sökning i sökrutan)
         productFlowPane.getChildren().clear();
-        List<Product> products = iMatDataHandler.findProducts(string); // skapar en lista med produkter utifrån en redan skriven metod som hittar passande produkter
+        List<Product> products = iMatDataHandler.findProducts(string); //skapar en lista med produkter utifrån en redan skriven metod som hittar passande produkter
 
         for(Product product: products){ //Loopar igenom listan och lägger till dem i productFlowPane
             productFlowPane.getChildren().add(productItemMap.get(product.getName()));
@@ -130,19 +130,6 @@ public class SearchController implements Initializable {
                 }
             }
         });
-
-        /*
-        cartScrollPane.addEventFilter(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() { //Gör så att man inte kan skrolla horisontiellt
-            @Override
-            public void handle(ScrollEvent event) {
-                if (event.getDeltaX() != 0){
-                    event.consume();
-                }
-            }
-        });
-
-         */
-
 
         productScrollPane.addEventFilter(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() { //Gör så att man inte kan skrolla horisontiellt.
             @Override

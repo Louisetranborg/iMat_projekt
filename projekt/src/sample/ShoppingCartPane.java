@@ -1,28 +1,26 @@
 package sample;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingCart;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 public class ShoppingCartPane extends AnchorPane {
 
     private SearchController parentController;
     private ShoppingCart shoppingCart;
     @FXML private FlowPane cartFlowPane;
-    @FXML private StackPane stackPane;
-    @FXML private AnchorPane cartPane;
+    @FXML private ScrollPane cartScrollPane;
 
     private Map<String, ProductCartItem> productCartItemMap = new HashMap<String, ProductCartItem>();
 
@@ -40,15 +38,22 @@ public class ShoppingCartPane extends AnchorPane {
         this.shoppingCart = shoppingCart;
         this.parentController = parentController;
 
-        createProductCartItems();
+        cartScrollPane.addEventFilter(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() { //Gör så att man inte kan skrolla horisontiellt
+            @Override
+            public void handle(ScrollEvent event) {
+                if (event.getDeltaX() != 0){
+                    event.consume();
+                }
+            }
+        });
 
+        createProductCartItems();
     }
 
     protected void createProductCartItems(){
         for(Product product: parentController.iMatDataHandler.getProducts()){
             ProductCartItem productCartItem = new ProductCartItem(new ShoppingItem(product),parentController);
             productCartItemMap.put(product.getName(),productCartItem);
-            cartFlowPane.getChildren().add(productCartItem);
         }
     }
 
