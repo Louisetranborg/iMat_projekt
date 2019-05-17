@@ -15,7 +15,6 @@
 
 <StackPane stylesheets="@css_files/main_theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
    <children>
-      <AnchorPane fx:id="checkoutWrap" prefHeight="777.0" prefWidth="1430.0" />
       <AnchorPane fx:id="productDetailView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeProductDetailView" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
          <children>
             <AnchorPane layoutX="120.0" layoutY="80.0" onMouseClicked="#mouseTrap" prefHeight="695.0" prefWidth="1200.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;">
@@ -49,6 +48,11 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1134.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/close.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="403.0" layoutY="645.0" pickOnBounds="true" preserveRatio="true">
@@ -63,6 +67,7 @@
             </ImageView>
             <TextField layoutX="343.0" layoutY="655.0" prefHeight="23.0" prefWidth="45.0" />
          </children></AnchorPane>
+      <AnchorPane fx:id="checkoutWrap" prefHeight="777.0" prefWidth="1430.0" />
       <AnchorPane fx:id="frontPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0">
          <children>
             <Pane prefHeight="80.0" prefWidth="1440.0">
@@ -100,12 +105,17 @@
                </content>
             </ScrollPane>
             <AnchorPane fx:id="cartPaneWrap" layoutX="1180.0" layoutY="80.0" prefHeight="775.0" prefWidth="260.0" style="-fx-background-color: FFFFFF;" />
-            <ScrollPane fx:id="productScrollPane" layoutX="260.0" layoutY="80.0" prefHeight="775.0" prefWidth="920.0" styleClass="scrollPane">
+            <ScrollPane fx:id="productScrollPane" layoutX="260.0" layoutY="158.0" prefHeight="697.0" prefWidth="920.0" styleClass="scrollPane">
                <content>
                   <FlowPane fx:id="productFlowPane" alignment="CENTER" prefHeight="775.0" prefWidth="920.0" />
                </content>
             </ScrollPane>
             <TextField alignment="CENTER" layoutY="80.0" prefHeight="80.0" prefWidth="260.0" text="Sortiment ">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" layoutX="260.0" layoutY="80.0" prefHeight="80.0" prefWidth="921.0" text="Rekommenderade produkter för dig">
                <font>
                   <Font size="31.0" />
                </font>
