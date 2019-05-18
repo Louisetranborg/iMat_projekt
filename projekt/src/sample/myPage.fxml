@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="777.0" prefWidth="1430.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MyPage">
    <children>
+      <AnchorPane layoutX="2.0" prefHeight="834.0" prefWidth="1166.0" />
       <FlowPane fx:id="categoryFlowPane" layoutY="82.0" prefHeight="754.0" prefWidth="260.0" styleClass="flowPane">
          <children>
             <RadioButton mnemonicParsing="false" prefHeight="40.0" prefWidth="260.0" text="Favoriter" />
