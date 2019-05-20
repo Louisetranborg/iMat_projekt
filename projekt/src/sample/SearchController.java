@@ -1,8 +1,10 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -14,6 +16,7 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -37,17 +40,33 @@ public class SearchController implements Initializable {
     @FXML private Label priceOfproductInfo;                                     //Detta är produktpriset i vår light-box
     @FXML private Label ekologiskInfo;                                          //Detta är produkt eko elr ej i vår light-box
     @FXML private AnchorPane cartPaneWrap;                                      //Detta är den ancorpane som vi fäster kundvagnen på
+    @FXML private AnchorPane mypageWrap;                                      //Detta är den ancorpane som vi fäster mina sidor på
+    @FXML private AnchorPane hejnu;                                      //Detta är den ancorpane som vi fäster mina sidor på
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
     private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med categoryItems
     ToggleGroup toggleGroup = new ToggleGroup();                                                                        //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);    //Detta är vår kundvagn
+    MyPage myPage = new MyPage(this);
+    SearchController parentController;
 
     //Sätter light-boxen längs fram för att visa mer info om en produkt
     protected void openProductDetailView(Product product){
         populateProductDetailView(product);
         productDetailView.toFront();
     }
+
+    @FXML
+    public void openMyPage(){
+        hejnu.toFront();
+    }
+    /*@FXML
+    private void loadMypage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("myPage.fxml"));
+        hejnu.toFront();
+        mypageWrap.getChildren().setAll(pane);
+    }*/
+
 
     //Stänger light-boxen och återgår till föregående sida
     @FXML
@@ -141,6 +160,7 @@ public class SearchController implements Initializable {
         productFlowPane.setHgap(42);                                                                                    //Avstånd mellan productItems i x-led
         productFlowPane.setVgap(42);                                                                                    //Avstånd mellan productItems i y-led
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
+        mypageWrap.getChildren().add(myPage);
 
 
         //Gör så att man inte kan skrolla horisontiellt i kategorierna
