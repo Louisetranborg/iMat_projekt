@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
 
+    
     @FXML private TextField searchBox;          //Detta är sökrutan
     @FXML private FlowPane categoryFlowPane;        //Detta är FlowPane för kategorierna, där vi stoppar in CategoryItem
     @FXML private FlowPane productFlowPane;
