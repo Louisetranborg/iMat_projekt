@@ -33,6 +33,9 @@ public class SearchController implements Initializable {
     @FXML private AnchorPane frontPane;                                         //Detta är vår ancorpane för framsidan
     @FXML private ImageView closeUpImage;                                       //Detta är bilden på produkten i vår light-box
     @FXML private Label closeUpName;                                            //Detta är produktnamnet i vår light-box
+    @FXML private Label itemNumber;                                             //Detta är produktnumret i vår light-box
+    @FXML private Label priceOfproductInfo;                                     //Detta är produktpriset i vår light-box
+    @FXML private Label ekologiskInfo;                                          //Detta är produkt eko elr ej i vår light-box
     @FXML private AnchorPane cartPaneWrap;                                      //Detta är den ancorpane som vi fäster kundvagnen på
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
@@ -62,6 +65,16 @@ public class SearchController implements Initializable {
     private void populateProductDetailView(Product product){
         closeUpImage.setImage(iMatDataHandler.getFXImage(product));
         closeUpName.setText(product.getName());
+        priceOfproductInfo.setText(product.getPrice() + " kr");
+        itemNumber.setText("Artikelnummer: " + product.getProductId());
+        ekologiskInfo.setText(isEco(product));
+    }
+
+    private String isEco(Product product){
+        if (product.isEcological()){
+            return "Varan är ekologisk";
+        }
+        return  "Varan är inte ekologisk";
     }
 
     //Fyller categoryFlowPane med alla kategorierna
