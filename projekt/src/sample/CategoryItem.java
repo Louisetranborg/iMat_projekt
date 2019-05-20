@@ -12,8 +12,8 @@ import java.io.IOException;
 public class CategoryItem extends AnchorPane {
 
     private ProductCategory productCategory;
-    private SearchController parentController;
-    @FXML private RadioButton categoryButton;   //Detta är kategoriknappen med dess kategorinamn
+    private SearchController parentController;                      //Detta är vår searchcontroller för att komma åt imata
+    @FXML private RadioButton categoryButton;                       //Detta är kategoriknappen med dess kategorinamn
 
     @FXML
     protected void onClick(Event event){        //När man klickar på en kategori skall varorna i mitten uppdateras
