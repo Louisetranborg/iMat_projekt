@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingCart;
 import se.chalmers.cse.dat216.project.ShoppingItem;
+import static java.lang.System.out;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,7 +28,7 @@ public class ShoppingCartPane extends AnchorPane {
     private Map<String, ProductCartItem> productCartItemMap = new HashMap<String, ProductCartItem>();
 
     public ShoppingCartPane(ShoppingCart shoppingCart, SearchController parentController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cartPane.fxml")); //Laddar in rätt fxml-fil
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cartPane.fxml"));        //Laddar in rätt fxml-fil
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -44,11 +45,24 @@ public class ShoppingCartPane extends AnchorPane {
 
     }
 
-    protected void createProductCartItems(){
+    private void createProductCartItems(){
         for(Product product: parentController.iMatDataHandler.getProducts()){
             ProductCartItem productCartItem = new ProductCartItem(new ShoppingItem(product),parentController);
             productCartItemMap.put(product.getName(),productCartItem);
-            cartFlowPane.getChildren().add(productCartItem);
+
+        }
+    }
+
+    protected void addProductToCart(Product product){
+        if(cartFlowPane.getChildren().contains(productCartItemMap.get(product.getName()))){
+            shoppingCart.addItem(productCartItemMap.get(product.getName()).getShoppingItem());
+            productCartItemMap.get(product.getName()).getShoppingItem().setAmount(productCartItemMap.get(product.getName()).getShoppingItem().getAmount() + 1);
+            out.print("två " + productCartItemMap.get(product.getName()).getShoppingItem().getAmount());
+        }
+        else{
+            cartFlowPane.getChildren().add(productCartItemMap.get(product.getName()));
+            shoppingCart.addProduct(product);
+            out.print("ett" + productCartItemMap.get(product.getName()).getShoppingItem().getAmount());
         }
     }
 

@@ -16,6 +16,10 @@ public class ProductCartItem extends AnchorPane {
     @FXML private ImageView cartImage;
     @FXML private Label cartName;
 
+    protected ShoppingItem getShoppingItem(){
+        return shoppingItem;
+    }
+
     public ProductCartItem(ShoppingItem shoppingItem, SearchController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("productCartItem.fxml")); //Laddar in rätt fxml-fil
         fxmlLoader.setRoot(this);

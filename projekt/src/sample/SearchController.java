@@ -54,7 +54,7 @@ public class SearchController implements Initializable {
 
     //Konsumerar ett event, används exempelvis för att light-boxen skall stängas när man klickar utanför den, ej när man klickar på själva light-boxen
     @FXML
-    private void mouseTrap(Event event){
+    protected void mouseTrap(Event event){
         event.consume();
     }
 
