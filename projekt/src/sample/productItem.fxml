@@ -22,12 +22,12 @@
             <Image url="@images/baseline_add_circle_black_24dp.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="removeButton" fitHeight="45.0" fitWidth="45.0" layoutX="52.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="removeButton" fitHeight="45.0" fitWidth="45.0" layoutX="52.0" layoutY="235.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/baseline_remove_circle_black_24dp.png" />
          </image>
       </ImageView>
-      <TextField layoutX="103.0" layoutY="245.0" prefHeight="23.0" prefWidth="45.0" />
+      <TextField fx:id="amountBox" layoutX="103.0" layoutY="245.0" prefHeight="23.0" prefWidth="45.0" />
       <Label fx:id="price" alignment="CENTER" layoutY="217.0" prefHeight="18.0" prefWidth="250.0" text="Pris" AnchorPane.leftAnchor="0.0">
          <font>
             <Font size="14.0" />

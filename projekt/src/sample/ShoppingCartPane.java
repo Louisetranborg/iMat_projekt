@@ -6,9 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
-import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ShoppingCart;
-import se.chalmers.cse.dat216.project.ShoppingItem;
+import se.chalmers.cse.dat216.project.*;
+
 import static java.lang.System.out;
 
 import java.io.IOException;
@@ -41,30 +40,46 @@ public class ShoppingCartPane extends AnchorPane {
         this.shoppingCart = shoppingCart;
         this.parentController = parentController;
 
-        createProductCartItems();
+        shoppingCart.addShoppingCartListener(new ShoppingCartListener() {
+            @Override
+            public void shoppingCartChanged(CartEvent cartEvent) {
+               updateCart();
+            }
+        });
 
     }
 
-    private void createProductCartItems(){
+    //Skapar alla våra productCartItems och lägger dem i en Map(productCartItemMap)
+    protected void createProductCartItems(){
         for(Product product: parentController.iMatDataHandler.getProducts()){
-            ProductCartItem productCartItem = new ProductCartItem(new ShoppingItem(product),parentController);
+            ProductCartItem productCartItem = new ProductCartItem(parentController.shoppingItemMap.get(product.getName()),parentController);
             productCartItemMap.put(product.getName(),productCartItem);
-
         }
     }
 
-    protected void addProductToCart(Product product){
-        if(cartFlowPane.getChildren().contains(productCartItemMap.get(product.getName()))){
-            shoppingCart.addItem(productCartItemMap.get(product.getName()).getShoppingItem());
-            productCartItemMap.get(product.getName()).getShoppingItem().setAmount(productCartItemMap.get(product.getName()).getShoppingItem().getAmount() + 1);
-            out.print("två " + productCartItemMap.get(product.getName()).getShoppingItem().getAmount());
+    protected void addProductToCart(ShoppingItem shoppingItem){ //Lägger endast ut ett cartItem när det behövs
+
+        if(!shoppingCart.getItems().contains(shoppingItem)){
+            shoppingCart.addItem(shoppingItem);
         }
-        else{
-            cartFlowPane.getChildren().add(productCartItemMap.get(product.getName()));
-            shoppingCart.addProduct(product);
-            out.print("ett" + productCartItemMap.get(product.getName()).getShoppingItem().getAmount());
-        }
+
     }
 
+    protected void removeProductFromCart(ShoppingItem shoppingItem){
+        shoppingCart.removeItem(shoppingItem);
+    }
+
+
+
+    protected Map<String,ProductCartItem> getProductCartItemMap(){
+        return productCartItemMap;
+    }
+
+    protected void updateCart(){
+        cartFlowPane.getChildren().clear();
+        for(ShoppingItem shoppingItem : shoppingCart.getItems()){
+            cartFlowPane.getChildren().add(productCartItemMap.get(shoppingItem.getProduct().getName()));
+        }
+    }
 }
 
