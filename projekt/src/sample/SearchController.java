@@ -58,7 +58,7 @@ public class SearchController implements Initializable {
 
     @FXML
     public void openMyPage(){
-        hejnu.toFront();
+        mypageWrap.toFront();
     }
     /*@FXML
     private void loadMypage(ActionEvent event) throws IOException {

@@ -20,9 +20,6 @@
          <StackPane.margin>
             <Insets />
          </StackPane.margin>
-         <children>
-            <AnchorPane fx:id="mypageWrap" layoutX="-3.0" layoutY="100.0" prefHeight="790.0" prefWidth="1180.0" style="-fx-background-color: #77767788;" />
-         </children>
       </AnchorPane>
       <AnchorPane fx:id="productDetailView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeProductDetailView" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
          <children>
@@ -78,6 +75,7 @@
          </children></AnchorPane>
       <AnchorPane fx:id="frontPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0">
          <children>
+            <AnchorPane fx:id="mypageWrap" layoutY="80.0" prefHeight="790.0" prefWidth="1180.0" style="-fx-background-color: #77767788;" />
             <Pane prefHeight="80.0" prefWidth="1440.0">
                <children>
                   <ImageView fitHeight="80.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true">
@@ -128,6 +126,10 @@
                   <Font size="31.0" />
                </font>
             </Label>
+            <AnchorPane layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" />
+            <AnchorPane layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" />
+            <AnchorPane layoutY="240.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" />
+            <AnchorPane layoutY="280.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" />
          </children>
       </AnchorPane>
    </children>
