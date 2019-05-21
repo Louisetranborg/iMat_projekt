@@ -98,7 +98,7 @@ public class ShoppingCartPane extends AnchorPane {
         for(ShoppingItem shoppingItem : shoppingCart.getItems()){
             cartFlowPane.getChildren().add(productCartItemMap.get(shoppingItem.getProduct().getName()));
         }
-        totalLabel.setText("Totalt " + shoppingCart.getTotal());
+        totalLabel.setText("Totalt " + ((int)shoppingCart.getTotal()) + " kr");
     }
 }
 

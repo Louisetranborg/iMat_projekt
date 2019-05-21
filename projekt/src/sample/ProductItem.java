@@ -82,7 +82,7 @@ public class ProductItem extends AnchorPane {
 
     @FXML
     private void glow(){
-        addButton.setEffect(new Glow(1));
+        addButton.setEffect(new Glow(0.5));
     }
 
     @FXML

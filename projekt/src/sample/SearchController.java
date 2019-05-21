@@ -179,8 +179,8 @@ public class SearchController implements Initializable {
         iMatDataHandler.getCustomer().setFirstName("Hjördis");                                                          //Sätter namnet till Hjördis sålänge.
         loginLable.setText("Inloggad som " + iMatDataHandler.getCustomer().getFirstName());                             //hämtar användarens namn och skriver ut det i headern.
         fillCategoryPane();                                                                                             //kalla på metoden som fyller categoryPane
-        productFlowPane.setHgap(42);                                                                                    //Avstånd mellan productItems i x-led
-        productFlowPane.setVgap(42);                                                                                    //Avstånd mellan productItems i y-led
+        productFlowPane.setHgap(40);                                                                                    //Avstånd mellan productItems i x-led
+        productFlowPane.setVgap(40);                                                                                    //Avstånd mellan productItems i y-led
         createProductItems();                                                                                           //kalla på metod som skapar varorna
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
         shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!

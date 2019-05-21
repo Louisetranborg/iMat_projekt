@@ -13,7 +13,7 @@
    <children>
       <ScrollPane fx:id="cartScrollPane" layoutY="60.0" prefHeight="655.0" prefWidth="260.0" styleClass="scrollPane" stylesheets="@css_files/main_theme.css">
          <content>
-            <FlowPane fx:id="cartFlowPane" prefHeight="655.0" prefWidth="260.0" style="-fx-background-color: FFFFFF;" styleClass="flowPane" />
+            <FlowPane fx:id="cartFlowPane" prefHeight="655.0" prefWidth="260.0" styleClass="flowPane" />
          </content>
       </ScrollPane>
       <Label fx:id="totalLabel" alignment="CENTER" layoutY="717.0" prefHeight="48.0" prefWidth="132.0" text="Totalt ">
