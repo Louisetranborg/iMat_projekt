@@ -130,6 +130,7 @@ public class SearchController implements Initializable {
         shoppingCartPane.updateCart();
         productItemMap.get(shoppingItem.getProduct().getName()).updateAmountInProductItem();
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInCartItem();
+        shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(shoppingItem.getTotal() + " kr");
     }
 
     protected void addItemToCart(ShoppingItem shoppingItem){

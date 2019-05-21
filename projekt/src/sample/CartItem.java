@@ -27,6 +27,10 @@ public class CartItem extends AnchorPane {
         return shoppingItem;
     }
 
+    protected Label getPrice(){
+        return price;
+    }
+
     @FXML
     private void clickedOnAddButton(){
         parentController.addItemToCart(shoppingItem);

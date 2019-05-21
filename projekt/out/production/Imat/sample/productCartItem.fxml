@@ -13,7 +13,7 @@
          <image>
             <Image url="@images/baseline_add_circle_black_24dp.png" />
          </image></ImageView>
-      <Label fx:id="cartName" layoutX="128.0" layoutY="10.0" prefHeight="18.0" prefWidth="108.0" text="Produktnamn">
+      <Label fx:id="cartName" alignment="CENTER" layoutX="128.0" layoutY="10.0" prefHeight="18.0" prefWidth="108.0" text="Produktnamn">
          <font>
             <Font size="14.0" />
          </font></Label>
