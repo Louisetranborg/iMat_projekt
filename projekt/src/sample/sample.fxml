@@ -14,14 +14,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.geometry.Insets?>
 <StackPane stylesheets="@css_files/main_theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
    <children>
-      <AnchorPane fx:id="hejnu" minHeight="0.0" minWidth="0.0" prefHeight="758.0" prefWidth="1406.0" style="-fx-background-color: #77775352;">
-         <StackPane.margin>
-            <Insets />
-         </StackPane.margin>
-      </AnchorPane>
       <AnchorPane fx:id="productDetailView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeProductDetailView" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
          <children>
             <AnchorPane layoutX="120.0" layoutY="80.0" onMouseClicked="#mouseTrap" prefHeight="695.0" prefWidth="1200.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;">
@@ -62,18 +56,23 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="403.0" layoutY="645.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="addButton" fitHeight="45.0" fitWidth="45.0" layoutX="403.0" layoutY="645.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/baseline_add_circle_black_24dp.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="282.0" layoutY="645.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="removeButton" fitHeight="45.0" fitWidth="45.0" layoutX="282.0" layoutY="645.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/baseline_remove_circle_black_24dp.png" />
                </image>
             </ImageView>
-            <TextField layoutX="343.0" layoutY="655.0" prefHeight="23.0" prefWidth="45.0" />
+            <TextField fx:id="amountBox" layoutX="343.0" layoutY="655.0" prefHeight="23.0" prefWidth="45.0" />
          </children></AnchorPane>
+      <AnchorPane fx:id="hejnu" minHeight="0.0" minWidth="0.0" prefHeight="758.0" prefWidth="1406.0" style="-fx-background-color: #77775352;">
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+      </AnchorPane>
       <AnchorPane fx:id="checkoutWrap" prefHeight="777.0" prefWidth="1430.0" />
       <AnchorPane fx:id="frontPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0">
          <children>

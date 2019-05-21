@@ -21,22 +21,22 @@
          <content>
             <FlowPane fx:id="categoryFlowPane" prefHeight="775.0" prefWidth="241.0" styleClass="flowPane">
                <children>
-                  <RadioButton fx:id="favoriter" mnemonicParsing="false" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@css_files/main_theme.css" text="Favoriter">
+                  <RadioButton fx:id="favoriter" mnemonicParsing="false" onMouseClicked="#onClickMyPages" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@css_files/main_theme.css" text="Favoriter">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="historik" mnemonicParsing="false" onMousePressed="#onClick" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@css_files/main_theme.css" text="Historik">
+                  <RadioButton fx:id="historik" mnemonicParsing="false" onMouseClicked="#onClickHistory" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@css_files/main_theme.css" text="Historik">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="personuppgifter" mnemonicParsing="false" onMousePressed="#onClick" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@css_files/main_theme.css" text="Personuppgifter">
+                  <RadioButton fx:id="personuppgifter" mnemonicParsing="false" onMouseClicked="#onClickPersonalAccount" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@css_files/main_theme.css" text="Personuppgifter">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="sparade" mnemonicParsing="false" onMousePressed="#onClick" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@css_files/main_theme.css" text="Sparade inköpslistor">
+                  <RadioButton fx:id="sparade" mnemonicParsing="false" onMouseClicked="#onClickSavedCarts" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@css_files/main_theme.css" text="Sparade inköpslistor">
                      <font>
                         <Font size="18.0" />
                      </font>

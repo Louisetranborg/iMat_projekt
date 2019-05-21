@@ -55,10 +55,31 @@ public class MyPage extends AnchorPane {
     }
 
     @FXML
-     public void onClick(){
+     public void onClickMyPages(){
         openCatMinaSidor.toFront();
+        openCatMinaSidor.getChildren().add(new Favorites(parentController));
 
     }
 
+    @FXML
+    public void onClickHistory(){
+        openCatMinaSidor.toFront();
+        openCatMinaSidor.getChildren().add(new History(parentController));
+
+    }
+
+    @FXML
+    public void onClickSavedCarts(){
+        openCatMinaSidor.toFront();
+        openCatMinaSidor.getChildren().add(new SavedCarts(parentController));
+
+    }
+
+    @FXML
+    public void onClickPersonalAccount(){
+        openCatMinaSidor.toFront();
+        openCatMinaSidor.getChildren().add(new PersonalAccount(parentController));
+
+    }
 
 }

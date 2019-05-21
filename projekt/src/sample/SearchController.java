@@ -39,7 +39,6 @@ public class SearchController implements Initializable {
     @FXML private AnchorPane cartPaneWrap;                                      //Detta är den ancorpane som vi fäster kundvagnen på
     @FXML private AnchorPane mypageWrap;                                      //Detta är den ancorpane som vi fäster mina sidor på
     @FXML private AnchorPane hejnu;                                      //Detta är den ancorpane som vi fäster mina sidor på
-    @FXML private AnchorPane openCatMinaSidor;                                      //Detta är den ancorpane som vi fäster mina sidor på
     @FXML private ImageView addButton;
     @FXML private ImageView removeButton;
     @FXML private TextField amountBox;
@@ -134,6 +133,8 @@ public class SearchController implements Initializable {
     protected void updateProductPaneFromString(String string){
         productFlowPane.getChildren().clear();
         List<Product> products = iMatDataHandler.findProducts(string);
+
+        mypageWrap.toFront();
 
         for(Product product: products){
             productFlowPane.getChildren().add(productItemMap.get(product.getName()));
