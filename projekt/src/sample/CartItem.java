@@ -12,23 +12,36 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 
-public class ProductCartItem extends AnchorPane {
+public class CartItem extends AnchorPane {
 
     private SearchController parentController;
     private ShoppingItem shoppingItem;
     @FXML private ImageView cartImage;
     @FXML private Label cartName;
     @FXML private TextField amountBox;
+    @FXML private ImageView removeButton;
+    @FXML private ImageView addButton;
+    @FXML private Label price;
 
     protected ShoppingItem getShoppingItem(){
         return shoppingItem;
+    }
+
+    @FXML
+    private void clickedOnAddButton(){
+        parentController.addItemToCart(shoppingItem);
+    }
+
+    @FXML
+    private void clickedOnRemoveButton(){
+        parentController.removeItemFromCart(shoppingItem);
     }
 
     protected void updateAmountInCartItem(){
         amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
     }
 
-    public ProductCartItem(ShoppingItem shoppingItem, SearchController parentController) {
+    public CartItem(ShoppingItem shoppingItem, SearchController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("productCartItem.fxml")); //Laddar in rätt fxml-fil
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -55,6 +68,8 @@ public class ProductCartItem extends AnchorPane {
                 parentController.updateAmount(shoppingItem);
             }
         });
+
+        price.setText(shoppingItem.getTotal() + " kr");
 
     }
 

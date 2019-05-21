@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -183,6 +184,18 @@ public class SearchController implements Initializable {
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
         shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!
 
+        amountBox.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                activeInDetailview.setAmount(Double.valueOf(amountBox.getText()));
+                shoppingCartPane.addProductToCart(activeInDetailview);
+                if(activeInDetailview.getAmount() < 1){       //Ändra om vi vill ha double-system
+                    shoppingCartPane.removeProductFromCart(activeInDetailview);
+                }
+                updateAmount(activeInDetailview);
+            }
+        });
+
         //Gör så att man inte kan skrolla horisontiellt i kategorierna
         categoryScrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() {
             @Override
@@ -202,9 +215,6 @@ public class SearchController implements Initializable {
                 }
             }
         });
-
-
-
 
     }
 }

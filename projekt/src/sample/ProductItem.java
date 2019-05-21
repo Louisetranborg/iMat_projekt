@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
@@ -77,6 +78,16 @@ public class ProductItem extends AnchorPane {
     protected void clickedOnRemoveButton(Event event) {
         parentController.mouseTrap(event);
         parentController.removeItemFromCart(shoppingItem);
+    }
+
+    @FXML
+    private void glow(){
+        addButton.setEffect(new Glow(1));
+    }
+
+    @FXML
+    private void removeGlow(){
+        addButton.setEffect(new Glow(0));
     }
 
 }

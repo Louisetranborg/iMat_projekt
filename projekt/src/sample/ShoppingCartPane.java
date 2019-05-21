@@ -1,8 +1,12 @@
 package sample;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -21,10 +25,12 @@ public class ShoppingCartPane extends AnchorPane {
     private SearchController parentController;
     private ShoppingCart shoppingCart;
     @FXML private FlowPane cartFlowPane;
+    @FXML private ScrollPane cartScrollPane;
     @FXML private StackPane stackPane;
     @FXML private AnchorPane cartPane;
+    @FXML private Label totalLabel;
 
-    private Map<String, ProductCartItem> productCartItemMap = new HashMap<String, ProductCartItem>();
+    private Map<String, CartItem> productCartItemMap = new HashMap<String, CartItem>();
 
     public ShoppingCartPane(ShoppingCart shoppingCart, SearchController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cartPane.fxml"));        //Laddar in rätt fxml-fil
@@ -47,13 +53,25 @@ public class ShoppingCartPane extends AnchorPane {
             }
         });
 
+        //Gör så att man inte kan skrolla horisontiellt i kategorierna
+        cartScrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() {
+            @Override
+            public void handle(ScrollEvent event) {
+                if (event.getDeltaX() != 0) {
+                    event.consume();
+                }
+            }
+        });
+
+        totalLabel.setText("Totalt " + shoppingCart.getTotal());
+
     }
 
     //Skapar alla våra productCartItems och lägger dem i en Map(productCartItemMap)
     protected void createProductCartItems(){
         for(Product product: parentController.iMatDataHandler.getProducts()){
-            ProductCartItem productCartItem = new ProductCartItem(parentController.shoppingItemMap.get(product.getName()),parentController);
-            productCartItemMap.put(product.getName(),productCartItem);
+            CartItem cartItem = new CartItem(parentController.shoppingItemMap.get(product.getName()),parentController);
+            productCartItemMap.put(product.getName(),cartItem);
         }
     }
 
@@ -71,7 +89,7 @@ public class ShoppingCartPane extends AnchorPane {
 
 
 
-    protected Map<String,ProductCartItem> getProductCartItemMap(){
+    protected Map<String,CartItem> getProductCartItemMap(){
         return productCartItemMap;
     }
 
@@ -80,6 +98,7 @@ public class ShoppingCartPane extends AnchorPane {
         for(ShoppingItem shoppingItem : shoppingCart.getItems()){
             cartFlowPane.getChildren().add(productCartItemMap.get(shoppingItem.getProduct().getName()));
         }
+        totalLabel.setText("Totalt " + shoppingCart.getTotal());
     }
 }
 
