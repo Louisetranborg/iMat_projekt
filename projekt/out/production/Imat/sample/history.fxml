@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="834.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.History">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <RadioButton layoutX="1.0" layoutY="74.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="260.0" text="Favoriter" />
-      <RadioButton layoutY="105.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="260.0" text="Historik" />
-      <RadioButton layoutX="-1.0" layoutY="133.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="260.0" text="Personuppgifter" />
-      <RadioButton layoutX="-2.0" layoutY="160.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="260.0" text="Sparade inköpslistor" />
-      <TextField alignment="CENTER" prefHeight="80.0" prefWidth="260.0" text="Mina sidor">
+      <Label alignment="CENTER" layoutX="-11.0" layoutY="1.0" prefHeight="81.0" prefWidth="920.0" style="-fx-background-color: #FFFFFFFF;" text="Mina sidor\Historik">
          <font>
             <Font size="31.0" />
          </font>
-      </TextField>
-      <TextField alignment="CENTER" layoutX="260.0" prefHeight="80.0" prefWidth="907.0" text="Mina sidor/historik">
-         <font>
-            <Font size="31.0" />
-         </font>
-      </TextField>
+      </Label>
    </children>
 </AnchorPane>

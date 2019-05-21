@@ -17,6 +17,7 @@ public class MyPage extends AnchorPane {
     @FXML private RadioButton historik;
     @FXML private RadioButton personuppgifter;
     @FXML private RadioButton sparade;
+    @FXML private AnchorPane openCatMinaSidor;
 
 
     private SearchController parentController;
@@ -55,6 +56,9 @@ public class MyPage extends AnchorPane {
 
     @FXML
      public void onClick(){
+        openCatMinaSidor.toFront();
 
     }
+
+
 }

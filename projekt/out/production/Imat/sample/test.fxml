@@ -11,6 +11,7 @@
 
 <fx:root prefHeight="790.0" prefWidth="1180.0" style="-fx-background-color: #FFFFFF;" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <AnchorPane fx:id="openCatMinaSidor" layoutX="260.0" prefHeight="785.0" prefWidth="916.0" style="-fx-background-color: #000000;" />
       <Label alignment="CENTER" layoutX="-1.0" layoutY="1.0" prefHeight="81.0" prefWidth="260.0" style="-fx-background-color: #FFFFFFFF;" text="Mina sidor" underline="true">
          <font>
             <Font size="31.0" />
@@ -20,7 +21,7 @@
          <content>
             <FlowPane fx:id="categoryFlowPane" prefHeight="775.0" prefWidth="241.0" styleClass="flowPane">
                <children>
-                  <RadioButton fx:id="favoriter" mnemonicParsing="false" onMousePressed="#onClick" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@css_files/main_theme.css" text="Favoriter">
+                  <RadioButton fx:id="favoriter" mnemonicParsing="false" onMouseClicked="#onClick" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@css_files/main_theme.css" text="Favoriter">
                      <font>
                         <Font size="18.0" />
                      </font>

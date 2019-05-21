@@ -42,6 +42,7 @@ public class SearchController implements Initializable {
     @FXML private AnchorPane cartPaneWrap;                                      //Detta är den ancorpane som vi fäster kundvagnen på
     @FXML private AnchorPane mypageWrap;                                      //Detta är den ancorpane som vi fäster mina sidor på
     @FXML private AnchorPane hejnu;                                      //Detta är den ancorpane som vi fäster mina sidor på
+    @FXML private AnchorPane openCatMinaSidor;                                      //Detta är den ancorpane som vi fäster mina sidor på
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
     private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med categoryItems
@@ -161,6 +162,7 @@ public class SearchController implements Initializable {
         productFlowPane.setVgap(42);                                                                                    //Avstånd mellan productItems i y-led
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
         mypageWrap.getChildren().add(myPage);
+
 
 
         //Gör så att man inte kan skrolla horisontiellt i kategorierna
