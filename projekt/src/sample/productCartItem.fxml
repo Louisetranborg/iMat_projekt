@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="260.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="260.0" styleClass="anchorPane" stylesheets="@css_files/cartItem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="cartImage" fitHeight="80.0" fitWidth="80.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="cartName" layoutX="96.0" layoutY="14.0" text="Produktnamn" />
+      <ImageView fx:id="cartImage" fitHeight="80.0" fitWidth="100.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
+         <image>
+            <Image url="@images/baseline_add_circle_black_24dp.png" />
+         </image></ImageView>
+      <Label fx:id="cartName" layoutX="128.0" layoutY="10.0" prefHeight="18.0" prefWidth="108.0" text="Produktnamn">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="amountBox" layoutX="165.0" layoutY="37.0" prefHeight="24.0" prefWidth="37.0" />
+      <ImageView fx:id="addButton" fitHeight="150.0" fitWidth="45.0" layoutX="202.0" layoutY="28.0" onMouseClicked="#clickedOnAddButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/baseline_add_circle_black_24dp.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="removeButton" fitHeight="150.0" fitWidth="45.0" layoutX="120.0" layoutY="28.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/baseline_remove_circle_black_24dp.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="price" alignment="CENTER" layoutX="126.0" layoutY="73.0" prefHeight="18.0" prefWidth="116.0" text="pris">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </fx:root>

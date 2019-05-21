@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.geometry.Insets?>
 <StackPane stylesheets="@css_files/main_theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
    <children>
       <AnchorPane fx:id="hejnu" minHeight="0.0" minWidth="0.0" prefHeight="758.0" prefWidth="1406.0" style="-fx-background-color: #77775352;">
@@ -73,6 +74,7 @@
             </ImageView>
             <TextField layoutX="343.0" layoutY="655.0" prefHeight="23.0" prefWidth="45.0" />
          </children></AnchorPane>
+      <AnchorPane fx:id="checkoutWrap" prefHeight="777.0" prefWidth="1430.0" />
       <AnchorPane fx:id="frontPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0">
          <children>
             <AnchorPane fx:id="mypageWrap" layoutY="80.0" prefHeight="790.0" prefWidth="1180.0" style="-fx-background-color: #77767788;" />

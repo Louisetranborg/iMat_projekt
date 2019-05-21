@@ -73,6 +73,7 @@
             </ImageView>
             <TextField layoutX="343.0" layoutY="655.0" prefHeight="23.0" prefWidth="45.0" />
          </children></AnchorPane>
+      <AnchorPane fx:id="checkoutWrap" prefHeight="777.0" prefWidth="1430.0" />
       <AnchorPane fx:id="frontPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0">
          <children>
             <AnchorPane fx:id="mypageWrap" layoutY="80.0" prefHeight="790.0" prefWidth="1180.0" style="-fx-background-color: #77767788;" />
