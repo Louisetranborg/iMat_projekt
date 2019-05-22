@@ -76,18 +76,14 @@ public class ShoppingCartPane extends AnchorPane {
     }
 
     protected void addProductToCart(ShoppingItem shoppingItem){ //Lägger endast ut ett cartItem när det behövs
-
         if(!shoppingCart.getItems().contains(shoppingItem)){
             shoppingCart.addItem(shoppingItem);
         }
-
     }
 
     protected void removeProductFromCart(ShoppingItem shoppingItem){
         shoppingCart.removeItem(shoppingItem);
     }
-
-
 
     protected Map<String,CartItem> getProductCartItemMap(){
         return productCartItemMap;
