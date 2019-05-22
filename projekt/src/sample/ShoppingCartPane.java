@@ -3,7 +3,6 @@ package sample;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.ScrollEvent;
@@ -12,13 +11,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.*;
 
-import static java.lang.System.out;
-
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 public class ShoppingCartPane extends AnchorPane {
 
@@ -33,7 +28,7 @@ public class ShoppingCartPane extends AnchorPane {
     private Map<String, CartItem> productCartItemMap = new HashMap<String, CartItem>();
 
     public ShoppingCartPane(ShoppingCart shoppingCart, SearchController parentController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cartPane.fxml"));        //Laddar in rätt fxml-fil
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/cartPane.fxml"));        //Laddar in rätt fxml-fil
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

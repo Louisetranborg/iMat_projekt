@@ -46,7 +46,7 @@ public class CartItem extends AnchorPane {
     }
 
     public CartItem(ShoppingItem shoppingItem, SearchController parentController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("productCartItem.fxml")); //Laddar in rätt fxml-fil
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/productCartItem.fxml")); //Laddar in rätt fxml-fil
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

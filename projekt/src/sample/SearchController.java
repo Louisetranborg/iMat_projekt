@@ -11,10 +11,7 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
-import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ProductCategory;
-import se.chalmers.cse.dat216.project.ShoppingItem;
+import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
 import java.util.*;
@@ -37,11 +34,12 @@ public class SearchController implements Initializable {
     @FXML private ImageView removeButton;
     @FXML private TextField amountBox;
     private ShoppingItem activeInDetailview;
+    @FXML private AnchorPane wizardWrap;
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
     private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med productItems
     ToggleGroup toggleGroup = new ToggleGroup();                                                                        //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
-    ShoppingCartPane shoppingCartPane = shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
+    ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
 
     Map<String, ShoppingItem> shoppingItemMap = new HashMap<String, ShoppingItem>();        //Map med shoppingitems, endast skapa dem en gång! Både productItem och cartItem pekar på samma shoppingItem.
 
@@ -184,6 +182,7 @@ public class SearchController implements Initializable {
         createProductItems();                                                                                           //kalla på metod som skapar varorna
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
         shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!
+
 
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override

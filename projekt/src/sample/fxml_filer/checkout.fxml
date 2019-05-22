@@ -14,10 +14,10 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="777.0" prefWidth="1430.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #875543;" />
-      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="777.0" prefWidth="1430.0" style="-fx-background-color: #FFFFFF;">
+      <AnchorPane prefHeight="775.0" prefWidth="1440.0" style="-fx-background-color: #875543;" />
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="775.0" prefWidth="1440.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Label layoutX="67.0" layoutY="100.0" text="Kvitto på ditt köp">
                <font>
@@ -69,7 +69,7 @@
             <TextField layoutX="349.0" layoutY="196.0" prefHeight="26.0" prefWidth="72.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="777.0" prefWidth="1430.0" style="-fx-background-color: #FFFFFF;">
+      <AnchorPane prefHeight="775.0" prefWidth="1440.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Label layoutX="67.0" layoutY="100.0" text="Kontrollera dina personuppgifter">
                <font>
@@ -183,7 +183,7 @@
             <TextField layoutX="249.0" layoutY="379.0" prefHeight="42.0" prefWidth="576.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="777.0" prefWidth="1430.0" style="-fx-background-color: #FFFFFF;">
+      <AnchorPane prefHeight="775.0" prefWidth="1440.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Label layoutX="67.0" layoutY="100.0" text="Dags att betala, kontrollera din kundvagn ">
                <font>

@@ -10,10 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
-
-import static java.lang.System.out;
 
 import java.io.IOException;
 
@@ -34,7 +31,7 @@ public class ProductItem extends AnchorPane {
     }
 
     public ProductItem(ShoppingItem shoppingItem, SearchController parentController){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("productItem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/productItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

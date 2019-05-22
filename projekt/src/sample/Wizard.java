@@ -8,10 +8,8 @@ import java.io.IOException;
 
 public class Wizard extends AnchorPane {
 
-    private Order order;
-
-    public Wizard(Order order, SearchController parentController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("checkout.fxml"));        //Laddar in rätt fxml-fil
+    public Wizard(SearchController parentController) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/checkout.fxml"));        //Laddar in rätt fxml-fil
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -22,6 +20,5 @@ public class Wizard extends AnchorPane {
         }
     }
 
-    
 }
 

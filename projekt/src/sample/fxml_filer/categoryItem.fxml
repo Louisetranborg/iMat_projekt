@@ -6,7 +6,7 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <RadioButton fx:id="categoryButton" mnemonicParsing="false" onMousePressed="#onClick" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@css_files/main_theme.css" text="Kategori">
+      <RadioButton fx:id="categoryButton" mnemonicParsing="false" onMousePressed="#onClick" prefHeight="40.0" prefWidth="260.0" styleClass="category-button" stylesheets="@../css_files/main_theme.css" text="Kategori">
          <font>
             <Font size="18.0" />
          </font>

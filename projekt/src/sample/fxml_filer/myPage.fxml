@@ -34,7 +34,7 @@
             </Label>
             <ImageView fitHeight="180.0" fitWidth="240.0" layoutX="25.0" layoutY="5.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/hjärta.png" />
+                  <Image url="@../images/hjärta.png" />
                </image>
             </ImageView>
          </children>
@@ -48,7 +48,7 @@
             </Label>
             <ImageView fitHeight="180.0" fitWidth="240.0" layoutX="65.0" layoutY="5.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/Middagsfrids-matkasse_3_DAGARS.jpg" />
+                  <Image url="@../images/Middagsfrids-matkasse_3_DAGARS.jpg" />
                </image>
             </ImageView>
          </children>
@@ -62,7 +62,7 @@
             </Label>
             <ImageView fitHeight="180.0" fitWidth="240.0" layoutX="65.0" layoutY="5.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/pensionär.jpg" />
+                  <Image url="@../images/pensionär.jpg" />
                </image>
             </ImageView>
          </children>
@@ -82,7 +82,7 @@
             </Label>
             <ImageView fitHeight="180.0" fitWidth="240.0" layoutX="65.0" layoutY="5.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/lista.jpg" />
+                  <Image url="@../images/lista.jpg" />
                </image>
             </ImageView>
          </children>

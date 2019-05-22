@@ -11,7 +11,7 @@
 
 <fx:root fx:id="cartPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="260.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane fx:id="cartScrollPane" layoutY="60.0" prefHeight="655.0" prefWidth="260.0" styleClass="scrollPane" stylesheets="@css_files/main_theme.css">
+      <ScrollPane fx:id="cartScrollPane" layoutY="60.0" prefHeight="655.0" prefWidth="260.0" styleClass="scrollPane" stylesheets="@../css_files/main_theme.css">
          <content>
             <FlowPane fx:id="cartFlowPane" prefHeight="655.0" prefWidth="260.0" styleClass="flowPane" />
          </content>
@@ -28,7 +28,7 @@
       </Button>
       <ImageView fitHeight="48.0" fitWidth="45.0" layoutX="164.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/baseline_shopping_cart_black_48dp.png" />
+            <Image url="@../images/baseline_shopping_cart_black_48dp.png" />
          </image>
       </ImageView>
       <Label layoutX="50.0" layoutY="16.0" text="Kundkorg">
