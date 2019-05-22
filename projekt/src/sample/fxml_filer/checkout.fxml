@@ -6,8 +6,6 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.StackPane?>
@@ -190,11 +188,6 @@
                   <Font size="26.0" />
                </font>
             </Label>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="563.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/ladda%20ned.png" />
-               </image>
-            </ImageView>
             <Button layoutX="510.0" layoutY="41.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="53.0" style="-fx-background-color: #768ABE;" text="1">
                <font>
                   <Font size="22.0" />

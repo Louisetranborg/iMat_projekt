@@ -8,6 +8,8 @@ import java.io.IOException;
 
 public class Wizard extends AnchorPane {
 
+    private SearchController parentController;
+
     public Wizard(SearchController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/checkout.fxml"));        //Laddar in rätt fxml-fil
         fxmlLoader.setRoot(this);
@@ -18,7 +20,10 @@ public class Wizard extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        this.parentController = parentController;
     }
+
 
 }
 

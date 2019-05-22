@@ -33,13 +33,15 @@ public class SearchController implements Initializable {
     @FXML private ImageView addButton;
     @FXML private ImageView removeButton;
     @FXML private TextField amountBox;
-    private ShoppingItem activeInDetailview;
     @FXML private AnchorPane wizardWrap;
 
+    private ShoppingItem activeInDetailview;
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
     private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med productItems
     ToggleGroup toggleGroup = new ToggleGroup();                                                                        //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
+    //private Wizard wizard = new Wizard(this);
+
 
     Map<String, ShoppingItem> shoppingItemMap = new HashMap<String, ShoppingItem>();        //Map med shoppingitems, endast skapa dem en gång! Både productItem och cartItem pekar på samma shoppingItem.
 
@@ -182,7 +184,7 @@ public class SearchController implements Initializable {
         createProductItems();                                                                                           //kalla på metod som skapar varorna
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
         shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!
-
+        //wizardWrap.getChildren().add(wizard);
 
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override

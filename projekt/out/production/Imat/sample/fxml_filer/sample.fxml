@@ -72,6 +72,7 @@
       <AnchorPane fx:id="checkoutWrap" prefHeight="777.0" prefWidth="1430.0" />
       <AnchorPane fx:id="frontPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: white;">
          <children>
+            <AnchorPane fx:id="wizardWrap" layoutY="80.0" prefHeight="775.0" prefWidth="1440.0" />
             <Pane prefHeight="80.0" prefWidth="1440.0">
                <children>
                   <ImageView fitHeight="80.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true">
@@ -107,7 +108,7 @@
                </content>
             </ScrollPane>
             <AnchorPane fx:id="cartPaneWrap" layoutX="1180.0" layoutY="80.0" prefHeight="775.0" prefWidth="260.0" style="-fx-background-color: FFFFFF;" />
-            <ScrollPane fx:id="productScrollPane" layoutX="260.0" layoutY="80.0" prefHeight="775.0" prefWidth="920.0" styleClass="scrollPane">
+            <ScrollPane fx:id="productScrollPane" fitToHeight="true" layoutX="260.0" layoutY="80.0" prefHeight="775.0" prefWidth="920.0" styleClass="scrollPane">
                <content>
                   <FlowPane fx:id="productFlowPane" alignment="TOP_CENTER" prefHeight="775.0" prefWidth="920.0">
                      <padding>
