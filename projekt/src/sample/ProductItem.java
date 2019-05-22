@@ -1,39 +1,28 @@
 package sample;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ShoppingItem;
-
-import static java.lang.System.out;
 
 import java.io.IOException;
 
 public class ProductItem extends AnchorPane {
 
     private SearchController parentController;
-    private ShoppingItem shoppingItem;
+    private Product product;
     @FXML private Label name;
     @FXML private ImageView image;
     @FXML private Label price;
-    @FXML private ImageView addButton;
-    @FXML private ImageView removeButton;
-    @FXML private TextField amountBox;
 
     @FXML
     protected void onClick(){ //När man klickar på ett productItem skall info om produkten komma upp
-        parentController.openProductDetailView(shoppingItem);
+        parentController.openProductDetailView(product);
     }
 
-    public ProductItem(ShoppingItem shoppingItem, SearchController parentController){
+    public ProductItem(Product product, SearchController parentController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("productItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -45,49 +34,11 @@ public class ProductItem extends AnchorPane {
         }
 
         this.parentController = parentController;
-        this.shoppingItem = shoppingItem;
-        name.setText(shoppingItem.getProduct().getName());
-        image.setImage(parentController.iMatDataHandler.getFXImage(shoppingItem.getProduct()));
-        price.setText(shoppingItem.getProduct().getPrice() + " " + shoppingItem.getProduct().getUnit());
-        updateAmountInProductItem(); //Skriver in default-amount (0) i textField
+        this.product = product;
+        name.setText(product.getName());
+        image.setImage(parentController.iMatDataHandler.getFXImage(product));
+        price.setText(product.getPrice() + " " + product.getUnit());
 
-        amountBox.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                shoppingItem.setAmount(Double.valueOf(amountBox.getText()));
-                parentController.shoppingCartPane.addProductToCart(shoppingItem);
-                if(shoppingItem.getAmount() < 1){       //Ändra om vi vill ha double-system
-                    parentController.shoppingCartPane.removeProductFromCart(shoppingItem);
-                }
-                parentController.updateAmount(shoppingItem);
-            }
-        });
-    }
-
-    protected void updateAmountInProductItem(){ //Visa värdet på amount i amountBox
-        amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
-    }
-
-    @FXML
-    protected void clickedOnAddButton(Event event){ //När man klickar på plusset
-        parentController.mouseTrap(event); //Infoboxen skall ej komma upp
-        parentController.addItemToCart(shoppingItem);
-    }
-
-    @FXML
-    protected void clickedOnRemoveButton(Event event) {
-        parentController.mouseTrap(event);
-        parentController.removeItemFromCart(shoppingItem);
-    }
-
-    @FXML
-    private void glow(){
-        addButton.setEffect(new Glow(1));
-    }
-
-    @FXML
-    private void removeGlow(){
-        addButton.setEffect(new Glow(0));
     }
 
 }
