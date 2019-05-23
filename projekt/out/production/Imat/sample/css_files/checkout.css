@@ -1,0 +1,14 @@
+.nextButton{
+    -fx-background-color: #66bb6a;
+    -fx-text-fill: #000000;
+    -fx-font-family: "Roboto";
+    -fx-font-size: 24px;
+}
+
+.nextButton: hover{
+    -fx-background-color: #98ee99;
+}
+
+.nextButton: pressed{
+    -fx-background-color: #338a3e;
+}

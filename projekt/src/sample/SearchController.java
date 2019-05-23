@@ -5,6 +5,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
@@ -48,8 +49,14 @@ public class SearchController implements Initializable {
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
     private Wizard wizard;
 
-
     Map<String, ShoppingItem> shoppingItemMap = new HashMap<String, ShoppingItem>();        //Map med shoppingitems, endast skapa dem en gång! Både productItem och cartItem pekar på samma shoppingItem.
+
+    protected void resetEveryShoppingItem(){
+        for(ShoppingItem item:shoppingItemMap.values()){
+            item.setAmount(0);
+            updateAmount(item);
+        }
+    }
 
     //Sätter light-boxen längs fram för att visa mer info om en produkt
     protected void openProductDetailView(ShoppingItem shoppingItem){
@@ -88,7 +95,6 @@ public class SearchController implements Initializable {
         }
 
     }
-
 
     //Fyller categoryFlowPane med alla kategorierna
     private void fillCategoryPane(){
@@ -194,7 +200,8 @@ public class SearchController implements Initializable {
     protected void wizardToFront(){
         wizardWrap.toFront();
         wizard.start();
-        putCartInWizard();
+        //putCartInWizard();
+        updateBiggerCartInWizard();
         activateWizardView();
     }
 
@@ -207,24 +214,37 @@ public class SearchController implements Initializable {
         backToStoreLabel.setVisible(true);
     }
 
+    protected void updateBiggerCartInWizard(){
+        wizard.getConfirmCartFlowPane().getChildren().clear();
+        for(ShoppingItem shoppingItem: IMatDataHandler.getInstance().getShoppingCart().getItems()){
+            ConfirmCartItem confirmCartItem = new ConfirmCartItem(shoppingItem, this);
+            wizard.getConfirmCartFlowPane().getChildren().add(confirmCartItem);
+            confirmCartItem.updateAmountBoxInConfirmCartItem();
+        }
+    }
+
+    /*
     private void putCartInWizard(){
         wizard.getCartFlowPaneWrap().getChildren().clear();
         wizard.getCartFlowPaneWrap().getChildren().add(0,shoppingCartPane.getCartFlowPaneWrap().getChildren().get(0));       //flyttar varukorgen med alla items till wizard:ens varukorg
     }
 
+     */
+
     @FXML
     protected void wizardToBack(){
         wizardWrap.toBack();
-        putCartInShopView();
+        //putCartInShopView();
         activateShoppingView();
     }
 
+    /*
     private void putCartInShopView(){
         shoppingCartPane.getCartFlowPaneWrap().getChildren().clear();
         shoppingCartPane.getCartFlowPaneWrap().getChildren().add(0,wizard.getCartFlowPaneWrap().getChildren().get(0));      //flyttar wizard:ends varukorg med alla items till den vanliga varukorgen
     }
 
-
+     */
 
     protected void activateShoppingView(){
         searchBox.setVisible(true);

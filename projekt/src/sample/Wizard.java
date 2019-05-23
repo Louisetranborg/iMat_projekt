@@ -1,38 +1,27 @@
 package sample;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToggleGroup;
+
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
+
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.util.Duration;
+
 import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.Order;
-import se.chalmers.cse.dat216.project.ShoppingCart;
+
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 public class Wizard extends StackPane {
 
     private SearchController parentController;
-
-
-
-
-    @FXML private AnchorPane cartFlowPaneWrap;
 
     @FXML private AnchorPane personalInfoPane;
     @FXML private AnchorPane deliveryInfoPane;
@@ -45,29 +34,35 @@ public class Wizard extends StackPane {
     @FXML private Button stepThreeButton;
     @FXML private Button stepFourButton;
 
+    @FXML private FlowPane confirmCartFlowPane;
+
 
 
 
     private void confirmOrder(){
         IMatDataHandler.getInstance().placeOrder(true);
 
-
         List<ShoppingItem> orderedShoppingItems = IMatDataHandler.getInstance().getOrders().get(IMatDataHandler.getInstance().getOrders().size() - 1).getItems();
-        FlowPane flowPane = new FlowPane();
+        confirmCartFlowPane.getChildren().clear();
         for(ShoppingItem shoppingItem: orderedShoppingItems){
-            flowPane.getChildren().add(new ReceiptItem(shoppingItem));
+            confirmCartFlowPane.getChildren().add(new ReceiptItem(shoppingItem));
         }
+        parentController.resetEveryShoppingItem();
 
-        parentController.shoppingCartPane.getCartFlowPaneWrap().getChildren().add(0,cartFlowPaneWrap.getChildren().get(0));     //sätter tillbaka den flowpane som hade alla CartItems till den vanliga varukorgen innan vi ger Wizard:ens ScrollPane en ny flowpane med ReceiptItems
-        cartFlowPaneWrap.getChildren().add(0,flowPane);     //sätter en flowpane med "kvitto"-items i wizard:ens ScrollPane
+        //parentController.shoppingCartPane.getCartFlowPaneWrap().getChildren().add(0,cartFlowPaneWrap.getChildren().get(0));     //sätter tillbaka den flowpane som hade alla CartItems till den vanliga varukorgen innan vi ger Wizard:ens ScrollPane en ny flowpane med ReceiptItems
+        //cartFlowPaneWrap.getChildren().add(0,flowPane);     //sätter en flowpane med "kvitto"-items i wizard:ens ScrollPane
 
+    }
+
+    protected FlowPane getConfirmCartFlowPane(){
+        return confirmCartFlowPane;
     }
 
     @FXML
     protected void backToShopping(){
         parentController.wizardWrap.toBack();
         parentController.activateShoppingView();
-        cartFlowPaneWrap.getChildren().clear();
+        //cartFlowPaneWrap.getChildren().clear();
     }
 
     protected void start(){
@@ -121,10 +116,6 @@ public class Wizard extends StackPane {
 
         selectCorrectStepButton(1);
 
-    }
-
-    protected AnchorPane getCartFlowPaneWrap(){
-        return cartFlowPaneWrap;
     }
 
     private void selectCorrectStepButton(int i){

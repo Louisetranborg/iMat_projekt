@@ -8,20 +8,31 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" stylesheets="@../css_files/main_theme.css" type="StackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" stylesheets="@../css_files/checkout.css" type="StackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="mainWizard" prefHeight="775.0" prefWidth="1440.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <ScrollPane hbarPolicy="NEVER" layoutX="1080.0" layoutY="90.0" prefHeight="595.0" prefWidth="260.0">
+            <ScrollPane hbarPolicy="NEVER" layoutX="1020.0" layoutY="90.0" prefHeight="595.0" prefWidth="320.0" styleClass="scrollPane" stylesheets="@../css_files/main_theme.css">
                <content>
-                  <AnchorPane fx:id="cartFlowPaneWrap" prefHeight="595.0" prefWidth="260.0" style="-fx-background-color: #FFFFFF;" />
+                  <FlowPane fx:id="confirmCartFlowPane" prefHeight="595.0" prefWidth="320.0" styleClass="flowPane" />
                </content>
             </ScrollPane>
-            <Line endX="-92.0000228881836" endY="228.0" layoutX="216.0" layoutY="320.0" startX="-92.0000228881836" startY="-95.99998474121094" />
+            <Label layoutX="1080.0" layoutY="49.0" prefHeight="30.0" prefWidth="260.0" text="Kundkorg">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="48.0" fitWidth="45.0" layoutX="1187.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/baseline_shopping_cart_black_48dp.png" />
+               </image>
+            </ImageView>
+            <Line endX="-92.0000228881836" endY="100.0" layoutX="216.0" layoutY="320.0" startX="-92.0000228881836" startY="-95.99998474121094" />
             <Button fx:id="stepOneButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" text="1">
                <font>
                   <Font size="22.0" />
@@ -74,7 +85,7 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button layoutX="220.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#backToShopping" prefHeight="60.0" prefWidth="260.0" text="Till Sortiment">
+                  <Button layoutX="220.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#backToShopping" prefHeight="60.0" prefWidth="260.0" styleClass="nextButton" text="Till Sortiment">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -158,7 +169,7 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button layoutX="220.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#fromDeliveryToPayment" prefHeight="60.0" prefWidth="260.0" text="Nästa steg">
+                  <Button layoutX="220.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#fromDeliveryToPayment" prefHeight="60.0" prefWidth="260.0" styleClass="nextButton" text="Nästa steg">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -241,7 +252,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="personalInfoPane" layoutX="290.0" prefHeight="775.0" prefWidth="700.0" visible="false">
+            <AnchorPane fx:id="personalInfoPane" layoutX="290.0" prefHeight="775.0" prefWidth="700.0">
                <children>
                   <Label alignment="CENTER_RIGHT" layoutX="90.0" layoutY="220.0" prefHeight="36.0" prefWidth="260.0" text="Förnamn:">
                      <font>
@@ -268,7 +279,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="360.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Hjördis">
+                  <TextField layoutX="360.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" text="Hjördis">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -293,11 +304,35 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
+                  <Button layoutX="220.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#fromPersonalToDelivery" prefHeight="60.0" prefWidth="260.0" styleClass="nextButton" text="Nästa steg">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="confirmCartPane" layoutX="290.0" prefHeight="775.0" prefWidth="1100.0" style="-fx-background-color: FFFFFF;" visible="false">
+               <children>
+                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="180.0" prefHeight="32.0" prefWidth="260.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="90.0" prefHeight="44.0" prefWidth="700.0" text="Kontrollera din kundkorg">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
                   <Button layoutX="220.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#fromPersonalToDelivery" prefHeight="60.0" prefWidth="260.0" text="Nästa steg">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
+                  <ScrollPane layoutX="90.0" layoutY="190.0" prefHeight="408.0" prefWidth="960.0">
+                     <content>
+                        <AnchorPane prefHeight="408.0" prefWidth="960.0" style="-fx-background-color: FFFFFF;" />
+                     </content>
+                  </ScrollPane>
                </children>
             </AnchorPane>
          </children></AnchorPane>
