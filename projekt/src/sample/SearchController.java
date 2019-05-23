@@ -1,5 +1,8 @@
 package sample;
 
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -42,6 +45,14 @@ public class SearchController implements Initializable {
     @FXML private RadioButton test;
     @FXML private Label ecoInfo;
     @FXML private Label priceDetailView;
+    @FXML private RadioButton meat;
+    @FXML private RadioButton fruit;
+    @FXML private RadioButton dairy;
+    @FXML private RadioButton greens;
+    @FXML private RadioButton sweet;
+    @FXML private RadioButton bread;
+    @FXML private RadioButton pantry;
+    @FXML private RadioButton drinks;
 
 
 
@@ -457,5 +468,40 @@ public class SearchController implements Initializable {
             }
         });
 
+        ToggleGroup categoryToggleGroup = new ToggleGroup();
+        meat.setToggleGroup(categoryToggleGroup);
+        dairy.setToggleGroup(categoryToggleGroup);
+        fruit.setToggleGroup(categoryToggleGroup);
+        drinks.setToggleGroup(categoryToggleGroup);
+        sweet.setToggleGroup(categoryToggleGroup);
+        greens.setToggleGroup(categoryToggleGroup);
+        pantry.setToggleGroup(categoryToggleGroup);
+        bread.setToggleGroup(categoryToggleGroup);
+
+        meat.getStyleClass().remove("radio-button");
+        meat.getStyleClass().add("toggle-button");
+
+        dairy.getStyleClass().remove("radio-button");
+        dairy.getStyleClass().add("toggle-button");
+
+        fruit.getStyleClass().remove("radio-button");
+        fruit.getStyleClass().add("toggle-button");
+
+        drinks.getStyleClass().remove("radio-button");
+        drinks.getStyleClass().add("toggle-button");
+
+        sweet.getStyleClass().remove("radio-button");
+        sweet.getStyleClass().add("toggle-button");
+
+        greens.getStyleClass().remove("radio-button");
+        greens.getStyleClass().add("toggle-button");
+
+        pantry.getStyleClass().remove("radio-button");
+        pantry.getStyleClass().add("toggle-button");
+
+        bread.getStyleClass().remove("radio-button");
+        bread.getStyleClass().add("toggle-button");
+
     }
+
 }
