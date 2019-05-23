@@ -119,6 +119,10 @@ public class SearchController implements Initializable {
         }
     }
 
+
+
+
+
     //Uppdaterar productFlowPane utifrån en String (sökning i sökrutan)
     protected void updateProductPaneFromString(String string){
         productFlowPane.getChildren().clear();
