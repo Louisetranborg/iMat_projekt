@@ -25,7 +25,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="toCheckoutButton" layoutX="135.0" layoutY="725.0" mnemonicParsing="false" onMouseClicked="#clickOnToCheckoutButton" prefHeight="40.0" prefWidth="110.0" text="Till kassan">
+      <Button fx:id="toCheckoutButton" layoutX="135.0" layoutY="725.0" mnemonicParsing="false" onMouseClicked="#clickOnToCheckoutButton" prefHeight="40.0" prefWidth="110.0" styleClass="toCartButton" stylesheets="@../css_files/main_theme.css" text="Till kassan">
          <font>
             <Font size="18.0" />
          </font>

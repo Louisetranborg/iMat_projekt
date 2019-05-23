@@ -259,6 +259,13 @@ public class SearchController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         iMatDataHandler.getCustomer().setFirstName("Hjördis");                                                          //Sätter namnet till Hjördis sålänge.
+        iMatDataHandler.getCustomer().setLastName("Johansson");
+        iMatDataHandler.getCustomer().setMobilePhoneNumber("073-333 33 33");
+        iMatDataHandler.getCustomer().setEmail("hjördis.johansson@gmail.se");
+        iMatDataHandler.getCustomer().setPostCode("333 33");
+        iMatDataHandler.getCustomer().setAddress("Kallebäcksvägen 3");
+        iMatDataHandler.getCustomer().setPhoneNumber("Göteborg");
+
         loginLable.setText("Inloggad som " + iMatDataHandler.getCustomer().getFirstName());                             //hämtar användarens namn och skriver ut det i headern.
         fillCategoryPane();                                                                                             //kalla på metoden som fyller categoryPane
         productFlowPane.setHgap(40);                                                                                    //Avstånd mellan productItems i x-led

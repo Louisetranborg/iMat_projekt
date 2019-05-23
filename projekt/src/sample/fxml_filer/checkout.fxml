@@ -33,27 +33,43 @@
                </image>
             </ImageView>
             <Line endX="-92.0000228881836" endY="100.0" layoutX="216.0" layoutY="320.0" startX="-92.0000228881836" startY="-95.99998474121094" />
-            <Button fx:id="stepOneButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" text="1">
+            <Button fx:id="stepOneButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" styleClass="nextButton">
                <font>
                   <Font size="22.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../css_files/css_images/person_black.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="stepTwoButton" layoutX="100.0" layoutY="308.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" text="2">
+            <Button fx:id="stepTwoButton" layoutX="100.0" layoutY="308.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" styleClass="nextButton">
                <font>
                   <Font size="22.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_local_shipping_black_48dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="stepFourButton" layoutX="100.0" layoutY="524.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" text="4">
+            <Button fx:id="stepThreeButton" layoutX="100.0" layoutY="416.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="0.0" styleClass="nextButton">
                <font>
                   <Font size="22.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_credit_card_black_48dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="stepThreeButton" layoutX="100.0" layoutY="416.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="0.0" text="3">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Button>
-            <AnchorPane fx:id="receiptPane" layoutX="290.0" prefHeight="775.0" prefWidth="700.0" visible="false">
+            <AnchorPane fx:id="receiptPane" layoutX="290.0" prefHeight="775.0" prefWidth="700.0">
                <children>
                   <Label alignment="CENTER_RIGHT" layoutX="90.0" layoutY="220.0" prefHeight="36.0" prefWidth="260.0" text="Order#:">
                      <font>
@@ -75,11 +91,6 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="180.0" prefHeight="32.0" prefWidth="260.0">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
                   <Label alignment="CENTER" layoutX="150.0" layoutY="90.0" prefHeight="44.0" prefWidth="400.0" text="Kvitto">
                      <font>
                         <Font size="36.0" />
@@ -90,24 +101,24 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Label layoutX="360.0" layoutY="220.0" prefHeight="36.0" prefWidth="260.0" text="321321">
+                  <Label fx:id="orderNumber" layoutX="360.0" layoutY="220.0" prefHeight="36.0" prefWidth="260.0" text="12">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="360.0" layoutY="298.0" prefHeight="41.0" prefWidth="300.0" text="2019-05-22 (23:55)">
+                  <Label fx:id="orderDate" layoutX="360.0" layoutY="298.0" prefHeight="41.0" prefWidth="300.0" text="2019-05-22 (23:55)">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="360.0" layoutY="380.0" prefHeight="36.0" prefWidth="300.0" text="Villie byaväg 215 (213 23)">
+                  <Label fx:id="deliveryAdr" layoutX="360.0" layoutY="380.0" prefHeight="36.0" prefWidth="300.0" text="Villie byaväg 215 (213 23)">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="360.0" layoutY="460.0" prefHeight="36.0" prefWidth="260.0" text="2019-05-31">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label alignment="CENTER_RIGHT" layoutX="90.0" layoutY="540.0" prefHeight="32.0" prefWidth="260.0" text="Totalsumma:">
@@ -115,9 +126,9 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="360.0" layoutY="540.0" prefHeight="36.0" prefWidth="260.0" text="321321">
+                  <Label fx:id="totalPrice" layoutX="360.0" layoutY="540.0" prefHeight="36.0" prefWidth="260.0" text="321321">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children>
@@ -149,17 +160,17 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="360.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="333 33">
+                  <TextField fx:id="postCode" layoutX="360.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Göteborg">
+                  <TextField fx:id="city" layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Göteborg">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="360.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Chalmersvägen 3">
+                  <TextField fx:id="adress" layoutX="360.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Chalmersvägen 3">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -169,12 +180,17 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button layoutX="220.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#fromDeliveryToPayment" prefHeight="60.0" prefWidth="260.0" styleClass="nextButton" text="Nästa steg">
+                  <Button layoutX="390.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#fromDeliveryToPayment" prefHeight="60.0" prefWidth="260.0" styleClass="nextButton" text="Nästa steg">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
                   <DatePicker editable="false" layoutX="360.0" layoutY="460.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" />
+                  <Button layoutX="45.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="260.0" text="Tillbaka">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="paymentInfoPane" layoutX="290.0" prefHeight="775.0" prefWidth="700.0" visible="false">
@@ -204,12 +220,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="360.0" layoutY="540.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="68.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <TextField layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Hördis">
+                  <TextField fx:id="cardPersonName" layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -224,12 +235,22 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
+                  <TextField layoutX="454.0" layoutY="460.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="58.0" promptText="ÅÅ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="360.0" layoutY="540.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="68.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
                   <Label alignment="CENTER" layoutX="150.0" layoutY="90.0" prefHeight="44.0" prefWidth="400.0" text="Betalningsuppgifter">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button layoutX="220.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#fromPaymentToReceipt" prefHeight="60.0" prefWidth="260.0" text="Bekräfta köp">
+                  <Button layoutX="390.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#fromPaymentToReceipt" prefHeight="60.0" prefWidth="260.0" text="Bekräfta köp">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -239,20 +260,20 @@
                         <Image url="@../images/mastercard.png" />
                      </image>
                   </ImageView>
-                  <TextField layoutX="454.0" layoutY="460.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="58.0" promptText="ÅÅ">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
                   <Line endX="7.0" endY="-13.0" layoutX="441.0" layoutY="478.0" startX="-16.0" startY="11.0" />
                   <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="370.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/visa.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="45.0" layoutY="635.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="260.0" text="Tillbaka">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="personalInfoPane" layoutX="290.0" prefHeight="775.0" prefWidth="700.0">
+            <AnchorPane fx:id="personalInfoPane" layoutX="290.0" prefHeight="775.0" prefWidth="700.0" visible="false">
                <children>
                   <Label alignment="CENTER_RIGHT" layoutX="90.0" layoutY="220.0" prefHeight="36.0" prefWidth="260.0" text="Förnamn:">
                      <font>
@@ -279,22 +300,22 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="360.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" text="Hjördis">
+                  <TextField fx:id="firstName" layoutX="360.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Andersson">
+                  <TextField fx:id="lastName" layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="360.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="073333333">
+                  <TextField fx:id="telNumber" layoutX="360.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="360.0" layoutY="460.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="hjördis@hotmail.com">
+                  <TextField fx:id="mail" layoutX="360.0" layoutY="460.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
                      <font>
                         <Font size="18.0" />
                      </font>
