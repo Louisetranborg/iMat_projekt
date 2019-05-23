@@ -17,7 +17,7 @@ public class CategoryItem extends AnchorPane {
 
     @FXML
     protected void onClick(Event event){        //När man klickar på en kategori skall varorna i mitten uppdateras
-        parentController.updateProductPaneFromCategory(productCategory);
+        //parentController.updateProductPaneFromCategory(productCategory);
     }
 
     public CategoryItem(ProductCategory productCategory, SearchController parentController){

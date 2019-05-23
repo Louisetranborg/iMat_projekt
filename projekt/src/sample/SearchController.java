@@ -40,6 +40,7 @@ public class SearchController implements Initializable {
     @FXML private Label itemNumber;
     @FXML private Label ecoInfo;
     @FXML private Label priceDetailView;
+    
 
     private ShoppingItem activeInDetailview;
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
@@ -89,14 +90,14 @@ public class SearchController implements Initializable {
 
     }
 
-
+/*
     //Fyller categoryFlowPane med alla kategorierna
     private void fillCategoryPane(){
         for(ProductCategory productCategory: ProductCategory.values()){
             CategoryItem categoryItem = new CategoryItem(productCategory,this);
             categoryFlowPane.getChildren().add(categoryItem);
         }
-    }
+    }*/
 
     //Tillverkar alla möjliga productItems och lägger dem i vår Map(productItemMap)
     private void createProductItems(){
@@ -108,7 +109,7 @@ public class SearchController implements Initializable {
             productFlowPane.getChildren().add(productItem);                                                             //Lägger ut alla varorna på framsidan, ändra om vi vill ha annan förstasida
         }
     }
-
+/*
     //Uppdaterar productFlowPane utifrån vilken kategori man väljer
     protected void updateProductPaneFromCategory(ProductCategory category){
         productFlowPane.getChildren().clear();
@@ -117,7 +118,170 @@ public class SearchController implements Initializable {
         for(Product product1: products){
             productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
         }
+    }*/
+
+
+    @FXML
+    protected void updateMeat(){
+        productFlowPane.getChildren().clear();
+        List<Product> products = iMatDataHandler.getProducts(ProductCategory.MEAT);
+        List<Product> products1 = iMatDataHandler.getProducts(ProductCategory.FISH);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+
+
+        for(Product product12: products){
+            productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
+        }
     }
+
+    @FXML
+    protected void updateDrinks(){
+        productFlowPane.getChildren().clear();
+        List<Product> products = iMatDataHandler.getProducts(ProductCategory.HOT_DRINKS);
+        List<Product> products1 = iMatDataHandler.getProducts(ProductCategory.COLD_DRINKS);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+
+
+        for(Product product12: products){
+            productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
+        }
+    }
+
+    @FXML
+    protected void updateDaires(){
+        productFlowPane.getChildren().clear();
+        List<Product> products = iMatDataHandler.getProducts(ProductCategory.DAIRIES);
+
+
+        for(Product product12: products){
+            productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
+        }
+    }
+
+    @FXML
+    protected void updateSweet(){
+        productFlowPane.getChildren().clear();
+        List<Product> products = iMatDataHandler.getProducts(ProductCategory.SWEET);
+
+
+        for(Product product12: products){
+            productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
+        }
+    }
+
+    @FXML
+    protected void updateGreens(){
+        productFlowPane.getChildren().clear();
+        List<Product> products = iMatDataHandler.getProducts(ProductCategory.HERB);
+        List<Product> products1 = iMatDataHandler.getProducts(ProductCategory.VEGETABLE_FRUIT);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+
+        products1 = iMatDataHandler.getProducts(ProductCategory.CABBAGE);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+        products1 = iMatDataHandler.getProducts(ProductCategory.ROOT_VEGETABLE);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+
+
+        for(Product product12: products){
+            productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
+        }
+    }
+
+    @FXML
+    protected void updateFruits(){
+        productFlowPane.getChildren().clear();
+        List<Product> products = iMatDataHandler.getProducts(ProductCategory.CITRUS_FRUIT);
+        List<Product> products1 = iMatDataHandler.getProducts(ProductCategory.EXOTIC_FRUIT);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+
+        products1 = iMatDataHandler.getProducts(ProductCategory.BERRY);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+        products1 = iMatDataHandler.getProducts(ProductCategory.MELONS);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+
+        products1 = iMatDataHandler.getProducts(ProductCategory.FRUIT);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+
+
+        for(Product product12: products){
+            productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
+        }
+    }
+
+    @FXML
+    protected void updatePantry(){
+        productFlowPane.getChildren().clear();
+        List<Product> products = iMatDataHandler.getProducts(ProductCategory.POD);
+        List<Product> products1 = iMatDataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+
+        products1 = iMatDataHandler.getProducts(ProductCategory.NUTS_AND_SEEDS);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+        products1 = iMatDataHandler.getProducts(ProductCategory.PASTA);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+
+        products1 = iMatDataHandler.getProducts(ProductCategory.POTATO_RICE);
+
+        for (Product product: products1){
+            products.add(product);
+        }
+
+
+        for(Product product12: products){
+            productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
+        }
+    }
+
+
+    @FXML
+    protected void updateBread(){
+        productFlowPane.getChildren().clear();
+        List<Product> products = iMatDataHandler.getProducts(ProductCategory.BREAD);
+
+
+        for(Product product12: products){
+            productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
+        }
+    }
+
+
+
 
 
 
@@ -244,7 +408,7 @@ public class SearchController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         iMatDataHandler.getCustomer().setFirstName("Hjördis");                                                          //Sätter namnet till Hjördis sålänge.
         loginLable.setText("Inloggad som " + iMatDataHandler.getCustomer().getFirstName());                             //hämtar användarens namn och skriver ut det i headern.
-        fillCategoryPane();                                                                                             //kalla på metoden som fyller categoryPane
+        //fillCategoryPane();                                                                                             //kalla på metoden som fyller categoryPane
         productFlowPane.setHgap(40);                                                                                    //Avstånd mellan productItems i x-led
         productFlowPane.setVgap(40);                                                                                    //Avstånd mellan productItems i y-led
         createProductItems();                                                                                           //kalla på metod som skapar varorna
@@ -264,7 +428,7 @@ public class SearchController implements Initializable {
                 updateAmount(activeInDetailview);
             }
         });
-
+/*
         //Gör så att man inte kan skrolla horisontiellt i kategorierna
         categoryScrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() {
             @Override
@@ -273,7 +437,7 @@ public class SearchController implements Initializable {
                     event.consume();
                 }
             }
-        });
+        });*/
 
         //Gör så att man inte kan skrolla horisontiellt i bland produkterna i mitten
         productScrollPane.addEventFilter(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() {
