@@ -11,6 +11,7 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
+import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
@@ -101,6 +102,7 @@ public class SearchController implements Initializable {
         for(Product product1: products){
             productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
         }
+        productScrollPane.setContent(productFlowPane);
     }
 
     //Uppdaterar productFlowPane utifrån en String (sökning i sökrutan)
@@ -121,6 +123,12 @@ public class SearchController implements Initializable {
                 }
             }
         }
+    }
+
+    @FXML
+    protected void myPagesButtonClicked(){
+        MyPage minSida = new MyPage();
+        productScrollPane.setContent(minSida);
     }
 
     //När man söker skall productFlowPane uppdateras efter sökningen
