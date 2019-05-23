@@ -53,6 +53,7 @@ public class SearchController implements Initializable {
     @FXML private RadioButton bread;
     @FXML private RadioButton pantry;
     @FXML private RadioButton drinks;
+    @FXML private RadioButton allCategories;
 
 
 
@@ -306,6 +307,8 @@ public class SearchController implements Initializable {
 
 
 
+
+
     //Uppdaterar productFlowPane utifrån en String (sökning i sökrutan)
     protected void updateProductPaneFromString(String string){
         productFlowPane.getChildren().clear();
@@ -501,6 +504,7 @@ public class SearchController implements Initializable {
 
         bread.getStyleClass().remove("radio-button");
         bread.getStyleClass().add("toggle-button");
+
 
     }
 

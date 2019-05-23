@@ -114,7 +114,7 @@
                </children>
             </Pane>
             <AnchorPane fx:id="cartPaneWrap" layoutX="1180.0" layoutY="80.0" prefHeight="775.0" prefWidth="260.0" style="-fx-background-color: FFFFFF;" />
-            <ScrollPane fx:id="productScrollPane" fitToHeight="true" layoutX="260.0" layoutY="80.0" prefHeight="775.0" prefWidth="920.0" styleClass="scrollPane">
+            <ScrollPane fx:id="productScrollPane" fitToHeight="true" layoutX="260.0" layoutY="149.0" prefHeight="706.0" prefWidth="920.0" styleClass="scrollPane">
                <content>
                   <FlowPane fx:id="productFlowPane" alignment="TOP_CENTER" prefHeight="775.0" prefWidth="920.0">
                      <padding>
@@ -127,7 +127,6 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <RadioButton fx:id="meat" layoutX="-2.0" layoutY="156.0" mnemonicParsing="false" onAction="#updateMeat" prefHeight="47.0" prefWidth="262.0" text="Kött, fisk och fågel" />
             <RadioButton fx:id="drinks" layoutX="-2.0" layoutY="196.0" mnemonicParsing="false" onAction="#updateDrinks" prefHeight="47.0" prefWidth="262.0" text="Drycker" />
             <RadioButton fx:id="dairy" layoutX="-2.0" layoutY="236.0" mnemonicParsing="false" onAction="#updateDaires" prefHeight="47.0" prefWidth="262.0" text="Mejeri" />
             <RadioButton fx:id="sweet" layoutX="-2.0" layoutY="276.0" mnemonicParsing="false" onAction="#updateSweet" prefHeight="47.0" prefWidth="262.0" text="Sötsaker" />
@@ -135,6 +134,8 @@
             <RadioButton fx:id="fruit" layoutX="-2.0" layoutY="356.0" mnemonicParsing="false" onAction="#updateFruits" prefHeight="47.0" prefWidth="262.0" text="Frukt" />
             <RadioButton fx:id="pantry" layoutX="-2.0" layoutY="396.0" mnemonicParsing="false" onAction="#updatePantry" prefHeight="47.0" prefWidth="262.0" text="Skafferi" />
             <RadioButton fx:id="bread" layoutX="-2.0" layoutY="436.0" mnemonicParsing="false" onAction="#updateBread" prefHeight="47.0" prefWidth="262.0" text="Bröd" />
+            <RadioButton fx:id="allCategories" layoutX="-2.0" layoutY="156.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="262.0" text="Startsida" />
+            <RadioButton fx:id="meat" layoutX="-2.0" layoutY="476.0" mnemonicParsing="false" onAction="#updateMeat" prefHeight="47.0" prefWidth="262.0" text="Kött, fisk och fågel" />
          </children>
       </AnchorPane>
    </children>
