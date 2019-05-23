@@ -23,6 +23,7 @@ public class SearchController implements Initializable {
     @FXML private FlowPane productFlowPane;                                     //FlowPane för produkterna, mittenraden där vi stoppar in ProductItem
     @FXML private Button minSidaButton;                                         //Detta är min sida-knappen
     @FXML private Label loginLable;                                             //Detta är texten i headers som just nu säger "inloggad som..."
+    @FXML private ImageView helpIcon;
     @FXML private ScrollPane categoryScrollPane;                                //ScrollPane för kategorierna
     @FXML private ScrollPane productScrollPane;                                 //ScrollPane för produkterna i mitten av sidan
     @FXML private AnchorPane productDetailView;                                 //Detta är vår light-box som visar mer info om produkterna
@@ -33,14 +34,16 @@ public class SearchController implements Initializable {
     @FXML private ImageView addButton;
     @FXML private ImageView removeButton;
     @FXML private TextField amountBox;
-    @FXML private AnchorPane wizardWrap;
+    @FXML protected AnchorPane wizardWrap;
+    @FXML private ImageView backToStoreIcon;
+    @FXML private Label backToStoreLabel;
 
     private ShoppingItem activeInDetailview;
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
     private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med productItems
     ToggleGroup toggleGroup = new ToggleGroup();                                                                        //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
-    //private Wizard wizard = new Wizard(this);
+    private Wizard wizard;
 
 
     Map<String, ShoppingItem> shoppingItemMap = new HashMap<String, ShoppingItem>();        //Map med shoppingitems, endast skapa dem en gång! Både productItem och cartItem pekar på samma shoppingItem.
@@ -172,6 +175,49 @@ public class SearchController implements Initializable {
         amountBox.textProperty().setValue(String.valueOf(activeInDetailview.getAmount()));
     }
 
+    protected void wizardToFront(){
+        wizardWrap.toFront();
+        wizard.start();
+        putCartInWizard();
+        activateWizardView();
+    }
+
+    private void activateWizardView(){
+        searchBox.setVisible(false);
+        loginLable.setVisible(false);
+        helpIcon.setVisible(false);
+        minSidaButton.setVisible(false);
+        backToStoreIcon.setVisible(true);
+        backToStoreLabel.setVisible(true);
+    }
+
+    private void putCartInWizard(){
+        wizard.getCartFlowPaneWrap().getChildren().clear();
+        wizard.getCartFlowPaneWrap().getChildren().add(0,shoppingCartPane.getCartFlowPaneWrap().getChildren().get(0));       //flyttar varukorgen med alla items till wizard:ens varukorg
+    }
+
+    @FXML
+    protected void wizardToBack(){
+        wizardWrap.toBack();
+        putCartInShopView();
+        activateShoppingView();
+    }
+
+    private void putCartInShopView(){
+        shoppingCartPane.getCartFlowPaneWrap().getChildren().clear();
+        shoppingCartPane.getCartFlowPaneWrap().getChildren().add(0,wizard.getCartFlowPaneWrap().getChildren().get(0));      //flyttar wizard:ends varukorg med alla items till den vanliga varukorgen
+    }
+
+
+
+    protected void activateShoppingView(){
+        searchBox.setVisible(true);
+        loginLable.setVisible(true);
+        helpIcon.setVisible(true);
+        minSidaButton.setVisible(true);
+        backToStoreLabel.setVisible(false);
+        backToStoreIcon.setVisible(false);
+    }
 
     //Vår initialize-metod, typ som en kontruktor
     @Override
@@ -184,7 +230,8 @@ public class SearchController implements Initializable {
         createProductItems();                                                                                           //kalla på metod som skapar varorna
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
         shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!
-        //wizardWrap.getChildren().add(wizard);
+        wizard = new Wizard(this);
+        wizardWrap.getChildren().add(wizard);
 
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override

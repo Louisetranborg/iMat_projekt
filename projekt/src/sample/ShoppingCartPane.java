@@ -3,6 +3,7 @@ package sample;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.ScrollEvent;
@@ -24,8 +25,23 @@ public class ShoppingCartPane extends AnchorPane {
     @FXML private StackPane stackPane;
     @FXML private AnchorPane cartPane;
     @FXML private Label totalLabel;
+    @FXML private Button toCheckoutButton;
+    @FXML private AnchorPane cartFlowPaneWrap;
 
     private Map<String, CartItem> productCartItemMap = new HashMap<String, CartItem>();
+
+    @FXML
+    private void clickOnToCheckoutButton(){
+        parentController.wizardToFront();
+    }
+
+    protected FlowPane getCartFlowPane(){
+        return cartFlowPane;
+    }
+
+    protected AnchorPane getCartFlowPaneWrap(){
+        return cartFlowPaneWrap;
+    }
 
     public ShoppingCartPane(ShoppingCart shoppingCart, SearchController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/cartPane.fxml"));        //Laddar in rätt fxml-fil
@@ -49,6 +65,8 @@ public class ShoppingCartPane extends AnchorPane {
         });
 
         //Gör så att man inte kan skrolla horisontiellt i kategorierna
+
+
         cartScrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() {
             @Override
             public void handle(ScrollEvent event) {
@@ -57,6 +75,7 @@ public class ShoppingCartPane extends AnchorPane {
                 }
             }
         });
+
 
         totalLabel.setText("Totalt " + shoppingCart.getTotal());
 
@@ -91,5 +110,7 @@ public class ShoppingCartPane extends AnchorPane {
         }
         totalLabel.setText("Totalt " + ((int)shoppingCart.getTotal()) + " kr");
     }
+
+
 }
 
