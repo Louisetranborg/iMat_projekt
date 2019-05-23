@@ -37,6 +37,9 @@ public class SearchController implements Initializable {
     @FXML protected AnchorPane wizardWrap;
     @FXML private ImageView backToStoreIcon;
     @FXML private Label backToStoreLabel;
+    @FXML private Label itemNumber;
+    @FXML private Label ecoInfo;
+    @FXML private Label priceDetailView;
 
     private ShoppingItem activeInDetailview;
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
@@ -72,7 +75,20 @@ public class SearchController implements Initializable {
     private void populateProductDetailView(ShoppingItem shoppingItem){
         closeUpImage.setImage(iMatDataHandler.getFXImage(shoppingItem.getProduct()));
         closeUpName.setText(shoppingItem.getProduct().getName());
+        itemNumber.setText("Artikelnummer: " + String.valueOf(shoppingItem.getProduct().getProductId()));
+        ecoInfo.setText(isEcological(shoppingItem.getProduct()));
+        priceDetailView.setText(shoppingItem.getProduct().getPrice() + " kr");
     }
+
+    private String isEcological(Product product){
+        if(product.isEcological()){
+            return "Varan är ekologisk";
+        } else{
+            return "Varan är ej ekologisk";
+        }
+
+    }
+
 
     //Fyller categoryFlowPane med alla kategorierna
     private void fillCategoryPane(){

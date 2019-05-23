@@ -42,7 +42,7 @@
                   <Font size="22.0" />
                </font>
             </Button>
-            <AnchorPane fx:id="receiptPane" layoutX="290.0" prefHeight="775.0" prefWidth="700.0">
+            <AnchorPane fx:id="receiptPane" layoutX="290.0" prefHeight="775.0" prefWidth="700.0" visible="false">
                <children>
                   <Label alignment="CENTER_RIGHT" layoutX="90.0" layoutY="220.0" prefHeight="36.0" prefWidth="260.0" text="Order#:">
                      <font>
@@ -138,9 +138,21 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="360.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" />
-                  <TextField layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" />
-                  <TextField layoutX="360.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" />
+                  <TextField layoutX="360.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="333 33">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Göteborg">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="360.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Chalmersvägen 3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
                   <Label alignment="CENTER" layoutX="150.0" layoutY="90.0" prefHeight="44.0" prefWidth="400.0" text="Leverans">
                      <font>
                         <Font size="36.0" />
@@ -186,12 +198,12 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
+                  <TextField layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Hördis">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="360.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
+                  <TextField layoutX="360.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="3333333333333333">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -256,10 +268,26 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="360.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" />
-                  <TextField layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" />
-                  <TextField layoutX="360.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" />
-                  <TextField layoutX="360.0" layoutY="460.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" />
+                  <TextField layoutX="360.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Hjördis">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="360.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="Andersson">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="360.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="073333333">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="360.0" layoutY="460.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="hjördis@hotmail.com">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
                   <Label alignment="CENTER" layoutX="150.0" layoutY="90.0" prefHeight="44.0" prefWidth="400.0" text="Personuppgifter">
                      <font>
                         <Font size="36.0" />
