@@ -20,14 +20,14 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Label fx:id="totalLabel" alignment="CENTER" layoutY="717.0" prefHeight="48.0" prefWidth="132.0" text="Totalt ">
+      <Label fx:id="totalLabel" alignment="CENTER" layoutY="721.0" prefHeight="48.0" prefWidth="132.0" text="Totalt ">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
       <Button fx:id="toCheckoutButton" layoutX="135.0" layoutY="725.0" mnemonicParsing="false" onMouseClicked="#clickOnToCheckoutButton" prefHeight="40.0" prefWidth="110.0" text="Till kassan">
          <font>
-            <Font size="14.0" />
+            <Font size="16.0" />
          </font>
       </Button>
       <ImageView fitHeight="48.0" fitWidth="45.0" layoutX="164.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">

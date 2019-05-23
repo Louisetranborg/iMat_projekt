@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -24,6 +25,7 @@ public class ProductItem extends AnchorPane {
     @FXML private ImageView addButton;
     @FXML private ImageView removeButton;
     @FXML private TextField amountBox;
+
 
     @FXML
     protected void onClick(){ //När man klickar på ett productItem skall info om produkten komma upp
