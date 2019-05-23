@@ -303,6 +303,14 @@ public class SearchController implements Initializable {
 
 
 
+    //Fyller startsidan
+    @FXML
+    private void updateFrontPage(){
+        productFlowPane.getChildren().clear();
+        for(Product product: iMatDataHandler.getProducts()){
+            productFlowPane.getChildren().add(productItemMap.get(product.getName()));                                                             //Lägger ut alla varorna på framsidan, ändra om vi vill ha annan förstasida
+        }
+    }
 
 
 
@@ -480,6 +488,7 @@ public class SearchController implements Initializable {
         greens.setToggleGroup(categoryToggleGroup);
         pantry.setToggleGroup(categoryToggleGroup);
         bread.setToggleGroup(categoryToggleGroup);
+        allCategories.setToggleGroup(categoryToggleGroup);
 
         meat.getStyleClass().remove("radio-button");
         meat.getStyleClass().add("toggle-button");
@@ -505,6 +514,8 @@ public class SearchController implements Initializable {
         bread.getStyleClass().remove("radio-button");
         bread.getStyleClass().add("toggle-button");
 
+        allCategories.getStyleClass().remove("radio-button");
+        allCategories.getStyleClass().add("toggle-button");
 
     }
 
