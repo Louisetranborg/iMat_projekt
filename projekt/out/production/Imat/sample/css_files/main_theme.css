@@ -33,6 +33,9 @@
     .scrollPane{
     -fx-hbar-policy: never;
     -fx-vbar-policy: never;
+    -fx-border-width: 0px;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 0px;
     }
 
     .scrollPane:hover{
@@ -62,6 +65,9 @@
 
     .flowPane{
     -fx-background-color: white;
+    -fx-border-width: 0px;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 0px;
     }
 
     .category-button:selected{
@@ -70,4 +76,8 @@
 
     .category-button:pressed{
         -fx-background-color: white;
+    }
+
+    .nextButton{
+        -fx-background-color:
     }

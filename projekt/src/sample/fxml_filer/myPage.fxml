@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="777.0" prefWidth="1430.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MyPage">
+   <children>
+      <AnchorPane layoutX="2.0" prefHeight="834.0" prefWidth="1166.0" />
+      <FlowPane fx:id="categoryFlowPane" layoutY="82.0" prefHeight="754.0" prefWidth="260.0" styleClass="flowPane">
+         <children>
+            <RadioButton mnemonicParsing="false" prefHeight="40.0" prefWidth="260.0" text="Favoriter" />
+            <RadioButton mnemonicParsing="false" prefHeight="40.0" prefWidth="260.0" text="Historik" />
+            <RadioButton mnemonicParsing="false" prefHeight="40.0" prefWidth="260.0" text="Personuppgifter" />
+            <RadioButton mnemonicParsing="false" prefHeight="40.0" prefWidth="260.0" text="Sparade inköpslistor" />
+         </children>
+      </FlowPane>
+      <TextField alignment="CENTER" prefHeight="80.0" prefWidth="260.0" text="Mina sidor">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </TextField>
+      <AnchorPane layoutX="320.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="280.0" prefWidth="250.0" style="-fx-background-color: white;">
+         <children>
+            <Label alignment="CENTER" layoutY="194.0" prefHeight="23.0" prefWidth="250.0" text="Favoriter">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="180.0" fitWidth="240.0" layoutX="25.0" layoutY="5.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/hjärta.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="610.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="280.0" prefWidth="250.0" style="-fx-background-color: white;">
+         <children>
+            <Label alignment="CENTER" layoutY="194.0" prefHeight="23.0" prefWidth="250.0" text="Historik">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="180.0" fitWidth="240.0" layoutX="65.0" layoutY="5.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Middagsfrids-matkasse_3_DAGARS.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="880.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="280.0" prefWidth="250.0" style="-fx-background-color: white;">
+         <children>
+            <Label alignment="CENTER" layoutY="194.0" prefHeight="23.0" prefWidth="250.0" text="Personuppgifter">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="180.0" fitWidth="240.0" layoutX="65.0" layoutY="5.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/pensionär.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="cartPaneWrap" layoutX="1170.0" layoutY="10.0" prefHeight="775.0" prefWidth="260.0" style="-fx-background-color: FFFFFF;" />
+      <TextField alignment="CENTER" layoutX="260.0" prefHeight="80.0" prefWidth="907.0" text="Välkommen till dina sidor">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </TextField>
+      <AnchorPane layoutX="320.0" layoutY="460.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="280.0" prefWidth="250.0" style="-fx-background-color: white;">
+         <children>
+            <Label alignment="CENTER" layoutY="194.0" prefHeight="23.0" prefWidth="250.0" text="Sparade inköpslistor">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="180.0" fitWidth="240.0" layoutX="65.0" layoutY="5.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/lista.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

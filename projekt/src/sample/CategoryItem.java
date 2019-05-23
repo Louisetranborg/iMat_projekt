@@ -21,7 +21,7 @@ public class CategoryItem extends AnchorPane {
     }
 
     public CategoryItem(ProductCategory productCategory, SearchController parentController){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("categoryItem.fxml")); //Laddar in rätt fxml-fil
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/categoryItem.fxml")); //Laddar in rätt fxml-fil
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

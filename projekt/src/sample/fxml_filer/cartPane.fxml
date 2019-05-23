@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="cartPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="260.0" style="-fx-background-color: FFFFFF;" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane fx:id="cartScrollPane" hbarPolicy="NEVER" layoutY="60.0" prefHeight="655.0" prefWidth="260.0" stylesheets="@../css_files/main_theme.css">
+         <content>
+            <AnchorPane fx:id="cartFlowPaneWrap" prefHeight="655.0" prefWidth="260.0">
+               <children>
+                  <FlowPane fx:id="cartFlowPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="260.0" styleClass="flowPane" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Label fx:id="totalLabel" alignment="CENTER" layoutY="717.0" prefHeight="48.0" prefWidth="132.0" text="Totalt ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="toCheckoutButton" layoutX="135.0" layoutY="725.0" mnemonicParsing="false" onMouseClicked="#clickOnToCheckoutButton" prefHeight="40.0" prefWidth="110.0" text="Till kassan">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="48.0" fitWidth="45.0" layoutX="164.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/baseline_shopping_cart_black_48dp.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="50.0" layoutY="16.0" text="Kundkorg">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</fx:root>
