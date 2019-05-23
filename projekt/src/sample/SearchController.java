@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.control.RadioButton;
 
 import se.chalmers.cse.dat216.project.*;
 
@@ -38,9 +39,12 @@ public class SearchController implements Initializable {
     @FXML private ImageView backToStoreIcon;
     @FXML private Label backToStoreLabel;
     @FXML private Label itemNumber;
+    @FXML private RadioButton test;
     @FXML private Label ecoInfo;
     @FXML private Label priceDetailView;
-    
+
+
+
 
     private ShoppingItem activeInDetailview;
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
@@ -48,6 +52,10 @@ public class SearchController implements Initializable {
     ToggleGroup toggleGroup = new ToggleGroup();                                                                        //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
     private Wizard wizard;
+
+
+
+
 
 
     Map<String, ShoppingItem> shoppingItemMap = new HashMap<String, ShoppingItem>();        //Map med shoppingitems, endast skapa dem en gång! Både productItem och cartItem pekar på samma shoppingItem.
@@ -120,7 +128,7 @@ public class SearchController implements Initializable {
         }
     }*/
 
-
+//Skapar metoder för att uppdatera produktsidan och lägga i kategorier
     @FXML
     protected void updateMeat(){
         productFlowPane.getChildren().clear();
