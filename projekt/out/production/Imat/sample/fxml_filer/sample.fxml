@@ -141,6 +141,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <RadioButton fx:id="searchClean" layoutX="-2.0" layoutY="556.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="262.0" styleClass="searchButton" />
          </children>
       </AnchorPane>
    </children>

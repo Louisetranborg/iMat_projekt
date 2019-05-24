@@ -54,6 +54,7 @@ public class SearchController implements Initializable {
     @FXML private RadioButton pantry;
     @FXML private RadioButton drinks;
     @FXML private RadioButton allCategories;
+    @FXML private RadioButton searchClean;
     @FXML private Label categoryPageText;
 
 
@@ -352,7 +353,11 @@ public class SearchController implements Initializable {
     @FXML
     private void searchInSearchBox(){
         updateProductPaneFromString(searchBox.getCharacters().toString());
+        categoryPageText.setText("Sökresultat");
+        searchClean.isSelected();
+
     }
+
 
     protected void updateAmount(ShoppingItem shoppingItem){     //Uppdaterar amount både i produkterna i kundvagnen och produkterna i flowpane i mitten
         shoppingCartPane.updateCart();
@@ -500,6 +505,7 @@ public class SearchController implements Initializable {
         pantry.setToggleGroup(categoryToggleGroup);
         bread.setToggleGroup(categoryToggleGroup);
         allCategories.setToggleGroup(categoryToggleGroup);
+        searchClean.setToggleGroup(categoryToggleGroup);
 
         meat.getStyleClass().remove("radio-button");
         meat.getStyleClass().add("toggle-button");
@@ -527,6 +533,8 @@ public class SearchController implements Initializable {
 
         allCategories.getStyleClass().remove("radio-button");
         allCategories.getStyleClass().add("toggle-button");
+
+        searchClean.getStyleClass().remove("radio-button");
 
     }
 
