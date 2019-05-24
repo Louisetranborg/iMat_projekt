@@ -352,6 +352,7 @@ public class SearchController implements Initializable {
     //När man söker skall productFlowPane uppdateras efter sökningen
     @FXML
     private void searchInSearchBox(){
+        categoryPageText.clear
         updateProductPaneFromString(searchBox.getCharacters().toString());
         categoryPageText.setText("Sökresultat för ''" + searchBox.getCharacters().toString() + "''");
         searchClean.fire();
