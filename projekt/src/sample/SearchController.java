@@ -352,10 +352,10 @@ public class SearchController implements Initializable {
     //När man söker skall productFlowPane uppdateras efter sökningen
     @FXML
     private void searchInSearchBox(){
+        categoryPageText.clear
         updateProductPaneFromString(searchBox.getCharacters().toString());
-        categoryPageText.setText("Sökresultat");
-        searchClean.isSelected();
-
+        categoryPageText.setText("Sökresultat för ''" + searchBox.getCharacters().toString() + "''");
+        searchClean.fire();
     }
 
 
@@ -462,6 +462,7 @@ public class SearchController implements Initializable {
         shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!
         wizard = new Wizard(this);
         wizardWrap.getChildren().add(wizard);
+        allCategories.fire();
 
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
