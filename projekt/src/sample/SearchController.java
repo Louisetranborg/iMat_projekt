@@ -54,6 +54,7 @@ public class SearchController implements Initializable {
     @FXML private RadioButton pantry;
     @FXML private RadioButton drinks;
     @FXML private RadioButton allCategories;
+    @FXML private Label categoryPageText;
 
 
 
@@ -155,6 +156,7 @@ public class SearchController implements Initializable {
         for(Product product12: products){
             productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
         }
+        categoryPageText.setText("Kött, fisk och fågel");
     }
 
     @FXML
@@ -171,6 +173,7 @@ public class SearchController implements Initializable {
         for(Product product12: products){
             productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
         }
+        categoryPageText.setText("Drycker");
     }
 
     @FXML
@@ -182,6 +185,7 @@ public class SearchController implements Initializable {
         for(Product product12: products){
             productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
         }
+        categoryPageText.setText("Mejeriprodukter");
     }
 
     @FXML
@@ -193,6 +197,7 @@ public class SearchController implements Initializable {
         for(Product product12: products){
             productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
         }
+        categoryPageText.setText("Sötsaker");
     }
 
     @FXML
@@ -220,6 +225,8 @@ public class SearchController implements Initializable {
         for(Product product12: products){
             productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
         }
+
+        categoryPageText.setText("Grönsaker");
     }
 
     @FXML
@@ -253,6 +260,7 @@ public class SearchController implements Initializable {
         for(Product product12: products){
             productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
         }
+        categoryPageText.setText("Frukter");
     }
 
     @FXML
@@ -286,6 +294,7 @@ public class SearchController implements Initializable {
         for(Product product12: products){
             productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
         }
+        categoryPageText.setText("Skafferivaror");
     }
 
 
@@ -298,6 +307,7 @@ public class SearchController implements Initializable {
         for(Product product12: products){
             productFlowPane.getChildren().add(productItemMap.get(product12.getName()));
         }
+        categoryPageText.setText("Bröd");
     }
 
 
@@ -310,6 +320,7 @@ public class SearchController implements Initializable {
         for(Product product: iMatDataHandler.getProducts()){
             productFlowPane.getChildren().add(productItemMap.get(product.getName()));                                                             //Lägger ut alla varorna på framsidan, ändra om vi vill ha annan förstasida
         }
+        categoryPageText.setText("Rekommenderade produkter för dig");
     }
 
 
