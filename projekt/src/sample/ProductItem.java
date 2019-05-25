@@ -25,6 +25,7 @@ public class ProductItem extends AnchorPane {
     @FXML private ImageView addButton;
     @FXML private ImageView removeButton;
     @FXML private ImageView addButton2;
+    @FXML private ImageView addButtonHover;
     @FXML private TextField amountBox;
 
 
@@ -78,6 +79,17 @@ public class ProductItem extends AnchorPane {
 
 
     }
+
+    @FXML
+    protected void hoverOnAddButton(Event event){
+        addButtonHover.toFront();
+    }
+
+    @FXML
+    protected void hoverOffAddButton(Event event){
+        addButtonHover.toBack();
+    }
+
 
     @FXML
     protected void clickedOnRemoveButton(Event event) {
