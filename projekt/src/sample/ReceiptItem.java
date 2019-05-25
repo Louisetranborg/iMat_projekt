@@ -10,6 +10,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.awt.*;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class ReceiptItem extends AnchorPane {
 
@@ -23,7 +24,7 @@ public class ReceiptItem extends AnchorPane {
     private Label price;
 
     private ShoppingItem shoppingItem;
-
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     public ReceiptItem(ShoppingItem shoppingItem){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/receiptItem.fxml"));
@@ -40,7 +41,7 @@ public class ReceiptItem extends AnchorPane {
         image.setImage(IMatDataHandler.getInstance().getFXImage(shoppingItem.getProduct()));
         title.setText(shoppingItem.getProduct().getName());
         amount.setText(shoppingItem.getAmount() + shoppingItem.getProduct().getUnitSuffix());
-        price.setText(shoppingItem.getTotal() + " kr");
+        price.setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
 
     }
 }

@@ -5,20 +5,21 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.control.Button;
 
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
-
-import se.chalmers.cse.dat216.project.Customer;
+import javafx.scene.text.Font;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 
@@ -31,26 +32,40 @@ public class Wizard extends StackPane {
     @FXML private TextField lastName;
     @FXML private TextField telNumber;
     @FXML private TextField mail;
-
-    @FXML private AnchorPane deliveryInfoPane;
     @FXML private TextField postCode;
     @FXML private TextField city;
     @FXML private TextField adress;
+    @FXML private Label sum1;
+    @FXML private Label shipping1;
+    @FXML private Label totalSum1;
+    @FXML private Label moms1;
 
     @FXML private AnchorPane paymentInfoPane;
+    @FXML private DatePicker datePicker;
     @FXML private TextField cardPersonName;
+    @FXML private Label sum2;
+    @FXML private Label shipping2;
+    @FXML private Label totalSum2;
+    @FXML private Label moms2;
+
 
     @FXML private AnchorPane receiptPane;
     @FXML private Label orderNumber;
     @FXML private Label orderDate;
     @FXML private Label deliveryAdr;
     @FXML private Label totalPrice;
+    //@FXML private Label totalAmount;
 
     @FXML private Button stepOneButton;
     @FXML private Button stepTwoButton;
     @FXML private Button stepThreeButton;
 
     @FXML private FlowPane confirmCartFlowPane;
+
+    @FXML private AnchorPane firstCartPane;
+    @FXML private FlowPane firstCart;
+
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     public Wizard(SearchController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/checkout.fxml"));        //Laddar in rätt fxml-fil
@@ -74,10 +89,16 @@ public class Wizard extends StackPane {
         city.setText(parentController.iMatDataHandler.getCustomer().getPhoneNumber());
         adress.setText(parentController.iMatDataHandler.getCustomer().getAddress());
         cardPersonName.setText(parentController.iMatDataHandler.getCustomer().getFirstName() + " " + parentController.iMatDataHandler.getCustomer().getLastName());
+
+        datePicker.editorProperty().get().setFont(new Font("Roboto-Regular", 18));
+
+        shipping1.setText("45 kr");
+        shipping2.setText("45 kr");
     }
 
     private void confirmOrder(){
-        totalPrice.setText(parentController.iMatDataHandler.getShoppingCart().getTotal() + " kr");
+        totalPrice.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal()) + " kr");
+        //totalAmount.setText(String.valueOf(calculateTotalAmount()));
         IMatDataHandler.getInstance().placeOrder(true);
 
         List<ShoppingItem> orderedShoppingItems = IMatDataHandler.getInstance().getOrders().get(IMatDataHandler.getInstance().getOrders().size() - 1).getItems();
@@ -92,8 +113,36 @@ public class Wizard extends StackPane {
         deliveryAdr.setText(adress.getText() + ", " + city.getText());
     }
 
+    /*
+    private double calculateTotalAmount(){
+        double totalAmount = 0;
+        for(ShoppingItem shoppingItem: parentController.iMatDataHandler.getShoppingCart().getItems()){
+            totalAmount = totalAmount + shoppingItem.getAmount();
+        }return totalAmount;
+    }
+
+     */
+
+
+    /*
     protected FlowPane getConfirmCartFlowPane(){
         return confirmCartFlowPane;
+    }
+     */
+
+
+    protected void updateOverlookLabels(){
+        sum1.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal()) + " kr");
+        sum2.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal()) + " kr");
+        totalSum1.setText((parentController.iMatDataHandler.getShoppingCart().getTotal() + 45) + " kr");
+        totalSum2.setText((parentController.iMatDataHandler.getShoppingCart().getTotal() + 45) + " kr");
+        moms1.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal() * 0.12) + "kr");
+        moms2.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal() * 0.12) + " kr");
+    }
+
+
+    protected FlowPane getFirstCart(){
+        return firstCart;
     }
 
     @FXML
@@ -104,35 +153,36 @@ public class Wizard extends StackPane {
     }
 
     protected void start(){
-        personalInfoPane.setVisible(true);
-        deliveryInfoPane.setVisible(false);
+        firstCartPane.setVisible(true);
+        personalInfoPane.setVisible(false);
         paymentInfoPane.setVisible(false);
         receiptPane.setVisible(false);
         selectCorrectStepButton(1);
     }
 
     @FXML
-    private void fromPersonalToDelivery(){
-        personalInfoPane.setVisible(false);
-        deliveryInfoPane.setVisible(true);
+    private void fromStartToPersonal(){
+        firstCartPane.setVisible(false);
+        personalInfoPane.setVisible(true);
         paymentInfoPane.setVisible(false);
         receiptPane.setVisible(false);
-        selectCorrectStepButton(2);
+        updateOverlookLabels();
     }
 
     @FXML
-    private void fromDeliveryToPayment(){
+    private void fromPersonalToPayment(){
+        firstCartPane.setVisible(false);
         personalInfoPane.setVisible(false);
-        deliveryInfoPane.setVisible(false);
         paymentInfoPane.setVisible(true);
         receiptPane.setVisible(false);
-        selectCorrectStepButton(3);
+        selectCorrectStepButton(2);
+        updateOverlookLabels();
     }
 
     @FXML
     private void fromPaymentToReceipt(){
+        firstCartPane.setVisible(false);
         personalInfoPane.setVisible(false);
-        deliveryInfoPane.setVisible(false);
         paymentInfoPane.setVisible(false);
         receiptPane.setVisible(true);
         confirmOrder();

@@ -15,6 +15,7 @@ import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class SearchController implements Initializable {
@@ -48,6 +49,7 @@ public class SearchController implements Initializable {
     ToggleGroup toggleGroup = new ToggleGroup();                                                                        //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
     private Wizard wizard;
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     Map<String, ShoppingItem> shoppingItemMap = new HashMap<String, ShoppingItem>();        //Map med shoppingitems, endast skapa dem en gång! Både productItem och cartItem pekar på samma shoppingItem.
 
@@ -155,7 +157,7 @@ public class SearchController implements Initializable {
         shoppingCartPane.updateCart();
         productItemMap.get(shoppingItem.getProduct().getName()).updateAmountInProductItem();
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInCartItem();
-        shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(shoppingItem.getTotal() + " kr");
+        shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
     }
 
     protected void addItemToCart(ShoppingItem shoppingItem){
@@ -201,7 +203,8 @@ public class SearchController implements Initializable {
         wizardWrap.toFront();
         wizard.start();
         //putCartInWizard();
-        updateBiggerCartInWizard();
+        putFirstCartInWizard();
+        //updateBiggerCartInWizard();
         activateWizardView();
     }
 
@@ -214,22 +217,15 @@ public class SearchController implements Initializable {
         backToStoreLabel.setVisible(true);
     }
 
-    protected void updateBiggerCartInWizard(){
-        wizard.getConfirmCartFlowPane().getChildren().clear();
+    protected void putFirstCartInWizard(){
+        wizard.getFirstCart().getChildren().clear();
         for(ShoppingItem shoppingItem: IMatDataHandler.getInstance().getShoppingCart().getItems()){
-            ConfirmCartItem confirmCartItem = new ConfirmCartItem(shoppingItem, this);
-            wizard.getConfirmCartFlowPane().getChildren().add(confirmCartItem);
-            confirmCartItem.updateAmountBoxInConfirmCartItem();
+            FirstCartItem firstCartItem = new FirstCartItem(shoppingItem,this);
+            wizard.getFirstCart().getChildren().add(firstCartItem);
+            firstCartItem.updateAmountBoxInFirstCartItem();
         }
     }
 
-    /*
-    private void putCartInWizard(){
-        wizard.getCartFlowPaneWrap().getChildren().clear();
-        wizard.getCartFlowPaneWrap().getChildren().add(0,shoppingCartPane.getCartFlowPaneWrap().getChildren().get(0));       //flyttar varukorgen med alla items till wizard:ens varukorg
-    }
-
-     */
 
     @FXML
     protected void wizardToBack(){
@@ -237,14 +233,6 @@ public class SearchController implements Initializable {
         //putCartInShopView();
         activateShoppingView();
     }
-
-    /*
-    private void putCartInShopView(){
-        shoppingCartPane.getCartFlowPaneWrap().getChildren().clear();
-        shoppingCartPane.getCartFlowPaneWrap().getChildren().add(0,wizard.getCartFlowPaneWrap().getChildren().get(0));      //flyttar wizard:ends varukorg med alla items till den vanliga varukorgen
-    }
-
-     */
 
     protected void activateShoppingView(){
         searchBox.setVisible(true);

@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class CartItem extends AnchorPane {
 
@@ -22,6 +23,8 @@ public class CartItem extends AnchorPane {
     @FXML private ImageView removeButton;
     @FXML private ImageView addButton;
     @FXML private Label price;
+
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     protected ShoppingItem getShoppingItem(){
         return shoppingItem;

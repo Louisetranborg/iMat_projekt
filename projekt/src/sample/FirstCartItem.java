@@ -4,28 +4,28 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
-public class ConfirmCartItem extends AnchorPane {
+public class FirstCartItem extends AnchorPane {
 
-    private ShoppingItem shoppingItem;
     private SearchController parentController;
+    private ShoppingItem shoppingItem;
     @FXML private ImageView image;
-    @FXML private ImageView removeButton;
-    @FXML private ImageView addButton;
-    @FXML private TextField amountBox;
     @FXML private Label title;
+    @FXML private TextField amountBox;
+    @FXML private ImageView addButton;
+    @FXML private ImageView removeButton;
     @FXML private Label price;
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
-
-    public ConfirmCartItem(ShoppingItem shoppingItem, SearchController parentController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/confirmCartItem.fxml"));
+    public FirstCartItem(ShoppingItem shoppingItem, SearchController parentController) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/firstCartItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -37,25 +37,27 @@ public class ConfirmCartItem extends AnchorPane {
 
         this.shoppingItem = shoppingItem;
         this.parentController = parentController;
-
         image.setImage(IMatDataHandler.getInstance().getFXImage(shoppingItem.getProduct()));
         title.setText(shoppingItem.getProduct().getName());
-        price.setText(shoppingItem.getTotal() + " kr");
+        price.setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
+
     }
 
     @FXML
     private void clickedOnAddButton(){
         parentController.addItemToCart(shoppingItem);
-        parentController.updateBiggerCartInWizard();
+        //parentController.updateBiggerCartInWizard();
+        parentController.putFirstCartInWizard();
     }
 
     @FXML
     private void clickedOnRemoveButton(){
         parentController.removeItemFromCart(shoppingItem);
-        parentController.updateBiggerCartInWizard();
+        //parentController.updateBiggerCartInWizard();
+        parentController.putFirstCartInWizard();
     }
 
-    protected void updateAmountBoxInConfirmCartItem(){
+    protected void updateAmountBoxInFirstCartItem(){
         amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
     }
 

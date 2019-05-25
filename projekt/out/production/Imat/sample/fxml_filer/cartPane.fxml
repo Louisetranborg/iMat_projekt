@@ -20,12 +20,12 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Label fx:id="totalLabel" alignment="CENTER" layoutY="721.0" prefHeight="48.0" prefWidth="132.0" text="Totalt ">
+      <Label fx:id="totalLabel" alignment="CENTER" layoutX="3.0" layoutY="721.0" prefHeight="48.0" prefWidth="137.0" text="Totalt ">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="toCheckoutButton" layoutX="135.0" layoutY="725.0" mnemonicParsing="false" onMouseClicked="#clickOnToCheckoutButton" prefHeight="40.0" prefWidth="110.0" styleClass="toCartButton" stylesheets="@../css_files/main_theme.css" text="Till kassan">
+      <Button fx:id="toCheckoutButton" layoutX="144.0" layoutY="725.0" mnemonicParsing="false" onMouseClicked="#clickOnToCheckoutButton" prefHeight="40.0" prefWidth="110.0" styleClass="toCartButton" stylesheets="@../css_files/main_theme.css" text="Till kassan">
          <font>
             <Font size="18.0" />
          </font>
