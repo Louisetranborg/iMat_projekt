@@ -10,6 +10,11 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="280.0" prefWidth="250.0" styleClass="anchorPane" stylesheets="@../css_files/productItem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <ImageView fx:id="addButton2" fitHeight="45.0" fitWidth="45.0" layoutX="153.0" layoutY="235.0" onMouseClicked="#clickedOnAddButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/darkAdd.png" />
+         </image>
+      </ImageView>
       <Label fx:id="name" alignment="CENTER" layoutY="194.0" prefHeight="23.0" prefWidth="250.0" text="Produktnamn">
          <font>
             <Font size="18.0" />
@@ -18,11 +23,6 @@
          <image>
             <Image url="@../images/sugar.jpg" />
          </image></ImageView>
-      <ImageView fx:id="addButton" fitHeight="45.0" fitWidth="45.0" layoutX="153.0" layoutY="235.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#glow" onMouseExited="#removeGlow" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/baseline_add_circle_black_24dp.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="removeButton" fitHeight="45.0" fitWidth="45.0" layoutX="52.0" layoutY="235.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/baseline_remove_circle_black_24dp.png" />
@@ -34,6 +34,11 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <ImageView fx:id="addButton" fitHeight="45.0" fitWidth="45.0" layoutX="153.0" layoutY="235.0" onMouseClicked="#clickedOnAddButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/primarGronAdd.png" />
+         </image>
+      </ImageView>
    </children>
    <effect>
       <DropShadow />

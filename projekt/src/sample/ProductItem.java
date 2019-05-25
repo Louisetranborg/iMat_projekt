@@ -24,6 +24,7 @@ public class ProductItem extends AnchorPane {
     @FXML private Label price;
     @FXML private ImageView addButton;
     @FXML private ImageView removeButton;
+    @FXML private ImageView addButton2;
     @FXML private TextField amountBox;
 
 
@@ -71,6 +72,8 @@ public class ProductItem extends AnchorPane {
     protected void clickedOnAddButton(Event event){ //När man klickar på plusset
         parentController.mouseTrap(event); //Infoboxen skall ej komma upp
         parentController.addItemToCart(shoppingItem);
+        addButton2.toFront();
+        addButton.toBack();
 
 
 
