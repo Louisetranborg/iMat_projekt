@@ -127,7 +127,7 @@
                      </padding></FlowPane>
                </content>
             </ScrollPane>
-            <Label layoutY="80.0" prefHeight="60.0" prefWidth="260.0" styleClass="labelTop" text=" Sortiment">
+            <Label layoutX="9.0" layoutY="80.0" prefHeight="60.0" prefWidth="251.0" styleClass="labelTop" text="Sortiment" underline="true">
                <font>
                   <Font size="24.0" />
                </font>

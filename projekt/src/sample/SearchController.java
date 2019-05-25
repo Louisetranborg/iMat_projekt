@@ -146,6 +146,7 @@ public class SearchController implements Initializable {
     @FXML
     protected void updateMeat(){
         productFlowPane.getChildren().clear();
+        productScrollPane.setVvalue(0);
         List<Product> products = iMatDataHandler.getProducts(ProductCategory.MEAT);
         List<Product> products1 = iMatDataHandler.getProducts(ProductCategory.FISH);
 
@@ -163,6 +164,7 @@ public class SearchController implements Initializable {
     @FXML
     protected void updateDrinks(){
         productFlowPane.getChildren().clear();
+        productScrollPane.setVvalue(0);
         List<Product> products = iMatDataHandler.getProducts(ProductCategory.HOT_DRINKS);
         List<Product> products1 = iMatDataHandler.getProducts(ProductCategory.COLD_DRINKS);
 
@@ -180,6 +182,7 @@ public class SearchController implements Initializable {
     @FXML
     protected void updateDaires(){
         productFlowPane.getChildren().clear();
+        productScrollPane.setVvalue(0);
         List<Product> products = iMatDataHandler.getProducts(ProductCategory.DAIRIES);
 
 
@@ -192,6 +195,7 @@ public class SearchController implements Initializable {
     @FXML
     protected void updateSweet(){
         productFlowPane.getChildren().clear();
+        productScrollPane.setVvalue(0);
         List<Product> products = iMatDataHandler.getProducts(ProductCategory.SWEET);
 
 
@@ -204,6 +208,8 @@ public class SearchController implements Initializable {
     @FXML
     protected void updateGreens(){
         productFlowPane.getChildren().clear();
+        productScrollPane.setVvalue(0);
+        productScrollPane.setVvalue(0);
         List<Product> products = iMatDataHandler.getProducts(ProductCategory.HERB);
         List<Product> products1 = iMatDataHandler.getProducts(ProductCategory.VEGETABLE_FRUIT);
 
@@ -267,6 +273,7 @@ public class SearchController implements Initializable {
     @FXML
     protected void updatePantry(){
         productFlowPane.getChildren().clear();
+        productScrollPane.setVvalue(0);
         List<Product> products = iMatDataHandler.getProducts(ProductCategory.POD);
         List<Product> products1 = iMatDataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
 
@@ -302,6 +309,7 @@ public class SearchController implements Initializable {
     @FXML
     protected void updateBread(){
         productFlowPane.getChildren().clear();
+        productScrollPane.setVvalue(0);
         List<Product> products = iMatDataHandler.getProducts(ProductCategory.BREAD);
 
 
@@ -318,6 +326,7 @@ public class SearchController implements Initializable {
     @FXML
     private void updateFrontPage(){
         productFlowPane.getChildren().clear();
+        productScrollPane.setVvalue(0);
         for(Product product: iMatDataHandler.getProducts()){
             productFlowPane.getChildren().add(productItemMap.get(product.getName()));                                                             //Lägger ut alla varorna på framsidan, ändra om vi vill ha annan förstasida
         }

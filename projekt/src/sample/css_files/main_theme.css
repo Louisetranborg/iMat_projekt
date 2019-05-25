@@ -122,8 +122,10 @@
         -fx-text-fill: #000000;
         -fx-font-family: "Roboto";
         -fx-font-size: 35px;
-        -fx-font-style: underline;
+
         -fx-alignment: left;
-        -fx-font-style: bold;
+
+
 
     }
+

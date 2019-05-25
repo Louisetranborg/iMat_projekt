@@ -71,6 +71,9 @@ public class ProductItem extends AnchorPane {
     protected void clickedOnAddButton(Event event){ //När man klickar på plusset
         parentController.mouseTrap(event); //Infoboxen skall ej komma upp
         parentController.addItemToCart(shoppingItem);
+
+
+
     }
 
     @FXML
