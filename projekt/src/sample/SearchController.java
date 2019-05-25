@@ -430,8 +430,5 @@ public class SearchController implements Initializable {
                 }
             }
         });
-
-
-
     }
 }
