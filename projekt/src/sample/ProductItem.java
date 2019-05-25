@@ -73,7 +73,7 @@ public class ProductItem extends AnchorPane {
         parentController.mouseTrap(event); //Infoboxen skall ej komma upp
         parentController.addItemToCart(shoppingItem);
         addButton2.toFront();
-        addButton.toBack();
+
 
 
 
@@ -83,6 +83,9 @@ public class ProductItem extends AnchorPane {
     protected void clickedOnRemoveButton(Event event) {
         parentController.mouseTrap(event);
         parentController.removeItemFromCart(shoppingItem);
+        if (shoppingItem.getAmount()<1){
+            addButton.toFront();
+        }
     }
 
     @FXML
