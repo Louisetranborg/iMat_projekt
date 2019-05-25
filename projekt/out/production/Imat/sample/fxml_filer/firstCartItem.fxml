@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="900.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="image" fitHeight="70.0" fitWidth="80.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/baseline_add_circle_black_24dp.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="title" alignment="CENTER" layoutX="112.0" layoutY="14.0" prefHeight="23.0" prefWidth="132.0" text="Produktnamn">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="amountBox" layoutX="584.0" layoutY="28.0" prefHeight="32.0" prefWidth="43.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <ImageView fx:id="removeButton" fitHeight="150.0" fitWidth="36.0" layoutX="540.0" layoutY="26.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/baseline_remove_circle_black_24dp.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="addButton" fitHeight="150.0" fitWidth="36.0" layoutX="636.0" layoutY="26.0" onMouseClicked="#clickedOnAddButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/baseline_add_circle_black_24dp.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="price" alignment="CENTER_RIGHT" layoutX="797.0" layoutY="46.0" prefHeight="20.0" prefWidth="89.0" text="pris">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="857.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/baseline_favorite_border_black_36dp.png" />
+         </image>
+      </ImageView>
+   </children>
+</fx:root>

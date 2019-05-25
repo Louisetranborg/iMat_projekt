@@ -5,6 +5,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
@@ -14,6 +15,7 @@ import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class SearchController implements Initializable {
@@ -37,6 +39,9 @@ public class SearchController implements Initializable {
     @FXML protected AnchorPane wizardWrap;
     @FXML private ImageView backToStoreIcon;
     @FXML private Label backToStoreLabel;
+    @FXML private Label itemNumber;
+    @FXML private Label ecoInfo;
+    @FXML private Label priceDetailView;
 
     private ShoppingItem activeInDetailview;
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
@@ -44,9 +49,16 @@ public class SearchController implements Initializable {
     ToggleGroup toggleGroup = new ToggleGroup();                                                                        //ToggleGroup för att fixa så att bara en kategori kan väljas åt gången
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
     private Wizard wizard;
-
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     Map<String, ShoppingItem> shoppingItemMap = new HashMap<String, ShoppingItem>();        //Map med shoppingitems, endast skapa dem en gång! Både productItem och cartItem pekar på samma shoppingItem.
+
+    protected void resetEveryShoppingItem(){
+        for(ShoppingItem item:shoppingItemMap.values()){
+            item.setAmount(0);
+            updateAmount(item);
+        }
+    }
 
     //Sätter light-boxen längs fram för att visa mer info om en produkt
     protected void openProductDetailView(ShoppingItem shoppingItem){
@@ -72,6 +84,18 @@ public class SearchController implements Initializable {
     private void populateProductDetailView(ShoppingItem shoppingItem){
         closeUpImage.setImage(iMatDataHandler.getFXImage(shoppingItem.getProduct()));
         closeUpName.setText(shoppingItem.getProduct().getName());
+        itemNumber.setText("Artikelnummer: " + String.valueOf(shoppingItem.getProduct().getProductId()));
+        ecoInfo.setText(isEcological(shoppingItem.getProduct()));
+        priceDetailView.setText(shoppingItem.getProduct().getPrice() + " kr");
+    }
+
+    private String isEcological(Product product){
+        if(product.isEcological()){
+            return "Varan är ekologisk";
+        } else{
+            return "Varan är ej ekologisk";
+        }
+
     }
 
     //Fyller categoryFlowPane med alla kategorierna
@@ -133,7 +157,7 @@ public class SearchController implements Initializable {
         shoppingCartPane.updateCart();
         productItemMap.get(shoppingItem.getProduct().getName()).updateAmountInProductItem();
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInCartItem();
-        shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(shoppingItem.getTotal() + " kr");
+        shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
     }
 
     protected void addItemToCart(ShoppingItem shoppingItem){
@@ -178,7 +202,9 @@ public class SearchController implements Initializable {
     protected void wizardToFront(){
         wizardWrap.toFront();
         wizard.start();
-        putCartInWizard();
+        //putCartInWizard();
+        putFirstCartInWizard();
+        //updateBiggerCartInWizard();
         activateWizardView();
     }
 
@@ -191,24 +217,22 @@ public class SearchController implements Initializable {
         backToStoreLabel.setVisible(true);
     }
 
-    private void putCartInWizard(){
-        wizard.getCartFlowPaneWrap().getChildren().clear();
-        wizard.getCartFlowPaneWrap().getChildren().add(0,shoppingCartPane.getCartFlowPaneWrap().getChildren().get(0));       //flyttar varukorgen med alla items till wizard:ens varukorg
+    protected void putFirstCartInWizard(){
+        wizard.getFirstCart().getChildren().clear();
+        for(ShoppingItem shoppingItem: IMatDataHandler.getInstance().getShoppingCart().getItems()){
+            FirstCartItem firstCartItem = new FirstCartItem(shoppingItem,this);
+            wizard.getFirstCart().getChildren().add(firstCartItem);
+            firstCartItem.updateAmountBoxInFirstCartItem();
+        }
     }
+
 
     @FXML
     protected void wizardToBack(){
         wizardWrap.toBack();
-        putCartInShopView();
+        //putCartInShopView();
         activateShoppingView();
     }
-
-    private void putCartInShopView(){
-        shoppingCartPane.getCartFlowPaneWrap().getChildren().clear();
-        shoppingCartPane.getCartFlowPaneWrap().getChildren().add(0,wizard.getCartFlowPaneWrap().getChildren().get(0));      //flyttar wizard:ends varukorg med alla items till den vanliga varukorgen
-    }
-
-
 
     protected void activateShoppingView(){
         searchBox.setVisible(true);
@@ -223,6 +247,13 @@ public class SearchController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         iMatDataHandler.getCustomer().setFirstName("Hjördis");                                                          //Sätter namnet till Hjördis sålänge.
+        iMatDataHandler.getCustomer().setLastName("Johansson");
+        iMatDataHandler.getCustomer().setMobilePhoneNumber("073-333 33 33");
+        iMatDataHandler.getCustomer().setEmail("hjördis.johansson@gmail.se");
+        iMatDataHandler.getCustomer().setPostCode("333 33");
+        iMatDataHandler.getCustomer().setAddress("Kallebäcksvägen 3");
+        iMatDataHandler.getCustomer().setPhoneNumber("Göteborg");
+
         loginLable.setText("Inloggad som " + iMatDataHandler.getCustomer().getFirstName());                             //hämtar användarens namn och skriver ut det i headern.
         fillCategoryPane();                                                                                             //kalla på metoden som fyller categoryPane
         productFlowPane.setHgap(40);                                                                                    //Avstånd mellan productItems i x-led

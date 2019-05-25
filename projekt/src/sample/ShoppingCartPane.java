@@ -13,6 +13,7 @@ import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.*;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +30,21 @@ public class ShoppingCartPane extends AnchorPane {
     @FXML private AnchorPane cartFlowPaneWrap;
 
     private Map<String, CartItem> productCartItemMap = new HashMap<String, CartItem>();
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
+
+    @FXML
+    private void clickOnToCheckoutButton(){
+        parentController.wizardToFront();
+    }
+
+    protected FlowPane getCartFlowPane(){
+        return cartFlowPane;
+    }
+
+    protected AnchorPane getCartFlowPaneWrap(){
+        return cartFlowPaneWrap;
+    }
 
     @FXML
     private void clickOnToCheckoutButton(){
@@ -77,7 +93,7 @@ public class ShoppingCartPane extends AnchorPane {
         });
 
 
-        totalLabel.setText("Totalt " + shoppingCart.getTotal());
+        totalLabel.setText("Totalt " + decimalFormat.format(shoppingCart.getTotal()));
 
     }
 
@@ -108,9 +124,8 @@ public class ShoppingCartPane extends AnchorPane {
         for(ShoppingItem shoppingItem : shoppingCart.getItems()){
             cartFlowPane.getChildren().add(productCartItemMap.get(shoppingItem.getProduct().getName()));
         }
-        totalLabel.setText("Totalt " + ((int)shoppingCart.getTotal()) + " kr");
+        totalLabel.setText("Totalt " + decimalFormat.format(shoppingCart.getTotal()) + " kr");
     }
 
 
 }
-
