@@ -149,6 +149,9 @@ public class Wizard extends StackPane {
     protected void backToShopping(){
         parentController.wizardWrap.toBack();
         parentController.activateShoppingView();
+
+        //Einar kommentar. Använd denna istället för att gå tillbaka.
+        parentController.updateFrontPage();
         //cartFlowPaneWrap.getChildren().clear();
     }
 

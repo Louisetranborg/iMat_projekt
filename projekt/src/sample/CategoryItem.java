@@ -2,44 +2,101 @@ package sample;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.RadioButton;
-import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class CategoryItem extends AnchorPane {
+public class CategoryItem extends MenuItem {
 
-    private ProductCategory productCategory;
-    private SearchController parentController;
-    @FXML private RadioButton categoryButton;   //Detta är kategoriknappen med dess kategorinamn
+    public enum productCategory{
+        MEAT,
+        FRUIT,
+        DAIRY,
+        GREENS,
+        SWEET,
+        BREAD,
+        PANTRY,
+        DRINKS,
+        ALL_CATEGORIES
+    }
+
+    private productCategory productCategory;
+    private List<Product> newCategories;
+
+    public CategoryItem(productCategory productCategory, SearchController parentController){
+        super(parentController);
+
+        this.productCategory = productCategory;
+      //  categoryButton.setToggleGroup();
+        //categoryButton.setText(productCategory.name());
+        newCategories = putCategoriesInCategories(productCategory);
+
+    }
+
+    private List<Product> putCategoriesInCategories(productCategory cat){
+        List<Product> list = new ArrayList<>();
+        switch (cat){
+            case MEAT:
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.MEAT));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.FISH));
+                categoryButton.setText("Kött, fisk och fågel");
+                break;
+            case BREAD:
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.BREAD));
+                categoryButton.setText("Bröd");
+                break;
+            case DAIRY:
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.DAIRIES));
+                categoryButton.setText("Mejeri");
+                break;
+            case FRUIT:
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.CITRUS_FRUIT));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.EXOTIC_FRUIT));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.BERRY));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.MELONS));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.FRUIT));
+                categoryButton.setText("Frukt");
+                break;
+            case SWEET:
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.SWEET));
+                categoryButton.setText("Sötsaker");
+                break;
+            case DRINKS:
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.HOT_DRINKS));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.COLD_DRINKS));
+                categoryButton.setText("Drycker");
+                break;
+            case GREENS:
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.HERB));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.VEGETABLE_FRUIT));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.CABBAGE));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.ROOT_VEGETABLE));
+                categoryButton.setText("Grönsaker");
+                break;
+            case PANTRY:
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.POD));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.NUTS_AND_SEEDS));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.PASTA));
+                list.addAll(parentController.iMatDataHandler.getProducts(ProductCategory.POTATO_RICE));
+                categoryButton.setText("Skafferi");
+                break;
+            case ALL_CATEGORIES:
+                list.addAll(parentController.iMatDataHandler.getProducts());
+                categoryButton.setText("Alla kategorier/Startsida");
+                break;
+        }
+
+        return list;
+    }
 
     @FXML
     protected void onClick(Event event){        //När man klickar på en kategori skall varorna i mitten uppdateras
-        //parentController.updateProductPaneFromCategory(productCategory);
+        parentController.updateProductPaneFromCategory(newCategories);
+        parentController.changeCategoryPageText(categoryButton.getText());
     }
-
-    public CategoryItem(ProductCategory productCategory, SearchController parentController){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/categoryItem.fxml")); //Laddar in rätt fxml-fil
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-        try{
-            fxmlLoader.load();
-        } catch (IOException exception){
-            throw new RuntimeException(exception);
-        }
-
-        this.productCategory = productCategory;
-        this.parentController = parentController;
-        categoryButton.setText(productCategory.name());
-        categoryButton.setToggleGroup(parentController.toggleGroup); //Gör så att endast en knapp kan vara nedtryckt åt gången
-
-        categoryButton.getStyleClass().remove("radio-button"); //Tar bort utseendet för radio-button
-        categoryButton.getStyleClass().add("toggle-button");      //Ändrar utseendet så det ser ut som en kanpp
-    }
-
 
 
 }

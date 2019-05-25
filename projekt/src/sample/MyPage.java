@@ -3,10 +3,8 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import se.chalmers.cse.dat216.project.Order;
 
 import java.io.IOException;
 

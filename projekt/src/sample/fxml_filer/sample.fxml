@@ -138,21 +138,16 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <RadioButton fx:id="drinks" layoutX="-2.0" layoutY="469.0" mnemonicParsing="false" onAction="#updateDrinks" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Drycker" />
-            <RadioButton fx:id="dairy" layoutX="-2.0" layoutY="281.0" mnemonicParsing="false" onAction="#updateDaires" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Mejeri" />
-            <RadioButton fx:id="sweet" layoutX="-2.0" layoutY="516.0" mnemonicParsing="false" onAction="#updateSweet" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Sötsaker" />
-            <RadioButton fx:id="greens" layoutX="-2.0" layoutY="234.0" mnemonicParsing="false" onAction="#updateGreens" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Grönsaker" />
-            <RadioButton fx:id="fruit" layoutX="-2.0" layoutY="187.0" mnemonicParsing="false" onAction="#updateFruits" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Frukt" />
-            <RadioButton fx:id="pantry" layoutX="-2.0" layoutY="375.0" mnemonicParsing="false" onAction="#updatePantry" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Skafferi" />
-            <RadioButton fx:id="bread" layoutX="-2.0" layoutY="328.0" mnemonicParsing="false" onAction="#updateBread" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Bröd" />
-            <RadioButton fx:id="allCategories" layoutX="-2.0" layoutY="140.0" mnemonicParsing="false" onAction="#updateFrontPage" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Startsida" />
-            <RadioButton fx:id="meat" layoutX="-2.0" layoutY="422.0" mnemonicParsing="false" onAction="#updateMeat" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Kött, fisk och fågel" />
             <Label fx:id="categoryPageText" alignment="CENTER" layoutX="261.0" layoutY="85.0" prefHeight="60.0" prefWidth="920.0" styleClass="labelCategories">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <RadioButton fx:id="searchClean" layoutX="-2.0" layoutY="556.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="262.0" styleClass="searchButton" />
+            <ScrollPane hbarPolicy="NEVER" layoutX="2.0" layoutY="140.0" prefHeight="716.0" prefWidth="260.0">
+               <content>
+                  <VBox fx:id="menuVbox" />
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
    </children>
