@@ -32,12 +32,6 @@ public class ShoppingCartPane extends AnchorPane {
     private Map<String, CartItem> productCartItemMap = new HashMap<String, CartItem>();
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
-
-    @FXML
-    private void clickOnToCheckoutButton(){
-        parentController.wizardToFront();
-    }
-
     protected FlowPane getCartFlowPane(){
         return cartFlowPane;
     }
@@ -49,14 +43,6 @@ public class ShoppingCartPane extends AnchorPane {
     @FXML
     private void clickOnToCheckoutButton(){
         parentController.wizardToFront();
-    }
-
-    protected FlowPane getCartFlowPane(){
-        return cartFlowPane;
-    }
-
-    protected AnchorPane getCartFlowPaneWrap(){
-        return cartFlowPaneWrap;
     }
 
     public ShoppingCartPane(ShoppingCart shoppingCart, SearchController parentController) {
