@@ -17,3 +17,6 @@
     -fx-text-fill: #725B53;
 }
 
+.objekt:hover{
+    -fx-background-color: #f2f2f2;
+}

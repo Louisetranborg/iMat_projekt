@@ -19,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="192">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
+              <caret line="87" column="4" selection-start-line="87" selection-start-column="4" selection-end-line="95" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2681#2682#0" expanded="true" />
@@ -36,8 +36,8 @@
                 <element signature="e#3219#3220#0" expanded="true" />
                 <element signature="e#2654#2675#0" expanded="true" />
                 <element signature="e#2801#2823#0" expanded="true" />
-                <element signature="e#4803#4804#0" expanded="true" />
-                <element signature="e#5040#5041#0" expanded="true" />
+                <element signature="e#4799#4800#0" expanded="true" />
+                <element signature="e#5036#5037#0" expanded="true" />
                 <element signature="e#5459#5460#0" expanded="true" />
                 <element signature="e#5507#5508#0" expanded="true" />
                 <element signature="e#11536#11537#0" expanded="true" />
@@ -54,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/css_files/productItem.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+            <state relative-caret-position="340">
+              <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -106,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/ProductItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="136" column="5" lean-forward="true" selection-start-line="128" selection-start-column="4" selection-end-line="136" selection-end-column="5" />
+            <state relative-caret-position="175">
+              <caret line="131" column="13" selection-start-line="131" selection-start-column="13" selection-end-line="131" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3281#3282#0" expanded="true" />
@@ -118,8 +118,8 @@
                 <element signature="e#3530#3531#0" expanded="true" />
                 <element signature="e#3595#3596#0" expanded="true" />
                 <element signature="e#3637#3638#0" expanded="true" />
-                <element signature="e#3970#3971#0" expanded="true" />
-                <element signature="e#4020#4021#0" expanded="true" />
+                <element signature="e#4194#4195#0" expanded="true" />
+                <element signature="e#4246#4247#0" expanded="true" />
                 <element signature="e#4062#4063#0" expanded="true" />
                 <element signature="e#4110#4111#0" expanded="true" />
               </folding>
@@ -174,14 +174,14 @@
         <option value="$PROJECT_DIR$/src/sample/SettingsItem.java" />
         <option value="$PROJECT_DIR$/src/sample/Wizard.java" />
         <option value="$PROJECT_DIR$/src/sample/CartItem.java" />
-        <option value="$PROJECT_DIR$/src/sample/ProductItem.java" />
         <option value="$PROJECT_DIR$/src/sample/SearchController.java" />
         <option value="$PROJECT_DIR$/src/sample/css_files/main_theme.css" />
+        <option value="$PROJECT_DIR$/src/sample/ProductItem.java" />
         <option value="$PROJECT_DIR$/src/sample/css_files/productItem.css" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="950" />
     <option name="width" value="980" />
     <option name="height" value="1040" />
@@ -262,7 +262,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558886967127" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558888169511" />
     <property name="last_opened_file_path" value="C:/Program Files (x86)/Oracle/JavaFX Scene Builder 2.0/JavaFX Scene Builder 2.0.exe" />
   </component>
   <component name="RunDashboard">
@@ -319,7 +319,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9899000" />
+    <option name="totallyTimeSpent" value="11053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -530,10 +530,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ProductCartItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/fxml_filer/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-812">
+          <caret line="86" column="31" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/css_files/main_theme.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="154" column="28" lean-forward="true" selection-start-line="154" selection-start-column="28" selection-end-line="154" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
+          <caret line="87" column="4" selection-start-line="87" selection-start-column="4" selection-end-line="95" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2681#2682#0" expanded="true" />
@@ -550,8 +572,8 @@
             <element signature="e#3219#3220#0" expanded="true" />
             <element signature="e#2654#2675#0" expanded="true" />
             <element signature="e#2801#2823#0" expanded="true" />
-            <element signature="e#4803#4804#0" expanded="true" />
-            <element signature="e#5040#5041#0" expanded="true" />
+            <element signature="e#4799#4800#0" expanded="true" />
+            <element signature="e#5036#5037#0" expanded="true" />
             <element signature="e#5459#5460#0" expanded="true" />
             <element signature="e#5507#5508#0" expanded="true" />
             <element signature="e#11536#11537#0" expanded="true" />
@@ -564,25 +586,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ProductCartItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/fxml_filer/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-812">
-          <caret line="86" column="31" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/ProductItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="136" column="5" lean-forward="true" selection-start-line="128" selection-start-column="4" selection-end-line="136" selection-end-column="5" />
+        <state relative-caret-position="175">
+          <caret line="131" column="13" selection-start-line="131" selection-start-column="13" selection-end-line="131" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3281#3282#0" expanded="true" />
@@ -593,25 +600,18 @@
             <element signature="e#3530#3531#0" expanded="true" />
             <element signature="e#3595#3596#0" expanded="true" />
             <element signature="e#3637#3638#0" expanded="true" />
-            <element signature="e#3970#3971#0" expanded="true" />
-            <element signature="e#4020#4021#0" expanded="true" />
+            <element signature="e#4194#4195#0" expanded="true" />
+            <element signature="e#4246#4247#0" expanded="true" />
             <element signature="e#4062#4063#0" expanded="true" />
             <element signature="e#4110#4111#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/css_files/main_theme.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="154" column="28" lean-forward="true" selection-start-line="154" selection-start-column="28" selection-end-line="154" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/css_files/productItem.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+        <state relative-caret-position="340">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
         </state>
       </provider>
     </entry>

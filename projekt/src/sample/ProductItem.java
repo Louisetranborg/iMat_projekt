@@ -29,6 +29,7 @@ public class ProductItem extends AnchorPane {
     @FXML private ImageView removeButtonBrown;
     @FXML private ImageView removeButtonHover;
     @FXML private TextField amountBox;
+    @FXML private AnchorPane productPane;
 
 
 
@@ -128,12 +129,12 @@ public class ProductItem extends AnchorPane {
 
     @FXML
     private void glow(){
-        addButton.setEffect(new Glow(0.5));
+        image.setEffect(new Glow(0.5));
     }
 
     @FXML
     private void removeGlow(){
-        addButton.setEffect(new Glow(0));
+        image.setEffect(new Glow(0));
     }
 
 }
