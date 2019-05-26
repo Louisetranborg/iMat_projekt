@@ -70,12 +70,20 @@ public class SearchController implements Initializable {
     @FXML private ImageView removeButtonHover;
 
 
-    public void greenAddButtonToFront(){
+    public void greenAddButtonToFrontDetail(){
         addButtonGreenDetail.toFront();
     }
-    public void blackAddButtonToFront(){
+    public void blackAddButtonToFrontDetail(){
         addButtonDetail.toFront();
     }
+    public void brownRemoveButtonToFrontDetail(){
+        removeButtonBrown.toFront();
+    }
+    public void blackRemoveButtonToFrontDetail(){
+        removeButton.toFront();
+    }
+
+
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
 
@@ -90,7 +98,7 @@ public class SearchController implements Initializable {
     private Wizard wizard;
     private ShoppingItem activeInDetailview;
     MyPage myPage = new MyPage();
-    private ShoppingItem shoppingItem;
+
 
     protected void resetEveryShoppingItem() {
         for (ShoppingItem item : shoppingItemMap.values()) {
@@ -337,11 +345,21 @@ public class SearchController implements Initializable {
     }
 
     @FXML
+    protected void hoverOnRemoveButton(Event event){
+        removeButtonHover.toFront();
+    }
+
+    @FXML
+    protected void hoverOffRemoveButton(Event event){
+        removeButtonHover.toBack();
+    }
+
+    @FXML
     protected void clickedOnRemoveButton(Event event) {
         mouseTrap(event);
         removeItemFromCart(activeInDetailview);
         updateAmountInDetailView();
-        if (shoppingItem.getAmount()<1){
+        if (activeInDetailview.getAmount()<1){
             addButtonDetail.toFront();
             removeButton.toFront();
         }

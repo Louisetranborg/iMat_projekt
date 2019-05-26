@@ -95,12 +95,12 @@
          <children>
             <AnchorPane layoutX="120.0" layoutY="80.0" onMouseClicked="#mouseTrap" prefHeight="695.0" prefWidth="933.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;">
                <children>
-                  <ImageView fx:id="removeButtonBrown" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="removeButtonBrown" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/remove_dark.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="removeButtonHover" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="removeButtonHover" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/remove_main.png" />
                      </image>

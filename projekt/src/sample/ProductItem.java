@@ -31,13 +31,18 @@ public class ProductItem extends AnchorPane {
     @FXML private TextField amountBox;
 
 
+
+
+
     @FXML
     protected void onClick(){ //När man klickar på ett productItem skall info om produkten komma upp
         parentController.openProductDetailView(shoppingItem);
         if (shoppingItem.getAmount()>0){
-            parentController.greenAddButtonToFront();
+            parentController.greenAddButtonToFrontDetail();
+            parentController.brownRemoveButtonToFrontDetail();
         }else{
-            parentController.blackAddButtonToFront();
+            parentController.blackAddButtonToFrontDetail();
+            parentController.blackRemoveButtonToFrontDetail();
         }
     }
 
