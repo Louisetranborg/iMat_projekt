@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -19,64 +12,12 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane stylesheets="@../css_files/main_theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
+<StackPane stylesheets="@../css_files/main_theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
    <children>
       <AnchorPane fx:id="checkoutWrap" prefHeight="777.0" prefWidth="1430.0" />
-      <AnchorPane fx:id="productDetailView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeProductDetailView" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
-         <children>
-            <AnchorPane layoutX="120.0" layoutY="80.0" onMouseClicked="#mouseTrap" prefHeight="695.0" prefWidth="1200.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;">
-               <children>
-                  <ImageView fx:id="closeUpImage" fitHeight="350.0" fitWidth="400.0" layoutX="60.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/baseline_help_black_18dp.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="closeUpName" alignment="CENTER" layoutX="70.0" layoutY="380.0" prefHeight="26.0" prefWidth="344.0" text="Namn">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <TextArea layoutX="635.0" layoutY="51.0" prefHeight="591.0" prefWidth="450.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eleifend donec pretium vulputate sapien nec sagittis aliquam. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Diam vel quam elementum pulvinar etiam non quam lacus. Accumsan in nisl nisi scelerisque eu ultrices. Dolor magna eget est lorem ipsum dolor sit. Dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra. Volutpat diam ut venenatis tellus. Odio aenean sed adipiscing diam donec adipiscing tristique. Vitae proin sagittis nisl rhoncus mattis rhoncus." wrapText="true">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextArea>
-                  <Label fx:id="itemNumber" alignment="CENTER" layoutX="-20.0" layoutY="429.0" prefHeight="26.0" prefWidth="344.0" text="Artikelnummer">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="priceDetailView" alignment="CENTER" layoutX="70.0" layoutY="475.0" prefHeight="26.0" prefWidth="344.0" text="Namn">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="ecoInfo" alignment="CENTER" layoutX="240.0" layoutY="429.0" prefHeight="26.0" prefWidth="344.0" text="Namn">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="946.0" layoutY="4.0" onMouseClicked="#closeProductDetailView" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/baseline_close_black_36dp.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="addButton" fitHeight="45.0" fitWidth="45.0" layoutX="287.0" layoutY="564.0" onMouseClicked="#clickedOnAddButton" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/baseline_add_circle_black_24dp.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="amountBox" layoutX="220.0" layoutY="575.0" prefHeight="23.0" prefWidth="45.0" />
-                  <ImageView fx:id="removeButton" fitHeight="45.0" fitWidth="45.0" layoutX="159.0" layoutY="565.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/baseline_remove_circle_black_24dp.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-         </children></AnchorPane>
       <AnchorPane fx:id="wizardWrap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" style="-fx-background-color: FF0000;" translateY="40.0" />
       <AnchorPane fx:id="frontPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: white;">
          <children>
@@ -150,5 +91,78 @@
             </ScrollPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="productDetailView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeProductDetailView" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
+         <children>
+            <AnchorPane layoutX="120.0" layoutY="80.0" onMouseClicked="#mouseTrap" prefHeight="695.0" prefWidth="933.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;">
+               <children>
+                  <ImageView fx:id="removeButtonBrown" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/remove_dark.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="removeButtonHover" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/remove_main.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="addButtonGreenDetail" fitHeight="70.0" fitWidth="70.0" layoutX="287.0" layoutY="552.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/darkAdd.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="addButtonGreenHoverDetail" fitHeight="70.0" fitWidth="70.0" layoutX="287.0" layoutY="552.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/primarGronAdd.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="closeUpImage" fitHeight="350.0" fitWidth="400.0" layoutX="60.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_help_black_18dp.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="closeUpName" alignment="CENTER" layoutX="70.0" layoutY="380.0" prefHeight="26.0" prefWidth="344.0" text="Namn">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextArea editable="false" layoutX="495.0" layoutY="51.0" prefHeight="591.0" prefWidth="450.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eleifend donec pretium vulputate sapien nec sagittis aliquam. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Diam vel quam elementum pulvinar etiam non quam lacus. Accumsan in nisl nisi scelerisque eu ultrices. Dolor magna eget est lorem ipsum dolor sit. Dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra. Volutpat diam ut venenatis tellus. Odio aenean sed adipiscing diam donec adipiscing tristique. Vitae proin sagittis nisl rhoncus mattis rhoncus." wrapText="true">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextArea>
+                  <Label fx:id="itemNumber" alignment="CENTER" layoutX="-20.0" layoutY="429.0" prefHeight="26.0" prefWidth="344.0" text="Artikelnummer">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="priceDetailView" alignment="CENTER" layoutX="70.0" layoutY="475.0" prefHeight="26.0" prefWidth="344.0" text="Namn">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ecoInfo" alignment="CENTER" layoutX="240.0" layoutY="429.0" prefHeight="26.0" prefWidth="344.0" text="Namn">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="946.0" layoutY="4.0" onMouseClicked="#closeProductDetailView" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_close_black_36dp.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="addButtonDetail" fitHeight="70.0" fitWidth="70.0" layoutX="287.0" layoutY="552.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_add_circle_black_24dp.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="amountBox" layoutX="220.0" layoutY="575.0" prefHeight="23.0" prefWidth="45.0" />
+                  <ImageView fx:id="removeButton" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_remove_circle_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
    </children>
 </StackPane>

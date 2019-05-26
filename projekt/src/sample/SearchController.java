@@ -45,7 +45,7 @@ public class SearchController implements Initializable {
     @FXML
     private AnchorPane cartPaneWrap;                                      //Detta är den ancorpane som vi fäster kundvagnen på
     @FXML
-    private ImageView addButton;
+    private ImageView addButtonDetail;
     @FXML
     private ImageView removeButton;
     @FXML
@@ -64,7 +64,18 @@ public class SearchController implements Initializable {
     private Label priceDetailView;
     @FXML
     private Label categoryPageText;
+    @FXML private ImageView addButtonGreenDetail;
+    @FXML private ImageView addButtonGreenHoverDetail;
+    @FXML private ImageView removeButtonBrown;
+    @FXML private ImageView removeButtonHover;
 
+
+    public void greenAddButtonToFront(){
+        addButtonGreenDetail.toFront();
+    }
+    public void blackAddButtonToFront(){
+        addButtonDetail.toFront();
+    }
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
 
@@ -79,6 +90,7 @@ public class SearchController implements Initializable {
     private Wizard wizard;
     private ShoppingItem activeInDetailview;
     MyPage myPage = new MyPage();
+    private ShoppingItem shoppingItem;
 
     protected void resetEveryShoppingItem() {
         for (ShoppingItem item : shoppingItemMap.values()) {
@@ -310,6 +322,18 @@ public class SearchController implements Initializable {
         mouseTrap(event); //Infoboxen skall ej komma upp
         addItemToCart(activeInDetailview);
         updateAmountInDetailView();
+        addButtonGreenDetail.toFront();
+        removeButtonBrown.toFront();
+    }
+
+    @FXML
+    protected void hoverOnAddButton(Event event){
+        addButtonGreenHoverDetail.toFront();
+    }
+
+    @FXML
+    protected void hoverOffAddButton(Event event){
+        addButtonGreenHoverDetail.toBack();
     }
 
     @FXML
@@ -317,6 +341,10 @@ public class SearchController implements Initializable {
         mouseTrap(event);
         removeItemFromCart(activeInDetailview);
         updateAmountInDetailView();
+        if (shoppingItem.getAmount()<1){
+            addButtonDetail.toFront();
+            removeButton.toFront();
+        }
     }
 
     private void updateAmountInDetailView() {
@@ -371,6 +399,11 @@ public class SearchController implements Initializable {
         backToStoreLabel.setVisible(false);
         backToStoreIcon.setVisible(false);
     }
+
+
+
+
+
 
     //Vår initialize-metod, typ som en kontruktor
     @Override

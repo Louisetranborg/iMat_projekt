@@ -34,6 +34,11 @@ public class ProductItem extends AnchorPane {
     @FXML
     protected void onClick(){ //När man klickar på ett productItem skall info om produkten komma upp
         parentController.openProductDetailView(shoppingItem);
+        if (shoppingItem.getAmount()>0){
+            parentController.greenAddButtonToFront();
+        }else{
+            parentController.blackAddButtonToFront();
+        }
     }
 
     public ProductItem(ShoppingItem shoppingItem, SearchController parentController){
