@@ -29,10 +29,6 @@ public class SearchController implements Initializable {
     @FXML
     private Button minSidaButton;                                         //Detta är min sida-knappen
     @FXML
-    private Label loginLable;                                             //Detta är texten i headers som just nu säger "inloggad som..."
-    @FXML
-    private ImageView helpIcon;
-    @FXML
     private ScrollPane productScrollPane;                                 //ScrollPane för produkterna i mitten av sidan
     @FXML
     private AnchorPane productDetailView;                                 //Detta är vår light-box som visar mer info om produkterna
@@ -64,11 +60,13 @@ public class SearchController implements Initializable {
     private Label priceDetailView;
     @FXML
     private Label categoryPageText;
+    @FXML private ScrollPane categoryScrollPane;
+    @FXML private ImageView logo;
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
 
-    private Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med productItems
+    protected Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med productItems
     Map<String, ShoppingItem> shoppingItemMap = new HashMap<String, ShoppingItem>();        //Map med shoppingitems, endast skapa dem en gång! Både productItem och cartItem pekar på samma shoppingItem.
 
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
@@ -76,14 +74,19 @@ public class SearchController implements Initializable {
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     public ToggleGroup menuToggleGroup;
-    private Wizard wizard;
+    protected Wizard wizard;
     private ShoppingItem activeInDetailview;
     MyPage myPage = new MyPage();
+
+    protected ShoppingCartPane getShoppingCartPane(){
+        return shoppingCartPane;
+    }
 
     protected void resetEveryShoppingItem() {
         for (ShoppingItem item : shoppingItemMap.values()) {
             item.setAmount(0);
             updateAmount(item);
+            productItemMap.get(item.getProduct().getName()).setBlackButton();
         }
     }
 
@@ -288,18 +291,19 @@ public class SearchController implements Initializable {
         shoppingItem.setAmount(shoppingItem.getAmount() + 1); //Ökar amount med ett
         updateAmount(shoppingItem); //Ser till att amount matchar med kundkorgens textfield
         shoppingCartPane.addProductToCart(shoppingItem);
+        productItemMap.get(shoppingItem.getProduct().getName()).setGreenButton();
     }
 
-    protected void removeItemFromCart(ShoppingItem shoppingItem) {
+    protected void subtractItemFromCart(ShoppingItem shoppingItem) {
         if (shoppingItem.getAmount() > 0) {
             shoppingItem.setAmount(shoppingItem.getAmount() - 1);
 
-            if (shoppingItem.getAmount() < 1) {
-                shoppingCartPane.removeProductFromCart(shoppingItem);
-            }
+        }
 
-        } else {
+        if((shoppingItem.getAmount() <= 0)){
             shoppingItem.setAmount(0);
+            shoppingCartPane.removeProductFromCart(shoppingItem);
+
         }
 
         updateAmount(shoppingItem);
@@ -315,7 +319,7 @@ public class SearchController implements Initializable {
     @FXML
     protected void clickedOnRemoveButton(Event event) {
         mouseTrap(event);
-        removeItemFromCart(activeInDetailview);
+        subtractItemFromCart(activeInDetailview);
         updateAmountInDetailView();
     }
 
@@ -326,38 +330,48 @@ public class SearchController implements Initializable {
     protected void wizardToFront() {
         wizardWrap.toFront();
         wizard.start();
-        //putCartInWizard();
-        putFirstCartInWizard();
-        //updateBiggerCartInWizard();
+        updateFirstCartInWizard();
         activateWizardView();
+        wizard.setCheckoutInfoBasedOnPersonalInfo();
+        wizard.resetErrorHandler();
     }
 
 
     //TODO Slå ihop wizardToFront() med activate wizardview. De åstadkommer samma sak. Kolla vilka ställen som använder metoden innan remove.
     private void activateWizardView() {
+        logo.setDisable(true);
         searchBox.setVisible(false);
-        loginLable.setVisible(false);
-        helpIcon.setVisible(false);
         minSidaButton.setVisible(false);
         backToStoreIcon.setVisible(true);
         backToStoreLabel.setVisible(true);
         wizardWrap.setVisible(true);
     }
 
-    protected void putFirstCartInWizard() {
+    protected void updateFirstCartInWizard() {
         wizard.getFirstCart().getChildren().clear();
         for (ShoppingItem shoppingItem : IMatDataHandler.getInstance().getShoppingCart().getItems()) {
             FirstCartItem firstCartItem = new FirstCartItem(shoppingItem, this);
             wizard.getFirstCart().getChildren().add(firstCartItem);
             firstCartItem.updateAmountBoxInFirstCartItem();
         }
+        wizard.updateTotalPriceInStep1();
+        if(iMatDataHandler.getShoppingCart().getItems().isEmpty()){
+            wizardToBack();
+        }
     }
 
+    protected void setBackToStoreIconDisabled(){
+        backToStoreIcon.setDisable(true);
+        backToStoreIcon.opacityProperty().setValue(0.5);
+    }
+
+    protected void setBackToStoreLabelDisabled(){
+        backToStoreLabel.setDisable(true);
+    }
 
     @FXML
     protected void wizardToBack() {
         wizardWrap.toBack();
-        //putCartInShopView();
         activateShoppingView();
         updateFrontPage();
     }
@@ -365,8 +379,6 @@ public class SearchController implements Initializable {
     //TODO undersöka en eventuell ihopkoppling av activateshoppingview och updateFrontPage. Så att det finns en tydlig funktion för att byta "view" åt alla håll.
     protected void activateShoppingView() {
         searchBox.setVisible(true);
-        loginLable.setVisible(true);
-        helpIcon.setVisible(true);
         minSidaButton.setVisible(true);
         backToStoreLabel.setVisible(false);
         backToStoreIcon.setVisible(false);
@@ -385,7 +397,6 @@ public class SearchController implements Initializable {
 
         menuToggleGroup = new ToggleGroup();
 
-        loginLable.setText("Inloggad som " + iMatDataHandler.getCustomer().getFirstName());                             //hämtar användarens namn och skriver ut det i headern.
 
         productFlowPane.setHgap(40);                                                                                    //Avstånd mellan productItems i x-led
         productFlowPane.setVgap(40);                                                                                    //Avstånd mellan productItems i y-led
@@ -396,6 +407,7 @@ public class SearchController implements Initializable {
         wizardWrap.getChildren().add(wizard);
 
         updateFrontPage();
+
 
         //TODO Låg tidigare en allcategories.fire() här.
 
@@ -410,16 +422,15 @@ public class SearchController implements Initializable {
                 updateAmount(activeInDetailview);
             }
         });
-/*
-        //Gör så att man inte kan skrolla horisontiellt i kategorierna
-        categoryScrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() {
+
+        categoryScrollPane.addEventFilter(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() {
             @Override
             public void handle(ScrollEvent event) {
                 if (event.getDeltaX() != 0) {
                     event.consume();
                 }
             }
-        });*/
+        });
 
         //Gör så att man inte kan skrolla horisontiellt i bland produkterna i mitten
         productScrollPane.addEventFilter(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() {

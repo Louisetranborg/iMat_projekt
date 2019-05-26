@@ -62,7 +62,12 @@ public class ShoppingCartPane extends AnchorPane {
         shoppingCart.addShoppingCartListener(new ShoppingCartListener() {
             @Override
             public void shoppingCartChanged(CartEvent cartEvent) {
-               updateCart();
+               if(shoppingCart.getItems().isEmpty()){
+                   toCheckoutButton.setDisable(true);
+               } else{
+                   toCheckoutButton.setDisable(false);
+               }
+                updateCart();
             }
         });
 
@@ -79,8 +84,13 @@ public class ShoppingCartPane extends AnchorPane {
         });
 
 
+        toCheckoutButton.setDisable(true);
         totalLabel.setText("Totalt " + decimalFormat.format(shoppingCart.getTotal()));
 
+    }
+
+    protected Button getToCheckoutButton(){
+        return toCheckoutButton;
     }
 
     //Skapar alla våra productCartItems och lägger dem i en Map(productCartItemMap)
@@ -98,6 +108,7 @@ public class ShoppingCartPane extends AnchorPane {
     }
 
     protected void removeProductFromCart(ShoppingItem shoppingItem){
+        parentController.productItemMap.get(shoppingItem.getProduct().getName()).setBlackButton();
         shoppingCart.removeItem(shoppingItem);
     }
 

@@ -18,3 +18,66 @@
     -fx-border-width: 1px;
     -fx-border-color: #000000;
 }
+
+
+.step-button-inactive{
+    -fx-background-color: #bdbdbd; -fx-text-fill: #000000;
+    -fx-opacity: 1;
+}
+
+.step-button-inactive:hover{
+    -fx-background-color: #98ee99; -fx-text-fill: #000000;
+    -fx-opacity: 1;
+}
+
+.step-button-active{
+    -fx-background-color: #66bb6a; -fx-text-fill: #FFFFFF;
+    -fx-opacity: 1;
+}
+
+.step-button-finished{
+    -fx-background-color: #338a3e; -fx-text-fill: #000000;
+    -fx-opacity: 1;
+}
+
+.step-button-finished:hover{
+    -fx-background-color: #98ee99; -fx-text-fill: #000000;
+    -fx-opacity: 1;
+}
+
+.step-button-disabled{
+    -fx-background-color: #bdbdbd; -fx-text-fill: #000000;
+    -fx-opacity: 0.5;
+}
+
+.cartItem{
+    -fx-border-width: 0 0 0.5 0;
+    -fx-border-color: #757575;
+}
+
+.cardError{
+    -fx-border-width: 3px;
+    -fx-border-color: #FF0000;
+}
+
+.cardError: hover{
+    -fx-border-color: #66bb6a;
+}
+
+.cardError: selected{
+    -fx-border-color: #338a3e;
+}
+
+.cardNotError{
+    -fx-border-width: 0px;
+}
+
+.cardNotError: hover{
+    -fx-border-width: 3px;
+    -fx-border-color: #66bb6a;
+}
+
+.cardNotError: selected{
+    -fx-border-width: 3px;
+    -fx-border-color: #338a3e;
+}

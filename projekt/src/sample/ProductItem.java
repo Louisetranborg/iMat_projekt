@@ -7,8 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -55,9 +53,12 @@ public class ProductItem extends AnchorPane {
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                shoppingItem.setAmount(Double.valueOf(amountBox.getText()));
-                parentController.shoppingCartPane.addProductToCart(shoppingItem);
-                if(shoppingItem.getAmount() < 1){       //Ändra om vi vill ha double-system
+                if(!amountBox.getText().isEmpty()) {
+                    shoppingItem.setAmount(Double.valueOf(amountBox.getText()));
+                    parentController.shoppingCartPane.addProductToCart(shoppingItem);
+                }
+                if(shoppingItem.getAmount() <= 0 || amountBox.getText().isEmpty()){       //Ändra om vi vill ha double-system
+                    shoppingItem.setAmount(0);
                     parentController.shoppingCartPane.removeProductFromCart(shoppingItem);
                 }
                 parentController.updateAmount(shoppingItem);
@@ -74,10 +75,6 @@ public class ProductItem extends AnchorPane {
         parentController.mouseTrap(event); //Infoboxen skall ej komma upp
         parentController.addItemToCart(shoppingItem);
         addButton2.toFront();
-
-
-
-
     }
 
     @FXML
@@ -94,20 +91,18 @@ public class ProductItem extends AnchorPane {
     @FXML
     protected void clickedOnRemoveButton(Event event) {
         parentController.mouseTrap(event);
-        parentController.removeItemFromCart(shoppingItem);
-        if (shoppingItem.getAmount()<1){
+        parentController.subtractItemFromCart(shoppingItem);
+        if (shoppingItem.getAmount() <= 0){
             addButton.toFront();
         }
     }
 
-    @FXML
-    private void glow(){
-        addButton.setEffect(new Glow(0.5));
+    protected void setBlackButton(){
+        addButton.toFront();
     }
 
-    @FXML
-    private void removeGlow(){
-        addButton.setEffect(new Glow(0));
+    protected void setGreenButton(){
+        addButton2.toFront();
     }
 
 }

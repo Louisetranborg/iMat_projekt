@@ -1,17 +1,23 @@
 package sample;
 
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
@@ -20,7 +26,9 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import java.io.IOException;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Wizard extends StackPane {
@@ -39,14 +47,23 @@ public class Wizard extends StackPane {
     @FXML private Label shipping1;
     @FXML private Label totalSum1;
     @FXML private Label moms1;
+    @FXML private Label errorMessageStep2;
+
 
     @FXML private AnchorPane paymentInfoPane;
     @FXML private DatePicker datePicker;
-    @FXML private TextField cardPersonName;
+    @FXML private TextField cardholderTextField;
+    @FXML private ToggleButton visaButton;
+    @FXML private ToggleButton mastercardButton;
+    @FXML private TextField cardnumberTextField;
+    @FXML private TextField validMonthTextField;
+    @FXML private TextField validYearTextField;
+    @FXML private TextField cvcTextField;
     @FXML private Label sum2;
     @FXML private Label shipping2;
     @FXML private Label totalSum2;
     @FXML private Label moms2;
+    @FXML private Label errorMessageStep3;
 
 
     @FXML private AnchorPane receiptPane;
@@ -59,13 +76,21 @@ public class Wizard extends StackPane {
     @FXML private Button stepOneButton;
     @FXML private Button stepTwoButton;
     @FXML private Button stepThreeButton;
+    @FXML private Line stepLine;
+    @FXML private Label confirmedLabel;
 
     @FXML private FlowPane confirmCartFlowPane;
 
     @FXML private AnchorPane firstCartPane;
     @FXML private FlowPane firstCart;
+    @FXML private ScrollPane checkoutScrollPane;
+    @FXML private CheckBox saveCheckBox;
+    @FXML private Label totalaPrisetLabel;
+    @FXML private TextField nameYourListTextField;
 
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
+    ToggleGroup cardToggleGroup = new ToggleGroup();
 
     public Wizard(SearchController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/checkout.fxml"));        //Laddar in rätt fxml-fil
@@ -81,6 +106,21 @@ public class Wizard extends StackPane {
         this.parentController = parentController;
 
         selectCorrectStepButton(1);
+
+        datePicker.editorProperty().get().setFont(new Font("Roboto-Regular", 18));
+
+        shipping1.setText("45 kr");
+        shipping2.setText("45 kr");
+
+        checkoutScrollPane.addEventFilter(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() {
+            @Override
+            public void handle(ScrollEvent event) {
+                if (event.getDeltaX() != 0) {
+                    event.consume();
+                }
+            }
+        });
+
         firstName.setText(parentController.iMatDataHandler.getCustomer().getFirstName());
         lastName.setText(parentController.iMatDataHandler.getCustomer().getLastName());
         telNumber.setText(parentController.iMatDataHandler.getCustomer().getMobilePhoneNumber());
@@ -88,12 +128,124 @@ public class Wizard extends StackPane {
         postCode.setText(parentController.iMatDataHandler.getCustomer().getPostCode());
         city.setText(parentController.iMatDataHandler.getCustomer().getPhoneNumber());
         adress.setText(parentController.iMatDataHandler.getCustomer().getAddress());
-        cardPersonName.setText(parentController.iMatDataHandler.getCustomer().getFirstName() + " " + parentController.iMatDataHandler.getCustomer().getLastName());
+        cardholderTextField.setText(parentController.iMatDataHandler.getCustomer().getFirstName() + " " + parentController.iMatDataHandler.getCustomer().getLastName());
 
-        datePicker.editorProperty().get().setFont(new Font("Roboto-Regular", 18));
+        fillErrorIconMap();
+        visaButton.setToggleGroup(cardToggleGroup);
+        mastercardButton.setToggleGroup(cardToggleGroup);
 
-        shipping1.setText("45 kr");
-        shipping2.setText("45 kr");
+        cvcTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.toCharArray().length > 3){
+                    cvcTextField.setText(oldValue);
+                }
+            }
+        });
+
+        validMonthTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.toCharArray().length > 2){
+                    validMonthTextField.setText(oldValue);
+                }
+            }
+        });
+
+        validYearTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.toCharArray().length > 2){
+                    validYearTextField.setText(oldValue);
+                }
+            }
+        });
+
+        cardnumberTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() < 20){
+                    Platform.runLater(() -> {
+                        String inputInCardformat = toCreditCardFormat(newValue);
+                        cardnumberTextField.setText(inputInCardformat);
+                        cardnumberTextField.positionCaret(inputInCardformat.length());
+                    });
+                } else{
+                    cardnumberTextField.setText(oldValue);
+                }
+            }
+        });
+
+        visaButton.getStyleClass().clear();
+        visaButton.getStyleClass().add("cardNotError");
+        mastercardButton.getStyleClass().clear();
+        mastercardButton.getStyleClass().add("cardNotError");
+
+        /*
+        firstName.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                highlightEmptyError(firstName);
+            }
+        });
+
+         */
+
+        datePicker.getEditor().textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                highlightEmptyError(datePicker.getEditor());
+            }
+        });
+
+        visaButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                highlightCardIsNotSelectedError();
+            }
+        });
+
+        mastercardButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                highlightCardIsNotSelectedError();
+            }
+        });
+    }
+
+    private int extractDigits(String string){
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i < string.length(); i++){
+            char c = string.charAt(i);
+            if(Character.isDigit(c)){
+                stringBuilder.append(c);
+            }
+        }
+        return Integer.valueOf(stringBuilder.toString());
+    }
+
+    private String toCreditCardFormat(String string){
+        String numbers = extractDigitsToString(string);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i < numbers.length(); i++){
+            if(i==4 || i==8 || i==12 || i==16){
+                stringBuilder.append("-");
+            }
+            stringBuilder.append(numbers.charAt(i));
+        }
+        return stringBuilder.toString();
+    }
+
+    private String extractDigitsToString(String string){
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i < string.length(); i++){
+            char c = string.charAt(i);
+            if(Character.isDigit(c)){
+                stringBuilder.append(c);
+            }
+        }
+        return stringBuilder.toString();
     }
 
     private void confirmOrder(){
@@ -111,6 +263,34 @@ public class Wizard extends StackPane {
         orderNumber.setText(String.valueOf(parentController.iMatDataHandler.getOrders().get(parentController.iMatDataHandler.getOrders().size() - 1).getOrderNumber()));
         orderDate.setText(String.valueOf(parentController.iMatDataHandler.getOrders().get(parentController.iMatDataHandler.getOrders().size() - 1).getDate()));
         deliveryAdr.setText(adress.getText() + ", " + city.getText());
+        clearCheckoutInfo();
+    }
+
+    private void clearCheckoutInfo(){
+        firstName.clear();
+        lastName.clear();
+        telNumber.clear();
+        adress.clear();
+        city.clear();
+        postCode.clear();
+        mail.clear();
+        datePicker.getEditor().clear();
+        cvcTextField.clear();
+        validYearTextField.clear();
+        validMonthTextField.clear();
+        cardnumberTextField.clear();
+        cardholderTextField.clear();
+    }
+
+    protected void setCheckoutInfoBasedOnPersonalInfo(){
+        firstName.setText(parentController.iMatDataHandler.getCustomer().getFirstName());
+        lastName.setText(parentController.iMatDataHandler.getCustomer().getLastName());
+        telNumber.setText(parentController.iMatDataHandler.getCustomer().getMobilePhoneNumber());
+        mail.setText(parentController.iMatDataHandler.getCustomer().getEmail());
+        postCode.setText(parentController.iMatDataHandler.getCustomer().getPostCode());
+        city.setText(parentController.iMatDataHandler.getCustomer().getPhoneNumber());
+        adress.setText(parentController.iMatDataHandler.getCustomer().getAddress());
+        cardholderTextField.setText(parentController.iMatDataHandler.getCustomer().getFirstName() + " " + parentController.iMatDataHandler.getCustomer().getLastName());
     }
 
     /*
@@ -134,9 +314,9 @@ public class Wizard extends StackPane {
     protected void updateOverlookLabels(){
         sum1.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal()) + " kr");
         sum2.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal()) + " kr");
-        totalSum1.setText((parentController.iMatDataHandler.getShoppingCart().getTotal() + 45) + " kr");
-        totalSum2.setText((parentController.iMatDataHandler.getShoppingCart().getTotal() + 45) + " kr");
-        moms1.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal() * 0.12) + "kr");
+        totalSum1.setText((decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal() + 45) + " kr"));
+        totalSum2.setText((decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal() + 45) + " kr"));
+        moms1.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal() * 0.12) + " kr");
         moms2.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal() * 0.12) + " kr");
     }
 
@@ -156,6 +336,52 @@ public class Wizard extends StackPane {
     }
 
     protected void start(){
+        updateTotalPriceInStep1();
+        goToStep1();
+    }
+
+    protected void updateTotalPriceInStep1(){
+        totalaPrisetLabel.setText("Totalt: " + decimalFormat.format(IMatDataHandler.getInstance().getShoppingCart().getTotal()) + " kr");
+    }
+
+    private void selectCorrectStepButton(int i){
+        switch (i){
+            case(1):
+                stepOneButton.getStyleClass().clear();
+                stepOneButton.getStyleClass().add("step-button-active");
+                stepTwoButton.getStyleClass().clear();
+                stepTwoButton.getStyleClass().add("step-button-inactive");
+                stepThreeButton.getStyleClass().clear();
+                stepThreeButton.getStyleClass().add("step-button-disabled");
+                stepThreeButton.setDisable(true);
+                break;
+            case(2):
+                stepOneButton.getStyleClass().clear();
+                stepOneButton.getStyleClass().add("step-button-finished");
+                stepTwoButton.getStyleClass().clear();
+                stepTwoButton.getStyleClass().add("step-button-active");
+                stepThreeButton.getStyleClass().clear();
+                stepThreeButton.getStyleClass().add("step-button-inactive");
+                stepThreeButton.setDisable(false);
+                break;
+            case(3):
+                stepOneButton.getStyleClass().clear();
+                stepOneButton.getStyleClass().add("step-button-finished");
+                stepTwoButton.getStyleClass().clear();
+                stepTwoButton.getStyleClass().add("step-button-finished");
+                stepThreeButton.getStyleClass().clear();
+                stepThreeButton.getStyleClass().add("step-button-active");
+                break;
+        }
+    }
+
+
+
+
+    //------------------------------------------------------------------------------------------------------------------ Navigation i wizard
+
+    @FXML
+    protected void goToStep1(){
         firstCartPane.setVisible(true);
         personalInfoPane.setVisible(false);
         paymentInfoPane.setVisible(false);
@@ -164,50 +390,300 @@ public class Wizard extends StackPane {
     }
 
     @FXML
-    private void fromStartToPersonal(){
+    private void goToStep2(){
         firstCartPane.setVisible(false);
         personalInfoPane.setVisible(true);
         paymentInfoPane.setVisible(false);
-        receiptPane.setVisible(false);
-        updateOverlookLabels();
-    }
-
-    @FXML
-    private void fromPersonalToPayment(){
-        firstCartPane.setVisible(false);
-        personalInfoPane.setVisible(false);
-        paymentInfoPane.setVisible(true);
         receiptPane.setVisible(false);
         selectCorrectStepButton(2);
         updateOverlookLabels();
     }
 
     @FXML
-    private void fromPaymentToReceipt(){
-        firstCartPane.setVisible(false);
-        personalInfoPane.setVisible(false);
-        paymentInfoPane.setVisible(false);
-        receiptPane.setVisible(true);
-        confirmOrder();
+    private void goToStep3(){
+        if(isStep2Complete()) {
+            firstCartPane.setVisible(false);
+            personalInfoPane.setVisible(false);
+            paymentInfoPane.setVisible(true);
+            receiptPane.setVisible(false);
+            selectCorrectStepButton(3);
+            updateOverlookLabels();
+        }
+        handleErrorsStep2();
     }
 
-    private void selectCorrectStepButton(int i){
-        switch (i){
-            case(1):
-                stepOneButton.setStyle("-fx-background-color: #66bb6a; -fx-text-fill: #FFFFFF;");
-                stepTwoButton.setStyle("-fx-background-color: #bdbdbd; -fx-text-fill: #000000;");
-                stepThreeButton.setStyle("-fx-background-color: #bdbdbd; -fx-text-fill: #000000;");
-                break;
-            case(2):
-                stepOneButton.setStyle("-fx-background-color: #bdbdbd; -fx-text-fill: #000000;");
-                stepTwoButton.setStyle("-fx-background-color: #66bb6a; -fx-text-fill: #FFFFFF;");
-                stepThreeButton.setStyle("-fx-background-color: #bdbdbd; -fx-text-fill: #000000;");
-                break;
-            case(3):
-                stepOneButton.setStyle("-fx-background-color: #bdbdbd; -fx-text-fill: #000000;");
-                stepTwoButton.setStyle("-fx-background-color: #bdbdbd; -fx-text-fill: #000000;");
-                stepThreeButton.setStyle("-fx-background-color: #66bb6a; -fx-text-fill: #FFFFFF;");
-                break;
+    @FXML
+    private void goToStep4(){
+        if(isStep3Complete()) {
+            firstCartPane.setVisible(false);
+            personalInfoPane.setVisible(false);
+            paymentInfoPane.setVisible(false);
+            receiptPane.setVisible(true);
+            parentController.setBackToStoreIconDisabled();
+            parentController.setBackToStoreLabelDisabled();
+            stepOneButton.setVisible(false);
+            stepTwoButton.setVisible(false);
+            stepThreeButton.setVisible(false);
+            stepLine.setVisible(false);
+            confirmedLabel.setVisible(true);
+            confirmOrder();
+        }
+        handleErrorStep3();
+    }
+
+
+    //------------------------------------------------------------------------------------------------------------------ Felhantering
+
+    protected void resetErrorHandler(){
+        hideErrorIcon(firstName);
+        hideErrorIcon(lastName);
+        hideErrorIcon(telNumber);
+        hideErrorIcon(city);
+        hideErrorIcon(adress);
+        hideErrorIcon(postCode);
+        hideErrorIcon(mail);
+        hideErrorIcon(datePicker.getEditor());
+        hideErrorIcon(cardnumberTextField);
+        hideErrorIcon(cardholderTextField);
+        hideErrorIcon(validMonthTextField);
+        hideErrorIcon(validYearTextField);
+        hideErrorIcon(cvcTextField);
+
+        resetBorderOnCardTypeButton(visaButton);
+        resetBorderOnCardTypeButton(mastercardButton);
+        resetBordersOnTextField(firstName);
+        resetBordersOnTextField(lastName);
+        resetBordersOnTextField(telNumber);
+        resetBordersOnTextField(city);
+        resetBordersOnTextField(adress);
+        resetBordersOnTextField(postCode);
+        resetBordersOnTextField(mail);
+        resetBordersOnTextField(datePicker.getEditor());
+        resetBordersOnTextField(cardnumberTextField);
+        resetBordersOnTextField(cardholderTextField);
+        resetBordersOnTextField(validYearTextField);
+        resetBordersOnTextField(validMonthTextField);
+        resetBordersOnTextField(cvcTextField);
+
+        errorMessageStep2.setVisible(true);
+        errorMessageStep3.setVisible(true);
+    }
+
+    private boolean containsDigitsOnly(TextField textField){        //returnar true om textfieldens text endast består av siffror, spacebars och bindestreck
+        char[] chars = textField.getText().toCharArray();
+        for(char c : chars){
+            if(!String.valueOf(c).equals(" ") && !Character.isDigit(c) && !String.valueOf(c).equals("-")){
+                System.out.print(textField.getText() + "doesnt only contain digits");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isEmailFormat(TextField textField){       //returnar true om textfieldens text innehåller @ och punkt
+        if(textField.getText().contains("@") && textField.getText().contains(".")){
+            System.out.print(textField.getText() + "doesnt contain snabel a");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isEmpty(TextField textField){       //returnar true om textfieldens textruta inte innehåller något
+        return textField.getText().isEmpty();
+    }
+
+    private boolean isStep2Complete(){
+        return !isEmpty(firstName) && !isEmpty(lastName) && !isEmpty(postCode) && !isEmpty(telNumber) && !isEmpty(mail) && !isEmpty(city)
+                && !isEmpty(adress) && containsDigitsOnly(postCode) && isEmailFormat(mail) && containsDigitsOnly(telNumber);
+    }
+
+    private void handleErrorsStep2(){
+        if(!isStep2Complete()){
+            errorMessageStep2.setVisible(true);
+        } else {
+            errorMessageStep2.setVisible(false);
+        }
+
+        highlightEmptyError(firstName);
+        highlightEmptyError(lastName);
+        highlightEmptyError(adress);
+        highlightEmptyError(city);
+        highlightEmptyOrDigitsOnlyError(postCode);
+        highlightEmptyOrDigitsOnlyError(telNumber);
+        highlightEmptyOrEmailFormatError(mail);
+    }
+
+    private boolean isStep3Complete(){
+        return !isEmpty(datePicker.getEditor()) && !isEmpty(cardnumberTextField) && !isEmpty(cardholderTextField) && !isEmpty(validMonthTextField)
+                && !isEmpty(validYearTextField) && !isEmpty(cvcTextField) &&isCardTypeSelected() && containsDigitsOnly(validYearTextField)
+                && containsDigitsOnly(validMonthTextField) && containsDigitsOnly(cvcTextField);
+    }
+
+    private void handleErrorStep3(){
+        if(!isStep3Complete()){
+            errorMessageStep3.setVisible(true);
+        } else{
+            errorMessageStep3.setVisible(false);
+        }
+
+        highlightEmptyError(datePicker.getEditor());
+        highlightEmptyError(cardholderTextField);
+        highlightEmptyError(cardnumberTextField);
+        highlightEmptyOrDigitsOnlyError(validMonthTextField);
+        highlightEmptyOrDigitsOnlyError(validYearTextField);
+        highlightEmptyOrDigitsOnlyError(cvcTextField);
+        highlightCardIsNotSelectedError();
+
+    }
+
+    private void highlightEmptyError(TextField textField){      //visar vilken textfield som är fel om den är empty
+        if(isEmpty(textField)){
+            setRedBordersOnTextField(textField);
+            showErrorIcon(textField);
+            showErrorMessage(textField);
+        } else {
+            resetBordersOnTextField(textField);
+            hideErrorIcon(textField);
+        }
+    }
+
+    private void highlightEmptyOrDigitsOnlyError(TextField textField){      //visar vilken textfield som är fel om den är empty eller om den inte bara inntehåller siffror
+        if(isEmpty(textField) || !containsDigitsOnly(textField)){
+            setRedBordersOnTextField(textField);
+            showErrorIcon(textField);
+            showErrorMessage(textField);
+        } else {
+            resetBordersOnTextField(textField);
+            hideErrorIcon(textField);
+        }
+    }
+
+    private void highlightEmptyOrEmailFormatError(TextField textField){     //visar vilken textfield som är fel om den är empty eller ej i email-format
+        if(isEmpty(textField) || !isEmailFormat(textField)){
+            setRedBordersOnTextField(textField);
+            showErrorIcon(textField);
+            showErrorMessage(textField);
+        } else {
+            resetBordersOnTextField(textField);
+            hideErrorIcon(textField);
+        }
+    }
+
+    private void highlightCardIsNotSelectedError(){
+        if(!isCardTypeSelected()){
+            setRedBorderOnCardTypeButton(visaButton);
+            setRedBorderOnCardTypeButton(mastercardButton);
+        } else{
+            resetBorderOnCardTypeButton(visaButton);
+            resetBorderOnCardTypeButton(mastercardButton);
+        }
+    }
+
+    private void setRedBorderOnCardTypeButton(ToggleButton toggleButton){
+        toggleButton.getStyleClass().clear();
+        toggleButton.getStyleClass().add("cardError");
+    }
+
+    private void resetBorderOnCardTypeButton(ToggleButton toggleButton){
+        toggleButton.getStyleClass().clear();
+        toggleButton.getStyleClass().add("cardNotError");
+    }
+
+    private void setRedBordersOnTextField(TextField textField){
+        textField.setStyle("-fx-border-width: 3px; -fx-border-color: #FF0000;");
+    }
+
+    private void resetBordersOnTextField(TextField textField){
+        textField.setStyle("");
+    }
+
+    private boolean isCardTypeSelected(){
+        if(visaButton.isSelected()){
+            return true;
+        } else if(mastercardButton.isSelected()){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------ Felhantering med icons
+
+    @FXML private ImageView errorFirstNameIcon;
+    @FXML private ImageView errorLastNameIcon;
+    @FXML private ImageView errorTelNumberIcon;
+    @FXML private ImageView errorMailIcon;
+    @FXML private ImageView errorPostCodeIcon;
+    @FXML private ImageView errorCityIcon;
+    @FXML private ImageView errorAdressIcon;
+
+    @FXML private ImageView errorDatePickerIcon;
+    @FXML private ImageView errorCardTypeIcon;
+    @FXML private ImageView errorCardNumberIcon;
+    @FXML private ImageView errorCardHolderIcon;
+    @FXML private ImageView errorValidMonthIcon;
+    @FXML private ImageView errorValidYearIcon;
+    @FXML private ImageView errorCVCIcon;
+
+    Map<TextField, ImageView> errorIconMap = new HashMap<TextField, ImageView>();
+
+    private void fillErrorIconMap(){
+        errorIconMap.put(firstName,errorFirstNameIcon);
+        errorIconMap.put(lastName,errorLastNameIcon);
+        errorIconMap.put(telNumber,errorTelNumberIcon);
+        errorIconMap.put(mail,errorMailIcon);
+        errorIconMap.put(postCode,errorPostCodeIcon);
+        errorIconMap.put(city,errorCityIcon);
+        errorIconMap.put(adress,errorAdressIcon);
+
+        errorIconMap.put(datePicker.getEditor(),errorDatePickerIcon);
+        errorIconMap.put(cardnumberTextField,errorCardNumberIcon);
+        errorIconMap.put(cardholderTextField, errorCardHolderIcon);
+        errorIconMap.put(validMonthTextField,errorValidMonthIcon);
+        errorIconMap.put(validYearTextField,errorValidYearIcon);
+        errorIconMap.put(cvcTextField,errorCVCIcon);
+    }
+
+    private void showErrorIcon(TextField textField){
+        errorIconMap.get(textField).setVisible(true);
+    }
+
+    private void hideErrorIcon(TextField textField){
+        errorIconMap.get(textField).setVisible(false);
+    }
+
+    private void showErrorMessage(TextField textField){
+        StringBuilder errorMessage = new StringBuilder();
+        Tooltip tooltip = new Tooltip();
+        if(isEmpty(textField)){
+            errorMessage.append("Textfältet får ej vara tomt.\n");
+        }
+        if(!containsDigitsOnly(textField) && (textField.equals(postCode) || textField.equals(telNumber) || textField.equals(validMonthTextField)
+            || textField.equals(validYearTextField) || textField.equals(cvcTextField))){
+            errorMessage.append("Textfältet får endast innehålla siffror, bindestreck och mellanslag.\n");
+        }
+        if(!isEmailFormat(textField) && textField.equals(mail)){
+            errorMessage.append("Textfältet måste innehålla en giltlig email-adress.\n");
+        }
+        ImageView errorIcon = errorIconMap.get(textField);
+        tooltip.setText(errorMessage.toString());
+        tooltip.setFont(new Font(18));
+        Tooltip.install(textField, tooltip);
+        Tooltip.install(errorIcon, tooltip);
+
+    }
+
+
+    //------------------------------------------------------------------------------------------------------------------
+
+
+    @FXML
+    private void hideOrShowShoppingListNameTextField(){     //visar/gömmer textfield där man skriver in namnet på inköpslistan
+        if(!nameYourListTextField.isVisible()){
+            nameYourListTextField.setVisible(true);
+
+        } else if(nameYourListTextField.isVisible()){
+            nameYourListTextField.setVisible(false);
         }
     }
 

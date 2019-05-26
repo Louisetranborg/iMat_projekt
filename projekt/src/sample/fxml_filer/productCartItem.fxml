@@ -13,24 +13,29 @@
          <image>
             <Image url="@../images/baseline_add_circle_black_24dp.png" />
          </image></ImageView>
-      <Label fx:id="cartName" alignment="CENTER" layoutX="128.0" layoutY="10.0" prefHeight="18.0" prefWidth="108.0" text="Produktnamn">
+      <Label fx:id="cartName" alignment="CENTER" layoutX="110.0" layoutY="6.0" prefHeight="23.0" prefWidth="150.0" text="Produktnamn">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font></Label>
-      <TextField fx:id="amountBox" layoutX="165.0" layoutY="37.0" prefHeight="24.0" prefWidth="37.0" />
-      <ImageView fx:id="addButton" fitHeight="150.0" fitWidth="45.0" layoutX="202.0" layoutY="28.0" onMouseClicked="#clickedOnAddButton" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="amountBox" layoutX="162.0" layoutY="36.0" prefHeight="28.0" prefWidth="46.0" />
+      <ImageView fx:id="addButtonHover" fitHeight="40.0" fitWidth="40.0" layoutX="210.0" layoutY="30.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/baseline_add_circle_black_24dp.png" />
+            <Image url="@../images/primarGronAdd.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="removeButton" fitHeight="150.0" fitWidth="45.0" layoutX="120.0" layoutY="28.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="addButton" fitHeight="40.0" fitWidth="40.0" layoutX="210.0" layoutY="30.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/darkAdd.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="removeButton" fitHeight="40.0" fitWidth="40.0" layoutX="120.0" layoutY="30.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/baseline_remove_circle_black_24dp.png" />
          </image>
       </ImageView>
-      <Label fx:id="price" alignment="CENTER" layoutX="126.0" layoutY="73.0" prefHeight="18.0" prefWidth="116.0" text="pris">
+      <Label fx:id="price" alignment="CENTER_RIGHT" layoutX="130.0" layoutY="74.0" prefHeight="18.0" prefWidth="116.0" text="pris">
          <font>
-            <Font size="14.0" />
+            <Font size="16.0" />
          </font>
       </Label>
    </children>

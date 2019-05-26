@@ -1,5 +1,8 @@
 package sample;
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -22,6 +25,8 @@ public class FirstCartItem extends AnchorPane {
     @FXML private ImageView addButton;
     @FXML private ImageView removeButton;
     @FXML private Label price;
+    @FXML private ImageView addButtonHover;
+
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     public FirstCartItem(ShoppingItem shoppingItem, SearchController parentController) {
@@ -39,6 +44,23 @@ public class FirstCartItem extends AnchorPane {
         this.parentController = parentController;
         image.setImage(IMatDataHandler.getInstance().getFXImage(shoppingItem.getProduct()));
         title.setText(shoppingItem.getProduct().getName());
+
+        amountBox.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if(!amountBox.getText().isEmpty()) {
+                    shoppingItem.setAmount(Double.valueOf(amountBox.getText()));
+                    parentController.shoppingCartPane.addProductToCart(shoppingItem);
+                }
+                if(shoppingItem.getAmount() <= 0 || amountBox.getText().isEmpty()){       //Ändra om vi vill ha double-system
+                    shoppingItem.setAmount(0);
+                    parentController.shoppingCartPane.removeProductFromCart(shoppingItem);
+                }
+                parentController.updateAmount(shoppingItem);
+                parentController.updateFirstCartInWizard();
+            }
+        });
+
         price.setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
 
     }
@@ -47,18 +69,29 @@ public class FirstCartItem extends AnchorPane {
     private void clickedOnAddButton(){
         parentController.addItemToCart(shoppingItem);
         //parentController.updateBiggerCartInWizard();
-        parentController.putFirstCartInWizard();
+        parentController.updateFirstCartInWizard();
     }
 
     @FXML
     private void clickedOnRemoveButton(){
-        parentController.removeItemFromCart(shoppingItem);
+        parentController.subtractItemFromCart(shoppingItem);
         //parentController.updateBiggerCartInWizard();
-        parentController.putFirstCartInWizard();
+        parentController.updateFirstCartInWizard();
     }
 
     protected void updateAmountBoxInFirstCartItem(){
         amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
     }
+
+    @FXML
+    protected void hoverOnAddButton(Event event){
+        addButtonHover.toFront();
+    }
+
+    @FXML
+    protected void hoverOffAddButton(Event event){
+        addButtonHover.toBack();
+    }
+
 
 }

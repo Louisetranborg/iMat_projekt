@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,7 @@ public class CartItem extends AnchorPane {
     @FXML private ImageView removeButton;
     @FXML private ImageView addButton;
     @FXML private Label price;
+    @FXML private ImageView addButtonHover;
 
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
@@ -41,7 +43,7 @@ public class CartItem extends AnchorPane {
 
     @FXML
     private void clickedOnRemoveButton(){
-        parentController.removeItemFromCart(shoppingItem);
+        parentController.subtractItemFromCart(shoppingItem);
     }
 
     protected void updateAmountInCartItem(){
@@ -67,9 +69,12 @@ public class CartItem extends AnchorPane {
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                shoppingItem.setAmount(Double.valueOf(amountBox.getText()));
-                parentController.shoppingCartPane.addProductToCart(shoppingItem);
-                if(shoppingItem.getAmount() < 1){       //Ändra om vi vill ha double-system
+                if(!amountBox.getText().isEmpty()) {
+                    shoppingItem.setAmount(Double.valueOf(amountBox.getText()));
+                    parentController.shoppingCartPane.addProductToCart(shoppingItem);
+                }
+                if(shoppingItem.getAmount() <= 0 || amountBox.getText().isEmpty()){       //Ändra om vi vill ha double-system
+                    shoppingItem.setAmount(0);
                     parentController.shoppingCartPane.removeProductFromCart(shoppingItem);
                 }
                 parentController.updateAmount(shoppingItem);
@@ -78,6 +83,16 @@ public class CartItem extends AnchorPane {
 
         price.setText(shoppingItem.getTotal() + " kr");
 
+    }
+
+    @FXML
+    protected void hoverOnAddButton(Event event){
+        addButtonHover.toFront();
+    }
+
+    @FXML
+    protected void hoverOffAddButton(Event event){
+        addButtonHover.toBack();
     }
 
 

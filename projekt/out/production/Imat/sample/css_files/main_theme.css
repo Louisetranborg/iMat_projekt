@@ -81,8 +81,8 @@
     .toCartButton{
         -fx-background-color: #66bb6a;
         -fx-text-fill: #000000;
-        -fx-font-family: "Roboto";
-        -fx-font-size: 16px;
+        -fx-font-family: "Roboto-Regular";
+        -fx-font-size: 18px;
     }
 
     .toCartButton: hover{
@@ -97,7 +97,7 @@
     }*/
 
 
-    .nextButton{
+    .categoryButton{
         -fx-background-color: #FFFFFF;
         -fx-text-fill: #000000;
         -fx-font-family: "Roboto";
@@ -106,15 +106,15 @@
 
     }
 
-    .nextButton:hover{
+    .categoryButton:hover{
         -fx-background-color: #98ee99;
     }
 
-    .nextButton:pressed{
+    .categoryButton:pressed{
         -fx-background-color: #66bb6a;
     }
 
-    .nextButton:selected{
+    .categoryButton:selected{
         -fx-background-color: #66bb6a;
     }
 

@@ -5,8 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import se.chalmers.cse.dat216.project.ShoppingCart;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class MyPage extends StackPane {
 
@@ -17,6 +21,17 @@ public class MyPage extends StackPane {
     @FXML AnchorPane savedCartPage;
     @FXML AnchorPane personalDataPage;
     @FXML VBox historyOrderVbox;
+
+    private List<ShoppingList> shoppingLists = new ArrayList<>();
+
+    protected List<ShoppingList> getShoppingLists(){
+        return shoppingLists;
+    }
+
+
+    protected void addNewShoppingList(ShoppingList shoppingList){       //lägger till en ny inköpslista och lägger den i flowpane
+        shoppingLists.add(shoppingList);
+    }
 
     public MyPage(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/myPage.fxml"));

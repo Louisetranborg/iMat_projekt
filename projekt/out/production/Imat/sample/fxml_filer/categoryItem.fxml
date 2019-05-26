@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="260.0" stylesheets="@../css_files/main_theme.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="260.0" stylesheets="@../css_files/main_theme.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <RadioButton fx:id="categoryButton" mnemonicParsing="false" onMousePressed="#onClick" prefHeight="60.0" prefWidth="260.0" styleClass="nextButton" stylesheets="@../css_files/main_theme.css" text="Kategori">
+      <RadioButton fx:id="categoryButton" mnemonicParsing="false" onMousePressed="#onClick" prefHeight="60.0" prefWidth="260.0" styleClass="categoryButton" stylesheets="@../css_files/main_theme.css" text="Kategori">
          <font>
             <Font size="18.0" />
          </font>
