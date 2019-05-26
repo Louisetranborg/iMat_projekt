@@ -95,6 +95,18 @@ public class ProductItem extends AnchorPane {
 
 
     @FXML
+    protected void hoverOnRemoveButton(Event event){
+        removeButtonHover.toFront();
+    }
+
+    @FXML
+    protected void hoverOffRemoveButton(Event event){
+        removeButtonHover.toBack();
+    }
+
+
+
+    @FXML
     protected void clickedOnRemoveButton(Event event) {
         parentController.mouseTrap(event);
         parentController.removeItemFromCart(shoppingItem);
