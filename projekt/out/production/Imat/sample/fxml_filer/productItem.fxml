@@ -30,7 +30,7 @@
             <Image url="@../images/darkAdd.png" />
          </image>
       </ImageView>
-      <Label fx:id="name" alignment="CENTER" layoutY="194.0" prefHeight="23.0" prefWidth="250.0" text="Produktnamn">
+      <Label fx:id="name" alignment="CENTER" layoutY="181.0" prefHeight="23.0" prefWidth="250.0" styleClass="name" text="Produktnamn">
          <font>
             <Font size="18.0" />
          </font></Label>
@@ -44,7 +44,7 @@
          </image>
       </ImageView>
       <TextField fx:id="amountBox" layoutX="103.0" layoutY="245.0" prefHeight="23.0" prefWidth="45.0" />
-      <Label fx:id="price" alignment="CENTER" layoutY="217.0" prefHeight="18.0" prefWidth="250.0" text="Pris" AnchorPane.leftAnchor="0.0">
+      <Label fx:id="price" alignment="CENTER" layoutX="-2.0" layoutY="211.0" prefHeight="18.0" prefWidth="250.0" styleClass="price" text="Pris" AnchorPane.leftAnchor="-2.0">
          <font>
             <Font size="14.0" />
          </font>

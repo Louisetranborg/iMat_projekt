@@ -72,6 +72,7 @@ public class SearchController implements Initializable {
     @FXML private ImageView closeDetailView;
 
 
+
     public void greenAddButtonToFrontDetail(){
         addButtonGreenDetail.toFront();
     }
@@ -348,11 +349,13 @@ public class SearchController implements Initializable {
     @FXML
     protected void hoverOnAddButton(Event event){
         addButtonGreenHoverDetail.toFront();
+
     }
 
     @FXML
     protected void hoverOffAddButton(Event event){
         addButtonGreenHoverDetail.toBack();
+
     }
 
     @FXML
