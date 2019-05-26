@@ -26,6 +26,8 @@ public class ProductItem extends AnchorPane {
     @FXML private ImageView removeButton;
     @FXML private ImageView addButton2;
     @FXML private ImageView addButtonHover;
+    @FXML private ImageView removeButtonBrown;
+    @FXML private ImageView removeButtonHover;
     @FXML private TextField amountBox;
 
 
@@ -74,6 +76,7 @@ public class ProductItem extends AnchorPane {
         parentController.mouseTrap(event); //Infoboxen skall ej komma upp
         parentController.addItemToCart(shoppingItem);
         addButton2.toFront();
+        removeButtonBrown.toFront();
 
 
 
@@ -97,6 +100,7 @@ public class ProductItem extends AnchorPane {
         parentController.removeItemFromCart(shoppingItem);
         if (shoppingItem.getAmount()<1){
             addButton.toFront();
+            removeButton.toFront();
         }
     }
 

@@ -10,6 +10,16 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="280.0" prefWidth="250.0" styleClass="anchorPane" stylesheets="@../css_files/productItem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <ImageView fx:id="removeButtonHover" fitHeight="45.0" fitWidth="45.0" layoutX="52.0" layoutY="235.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/remove_main.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="removeButtonBrown" fitHeight="45.0" fitWidth="45.0" layoutX="52.0" layoutY="235.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/remove_dark.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="addButtonHover" fitHeight="45.0" fitWidth="45.0" layoutX="153.0" layoutY="235.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/primarGronAdd.png" />
