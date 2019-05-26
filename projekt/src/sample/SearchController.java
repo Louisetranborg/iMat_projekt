@@ -379,6 +379,7 @@ public class SearchController implements Initializable {
         switch (string){
             case "Pasta": return "pasta";
             case "baljväxt" : return "pod";
+            case "baljväxter" : return "pod";
             case "bröd" : return "bread";
             case "bär" : return "berry";
             case "citrus" : return "citrus_fruit";
@@ -402,7 +403,7 @@ public class SearchController implements Initializable {
             case "sött" : return "sweet";
             case "ört" : return "herb";
             case "örter" : return "herb";
-
+            case "grönsaker" : return "vegetable_fruit";
             default: return string;
         }
     }

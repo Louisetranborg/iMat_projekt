@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="393" column="52" selection-start-line="393" selection-start-column="52" selection-end-line="393" selection-end-column="52" />
+            <state>
+              <caret line="375" lean-forward="true" selection-start-line="375" selection-end-line="375" />
             </state>
           </provider>
         </entry>
@@ -157,7 +157,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1740000" />
+    <option name="totallyTimeSpent" value="2325000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
@@ -218,8 +218,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="393" column="52" selection-start-line="393" selection-start-column="52" selection-end-line="393" selection-end-column="52" />
+        <state>
+          <caret line="375" lean-forward="true" selection-start-line="375" selection-end-line="375" />
         </state>
       </provider>
     </entry>
