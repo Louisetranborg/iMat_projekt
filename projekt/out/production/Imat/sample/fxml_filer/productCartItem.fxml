@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -12,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="260.0" styleClass="cartItem" stylesheets="@../css_files/cart.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="260.0" styleClass="cartItem" stylesheets="@../css_files/cart.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="addButtonGreenHover" fitHeight="150.0" fitWidth="45.0" layoutX="208.0" layoutY="28.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="addButtonGreenHover" fitHeight="150.0" fitWidth="45.0" layoutX="208.0" layoutY="33.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/primarGronAdd.png" />
          </image>
@@ -27,20 +22,28 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <TextField fx:id="amountBox" layoutX="162.0" layoutY="36.0" prefHeight="28.0" prefWidth="46.0" />
-      <ImageView fx:id="removeButton" fitHeight="40.0" fitWidth="40.0" layoutX="120.0" layoutY="30.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/baseline_remove_circle_black_24dp.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="price" alignment="CENTER_RIGHT" layoutX="130.0" layoutY="74.0" prefHeight="18.0" prefWidth="116.0" text="pris">
+      <TextField fx:id="amountBox" layoutX="162.0" layoutY="36.0" prefHeight="28.0" prefWidth="46.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <Label fx:id="price" alignment="CENTER_RIGHT" layoutX="130.0" layoutY="74.0" prefHeight="18.0" prefWidth="116.0" styleClass="priceText" text="pris">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ImageView fx:id="addButtonGreen" fitHeight="150.0" fitWidth="45.0" layoutX="208.0" layoutY="28.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="addButtonGreen" fitHeight="150.0" fitWidth="45.0" layoutX="208.0" layoutY="33.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/darkAdd.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="removeButtonHover" fitHeight="40.0" fitWidth="40.0" layoutX="120.0" layoutY="35.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/remove_main.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="removeButton" fitHeight="40.0" fitWidth="40.0" layoutX="120.0" layoutY="35.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/remove_dark.png" />
          </image>
       </ImageView>
    </children>
