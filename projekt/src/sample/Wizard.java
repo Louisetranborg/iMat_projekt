@@ -1,9 +1,7 @@
 package sample;
 
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,13 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
@@ -64,6 +62,7 @@ public class Wizard extends StackPane {
     @FXML private Label totalSum2;
     @FXML private Label moms2;
     @FXML private Label errorMessageStep3;
+    @FXML private Button confirmPaymentButton;
 
 
     @FXML private AnchorPane receiptPane;
@@ -76,8 +75,9 @@ public class Wizard extends StackPane {
     @FXML private Button stepOneButton;
     @FXML private Button stepTwoButton;
     @FXML private Button stepThreeButton;
-    @FXML private Line stepLine;
     @FXML private Label confirmedLabel;
+    @FXML private Rectangle stepLineOne;
+    @FXML private Rectangle stepLineTwo;
 
     @FXML private FlowPane confirmCartFlowPane;
 
@@ -87,6 +87,7 @@ public class Wizard extends StackPane {
     @FXML private CheckBox saveCheckBox;
     @FXML private Label totalaPrisetLabel;
     @FXML private TextField nameYourListTextField;
+    @FXML private Button backToStoreButton;
 
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
@@ -107,7 +108,7 @@ public class Wizard extends StackPane {
 
         selectCorrectStepButton(1);
 
-        datePicker.editorProperty().get().setFont(new Font("Roboto-Regular", 18));
+        datePicker.editorProperty().get().setFont(new Font("Avenir Book", 18));
 
         shipping1.setText("45 kr");
         shipping2.setText("45 kr");
@@ -165,11 +166,8 @@ public class Wizard extends StackPane {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if(newValue.length() < 20){
-                    Platform.runLater(() -> {
                         String inputInCardformat = toCreditCardFormat(newValue);
                         cardnumberTextField.setText(inputInCardformat);
-                        cardnumberTextField.positionCaret(inputInCardformat.length());
-                    });
                 } else{
                     cardnumberTextField.setText(oldValue);
                 }
@@ -354,6 +352,11 @@ public class Wizard extends StackPane {
                 stepThreeButton.getStyleClass().clear();
                 stepThreeButton.getStyleClass().add("step-button-disabled");
                 stepThreeButton.setDisable(true);
+                stepLineOne.getStyleClass().clear();
+                stepLineOne.getStyleClass().add("stepLineGrey");
+                stepLineTwo.getStyleClass().clear();
+                stepLineTwo.getStyleClass().add("stepLineGrey");
+                stepLineTwo.setOpacity(0.5);
                 break;
             case(2):
                 stepOneButton.getStyleClass().clear();
@@ -363,6 +366,11 @@ public class Wizard extends StackPane {
                 stepThreeButton.getStyleClass().clear();
                 stepThreeButton.getStyleClass().add("step-button-inactive");
                 stepThreeButton.setDisable(false);
+                stepLineOne.getStyleClass().clear();
+                stepLineOne.getStyleClass().add("stepLineGreen");
+                stepLineTwo.getStyleClass().clear();
+                stepLineTwo.getStyleClass().add("stepLineGrey");
+                stepLineTwo.setOpacity(1);
                 break;
             case(3):
                 stepOneButton.getStyleClass().clear();
@@ -371,6 +379,11 @@ public class Wizard extends StackPane {
                 stepTwoButton.getStyleClass().add("step-button-finished");
                 stepThreeButton.getStyleClass().clear();
                 stepThreeButton.getStyleClass().add("step-button-active");
+                stepLineOne.getStyleClass().clear();
+                stepLineOne.getStyleClass().add("stepLineGreen");
+                stepLineTwo.getStyleClass().clear();
+                stepLineTwo.getStyleClass().add("stepLineGreen");
+                stepLineTwo.setOpacity(1);
                 break;
         }
     }
@@ -387,6 +400,14 @@ public class Wizard extends StackPane {
         paymentInfoPane.setVisible(false);
         receiptPane.setVisible(false);
         selectCorrectStepButton(1);
+        parentController.setBackToStoreIconAble();
+        parentController.setBackToStoreLabelAble();
+        stepLineOne.setVisible(true);
+        stepLineTwo.setVisible(true);
+        stepOneButton.setVisible(true);
+        stepTwoButton.setVisible(true);
+        stepThreeButton.setVisible(true);
+        confirmedLabel.setVisible(false);
     }
 
     @FXML
@@ -408,6 +429,7 @@ public class Wizard extends StackPane {
             receiptPane.setVisible(false);
             selectCorrectStepButton(3);
             updateOverlookLabels();
+            confirmPaymentButton.setText("Genomför köp på " + (decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal() + 45) + " kr"));
         }
         handleErrorsStep2();
     }
@@ -421,10 +443,11 @@ public class Wizard extends StackPane {
             receiptPane.setVisible(true);
             parentController.setBackToStoreIconDisabled();
             parentController.setBackToStoreLabelDisabled();
+            stepLineOne.setVisible(false);
+            stepLineTwo.setVisible(false);
             stepOneButton.setVisible(false);
             stepTwoButton.setVisible(false);
             stepThreeButton.setVisible(false);
-            stepLine.setVisible(false);
             confirmedLabel.setVisible(true);
             confirmOrder();
         }
@@ -465,8 +488,8 @@ public class Wizard extends StackPane {
         resetBordersOnTextField(validMonthTextField);
         resetBordersOnTextField(cvcTextField);
 
-        errorMessageStep2.setVisible(true);
-        errorMessageStep3.setVisible(true);
+        errorMessageStep2.setVisible(false);
+        errorMessageStep3.setVisible(false);
     }
 
     private boolean containsDigitsOnly(TextField textField){        //returnar true om textfieldens text endast består av siffror, spacebars och bindestreck

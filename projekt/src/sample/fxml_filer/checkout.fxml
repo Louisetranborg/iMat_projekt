@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" stylesheets="@../css_files/checkout.css" type="StackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
@@ -21,62 +22,62 @@
          <children>
             <AnchorPane fx:id="receiptPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" visible="false">
                <children>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" text="Order#:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Order#:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" text="Orderdatum:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Orderdatum:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" text="Leveransadress:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Leveransadress:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" text="Leveransdatum:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Leveransdatum:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="400.0" text="Kvitto">
+                  <Label layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="400.0" styleClass="text36" stylesheets="@../css_files/main_theme.css" text="Kvitto">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button layoutX="70.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#backToShopping" prefHeight="60.0" prefWidth="260.0" styleClass="nextButton" text="Till Sortiment">
+                  <Button layoutX="70.0" layoutY="455.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#backToShopping" prefHeight="80.0" prefWidth="371.0" styleClass="nextButton" text="Till Sortiment">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Label fx:id="orderNumber" layoutX="280.0" layoutY="100.0" prefHeight="36.0" prefWidth="260.0" text="12">
+                  <Label fx:id="orderNumber" layoutX="280.0" layoutY="100.0" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/main_theme.css" text="12">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="orderDate" layoutX="280.0" layoutY="160.0" prefHeight="41.0" prefWidth="300.0" text="2019-05-22 (23:55)">
+                  <Label fx:id="orderDate" layoutX="280.0" layoutY="160.0" prefHeight="41.0" prefWidth="300.0" styleClass="text18" stylesheets="@../css_files/main_theme.css" text="2019-05-22 (23:55)">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="deliveryAdr" layoutX="280.0" layoutY="220.0" prefHeight="36.0" prefWidth="300.0" text="Villie byaväg 215 (213 23)">
+                  <Label fx:id="deliveryAdr" layoutX="280.0" layoutY="220.0" prefHeight="36.0" prefWidth="300.0" styleClass="text18" stylesheets="@../css_files/main_theme.css" text="Villie byaväg 215 (213 23)">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="280.0" layoutY="280.0" prefHeight="36.0" prefWidth="260.0" text="2019-05-31">
+                  <Label layoutX="280.0" layoutY="280.0" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/main_theme.css" text="2019-05-31">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="340.0" prefHeight="32.0" prefWidth="200.0" text="Totalsumma:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="340.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Totalsumma:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalPrice" layoutX="280.0" layoutY="340.0" prefHeight="36.0" prefWidth="260.0" text="0">
+                  <Label fx:id="totalPrice" layoutX="280.0" layoutY="340.0" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/main_theme.css" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -86,7 +87,7 @@
                         <FlowPane fx:id="confirmCartFlowPane" prefHeight="436.0" prefWidth="320.0" styleClass="flowPane" />
                      </content>
                   </ScrollPane>
-                  <Label layoutX="650.0" layoutY="50.0" prefHeight="44.0" prefWidth="302.0" text="Köpta varor">
+                  <Label layoutX="650.0" layoutY="50.0" prefHeight="44.0" prefWidth="302.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Köpta varor">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -95,78 +96,73 @@
             </AnchorPane>
             <AnchorPane fx:id="paymentInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane">
                <children>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="438.0" prefHeight="36.0" prefWidth="200.0" text="CVC">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="438.0" prefHeight="36.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="CVC">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="330.0" prefHeight="32.0" prefWidth="200.0" text="Kortinnehavare:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="330.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Kortinnehavare:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="276.0" prefHeight="32.0" prefWidth="200.0" text="Kortnummer:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="276.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Kortnummer:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="384.0" prefHeight="32.0" prefWidth="200.0" text="Utgångsdatum:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="384.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Utgångsdatum:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="180.0" prefHeight="32.0" prefWidth="260.0">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="cardholderTextField" layoutX="280.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
+                  <TextField fx:id="cardholderTextField" layoutX="280.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="cardnumberTextField" layoutX="280.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="XXXX-XXXX-XXXX-XXXX">
+                  <TextField fx:id="cardnumberTextField" layoutX="280.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="XXXX-XXXX-XXXX-XXXX" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="validMonthTextField" layoutX="280.0" layoutY="384.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="58.0" promptText="MM">
+                  <TextField fx:id="validMonthTextField" layoutX="280.0" layoutY="384.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="58.0" promptText="MM" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="validYearTextField" layoutX="380.0" layoutY="384.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="58.0" promptText="ÅÅ">
+                  <TextField fx:id="validYearTextField" layoutX="380.0" layoutY="384.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="58.0" promptText="ÅÅ" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="cvcTextField" layoutX="280.0" layoutY="438.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="68.0" promptText="XXX">
+                  <TextField fx:id="cvcTextField" layoutX="280.0" layoutY="438.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="68.0" promptText="XXX" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="612.0" text="Leverans och betalning">
+                  <Label layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="612.0" styleClass="text36" stylesheets="@../css_files/main_theme.css" text="Leverans och betalning">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button layoutX="640.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep4" prefHeight="80.0" prefWidth="330.0" text="Genomför köp på 9999 kr">
+                  <Button fx:id="confirmPaymentButton" layoutX="599.0" layoutY="530.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep4" prefHeight="80.0" prefWidth="371.0" styleClass="confirmedPaymentButton" text="Genomför köp på 9999 kr">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="70.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep2" prefHeight="60.0" prefWidth="260.0" text="Tillbaka">
+                  <Button layoutX="70.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep2" prefHeight="60.0" prefWidth="260.0" styleClass="goBackButton" text="Tillbaka">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" text="Leveransdag:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Leveransdag:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="datePicker" editable="false" layoutX="280.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="2019-01-01" />
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="188.0" prefHeight="32.0" prefWidth="200.0" text="Korttyp:">
+                  <DatePicker fx:id="datePicker" editable="false" layoutX="280.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="2019-01-01" styleClass="text18" stylesheets="@../css_files/main_theme.css" />
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="188.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Korttyp:">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -189,47 +185,47 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <Label layoutX="623.0" layoutY="32.0" prefHeight="44.0" prefWidth="347.0" text="Beställningsöversikt">
+                  <Label layoutX="623.0" layoutY="32.0" prefHeight="44.0" prefWidth="347.0" styleClass="text36" stylesheets="@../css_files/main_theme.css" text="Beställningsöversikt">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" text="Summa varor:">
+                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Summa varor:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" text="Frakt:">
+                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Frakt:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" text="Totalsumma:">
+                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/main_theme.css" text="Totalsumma:">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/main_theme.css" text="Varav moms:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" text="moms:">
+                  <Label fx:id="sum2" layoutX="834.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="XXX">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sum2" layoutX="834.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" text="XXX">
+                  <Label fx:id="shipping2" layoutX="834.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="XXX">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="shipping2" layoutX="834.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" text="XXX">
+                  <Label fx:id="totalSum2" layoutX="834.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/main_theme.css" text="XXX">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalSum2" layoutX="834.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" text="XXX">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="moms2" layoutX="834.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" text="XXX">
+                  <Label fx:id="moms2" layoutX="834.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/main_theme.css" text="XXX">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -285,7 +281,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="900.0" text="Kontrollera din kundkorg">
+                  <Label layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="900.0" style="-fx-font-family: avenir brook;" text="Kontrollera din kundkorg">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -305,7 +301,7 @@
                         <Font size="18.0" />
                      </font>
                   </CheckBox>
-                  <Button layoutX="70.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="260.0" text="Tillbaka till affären">
+                  <Button fx:id="backToStoreButton" layoutX="70.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#backToShopping" prefHeight="60.0" prefWidth="260.0" styleClass="goBackButton" text="Tillbaka till affären">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -315,56 +311,56 @@
                         <Font name="Roboto Regular" size="18.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="totalaPrisetLabel" alignment="CENTER_RIGHT" layoutX="710.0" layoutY="474.0" prefHeight="32.0" prefWidth="260.0" text="Totalt: 1000kr">
+                  <Label fx:id="totalaPrisetLabel" alignment="CENTER_RIGHT" layoutX="710.0" layoutY="474.0" prefHeight="32.0" prefWidth="260.0" style="-fx-font-family: avenir brook;" text="Totalt: 1000kr">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="24.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="personalInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" visible="false">
+            <AnchorPane fx:id="personalInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane">
                <children>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" text="Förnamn:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Förnamn:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="154.0" prefHeight="32.0" prefWidth="200.0" text="Efternamn:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="154.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Efternamn:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="208.0" prefHeight="32.0" prefWidth="200.0" text="Telefonnummer:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="208.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Telefonnummer:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="262.0" prefHeight="32.0" prefWidth="200.0" text="Email-adress:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="262.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Email-adress:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="firstName" layoutX="280.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
+                  <TextField fx:id="firstName" layoutX="280.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="lastName" layoutX="280.0" layoutY="154.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
+                  <TextField fx:id="lastName" layoutX="280.0" layoutY="154.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="telNumber" layoutX="280.0" layoutY="208.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
+                  <TextField fx:id="telNumber" layoutX="280.0" layoutY="208.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="mail" layoutX="280.0" layoutY="262.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
+                  <TextField fx:id="mail" layoutX="280.0" layoutY="262.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="400.0" text="Personuppgifter">
+                  <Label layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="400.0" styleClass="text36" stylesheets="@../css_files/main_theme.css" text="Personuppgifter">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -374,84 +370,84 @@
                         <Font name="Roboto Regular" size="24.0" />
                      </font>
                   </Button>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="316.0" prefHeight="36.0" prefWidth="200.0" text="Postnummer:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="316.0" prefHeight="36.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Postnummer:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="370.0" prefHeight="32.0" prefWidth="200.0" text="Ort:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="370.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Ort:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="424.0" prefHeight="32.0" prefWidth="200.0" text="Adress:">
+                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="424.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Adress:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="postCode" layoutX="280.0" layoutY="316.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
+                  <TextField fx:id="postCode" layoutX="280.0" layoutY="316.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="city" layoutX="280.0" layoutY="370.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
+                  <TextField fx:id="city" layoutX="280.0" layoutY="370.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="adress" layoutX="280.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0">
+                  <TextField fx:id="adress" layoutX="280.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/main_theme.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <Button layoutX="70.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep1" prefHeight="60.0" prefWidth="260.0" text="Tillbaka">
+                  <Button layoutX="70.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep1" prefHeight="60.0" prefWidth="260.0" styleClass="goBackButton" text="Tillbaka">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Label layoutX="623.0" layoutY="31.0" prefHeight="44.0" prefWidth="347.0" text="Beställningsöversikt">
+                  <Label layoutX="623.0" layoutY="31.0" prefHeight="44.0" prefWidth="347.0" styleClass="text36" stylesheets="@../css_files/main_theme.css" text="Beställningsöversikt">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" text="Summa varor:">
+                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Summa varor:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" text="Frakt:">
+                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="Frakt:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" text="Totalsumma:">
+                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/main_theme.css" text="Totalsumma:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" text="moms:">
+                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/main_theme.css" text="Varav moms:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sum1" layoutX="834.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" text="XXX">
+                  <Label fx:id="sum1" layoutX="834.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="XXX">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="shipping1" layoutX="834.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" text="XXX">
+                  <Label fx:id="shipping1" layoutX="834.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/main_theme.css" text="XXX">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalSum1" layoutX="834.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" text="XXX">
+                  <Label fx:id="totalSum1" layoutX="834.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/main_theme.css" text="9">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="AvenirLTStd-Roman" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="moms1" layoutX="834.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" text="XXX">
+                  <Label fx:id="moms1" layoutX="834.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/main_theme.css" text="9">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Avenir Book" size="24.0" />
                      </font>
                   </Label>
                   <Line endX="581.7423095703125" endY="105.17573547363281" layoutX="22.0" layoutY="1.0" startX="581.7423095703125" startY="447.81512451171875" />
@@ -497,8 +493,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Line fx:id="stepLine" endX="557.5" endY="57.5" layoutX="3.0" layoutY="-12.0" startX="876.0" startY="57.5" />
-            <Button fx:id="stepTwoButton" layoutX="696.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToStep2" prefHeight="48.0" prefWidth="48.0" stylesheets="@../css_files/checkout.css">
+            <Button fx:id="stepTwoButton" alignment="CENTER" contentDisplay="CENTER" layoutX="696.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep2" prefHeight="80.0" prefWidth="80.0" styleClass="wizardButtons" stylesheets="@../css_files/checkout.css">
                <font>
                   <Font size="22.0" />
                </font>
@@ -510,7 +505,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="stepThreeButton" layoutX="876.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToStep3" prefHeight="48.0" prefWidth="0.0" stylesheets="@../css_files/checkout.css">
+            <Button fx:id="stepThreeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="876.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep3" prefHeight="80.0" prefWidth="80.0" styleClass="wizardButtons" stylesheets="@../css_files/checkout.css">
                <font>
                   <Font size="22.0" />
                </font>
@@ -522,7 +517,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="stepOneButton" layoutX="516.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#goToStep1" prefHeight="48.0" prefWidth="48.0" stylesheets="@../css_files/checkout.css">
+            <Button fx:id="stepOneButton" alignment="CENTER" contentDisplay="CENTER" layoutX="516.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep1" prefHeight="80.0" prefWidth="80.0" styleClass="wizardButtons" stylesheets="@../css_files/checkout.css">
                <font>
                   <Font size="22.0" />
                </font>
@@ -539,6 +534,8 @@
                   <Font size="48.0" />
                </font>
             </Label>
+            <Rectangle fx:id="stepLineOne" height="10.0" layoutX="596.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+            <Rectangle fx:id="stepLineTwo" height="10.0" layoutX="776.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
          </children></AnchorPane>
    </children>
 </fx:root>

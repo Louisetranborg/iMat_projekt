@@ -1,7 +1,7 @@
 .nextButton{
     -fx-background-color: #66bb6a;
     -fx-text-fill: #000000;
-    -fx-font-family: "Roboto-Regular";
+    -fx-font-family: "Avenir Book";
     -fx-font-size: 24px;
 }
 
@@ -21,33 +21,45 @@
 
 
 .step-button-inactive{
-    -fx-background-color: #bdbdbd; -fx-text-fill: #000000;
+    -fx-background-color: #a1887f; -fx-text-fill: #000000;
     -fx-opacity: 1;
+    -fx-background-radius: 40px;
+    -fx-border-radius: 40px;
 }
 
 .step-button-inactive:hover{
     -fx-background-color: #98ee99; -fx-text-fill: #000000;
     -fx-opacity: 1;
+    -fx-background-radius: 40px;
+    -fx-border-radius: 40px;
 }
 
 .step-button-active{
     -fx-background-color: #66bb6a; -fx-text-fill: #FFFFFF;
     -fx-opacity: 1;
+    -fx-background-radius: 40px;
+    -fx-border-radius: 40px;
 }
 
 .step-button-finished{
     -fx-background-color: #338a3e; -fx-text-fill: #000000;
     -fx-opacity: 1;
+    -fx-background-radius: 40px;
+    -fx-border-radius: 40px;
 }
 
 .step-button-finished:hover{
     -fx-background-color: #98ee99; -fx-text-fill: #000000;
     -fx-opacity: 1;
+    -fx-background-radius: 40px;
+    -fx-border-radius: 40px;
 }
 
 .step-button-disabled{
-    -fx-background-color: #bdbdbd; -fx-text-fill: #000000;
+    -fx-background-color: #a1887f; -fx-text-fill: #000000;
     -fx-opacity: 0.5;
+    -fx-background-radius: 40px;
+    -fx-border-radius: 40px;
 }
 
 .cartItem{
@@ -80,4 +92,43 @@
 .cardNotError: selected{
     -fx-border-width: 3px;
     -fx-border-color: #338a3e;
+}
+
+.stepLineGreen {
+    -fx-fill: #338a3e;
+}
+
+.stepLineGrey{
+    -fx-fill: #a1887f;
+}
+
+.confirmedPaymentButton{
+    -fx-background-color: #66bb6a;
+    -fx-text-fill: #000000;
+    -fx-font-family: "Avenir Book";
+    -fx-font-size: 24px;
+}
+
+.confirmedPaymentButton: hover{
+    -fx-background-color: #98ee99;
+    -fx-font-size: 25px;
+}
+
+.confirmedPaymentButton: pressed{
+    -fx-background-color: #338a3e;
+}
+
+.goBackButton{
+    -fx-background-color: #a1887f;
+    -fx-text-fill: #000000;
+    -fx-font-family: "Avenir Book";
+    -fx-font-size: 24px;
+}
+
+.goBackButton: hover{
+    -fx-background-color: #d3b8ae;
+}
+
+.goBackButton: pressed{
+    -fx-background-color: #725b53;
 }
