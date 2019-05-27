@@ -161,15 +161,13 @@ public class Wizard extends StackPane {
             }
         });
 
+        //Ger ett error-meddelande, ingenting farligt bara lite störigt och förvirrande
         cardnumberTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if(newValue.length() < 20){
-                    Platform.runLater(() -> {
                         String inputInCardformat = toCreditCardFormat(newValue);
                         cardnumberTextField.setText(inputInCardformat);
-                        cardnumberTextField.positionCaret(inputInCardformat.length());
-                    });
                 } else{
                     cardnumberTextField.setText(oldValue);
                 }
@@ -465,8 +463,8 @@ public class Wizard extends StackPane {
         resetBordersOnTextField(validMonthTextField);
         resetBordersOnTextField(cvcTextField);
 
-        errorMessageStep2.setVisible(true);
-        errorMessageStep3.setVisible(true);
+        errorMessageStep2.setVisible(false);
+        errorMessageStep3.setVisible(false);
     }
 
     private boolean containsDigitsOnly(TextField textField){        //returnar true om textfieldens text endast består av siffror, spacebars och bindestreck

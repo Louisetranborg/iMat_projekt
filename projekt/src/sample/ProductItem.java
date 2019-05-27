@@ -25,6 +25,7 @@ public class ProductItem extends AnchorPane {
     @FXML private ImageView addButton2;
     @FXML private ImageView addButtonHover;
     @FXML private TextField amountBox;
+    @FXML private ImageView favoriteIcon;
 
 
     @FXML

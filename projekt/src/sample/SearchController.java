@@ -1,12 +1,15 @@
 package sample;
 
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.*;
@@ -62,6 +65,19 @@ public class SearchController implements Initializable {
     private Label categoryPageText;
     @FXML private ScrollPane categoryScrollPane;
     @FXML private ImageView logo;
+    @FXML private ImageView hoverLogo;
+
+    @FXML
+    private void hoverOnLogo(){
+        logo.setVisible(false);
+        hoverLogo.setVisible(true);
+    }
+
+    @FXML
+    private void resetHoverOnLogo(){
+        logo.setVisible(true);
+        hoverLogo.setVisible(false);
+    }
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
@@ -395,6 +411,8 @@ public class SearchController implements Initializable {
         iMatDataHandler.getCustomer().setAddress("Kallebäcksvägen 3");
         iMatDataHandler.getCustomer().setPhoneNumber("Göteborg");
 
+        logo.setVisible(true);
+
         menuToggleGroup = new ToggleGroup();
 
 
@@ -407,7 +425,6 @@ public class SearchController implements Initializable {
         wizardWrap.getChildren().add(wizard);
 
         updateFrontPage();
-
 
         //TODO Låg tidigare en allcategories.fire() här.
 

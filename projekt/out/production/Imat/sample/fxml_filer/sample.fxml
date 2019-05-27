@@ -101,9 +101,14 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="logo" fitHeight="116.0" fitWidth="126.0" layoutX="4.0" layoutY="-21.0" onMouseClicked="#clickOnLogo" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="logo" fitHeight="116.0" fitWidth="126.0" layoutX="4.0" layoutY="-21.0" onMouseClicked="#clickOnLogo" onMouseEntered="#hoverOnLogo" onMouseExited="#resetHoverOnLogo" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../images/abc0caf0-d03b-49b9-918d-2dde25b3e1f5_200x200.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="hoverLogo" fitHeight="116.0" fitWidth="126.0" layoutX="4.0" layoutY="-21.0" onMouseClicked="#clickOnLogo" onMouseEntered="#hoverOnLogo" onMouseExited="#resetHoverOnLogo" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/hoverLogo.png" />
                      </image>
                   </ImageView>
                </children>
@@ -111,7 +116,7 @@
             <AnchorPane fx:id="cartPaneWrap" layoutX="1180.0" layoutY="80.0" prefHeight="775.0" prefWidth="260.0" style="-fx-background-color: FFFFFF;" />
             <ScrollPane fx:id="productScrollPane" fitToHeight="true" layoutX="260.0" layoutY="140.0" prefHeight="716.0" prefWidth="920.0" styleClass="scrollPane">
                <content>
-                  <FlowPane fx:id="productFlowPane" alignment="TOP_CENTER" prefHeight="705.0" prefWidth="920.0">
+                  <FlowPane fx:id="productFlowPane" alignment="TOP_CENTER" prefHeight="705.0" prefWidth="920.0" styleClass="flowPane">
                      <padding>
                         <Insets top="20.0" />
                      </padding></FlowPane>
@@ -127,9 +132,9 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="categoryScrollPane" hbarPolicy="NEVER" layoutY="140.0" prefHeight="716.0" prefWidth="260.0">
+            <ScrollPane fx:id="categoryScrollPane" hbarPolicy="NEVER" layoutY="140.0" prefHeight="716.0" prefWidth="260.0" styleClass="scrollPane">
                <content>
-                  <VBox fx:id="menuVbox" />
+                  <VBox fx:id="menuVbox" style="-fx-background-color: #FFFFFF;" />
                </content>
             </ScrollPane>
          </children>

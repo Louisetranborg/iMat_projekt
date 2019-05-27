@@ -33,7 +33,7 @@
             <Image url="@../images/baseline_remove_circle_black_24dp.png" />
          </image>
       </ImageView>
-      <TextField fx:id="amountBox" layoutX="103.0" layoutY="245.0" prefHeight="23.0" prefWidth="45.0" />
+      <TextField fx:id="amountBox" layoutX="103.0" layoutY="241.0" prefHeight="31.0" prefWidth="45.0" />
       <Label fx:id="price" alignment="CENTER" layoutY="217.0" prefHeight="18.0" prefWidth="250.0" text="Pris" AnchorPane.leftAnchor="0.0">
          <font>
             <Font size="14.0" />
@@ -42,6 +42,11 @@
       <ImageView fx:id="addButton" fitHeight="45.0" fitWidth="45.0" layoutX="153.0" layoutY="235.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/baseline_add_circle_black_24dp.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="favoriteIcon" fitHeight="40.0" fitWidth="40.0" layoutX="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/heart_white.png" />
          </image>
       </ImageView>
    </children>
