@@ -135,7 +135,7 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="priceDetailView" layoutX="34.0" layoutY="485.0" prefHeight="36.0" prefWidth="181.0" styleClass="detailviewPrice" text="Namn">
+                  <Label fx:id="priceDetailView" layoutX="34.0" layoutY="485.0" prefHeight="58.0" prefWidth="433.0" styleClass="detailviewPrice" text="Namn">
                      <font>
                         <Font size="17.0" />
                      </font>

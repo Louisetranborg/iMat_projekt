@@ -146,7 +146,7 @@ public class SearchController implements Initializable {
         closeUpName.setText(shoppingItem.getProduct().getName());
         itemNumber.setText("Artikelnummer: " + String.valueOf(shoppingItem.getProduct().getProductId()));
         ecoInfo.setText(isEcological(shoppingItem.getProduct()));
-        priceDetailView.setText(shoppingItem.getProduct().getPrice() + " kr");
+        priceDetailView.setText(shoppingItem.getProduct().getPrice() + " " + shoppingItem.getProduct().getUnit());
     }
 
     private String isEcological(Product product) {
