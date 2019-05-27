@@ -11,15 +11,15 @@ import java.util.List;
 public class CategoryItem extends MenuItem {
 
     public enum productCategory{
+        ALL_CATEGORIES,
         MEAT,
-        FRUIT,
         DAIRY,
+        FRUIT,
         GREENS,
-        SWEET,
         BREAD,
         PANTRY,
         DRINKS,
-        ALL_CATEGORIES
+        SWEET
     }
 
     private productCategory productCategory;
@@ -85,7 +85,7 @@ public class CategoryItem extends MenuItem {
                 break;
             case ALL_CATEGORIES:
                 list.addAll(parentController.iMatDataHandler.getProducts());
-                categoryButton.setText("Alla kategorier/Startsida");
+                categoryButton.setText("Startsida");
                 break;
         }
 

@@ -36,6 +36,7 @@
     -fx-border-width: 0px;
     -fx-border-radius: 0px;
     -fx-background-radius: 0px;
+    -fx-background: #FFFFFF;
     }
 
     .scrollPane:hover{

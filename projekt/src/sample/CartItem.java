@@ -25,7 +25,6 @@ public class CartItem extends AnchorPane {
     @FXML private ImageView addButtonGreen;
     @FXML private ImageView addButtonGreenHover;
     @FXML private Label price;
-    @FXML private ImageView addButtonHover;
 
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
@@ -95,16 +94,5 @@ public class CartItem extends AnchorPane {
         price.setText(shoppingItem.getTotal() + " kr");
 
     }
-
-    @FXML
-    protected void hoverOnAddButton(Event event){
-        addButtonHover.toFront();
-    }
-
-    @FXML
-    protected void hoverOffAddButton(Event event){
-        addButtonHover.toBack();
-    }
-
 
 }
