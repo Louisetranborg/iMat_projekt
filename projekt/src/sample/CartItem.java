@@ -22,7 +22,8 @@ public class CartItem extends AnchorPane {
     @FXML private Label cartName;
     @FXML private TextField amountBox;
     @FXML private ImageView removeButton;
-    @FXML private ImageView addButton;
+    @FXML private ImageView addButtonGreen;
+    @FXML private ImageView addButtonGreenHover;
     @FXML private Label price;
     @FXML private ImageView addButtonHover;
 
@@ -44,6 +45,16 @@ public class CartItem extends AnchorPane {
     @FXML
     private void clickedOnRemoveButton(){
         parentController.subtractItemFromCart(shoppingItem);
+    }
+
+    @FXML
+    protected void hoverOnAddButton(Event event){
+        addButtonGreenHover.toFront();
+    }
+
+    @FXML
+    protected void hoverOffAddButton(Event event){
+        addButtonGreenHover.toBack();
     }
 
     protected void updateAmountInCartItem(){

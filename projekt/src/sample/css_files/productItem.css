@@ -3,3 +3,20 @@
     -fx-border-width: 0.5px;
     -fx-border-color: #757575;
 }
+
+.name{
+     -fx-font-family: "Roboto";
+     -fx-font-size: 24px;
+     -fx-alignment: center;
+ }
+
+.price{
+    -fx-font-family: "Roboto";
+    -fx-font-size: 20px;
+    -fx-alignment: center;
+    -fx-text-fill: #725B53;
+}
+
+.objekt:hover{
+    -fx-background-color: #f2f2f2;
+}

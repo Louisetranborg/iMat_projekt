@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.*;
@@ -41,7 +42,7 @@ public class SearchController implements Initializable {
     @FXML
     private AnchorPane cartPaneWrap;                                      //Detta är den ancorpane som vi fäster kundvagnen på
     @FXML
-    private ImageView addButton;
+    private ImageView addButtonDetail;
     @FXML
     private ImageView removeButton;
     @FXML
@@ -62,6 +63,36 @@ public class SearchController implements Initializable {
     private Label categoryPageText;
     @FXML private ScrollPane categoryScrollPane;
     @FXML private ImageView logo;
+    @FXML private ImageView addButtonGreenDetail;
+    @FXML private ImageView addButtonGreenHoverDetail;
+    @FXML private ImageView removeButtonBrown;
+    @FXML private ImageView removeButtonHover;
+    @FXML private ImageView closeDetailView;
+
+
+
+    public void greenAddButtonToFrontDetail(){
+        addButtonGreenDetail.toFront();
+    }
+    public void blackAddButtonToFrontDetail(){
+        addButtonDetail.toFront();
+    }
+    public void brownRemoveButtonToFrontDetail(){
+        removeButtonBrown.toFront();
+    }
+    public void blackRemoveButtonToFrontDetail(){
+        removeButton.toFront();
+    }
+    @FXML
+    private void glow(){
+        closeDetailView.setEffect(new Glow(0.5));
+    }
+
+    @FXML
+    private void removeGlow(){
+        closeDetailView.setEffect(new Glow(0));
+    }
+
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
@@ -117,7 +148,7 @@ public class SearchController implements Initializable {
         closeUpName.setText(shoppingItem.getProduct().getName());
         itemNumber.setText("Artikelnummer: " + String.valueOf(shoppingItem.getProduct().getProductId()));
         ecoInfo.setText(isEcological(shoppingItem.getProduct()));
-        priceDetailView.setText(shoppingItem.getProduct().getPrice() + " kr");
+        priceDetailView.setText(shoppingItem.getProduct().getPrice() + " " + shoppingItem.getProduct().getUnit());
     }
 
     private String isEcological(Product product) {
@@ -314,6 +345,30 @@ public class SearchController implements Initializable {
         mouseTrap(event); //Infoboxen skall ej komma upp
         addItemToCart(activeInDetailview);
         updateAmountInDetailView();
+        addButtonGreenDetail.toFront();
+        removeButtonBrown.toFront();
+    }
+
+    @FXML
+    protected void hoverOnAddButton(Event event){
+        addButtonGreenHoverDetail.toFront();
+
+    }
+
+    @FXML
+    protected void hoverOffAddButton(Event event){
+        addButtonGreenHoverDetail.toBack();
+
+    }
+
+    @FXML
+    protected void hoverOnRemoveButton(Event event){
+        removeButtonHover.toFront();
+    }
+
+    @FXML
+    protected void hoverOffRemoveButton(Event event){
+        removeButtonHover.toBack();
     }
 
     @FXML
@@ -321,6 +376,10 @@ public class SearchController implements Initializable {
         mouseTrap(event);
         subtractItemFromCart(activeInDetailview);
         updateAmountInDetailView();
+        if (activeInDetailview.getAmount()<1){
+            addButtonDetail.toFront();
+            removeButton.toFront();
+        }
     }
 
     private void updateAmountInDetailView() {
@@ -383,6 +442,11 @@ public class SearchController implements Initializable {
         backToStoreLabel.setVisible(false);
         backToStoreIcon.setVisible(false);
     }
+
+
+
+
+
 
     //Vår initialize-metod, typ som en kontruktor
     @Override

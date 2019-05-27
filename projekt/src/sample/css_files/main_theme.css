@@ -142,3 +142,24 @@
 
 
     }
+
+    .detailview{
+        -fx-font-family: "Roboto";
+        -fx-font-size: 30px;
+        -fx-alignment: left;
+    }
+
+    .detailviewPrice{
+        -fx-font-family: "Roboto";
+        -fx-font-size: 40px;
+        -fx-alignment: left;
+        -font-weight: 900;
+        -fx-text-fill: #66bb6a;
+    }
+
+    .detailviewName{
+        -fx-font-family: "Roboto";
+        -fx-font-size: 50px;
+        -fx-alignment: center;
+        -text-decoration: underline;
+    }

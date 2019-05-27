@@ -24,12 +24,25 @@ public class ProductItem extends AnchorPane {
     @FXML private ImageView removeButton;
     @FXML private ImageView addButton2;
     @FXML private ImageView addButtonHover;
+    @FXML private ImageView removeButtonBrown;
+    @FXML private ImageView removeButtonHover;
     @FXML private TextField amountBox;
+    @FXML private AnchorPane productPane;
+
+
+
 
 
     @FXML
     protected void onClick(){ //När man klickar på ett productItem skall info om produkten komma upp
         parentController.openProductDetailView(shoppingItem);
+        if (shoppingItem.getAmount()>0){
+            parentController.greenAddButtonToFrontDetail();
+            parentController.brownRemoveButtonToFrontDetail();
+        }else{
+            parentController.blackAddButtonToFrontDetail();
+            parentController.blackRemoveButtonToFrontDetail();
+        }
     }
 
     public ProductItem(ShoppingItem shoppingItem, SearchController parentController){
@@ -75,6 +88,11 @@ public class ProductItem extends AnchorPane {
         parentController.mouseTrap(event); //Infoboxen skall ej komma upp
         parentController.addItemToCart(shoppingItem);
         addButton2.toFront();
+        removeButtonBrown.toFront();
+
+
+
+
     }
 
     @FXML
@@ -89,11 +107,24 @@ public class ProductItem extends AnchorPane {
 
 
     @FXML
+    protected void hoverOnRemoveButton(Event event){
+        removeButtonHover.toFront();
+    }
+
+    @FXML
+    protected void hoverOffRemoveButton(Event event){
+        removeButtonHover.toBack();
+    }
+
+
+
+    @FXML
     protected void clickedOnRemoveButton(Event event) {
         parentController.mouseTrap(event);
         parentController.subtractItemFromCart(shoppingItem);
         if (shoppingItem.getAmount() <= 0){
             addButton.toFront();
+            removeButton.toFront();
         }
     }
 
