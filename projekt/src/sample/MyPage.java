@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.ShoppingCart;
 
@@ -21,6 +22,10 @@ public class MyPage extends StackPane {
     @FXML AnchorPane savedCartPage;
     @FXML AnchorPane personalDataPage;
     @FXML VBox historyOrderVbox;
+    @FXML
+    TilePane historyTilePane;
+    @FXML TilePane historyProductTilePane;
+    @FXML AnchorPane historyItems;
 
     private List<ShoppingList> shoppingLists = new ArrayList<>();
 
@@ -44,10 +49,10 @@ public class MyPage extends StackPane {
             throw new RuntimeException(exception);
         }
 
-        OrderItem order = new OrderItem();
-        OrderItem order2 = new OrderItem();
-        OrderItem order3 = new OrderItem();
-        historyOrderVbox.getChildren().addAll(order, order2, order3);
+       // OrderItem order = new OrderItem();
+       // OrderItem order2 = new OrderItem();
+       // OrderItem order3 = new OrderItem();
+       // historyOrderVbox.getChildren().addAll(order, order2, order3);
 
     }
 

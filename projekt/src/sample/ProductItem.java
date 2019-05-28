@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
@@ -126,6 +127,33 @@ public class ProductItem extends AnchorPane {
             addButton.toFront();
             removeButton.toFront();
         }
+    }
+
+    protected void changeToHistoryLayout(ShoppingItem shoppingItem){
+        addButton.setDisable(true);
+        addButton.setVisible(false);
+        addButton2.setDisable(true);
+        addButton2.setVisible(false);
+        addButtonHover.setDisable(true);
+        addButtonHover.setVisible(false);
+        removeButton.setDisable(true);
+        removeButton.setVisible(false);
+        removeButtonBrown.setDisable(true);
+        removeButtonBrown.setVisible(false);
+        removeButtonHover.setDisable(true);
+        removeButtonHover.setVisible(false);
+        amountBox.setDisable(true);
+        amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
+    }
+
+    protected void changeToNormalLayout(){
+        updateAmountInProductItem();
+        addButton.setDisable(false);
+        addButton2.setDisable(false);
+        addButtonHover.setDisable(false);
+        removeButton.setDisable(false);
+        removeButtonBrown.setDisable(false);
+        removeButtonHover.setDisable(false);
     }
 
     protected void setBlackButton(){

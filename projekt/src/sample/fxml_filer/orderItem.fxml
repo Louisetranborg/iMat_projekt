@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-border-color: #000000;" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #EEEEEE; -fx-border-color: #338a3e; -fx-border-radius: 3px;" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="144.0" text="23 May">
+      <Label fx:id="date" alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="144.0" text="23 May">
          <font>
             <Font size="22.0" />
          </font>
@@ -17,7 +17,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </HBox.margin>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="57.0" prefWidth="72.0" text="5 st">
+      <Label fx:id="amount" alignment="CENTER" contentDisplay="CENTER" prefHeight="57.0" prefWidth="72.0" text="5 st">
          <font>
             <Font size="22.0" />
          </font>
@@ -25,7 +25,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </HBox.margin>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="88.0" text="23,00 kr">
+      <Label fx:id="price" alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="88.0" text="23,00 kr">
          <font>
             <Font size="22.0" />
          </font>
@@ -33,13 +33,13 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </HBox.margin>
       </Label>
-      <Pane minWidth="200.0" HBox.hgrow="ALWAYS" />
-      <Button fx:id="visaKvittoButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="53.0" prefWidth="215.0" text="Visa kvitto">
+      <Pane minWidth="125.0" HBox.hgrow="ALWAYS" />
+      <Button fx:id="visaKvittoButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="53.0" prefWidth="148.0" styleClass="nextButton" stylesheets="@../css_files/checkout.css" text="Visa kvitto">
          <HBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </HBox.margin>
       </Button>
-      <Button fx:id="visaKvittoButton1" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="53.0" prefWidth="215.0" text="Visa varor">
+      <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickShowItems" prefHeight="53.0" prefWidth="142.0" styleClass="nextButton" stylesheets="@../css_files/checkout.css" text="Visa varor">
          <HBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </HBox.margin>

@@ -99,6 +99,7 @@ public class SearchController implements Initializable {
 
     protected Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med productItems
     Map<String, ShoppingItem> shoppingItemMap = new HashMap<String, ShoppingItem>();        //Map med shoppingitems, endast skapa dem en gång! Både productItem och cartItem pekar på samma shoppingItem.
+   // Map<String, OrderItem> orderItemMap = new HashMap<ShoppingItem, OrderItem>();
 
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
 
@@ -106,8 +107,9 @@ public class SearchController implements Initializable {
 
     public ToggleGroup menuToggleGroup;
     protected Wizard wizard;
+
     private ShoppingItem activeInDetailview;
-    MyPage myPage = new MyPage();
+    public MyPage myPage;
 
     protected ShoppingCartPane getShoppingCartPane(){
         return shoppingCartPane;
@@ -204,6 +206,13 @@ public class SearchController implements Initializable {
         }
     }
 
+    /*private void createOrderList(){
+        for(Order order : iMatDataHandler.getOrders()){
+            OrderItem orderItem = new OrderItem(this, order);
+            orderItemMap.put(order, orderItem);
+        }
+    }*/
+
     //Uppdaterar productFlowPane utifrån vilken kategori man väljer
     protected void updateProductPaneFromCategory( List<Product> products) {
         productFlowPane.getChildren().clear();
@@ -215,6 +224,33 @@ public class SearchController implements Initializable {
         for (Product product1 : products) {
             productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
 
+        }
+    }
+
+    protected void updateHistoryPage(){
+        myPage.historyOrderVbox.getChildren().clear();
+        for (Order order : IMatDataHandler.getInstance().getOrders()) {
+            myPage.historyOrderVbox.getChildren().add(new OrderItem(this, order));
+         //   productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
+
+        }
+    }
+
+    protected void updateHistoryShowItems(Order order){
+        myPage.historyProductTilePane.getChildren().clear();
+        for (ShoppingItem item : order.getItems()) {
+            ProductItem pItem = new ProductItem(item,this) ;
+            pItem.changeToHistoryLayout(item);
+            myPage.historyProductTilePane.getChildren().add(pItem);
+
+        }
+        myPage.historyItems.toFront();
+    }
+
+    protected void updateFavoritePage(){
+        myPage.historyTilePane.getChildren().clear();
+        for (Product favorite : iMatDataHandler.favorites()) {
+            myPage.historyTilePane.getChildren().add(productItemMap.get(favorite.getName()));
         }
     }
 
@@ -287,6 +323,8 @@ public class SearchController implements Initializable {
     //Byter view från mypage till productflowpane
     protected  void updateSettingsPaneFromSettings(){
         productScrollPane.setContent(myPage);
+        myPage.favoritePage.toFront();
+        changeCategoryPageText("Min Sida");
     }
 
 
@@ -387,6 +425,7 @@ public class SearchController implements Initializable {
     }
 
     protected void wizardToFront() {
+
         wizardWrap.toFront();
         wizard.start();
         updateFirstCartInWizard();
@@ -402,7 +441,10 @@ public class SearchController implements Initializable {
         searchBox.setVisible(false);
         minSidaButton.setVisible(false);
         backToStoreIcon.setVisible(true);
+        backToStoreIcon.setDisable(false);
+        backToStoreIcon.opacityProperty().setValue(1);
         backToStoreLabel.setVisible(true);
+        backToStoreLabel.setDisable(false);
         wizardWrap.setVisible(true);
     }
 
@@ -441,6 +483,7 @@ public class SearchController implements Initializable {
         minSidaButton.setVisible(true);
         backToStoreLabel.setVisible(false);
         backToStoreIcon.setVisible(false);
+        logo.setDisable(false);
     }
 
 
@@ -459,18 +502,37 @@ public class SearchController implements Initializable {
         iMatDataHandler.getCustomer().setAddress("Kallebäcksvägen 3");
         iMatDataHandler.getCustomer().setPhoneNumber("Göteborg");
 
+
+        iMatDataHandler.getShoppingCart().clear();
+        iMatDataHandler.addFavorite(94);
+        iMatDataHandler.addFavorite(95);
+        iMatDataHandler.addFavorite(96);
+        iMatDataHandler.addFavorite(97);
+        iMatDataHandler.addFavorite(98);
+        iMatDataHandler.addFavorite(99);
+        iMatDataHandler.addFavorite(100);
+
+
         menuToggleGroup = new ToggleGroup();
 
 
         productFlowPane.setHgap(40);                                                                                    //Avstånd mellan productItems i x-led
-        productFlowPane.setVgap(40);                                                                                    //Avstånd mellan productItems i y-led
+        productFlowPane.setVgap(40);
+        //Avstånd mellan productItems i y-led
+        myPage = new MyPage();
         createProductItems();                                                                                           //kalla på metod som skapar varorna
+        //createOrderList();
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
         shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!
+
         wizard = new Wizard(this);
         wizardWrap.getChildren().add(wizard);
+        updateHistoryPage();
 
+        updateFavoritePage();
         updateFrontPage();
+
+
 
 
         //TODO Låg tidigare en allcategories.fire() här.

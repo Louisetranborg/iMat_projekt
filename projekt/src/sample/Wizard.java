@@ -251,6 +251,9 @@ public class Wizard extends StackPane {
     private void confirmOrder(){
         totalPrice.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal()) + " kr");
         //totalAmount.setText(String.valueOf(calculateTotalAmount()));
+        for(ShoppingItem item : parentController.iMatDataHandler.getShoppingCart().getItems())  {
+            System.out.println(item.getAmount());
+        }
         IMatDataHandler.getInstance().placeOrder(true);
 
         List<ShoppingItem> orderedShoppingItems = IMatDataHandler.getInstance().getOrders().get(IMatDataHandler.getInstance().getOrders().size() - 1).getItems();
@@ -264,6 +267,7 @@ public class Wizard extends StackPane {
         orderDate.setText(String.valueOf(parentController.iMatDataHandler.getOrders().get(parentController.iMatDataHandler.getOrders().size() - 1).getDate()));
         deliveryAdr.setText(adress.getText() + ", " + city.getText());
         clearCheckoutInfo();
+        parentController.updateHistoryPage();
     }
 
     private void clearCheckoutInfo(){
