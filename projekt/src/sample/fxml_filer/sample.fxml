@@ -104,9 +104,9 @@
                         <Image url="@../images/headerTest_2.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="searchBox" layoutX="370.0" layoutY="15.0" onAction="#searchInSearchBox" prefHeight="50.0" prefWidth="700.0" styleClass="search-box">
+                  <TextField fx:id="searchBox" layoutX="370.0" layoutY="15.0" onAction="#searchInSearchBox" prefHeight="50.0" prefWidth="700.0" promptText="Vilken vara letar du efter?" styleClass="search-box">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Avenir Book" size="24.0" />
                      </font>
                   </TextField>
                   <Button fx:id="minSidaButton" layoutX="1305.0" layoutY="15.0" mnemonicParsing="false" onAction="#myPagesButtonClicked" prefHeight="50.0" prefWidth="120.0" styleClass="minSidaButton" text="Min sida">
@@ -145,9 +145,9 @@
                      </padding></FlowPane>
                </content>
             </ScrollPane>
-            <Label layoutX="9.0" layoutY="80.0" prefHeight="60.0" prefWidth="251.0" styleClass="labelTop" text="Sortiment" underline="true">
+            <Label layoutX="9.0" layoutY="80.0" prefHeight="60.0" prefWidth="251.0" text="Sortiment" underline="true">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Avenir Book" size="36.0" />
                </font>
             </Label>
             <Label fx:id="categoryPageText" alignment="CENTER" layoutX="261.0" layoutY="85.0" prefHeight="60.0" prefWidth="920.0" styleClass="labelCategories">

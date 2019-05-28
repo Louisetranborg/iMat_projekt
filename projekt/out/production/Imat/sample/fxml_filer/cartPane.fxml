@@ -16,7 +16,7 @@
             <FlowPane fx:id="cartFlowPane" prefHeight="655.0" prefWidth="260.0" styleClass="flowPane" />
          </content>
       </ScrollPane>
-      <Label fx:id="totalLabel" alignment="CENTER" layoutX="3.0" layoutY="721.0" prefHeight="48.0" prefWidth="132.0" text="Totalt ">
+      <Label fx:id="totalLabel" alignment="CENTER" layoutX="3.0" layoutY="721.0" prefHeight="48.0" prefWidth="132.0" styleClass="text18" stylesheets="@../css_files/main_theme.css" text="Totalt ">
          <font>
             <Font size="16.0" />
          </font>
@@ -31,9 +31,9 @@
             <Image url="@../images/baseline_shopping_cart_black_48dp.png" />
          </image>
       </ImageView>
-      <Label layoutX="40.0" layoutY="11.0" styleClass="labelTop" text="Kundkorg">
+      <Label layoutX="8.0" layoutY="5.0" prefHeight="50.0" prefWidth="214.0" text="Kundkorg" underline="true">
          <font>
-            <Font size="24.0" />
+            <Font name="Avenir Book" size="36.0" />
          </font>
       </Label>
    </children>

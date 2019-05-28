@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="850d024f-8459-479d-9061-2e68431031c5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/css_files/main_theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/css_files/main_theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/fxml_filer/cartPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxml_filer/cartPane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/fxml_filer/productCartItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxml_filer/productCartItem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/fxml_filer/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxml_filer/sample.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,57 +22,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="70" column="37" lean-forward="true" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2668#2669#0" expanded="true" />
-                <element signature="e#2714#2715#0" expanded="true" />
-                <element signature="e#2761#2762#0" expanded="true" />
-                <element signature="e#2802#2803#0" expanded="true" />
-                <element signature="e#2852#2853#0" expanded="true" />
-                <element signature="e#2895#2896#0" expanded="true" />
-                <element signature="e#2945#2946#0" expanded="true" />
-                <element signature="e#2983#2984#0" expanded="true" />
-                <element signature="e#3018#3019#0" expanded="true" />
-                <element signature="e#3074#3075#0" expanded="true" />
-                <element signature="e#3116#3117#0" expanded="true" />
-                <element signature="e#3170#3171#0" expanded="true" />
-                <element signature="e#3385#3406#0" expanded="true" />
-                <element signature="e#3532#3554#0" expanded="true" />
-                <element signature="e#4208#4209#0" expanded="true" />
-                <element signature="e#4247#4248#0" expanded="true" />
-                <element signature="e#4940#4941#0" expanded="true" />
-                <element signature="e#4982#4983#0" expanded="true" />
-                <element signature="e#5188#5189#0" expanded="true" />
-                <element signature="e#5219#5220#0" expanded="true" />
-                <element signature="e#6127#6128#0" expanded="true" />
-                <element signature="e#6175#6176#0" expanded="true" />
-                <element signature="e#16614#16615#0" expanded="true" />
-                <element signature="e#16657#16658#0" expanded="true" />
-                <element signature="e#16722#16723#0" expanded="true" />
-                <element signature="e#16764#16765#0" expanded="true" />
-                <element signature="e#18958#18959#0" expanded="true" />
-                <element signature="e#19007#19008#0" expanded="true" />
-                <element signature="e#19204#19205#0" expanded="true" />
-                <element signature="e#19254#19255#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/CategoryItem.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -83,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/css_files/main_theme.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2865">
-              <caret line="195" column="11" selection-start-line="195" selection-start-column="11" selection-end-line="195" selection-end-column="11" />
+            <state relative-caret-position="-302">
+              <caret line="131" column="21" selection-start-line="131" selection-start-column="21" selection-end-line="131" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -97,38 +48,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
               <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Wizard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="71" column="34" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#12821#12822#0" expanded="true" />
-                <element signature="e#12853#12854#0" expanded="true" />
-                <element signature="e#17594#17595#0" expanded="true" />
-                <element signature="e#17715#17716#0" expanded="true" />
-                <element signature="e#21801#21802#0" expanded="true" />
-                <element signature="e#21839#21840#0" expanded="true" />
-                <element signature="e#13837#13859#0" expanded="true" />
-                <element signature="e#23812#23813#0" expanded="true" />
-                <element signature="e#23872#23873#0" expanded="true" />
-                <element signature="e#23926#23927#0" expanded="true" />
-                <element signature="e#23987#23988#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/ReceiptItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="41" column="77" selection-start-line="41" selection-start-column="77" selection-end-line="41" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -174,10 +93,19 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>category</find>
+      <find>he</find>
+      <find>helpIcon</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/sample/css_files/main_theme.css" />
+      </list>
+    </option>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -324,7 +252,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.060240965" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.060240965" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -474,6 +402,55 @@
             <element signature="e#19204#19205#0" expanded="true" />
             <element signature="e#19254#19255#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ReceiptItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="41" column="77" selection-start-line="41" selection-start-column="77" selection-end-line="41" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Wizard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="71" column="34" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#12821#12822#0" expanded="true" />
+            <element signature="e#12853#12854#0" expanded="true" />
+            <element signature="e#17594#17595#0" expanded="true" />
+            <element signature="e#17715#17716#0" expanded="true" />
+            <element signature="e#21801#21802#0" expanded="true" />
+            <element signature="e#21839#21840#0" expanded="true" />
+            <element signature="e#13837#13859#0" expanded="true" />
+            <element signature="e#23812#23813#0" expanded="true" />
+            <element signature="e#23872#23873#0" expanded="true" />
+            <element signature="e#23926#23927#0" expanded="true" />
+            <element signature="e#23987#23988#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/css_files/productItem.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/css_files/main_theme.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-302">
+          <caret line="131" column="21" selection-start-line="131" selection-start-column="21" selection-end-line="131" selection-end-column="21" />
         </state>
       </provider>
     </entry>

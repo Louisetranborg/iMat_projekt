@@ -101,7 +101,7 @@
     .categoryButton{
         -fx-background-color: #FFFFFF;
         -fx-text-fill: #000000;
-        -fx-font-family: "Roboto";
+        -fx-font-family: "Avenir Book";
         -fx-font-size: 24px;
         -fx-alignment: left;
 
@@ -124,16 +124,14 @@
     }
 
     .labelTop{
-        -fx-text-fill: #000000;
         -fx-font-family: "Avenir Book";
-        -fx-font-size: 28px;
+        -fx-font-size: 36px;
         -fx-alignment: left;
     }
 
     .labelCategories{
-        -fx-text-fill: #000000;
         -fx-font-family: "Avenir Book";
-        -fx-font-size: 35px;
+        -fx-font-size: 36px;
         -fx-alignment: left;
     }
 
