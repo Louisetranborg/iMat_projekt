@@ -3,21 +3,73 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <StackPane stylesheets="@../css_files/main_theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
    <children>
+      <AnchorPane fx:id="productDetailView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeProductDetailView" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
+         <children>
+            <AnchorPane layoutX="120.0" layoutY="80.0" onMouseClicked="#mouseTrap" prefHeight="695.0" prefWidth="1200.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;">
+               <children>
+                  <ImageView fx:id="closeUpImage" fitHeight="350.0" fitWidth="400.0" layoutX="60.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_help_black_18dp.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="closeUpName" alignment="CENTER" layoutX="70.0" layoutY="380.0" prefHeight="26.0" prefWidth="344.0" text="Namn">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextArea layoutX="635.0" layoutY="51.0" prefHeight="591.0" prefWidth="450.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eleifend donec pretium vulputate sapien nec sagittis aliquam. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Diam vel quam elementum pulvinar etiam non quam lacus. Accumsan in nisl nisi scelerisque eu ultrices. Dolor magna eget est lorem ipsum dolor sit. Dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra. Volutpat diam ut venenatis tellus. Odio aenean sed adipiscing diam donec adipiscing tristique. Vitae proin sagittis nisl rhoncus mattis rhoncus." wrapText="true">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextArea>
+                  <Label fx:id="itemNumber" alignment="CENTER" layoutX="-20.0" layoutY="429.0" prefHeight="26.0" prefWidth="344.0" text="Artikelnummer">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="priceDetailView" alignment="CENTER" layoutX="70.0" layoutY="475.0" prefHeight="26.0" prefWidth="344.0" text="Namn">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ecoInfo" alignment="CENTER" layoutX="240.0" layoutY="429.0" prefHeight="26.0" prefWidth="344.0" text="Namn">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="946.0" layoutY="4.0" onMouseClicked="#closeProductDetailView" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_close_black_36dp.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="addButton" fitHeight="45.0" fitWidth="45.0" layoutX="287.0" layoutY="564.0" onMouseClicked="#clickedOnAddButton" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_add_circle_black_24dp.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="amountBox" layoutX="220.0" layoutY="575.0" prefHeight="23.0" prefWidth="45.0" />
+                  <ImageView fx:id="removeButton" fitHeight="45.0" fitWidth="45.0" layoutX="159.0" layoutY="565.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_remove_circle_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
       <AnchorPane fx:id="checkoutWrap" prefHeight="777.0" prefWidth="1430.0" />
       <AnchorPane fx:id="wizardWrap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" style="-fx-background-color: FF0000;" translateY="40.0" />
       <AnchorPane fx:id="frontPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: white;">
@@ -29,26 +81,29 @@
                         <Image url="@../images/headerTest_2.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="searchBox" layoutX="370.0" layoutY="15.0" onAction="#searchInSearchBox" prefHeight="50.0" prefWidth="700.0" promptText="Vilken vara letar du efter?" styleClass="search-box">
+                  <TextField fx:id="searchBox" layoutX="370.0" layoutY="15.0" onAction="#searchInSearchBox" prefHeight="50.0" prefWidth="700.0" styleClass="search-box">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="24.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="minSidaButton" layoutX="1305.0" layoutY="15.0" mnemonicParsing="false" onAction="#myPagesButtonClicked" prefHeight="50.0" prefWidth="120.0" styleClass="minSidaButton" text="Min sida">
+                  <Button fx:id="minSidaButton" layoutX="1305.0" layoutY="15.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="minSidaButton" text="Min sida">
                      <font>
                         <Font size="18.0" />
                      </font>
-                     <tooltip>
-                        <Tooltip text="Gå till mina sidor">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Tooltip>
-                     </tooltip>
                   </Button>
+                  <Label fx:id="loginLable" layoutX="1080.0" layoutY="30.0" text="Inloggad som användare" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="helpIcon" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" x="300.0" y="22.0">
+                     <image>
+                        <Image url="@../images/baseline_help_outline_black_18dp.png" />
+                     </image>
+                  </ImageView>
                   <ImageView fx:id="backToStoreIcon" fitHeight="48.0" fitWidth="48.0" layoutX="1382.0" layoutY="16.0" onMouseClicked="#wizardToBack" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
-                        <Image url="@../images/baseline_subdirectory_arrow_left_white_48dp.png" />
+                        <Image url="@../images/baseline_close_white_48dp.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="backToStoreLabel" layoutX="1210.0" layoutY="25.0" onMouseClicked="#wizardToBack" prefHeight="30.0" text="Fortsätt handla" textFill="WHITE" visible="false">
@@ -77,93 +132,22 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <RadioButton fx:id="drinks" layoutX="-2.0" layoutY="469.0" mnemonicParsing="false" onAction="#updateDrinks" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Drycker" />
+            <RadioButton fx:id="dairy" layoutX="-2.0" layoutY="281.0" mnemonicParsing="false" onAction="#updateDaires" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Mejeri" />
+            <RadioButton fx:id="sweet" layoutX="-2.0" layoutY="516.0" mnemonicParsing="false" onAction="#updateSweet" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Sötsaker" />
+            <RadioButton fx:id="greens" layoutX="-2.0" layoutY="234.0" mnemonicParsing="false" onAction="#updateGreens" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Grönsaker" />
+            <RadioButton fx:id="fruit" layoutX="-2.0" layoutY="187.0" mnemonicParsing="false" onAction="#updateFruits" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Frukt" />
+            <RadioButton fx:id="pantry" layoutX="-2.0" layoutY="375.0" mnemonicParsing="false" onAction="#updatePantry" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Skafferi" />
+            <RadioButton fx:id="bread" layoutX="-2.0" layoutY="328.0" mnemonicParsing="false" onAction="#updateBread" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Bröd" />
+            <RadioButton fx:id="allCategories" layoutX="-2.0" layoutY="140.0" mnemonicParsing="false" onAction="#updateFrontPage" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Startsida" />
+            <RadioButton fx:id="meat" layoutX="-2.0" layoutY="422.0" mnemonicParsing="false" onAction="#updateMeat" prefHeight="47.0" prefWidth="262.0" styleClass="nextButton" text="Kött, fisk och fågel" />
             <Label fx:id="categoryPageText" alignment="CENTER" layoutX="261.0" layoutY="85.0" prefHeight="60.0" prefWidth="920.0" styleClass="labelCategories">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="categoryScrollPane" hbarPolicy="NEVER" layoutY="140.0" prefHeight="716.0" prefWidth="260.0" styleClass="scrollPane">
-               <content>
-                  <VBox fx:id="menuVbox" style="-fx-background-color: #FFFFFF;" />
-               </content>
-            </ScrollPane>
+            <RadioButton fx:id="searchClean" layoutX="-2.0" layoutY="556.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="262.0" styleClass="searchButton" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="productDetailView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeProductDetailView" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
-         <children>
-            <AnchorPane layoutX="190.0" layoutY="80.0" onMouseClicked="#mouseTrap" prefHeight="669.0" prefWidth="997.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;" styleClass="detailviewBox">
-               <children>
-                  <ImageView fx:id="removeButtonBrown" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../images/remove_dark.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="removeButtonHover" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../images/remove_main.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="addButtonGreenDetail" fitHeight="70.0" fitWidth="70.0" layoutX="287.0" layoutY="552.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/darkAdd.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="addButtonGreenHoverDetail" fitHeight="70.0" fitWidth="70.0" layoutX="287.0" layoutY="552.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/primarGronAdd.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="closeUpImage" fitHeight="350.0" fitWidth="400.0" layoutX="60.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/baseline_help_black_18dp.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="closeUpName" alignment="CENTER" layoutX="500.0" layoutY="30.0" prefHeight="26.0" prefWidth="450.0" styleClass="detailviewName" text="Namn">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <TextArea editable="false" layoutX="495.0" layoutY="121.0" prefHeight="512.0" prefWidth="450.0" style="-fx-background-color: #FCFCFC#FCFCFC #FCFCFC#FCFCFC;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eleifend donec pretium vulputate sapien nec sagittis aliquam. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Diam vel quam elementum pulvinar etiam non quam lacus. Accumsan in nisl nisi scelerisque eu ultrices. Dolor magna eget est lorem ipsum dolor sit. Dolor sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra. Volutpat diam ut venenatis tellus. Odio aenean sed adipiscing diam donec adipiscing tristique. Vitae proin sagittis nisl rhoncus mattis rhoncus." wrapText="true">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextArea>
-                  <Label fx:id="itemNumber" layoutX="34.0" layoutY="433.0" prefHeight="46.0" prefWidth="436.0" styleClass="detailview" text="Artikelnummer">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="priceDetailView" layoutX="34.0" layoutY="485.0" prefHeight="58.0" prefWidth="433.0" styleClass="detailviewPrice" text="Namn">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="ecoInfo" layoutX="34.0" layoutY="389.0" prefHeight="46.0" prefWidth="436.0" styleClass="detailview" text="Namn">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="closeDetailView" fitHeight="50.0" fitWidth="50.0" layoutX="946.0" layoutY="4.0" onMouseClicked="#closeProductDetailView" onMouseEntered="#glow" onMouseExited="#removeGlow" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/baseline_close_black_36dp.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="addButtonDetail" fitHeight="70.0" fitWidth="70.0" layoutX="287.0" layoutY="552.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/baseline_add_circle_black_24dp.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="amountBox" layoutX="202.0" layoutY="566.0" prefHeight="45.0" prefWidth="75.0">
-                     <font>
-                        <Font size="23.0" />
-                     </font></TextField>
-                  <ImageView fx:id="removeButton" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" opacity="0.41" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/baseline_remove_circle_black_24dp.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-         </children></AnchorPane>
    </children>
 </StackPane>

@@ -26,6 +26,7 @@ public class FirstCartItem extends AnchorPane {
     @FXML private ImageView removeButton;
     @FXML private Label price;
     @FXML private ImageView addButtonHover;
+    @FXML private ImageView removeButtonHover;
 
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
@@ -93,5 +94,14 @@ public class FirstCartItem extends AnchorPane {
         addButtonHover.toBack();
     }
 
+    @FXML
+    protected void hoverOnRemoveButton(Event event){
+        removeButtonHover.toFront();
+    }
+
+    @FXML
+    protected void hoverOffRemoveButton(Event event){
+        removeButtonHover.toBack();
+    }
 
 }

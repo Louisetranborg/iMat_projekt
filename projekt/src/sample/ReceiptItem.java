@@ -38,7 +38,7 @@ public class ReceiptItem extends AnchorPane {
         this.shoppingItem = shoppingItem;
         image.setImage(IMatDataHandler.getInstance().getFXImage(shoppingItem.getProduct()));
         title.setText(shoppingItem.getProduct().getName());
-        amount.setText(shoppingItem.getAmount() + shoppingItem.getProduct().getUnitSuffix());
+        amount.setText(shoppingItem.getAmount() + " " + shoppingItem.getProduct().getUnitSuffix());
         price.setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
 
     }

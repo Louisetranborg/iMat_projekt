@@ -68,6 +68,7 @@ public class SearchController implements Initializable {
     @FXML private ImageView removeButtonBrown;
     @FXML private ImageView removeButtonHover;
     @FXML private ImageView closeDetailView;
+    @FXML private ImageView helpIcon;
 
 
 
@@ -444,6 +445,7 @@ public class SearchController implements Initializable {
         logo.setDisable(true);
         searchBox.setVisible(false);
         minSidaButton.setVisible(false);
+        helpIcon.setVisible(false);
         backToStoreIcon.setVisible(true);
         backToStoreIcon.setDisable(false);
         backToStoreIcon.opacityProperty().setValue(1);
@@ -474,6 +476,15 @@ public class SearchController implements Initializable {
         backToStoreLabel.setDisable(true);
     }
 
+    protected void setBackToStoreIconAble(){
+        backToStoreIcon.setDisable(false);
+        backToStoreIcon.opacityProperty().setValue(1);
+    }
+
+    protected void setBackToStoreLabelAble(){
+        backToStoreLabel.setDisable(false);
+    }
+
     @FXML
     protected void wizardToBack() {
         wizardWrap.toBack();
@@ -485,6 +496,7 @@ public class SearchController implements Initializable {
     protected void activateShoppingView() {
         searchBox.setVisible(true);
         minSidaButton.setVisible(true);
+        helpIcon.setVisible(true);
         backToStoreLabel.setVisible(false);
         backToStoreIcon.setVisible(false);
         logo.setDisable(false);
@@ -493,6 +505,7 @@ public class SearchController implements Initializable {
 
 
 
+    }
 
 
     //Vår initialize-metod, typ som en kontruktor
