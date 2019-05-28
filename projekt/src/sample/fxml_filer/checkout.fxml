@@ -529,7 +529,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label fx:id="confirmedLabel" alignment="CENTER" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1440.0" text="Köp genomfört! " visible="false">
+            <Label fx:id="confirmedLabel" alignment="CENTER" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1440.0" styleClass="text48" stylesheets="@../css_files/main_theme.css" text="Köp genomfört! " visible="false">
                <font>
                   <Font size="48.0" />
                </font>

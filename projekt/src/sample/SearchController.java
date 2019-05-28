@@ -457,10 +457,6 @@ public class SearchController implements Initializable {
     }
 
 
-
-
-
-
     //Vår initialize-metod, typ som en kontruktor
     @Override
     public void initialize(URL location, ResourceBundle resources) {

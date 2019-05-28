@@ -188,3 +188,8 @@
      -fx-font-size: 24px;
      -fx-opacity: 0.5;
     }
+
+    .text48{
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 48px;
+    }

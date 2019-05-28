@@ -24,9 +24,14 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <ImageView fx:id="removeButton" fitHeight="150.0" fitWidth="46.0" layoutX="532.0" layoutY="12.0" onMouseClicked="#clickedOnRemoveButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="removeButtonHover" fitHeight="150.0" fitWidth="46.0" layoutX="532.0" layoutY="12.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/baseline_remove_circle_black_24dp.png" />
+            <Image url="@../images/remove_main.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="removeButton" fitHeight="150.0" fitWidth="46.0" layoutX="532.0" layoutY="12.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/remove_dark.png" />
          </image>
       </ImageView>
       <Label fx:id="price" alignment="CENTER_RIGHT" layoutX="779.0" layoutY="40.0" prefHeight="23.0" prefWidth="107.0" styleClass="text18" stylesheets="@../css_files/main_theme.css" text="pris">
