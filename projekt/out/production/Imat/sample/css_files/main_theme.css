@@ -167,5 +167,5 @@
 
     .detailviewBox{
         -fx-border-radius: 15px;
-        -fx-background-radius: 25px;
+        -fx-background-radius: 5px;
     }

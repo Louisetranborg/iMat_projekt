@@ -347,6 +347,8 @@ public class SearchController implements Initializable {
         updateAmountInDetailView();
         addButtonGreenDetail.toFront();
         removeButtonBrown.toFront();
+        removeButtonBrown.setVisible(true);
+        removeButtonHover.setVisible(true);
     }
 
     @FXML
@@ -379,6 +381,8 @@ public class SearchController implements Initializable {
         if (activeInDetailview.getAmount()<1){
             addButtonDetail.toFront();
             removeButton.toFront();
+            removeButtonBrown.setVisible(false);
+            removeButtonHover.setVisible(false);
         }
     }
 

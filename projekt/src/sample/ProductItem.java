@@ -88,7 +88,10 @@ public class ProductItem extends AnchorPane {
         parentController.mouseTrap(event); //Infoboxen skall ej komma upp
         parentController.addItemToCart(shoppingItem);
         addButton2.toFront();
+        removeButtonBrown.setVisible(true);
+        removeButtonHover.setVisible(true);
         removeButtonBrown.toFront();
+
 
 
 
@@ -125,6 +128,8 @@ public class ProductItem extends AnchorPane {
         if (shoppingItem.getAmount() <= 0){
             addButton.toFront();
             removeButton.toFront();
+            removeButtonBrown.setVisible(false);
+            removeButtonHover.setVisible(false);
         }
     }
 
