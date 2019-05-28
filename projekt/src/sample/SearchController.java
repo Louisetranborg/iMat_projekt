@@ -174,6 +174,10 @@ public class SearchController implements Initializable {
         for (CategoryItem.productCategory productCategory : CategoryItem.productCategory.values()) {
             MenuItem categoryItem = new CategoryItem(productCategory, this);
             menuVbox.getChildren().add(categoryItem);
+            if(productCategory.name() == "ALL_CATEGORIES")
+            {
+                categoryItem.categoryButton.fire();
+            }
         }
     }
 
@@ -346,6 +350,7 @@ public class SearchController implements Initializable {
         updateProductPaneFromString(searchBox.getCharacters().toString());
         categoryPageText.setText("Sökresultat för ''" + searchBox.getCharacters().toString() + "''");
         productScrollPane.setContent(productFlowPane);
+        menuToggleGroup.selectToggle(null);
         //TODO låg tidigare en searchClean.fire() här.
     }
 
