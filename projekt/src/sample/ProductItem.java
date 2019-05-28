@@ -30,6 +30,7 @@ public class ProductItem extends AnchorPane {
     @FXML private ImageView removeButtonHover;
     @FXML private TextField amountBox;
     @FXML private AnchorPane productPane;
+    int a;
 
 
 
