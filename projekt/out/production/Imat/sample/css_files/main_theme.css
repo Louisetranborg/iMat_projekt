@@ -36,6 +36,7 @@
     -fx-border-width: 0px;
     -fx-border-radius: 0px;
     -fx-background-radius: 0px;
+    -fx-background: #FFFFFF;
     }
 
     .scrollPane:hover{
@@ -81,8 +82,8 @@
     .toCartButton{
         -fx-background-color: #66bb6a;
         -fx-text-fill: #000000;
-        -fx-font-family: "Roboto";
-        -fx-font-size: 16px;
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 18px;
     }
 
     .toCartButton: hover{
@@ -97,7 +98,7 @@
     }*/
 
 
-    .nextButton{
+    .categoryButton{
         -fx-background-color: #FFFFFF;
         -fx-text-fill: #000000;
         -fx-font-family: "Roboto";
@@ -106,15 +107,15 @@
 
     }
 
-    .nextButton:hover{
+    .categoryButton:hover{
         -fx-background-color: #98ee99;
     }
 
-    .nextButton:pressed{
+    .categoryButton:pressed{
         -fx-background-color: #66bb6a;
     }
 
-    .nextButton:selected{
+    .categoryButton:selected{
         -fx-background-color: #66bb6a;
     }
 
@@ -124,21 +125,75 @@
 
     .labelTop{
         -fx-text-fill: #000000;
-        -fx-font-family: "Roboto";
+        -fx-font-family: "Avenir Book";
         -fx-font-size: 28px;
-        -fx-font-style: underline;
         -fx-alignment: left;
-
-
     }
 
     .labelCategories{
         -fx-text-fill: #000000;
-        -fx-font-family: "Roboto";
+        -fx-font-family: "Avenir Book";
         -fx-font-size: 35px;
-
         -fx-alignment: left;
+    }
 
+    .detailview{
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 30px;
+        -fx-alignment: left;
+    }
 
+    .detailviewPrice{
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 40px;
+        -fx-alignment: left;
+        -font-weight: 900;
+        -fx-text-fill: #66bb6a;
+    }
 
+    .detailviewName{
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 50px;
+        -fx-alignment: center;
+        -text-decoration: underline;
+    }
+
+    .detailviewBox{
+        -fx-border-radius: 15px;
+        -fx-background-radius: 5px;
+
+    .textField {
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 16px;
+    }
+
+    .text18 {
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 18px;
+    }
+
+    .text24{
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 24px;
+    }
+
+    .text36{
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 36px;
+    }
+
+    .text24-bold{
+        -fx-font-family: "Avenir LT Std";
+        -fx-font-size: 24px;
+        }
+
+    .text24-opacity{
+     -fx-font-family: "Avenir Book";
+     -fx-font-size: 24px;
+     -fx-opacity: 0.5;
+    }
+
+    .text48{
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 48px;
     }
