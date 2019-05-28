@@ -35,14 +35,16 @@ public class OrderItem extends HBox {
         this.parentController = parentController;
         this.order = order;
 
-        //TODO Ändra så att det faktiskt fungerar för andra datum och månader.
-        date.setText(order.getDate().toString().substring(0,7));
+
        // order.getDate().
         for(ShoppingItem item : order.getItems()) {
             System.out.println(item.toString() + " : " + item.getTotal() + " : " + item.getAmount());
             totalAmountPrice += item.getTotal();
             totalAmount += item.getAmount();
         }
+
+        //TODO Ändra så att det faktiskt fungerar för andra datum och månader.
+        date.setText(order.getDate().toString().substring(0,7));
         //TODO byt ut till amount for varje,
         amount.setText(totalAmount+" st");
         price.setText(totalAmountPrice+" kr");
