@@ -103,6 +103,8 @@ public class ShoppingCartPane extends AnchorPane {
 
     protected void addProductToCart(ShoppingItem shoppingItem){ //Lägger endast ut ett cartItem när det behövs
         if(!shoppingCart.getItems().contains(shoppingItem)){
+            //TODO Måste göra om denna funktionalitet. med t.ex : new ShoppingItem(shoppingItem.getProduct(), shoppingItem.getAmount())
+            //TODO Den kopplar annars mot product direkt och amount tas därför bort när man kör metoden resetEveryShoppingItem i SearchController.
             shoppingCart.addItem(shoppingItem);
         }
     }

@@ -12,7 +12,7 @@ public class SettingsItem extends MenuItem {
     public enum SettingsCategory {
         HISTORY,
         FAVORITES,
-        SHOPPING_LIST,
+     //   SHOPPING_LIST,
         PERSONAL_DATA,
         BACK
     }
@@ -29,9 +29,9 @@ public class SettingsItem extends MenuItem {
             case FAVORITES:
                 categoryButton.setText("Favoriter");
                 break;
-            case SHOPPING_LIST:
-                categoryButton.setText("Sparade kundvagnar");
-                break;
+       //     case SHOPPING_LIST:
+         //       categoryButton.setText("Sparade kundvagnar");
+           //     break;
             case PERSONAL_DATA:
                 categoryButton.setText("Personuppgifter");
                 break;
@@ -49,7 +49,7 @@ public class SettingsItem extends MenuItem {
 
         //myPage.prefWidth(Region.USE_COMPUTED_SIZE);
 
-        parentController.myPage.settingsPane.toFront();
+      //  parentController.myPage..toFront();
 
     }
 
@@ -59,8 +59,9 @@ public class SettingsItem extends MenuItem {
     }
 
 
-    public void onClickSavedCarts() {
-        parentController.myPage.savedCartPage.toFront();
+    public void onClickFavorites() {
+        parentController.myPage.favoritePage.toFront();
+        parentController.updateFavoritePage();
     }
 
 
@@ -83,17 +84,18 @@ public class SettingsItem extends MenuItem {
             case PERSONAL_DATA:
                 onClickPersonalAccount();
                 break;
-            case SHOPPING_LIST:
+         /*   case SHOPPING_LIST:
                 onClickSavedCarts();
-                break;
+                break;*/
             case FAVORITES:
-                onClickMyPages();
+                onClickFavorites();
                 break;
             case BACK:
                 onClickBack();
                 break;
 
         }
+        parentController.changeCategoryPageText(categoryButton.getText());
 
         // if(settings != SettingsCategory.BACK)
         // parentController.updateSettingsPaneFromSettings();
