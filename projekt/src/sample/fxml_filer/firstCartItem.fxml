@@ -14,12 +14,12 @@
             <Image url="@../images/baseline_add_circle_black_24dp.png" />
          </image>
       </ImageView>
-      <Label fx:id="title" layoutX="112.0" layoutY="4.0" prefHeight="35.0" prefWidth="344.0" text="Produktnamn">
+      <Label fx:id="title" layoutX="112.0" layoutY="4.0" prefHeight="35.0" prefWidth="344.0" stylesheets="@../css_files/textTypes.css" text="Produktnamn">
          <font>
             <Font name="Avenir Book" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="amountBox" layoutX="585.0" layoutY="19.0" prefHeight="32.0" prefWidth="50.0" styleClass="textField" stylesheets="@../css_files/main_theme.css">
+      <TextField fx:id="amountBox" layoutX="585.0" layoutY="19.0" prefHeight="32.0" prefWidth="50.0" styleClass="textField" stylesheets="@../css_files/textTypes.css">
          <font>
             <Font size="16.0" />
          </font>
@@ -34,7 +34,7 @@
             <Image url="@../images/remove_dark.png" />
          </image>
       </ImageView>
-      <Label fx:id="price" alignment="CENTER_RIGHT" layoutX="779.0" layoutY="40.0" prefHeight="23.0" prefWidth="107.0" styleClass="text18" stylesheets="@../css_files/main_theme.css" text="pris">
+      <Label fx:id="price" alignment="CENTER_RIGHT" layoutX="779.0" layoutY="40.0" prefHeight="23.0" prefWidth="107.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="pris">
          <font>
             <Font size="18.0" />
          </font>

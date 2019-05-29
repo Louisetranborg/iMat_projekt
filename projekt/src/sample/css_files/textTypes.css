@@ -1,0 +1,35 @@
+.text18 {
+            -fx-font-family: "Avenir Book";
+            -fx-font-size: 18px;
+        }
+
+        .text24{
+            -fx-font-family: "Avenir Book";
+            -fx-font-size: 24px;
+        }
+
+        .text36{
+            -fx-font-family: "Avenir Book";
+            -fx-font-size: 36px;
+        }
+
+        .text24-bold{
+            -fx-font-family: "Avenir LT Std";
+            -fx-font-size: 24px;
+            }
+
+        .text24-opacity{
+         -fx-font-family: "Avenir Book";
+         -fx-font-size: 24px;
+         -fx-opacity: 0.5;
+        }
+
+        .text48{
+            -fx-font-family: "Avenir Book";
+            -fx-font-size: 48px;
+        }
+
+        .text14{
+            -fx-font-family: "Avenir Book";
+            -fx-font-size:14px;
+        }
