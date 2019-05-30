@@ -557,13 +557,6 @@ public class SearchController implements Initializable {
 
 
         iMatDataHandler.getShoppingCart().clear();
-        iMatDataHandler.addFavorite(94);
-        iMatDataHandler.addFavorite(95);
-        iMatDataHandler.addFavorite(96);
-        iMatDataHandler.addFavorite(97);
-        iMatDataHandler.addFavorite(98);
-        iMatDataHandler.addFavorite(99);
-        iMatDataHandler.addFavorite(100);
 
 
         menuToggleGroup = new ToggleGroup();
@@ -621,4 +614,17 @@ public class SearchController implements Initializable {
             }
         });
     }
+
+    protected void addFavourite(Product p){
+        iMatDataHandler.addFavorite(p);
+    }
+
+    protected void addAllToFavourite(Product p){
+
+    }
+
+    protected void removeFavourite(Product p){
+        iMatDataHandler.removeFavorite(p);
+    }
+
 }

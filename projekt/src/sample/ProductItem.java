@@ -27,6 +27,8 @@ public class ProductItem extends AnchorPane {
     @FXML private ImageView addButtonHover;
     @FXML private ImageView removeButtonBrown;
     @FXML private ImageView removeButtonHover;
+    @FXML private ImageView whiteHeart;
+    @FXML private ImageView greenHeart;
     @FXML private TextField amountBox;
     @FXML private AnchorPane productPane;
 
@@ -168,5 +170,22 @@ public class ProductItem extends AnchorPane {
     protected void setGreenButton(){
         addButton2.toFront();
     }
+
+    @FXML
+    protected void setFavourite(Event event){
+        parentController.mouseTrap(event);
+        greenHeart.toFront();
+        parentController.addFavourite(shoppingItem.getProduct());
+    }
+
+
+    @FXML
+    protected void removeFavourite(Event event){
+        parentController.mouseTrap(event);
+        whiteHeart.toFront();
+        parentController.removeFavourite(shoppingItem.getProduct());
+    }
+
+
 
 }
