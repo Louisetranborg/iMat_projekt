@@ -10,12 +10,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class FirstCartItem extends AnchorPane {
+public class FirstCartItem extends AnchorPane implements FavoriteObserver {
 
     private SearchController parentController;
     private ShoppingItem shoppingItem;
@@ -27,6 +28,8 @@ public class FirstCartItem extends AnchorPane {
     @FXML private Label price;
     @FXML private ImageView addButtonHover;
     @FXML private ImageView removeButtonHover;
+    @FXML private ImageView whiteHeart;
+    @FXML private ImageView greenHeart;
 
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
@@ -45,6 +48,14 @@ public class FirstCartItem extends AnchorPane {
         this.parentController = parentController;
         image.setImage(IMatDataHandler.getInstance().getFXImage(shoppingItem.getProduct()));
         title.setText(shoppingItem.getProduct().getName());
+
+        //Lägger till som en FavoriteObserver
+        parentController.addObservers(this);
+
+        //Grönmarkrar de produkter som är i favoriter när de skapas.
+        parentController.updateFavoriteItems(getProduct(), parentController.iMatDataHandler.isFavorite(getProduct()));
+
+
 
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -103,5 +114,32 @@ public class FirstCartItem extends AnchorPane {
     protected void hoverOffRemoveButton(Event event){
         removeButtonHover.toBack();
     }
+
+    //
+    //
+    //-----------------------Metoder som har med Favoriter att göra ----------------------------------------------------------------
+    //
+
+    @FXML
+    protected void setFavorite(){
+        parentController.addFavorite(shoppingItem.getProduct());
+    }
+
+    @FXML
+    protected void removeFavorite(){
+        parentController.removeFavorite(shoppingItem.getProduct());
+    }
+
+    public void update(Product p, Boolean isFavorite){
+        if (isFavorite)
+            greenHeart.toFront();
+        else
+            whiteHeart.toFront();
+    }
+
+    public Product getProduct(){
+        return shoppingItem.getProduct();
+    }
+
 
 }

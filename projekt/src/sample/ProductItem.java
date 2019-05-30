@@ -10,11 +10,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Order;
+import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 
-public class ProductItem extends AnchorPane {
+public class ProductItem extends AnchorPane implements FavoriteObserver{
 
     private SearchController parentController;
     private ShoppingItem shoppingItem;
@@ -31,9 +32,6 @@ public class ProductItem extends AnchorPane {
     @FXML private ImageView greenHeart;
     @FXML private TextField amountBox;
     @FXML private AnchorPane productPane;
-
-
-
 
 
     @FXML
@@ -65,6 +63,11 @@ public class ProductItem extends AnchorPane {
         image.setImage(parentController.iMatDataHandler.getFXImage(shoppingItem.getProduct()));
         price.setText(shoppingItem.getProduct().getPrice() + " " + shoppingItem.getProduct().getUnit());
         updateAmountInProductItem(); //Skriver in default-amount (0) i textField
+
+        //Lägger till som en FavoriteObserver
+        parentController.addObservers(this);
+        //Grönmarkrar de produkter som är i favoriter när de skapas.
+        parentController.updateFavoriteItems(getProduct(), parentController.iMatDataHandler.isFavorite(getProduct()));
 
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -171,21 +174,40 @@ public class ProductItem extends AnchorPane {
         addButton2.toFront();
     }
 
+    //Våra ShoppingItem kan tydligen bara vara på ett ställe samtidigt. Därför kollar vi vart användaren befinner sig och uppdaterar sidan efter det.
+
+    //
+    //
+    //-----------------------Metoder som har med Favoriter att göra ----------------------------------------------------------------
+    //
+
     @FXML
-    protected void setFavourite(Event event){
+    protected void setFavorite(Event event){
         parentController.mouseTrap(event);
-        greenHeart.toFront();
-        parentController.addFavourite(shoppingItem.getProduct());
+        parentController.addFavorite(shoppingItem.getProduct());
     }
 
 
     @FXML
-    protected void removeFavourite(Event event){
+    protected void removeFavorite(Event event){
         parentController.mouseTrap(event);
-        whiteHeart.toFront();
-        parentController.removeFavourite(shoppingItem.getProduct());
+        parentController.removeFavorite(shoppingItem.getProduct());
+
+        //Denna rad gör så att den försvinner direkt om man är på mina favoriter.
+        if(parentController.isUserOnMyPage)
+            parentController.updateFavoritePage();
     }
 
+    //Metoden som kallas av FavoriteObserver
+    public void update(Product p, Boolean isFavorite){
+        if (isFavorite)
+            greenHeart.toFront();
+        else
+            whiteHeart.toFront();
+    }
 
+    public Product getProduct(){
+        return shoppingItem.getProduct();
+    }
 
 }

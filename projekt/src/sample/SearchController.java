@@ -102,7 +102,6 @@ public class SearchController implements Initializable {
 
     protected Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med productItems
     Map<String, ShoppingItem> shoppingItemMap = new HashMap<String, ShoppingItem>();        //Map med shoppingitems, endast skapa dem en gång! Både productItem och cartItem pekar på samma shoppingItem.
-   // Map<String, OrderItem> orderItemMap = new HashMap<ShoppingItem, OrderItem>();
 
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
 
@@ -281,7 +280,7 @@ public class SearchController implements Initializable {
         isUserOnMyPage = false;
         //TODO eventuellt bestämma vart dessa ska samlas. Förslagsvis här då och andra metoder för kalla på denna. Här kanske man kör ihop activateShoppingview också.
         productScrollPane.setContent(productFlowPane);
-        frontPane.toFront();
+      //  frontPane.toFront();
         fillCategoryPane();
         updateMyPageButton();
         wizardWrap.setVisible(false);
@@ -615,16 +614,40 @@ public class SearchController implements Initializable {
         });
     }
 
-    protected void addFavourite(Product p){
+    //
+    //
+    //-----------------------Metoder som har med Favoriter att göra ----------------------------------------------------------------
+    //
+
+    List<FavoriteObserver> favoriteState = new ArrayList();
+
+    public void addObservers(FavoriteObserver fo){
+        favoriteState.add(fo);
+    }
+
+    public void removeObservers(FavoriteObserver fo){
+        favoriteState.remove(fo);
+    }
+
+    public void updateFavoriteItems(Product product, Boolean isFavorite){
+        for (FavoriteObserver fo : favoriteState){
+            if (fo.getProduct() == product)
+                fo.update(product, isFavorite);
+        }
+    }
+
+    protected void addFavorite(Product p){
         iMatDataHandler.addFavorite(p);
+        updateFavoriteItems(p, true);
     }
 
     protected void addAllToFavourite(Product p){
 
     }
 
-    protected void removeFavourite(Product p){
+    protected void removeFavorite(Product p){
         iMatDataHandler.removeFavorite(p);
+        updateFavoriteItems(p, false);
     }
 
 }
