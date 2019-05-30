@@ -39,7 +39,7 @@ public class SettingsItem extends MenuItem {
                 categoryButton.setText("Historik");
                 break;
             case BACK:
-                categoryButton.setText("Tillbaka till sortimentet");
+                categoryButton.setText("Till sortimentet");
                 break;
         }
     }
