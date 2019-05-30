@@ -12,9 +12,7 @@ public class SettingsItem extends MenuItem {
     public enum SettingsCategory {
         HISTORY,
         FAVORITES,
-     //   SHOPPING_LIST,
         PERSONAL_DATA,
-        BACK
     }
 
     public SettingsItem(SearchController parentController, SettingsCategory settings) {
@@ -29,28 +27,13 @@ public class SettingsItem extends MenuItem {
             case FAVORITES:
                 categoryButton.setText("Favoriter");
                 break;
-       //     case SHOPPING_LIST:
-         //       categoryButton.setText("Sparade kundvagnar");
-           //     break;
             case PERSONAL_DATA:
                 categoryButton.setText("Personuppgifter");
                 break;
             case HISTORY:
                 categoryButton.setText("Historik");
                 break;
-            case BACK:
-                categoryButton.setText("Till sortimentet");
-                break;
         }
-    }
-
-
-    public void onClickMyPages() {
-
-        //myPage.prefWidth(Region.USE_COMPUTED_SIZE);
-
-      //  parentController.myPage..toFront();
-
     }
 
 
@@ -61,11 +44,14 @@ public class SettingsItem extends MenuItem {
 
     public void onClickFavorites() {
         parentController.myPage.favoritePage.toFront();
+
+        //TODO flytta denna till de ställen där man lägger till favorit istället.
         parentController.updateFavoritePage();
     }
 
 
     public void onClickPersonalAccount() {
+        parentController.updatePersonalDataPage();
         parentController.myPage.personalDataPage.toFront();
     }
 
@@ -90,12 +76,10 @@ public class SettingsItem extends MenuItem {
             case FAVORITES:
                 onClickFavorites();
                 break;
-            case BACK:
-                onClickBack();
-                break;
-
         }
         parentController.changeCategoryPageText(categoryButton.getText());
+
+        System.out.println(categoryButton.getToggleGroup().getToggles());
 
         // if(settings != SettingsCategory.BACK)
         // parentController.updateSettingsPaneFromSettings();

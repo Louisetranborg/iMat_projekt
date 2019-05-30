@@ -28,7 +28,6 @@ public class MenuItem extends AnchorPane {
 
         //  this.productCategory = productCategory;
         this.parentController = parentController;
-
         categoryButton.setToggleGroup(parentController.menuToggleGroup); //Gör så att endast en knapp kan vara nedtryckt åt gången
         categoryButton.getStyleClass().remove("radio-button"); //Tar bort utseendet för radio-button
         categoryButton.getStyleClass().add("toggle-button");      //Ändrar utseendet så det ser ut som en kanpp

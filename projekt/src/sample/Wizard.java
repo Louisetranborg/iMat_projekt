@@ -122,15 +122,6 @@ public class Wizard extends StackPane {
             }
         });
 
-        firstName.setText(parentController.iMatDataHandler.getCustomer().getFirstName());
-        lastName.setText(parentController.iMatDataHandler.getCustomer().getLastName());
-        telNumber.setText(parentController.iMatDataHandler.getCustomer().getMobilePhoneNumber());
-        mail.setText(parentController.iMatDataHandler.getCustomer().getEmail());
-        postCode.setText(parentController.iMatDataHandler.getCustomer().getPostCode());
-        city.setText(parentController.iMatDataHandler.getCustomer().getPhoneNumber());
-        adress.setText(parentController.iMatDataHandler.getCustomer().getAddress());
-        cardholderTextField.setText(parentController.iMatDataHandler.getCustomer().getFirstName() + " " + parentController.iMatDataHandler.getCustomer().getLastName());
-
         fillErrorIconMap();
         visaButton.setToggleGroup(cardToggleGroup);
         mastercardButton.setToggleGroup(cardToggleGroup);

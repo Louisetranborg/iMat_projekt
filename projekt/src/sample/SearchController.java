@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.effect.Glow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.*;
@@ -69,6 +70,7 @@ public class SearchController implements Initializable {
     @FXML private ImageView removeButtonHover;
     @FXML private ImageView closeDetailView;
     @FXML private ImageView helpIcon;
+    @FXML private ImageView minSidaIcon;
 
 
 
@@ -111,6 +113,8 @@ public class SearchController implements Initializable {
 
     private ShoppingItem activeInDetailview;
     public MyPage myPage;
+
+    static boolean isUserOnMyPage = false;
 
     protected ShoppingCartPane getShoppingCartPane(){
         return shoppingCartPane;
@@ -187,7 +191,13 @@ public class SearchController implements Initializable {
         for (SettingsItem.SettingsCategory settings : SettingsItem.SettingsCategory.values()) {
             MenuItem settingsItem = new SettingsItem(this, settings);
             menuVbox.getChildren().add(settingsItem);
+            if(settings.name() == "HISTORY")
+            {
+                settingsItem.categoryButton.fire();
+            }
         }
+
+
         Pane blankSpace = new Pane();
         blankSpace.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
 
@@ -232,6 +242,10 @@ public class SearchController implements Initializable {
         }
     }
 
+    protected void updatePersonalDataPage(){
+        myPage.loadCustomerInfo();
+    }
+
     protected void updateHistoryPage(){
         myPage.historyOrderVbox.getChildren().clear();
         for (Order order : IMatDataHandler.getInstance().getOrders()) {
@@ -264,16 +278,18 @@ public class SearchController implements Initializable {
     public void updateFrontPage() { //TODO Göra om funktionaliteten från en engångsupdate till en standard update?
         productFlowPane.getChildren().clear();
         productScrollPane.setVvalue(0);
-
+        isUserOnMyPage = false;
         //TODO eventuellt bestämma vart dessa ska samlas. Förslagsvis här då och andra metoder för kalla på denna. Här kanske man kör ihop activateShoppingview också.
         productScrollPane.setContent(productFlowPane);
         frontPane.toFront();
         fillCategoryPane();
+        updateMyPageButton();
         wizardWrap.setVisible(false);
 
         for (Product product : iMatDataHandler.getProducts()) {
             productFlowPane.getChildren().add(productItemMap.get(product.getName()));                                                             //Lägger ut alla varorna på framsidan, ändra om vi vill ha annan förstasida
         }
+        //TODO kolla om det ska stå Startsida istället.
         categoryPageText.setText("Rekommenderade produkter för dig");
     }
 
@@ -314,22 +330,42 @@ public class SearchController implements Initializable {
     //Byter view från productFlowpane till myPage.
     @FXML
     protected void myPagesButtonClicked() {
-        updateSettingsPaneFromSettings();
 
-        try {
-            fillSettingsPane();
-        } catch (IOException e) {
-            e.printStackTrace();
+       // String url = "sample/css_files/css_images/person_black.png";
+        if(isUserOnMyPage != true){
+            changeViewToMyPage();
+
+        } else{
+            updateFrontPage();
+        }
+        updateMyPageButton();
+    }
+
+    public void updateMyPageButton(){
+        if(isUserOnMyPage == true){
+            minSidaButton.setText("Handla");
+            minSidaIcon.setImage(new Image("sample/css_files/css_images/search_icon.png"));
+
+        } else{
+            minSidaButton.setText("Min Sida");
+            minSidaIcon.setImage(new Image("sample/css_files/css_images/person_black.png"));
         }
     }
 
     //TODO eventuellt ha en update för varje stor sida. e.g updateFrontPane, updateMyPage, updateCheckout osv. och skrota alla små metoder som vi inte håller koll på.
 
     //Byter view från mypage till productflowpane
-    protected  void updateSettingsPaneFromSettings(){
+    protected  void changeViewToMyPage(){
         productScrollPane.setContent(myPage);
-        myPage.favoritePage.toFront();
-        changeCategoryPageText("Min Sida");
+        myPage.historyPage.toFront();
+        changeCategoryPageText("Historik");
+        isUserOnMyPage = true;
+
+        try {
+            fillSettingsPane();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -511,13 +547,13 @@ public class SearchController implements Initializable {
     //Vår initialize-metod, typ som en kontruktor
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        iMatDataHandler.getCustomer().setFirstName("Hjördis");                                                          //Sätter namnet till Hjördis sålänge.
+       /* iMatDataHandler.getCustomer().setFirstName("Hjördis");                                                          //Sätter namnet till Hjördis sålänge.
         iMatDataHandler.getCustomer().setLastName("Johansson");
         iMatDataHandler.getCustomer().setMobilePhoneNumber("073-333 33 33");
         iMatDataHandler.getCustomer().setEmail("hjördis.johansson@gmail.se");
         iMatDataHandler.getCustomer().setPostCode("333 33");
         iMatDataHandler.getCustomer().setAddress("Kallebäcksvägen 3");
-        iMatDataHandler.getCustomer().setPhoneNumber("Göteborg");
+        iMatDataHandler.getCustomer().setPhoneNumber("Göteborg");*/
 
 
         iMatDataHandler.getShoppingCart().clear();
@@ -536,7 +572,7 @@ public class SearchController implements Initializable {
         productFlowPane.setHgap(40);                                                                                    //Avstånd mellan productItems i x-led
         productFlowPane.setVgap(40);
         //Avstånd mellan productItems i y-led
-        myPage = new MyPage();
+        myPage = new MyPage(this);
         createProductItems();                                                                                           //kalla på metod som skapar varorna
         //createOrderList();
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
