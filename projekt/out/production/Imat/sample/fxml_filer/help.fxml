@@ -14,9 +14,9 @@
    <children>
       <AnchorPane prefHeight="800.0" prefWidth="920.0">
          <children>
-            <ScrollPane prefHeight="1035.0" prefWidth="919.0">
+            <ScrollPane prefHeight="1103.0" prefWidth="919.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1032.0" prefWidth="919.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1075.0" prefWidth="919.0">
                      <children>
                         <Label alignment="CENTER" layoutY="35.0" prefHeight="50.0" prefWidth="920.0" text="Välkommen till iMat - här finns en snabb genomgång av programmet">
                            <font>
@@ -94,6 +94,16 @@
                            </image>
                         </ImageView>
                         <TextArea editable="false" layoutX="131.0" layoutY="852.0" prefHeight="75.0" prefWidth="755.0" text="Du kan alltid trycka på iMats logga för att ta dig tillbaka till startsidan" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextArea>
+                        <ImageView fitHeight="52.0" fitWidth="102.0" layoutX="15.0" layoutY="961.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/till_kassa.PNG" />
+                           </image>
+                        </ImageView>
+                        <TextArea editable="false" layoutX="131.0" layoutY="952.0" prefHeight="75.0" prefWidth="755.0" text="När du är nöjd med din kundvagn och vill gå och betala trycker du på &quot;Till kassa&quot;-knappen för att koma till kassan. Om kundvagnen är tom är denna utgråad och går inte att klicka på." wrapText="true">
                            <font>
                               <Font size="18.0" />
                            </font>

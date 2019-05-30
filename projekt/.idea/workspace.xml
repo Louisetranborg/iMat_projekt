@@ -23,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2231">
-              <caret line="364" column="19" selection-start-line="364" selection-start-column="19" selection-end-line="364" selection-end-column="19" />
+            <state relative-caret-position="132">
+              <caret line="97" column="4" selection-start-line="97" selection-start-column="4" selection-end-line="97" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2799#2800#0" expanded="true" />
@@ -40,7 +40,50 @@
                 <element signature="e#3112#3113#0" expanded="true" />
                 <element signature="e#3154#3155#0" expanded="true" />
                 <element signature="e#3208#3209#0" expanded="true" />
+                <element signature="e#3423#3444#0" expanded="true" />
+                <element signature="e#3570#3592#0" expanded="true" />
+                <element signature="e#4208#4209#0" expanded="true" />
+                <element signature="e#4247#4248#0" expanded="true" />
+                <element signature="e#4940#4941#0" expanded="true" />
+                <element signature="e#4982#4983#0" expanded="true" />
+                <element signature="e#5188#5189#0" expanded="true" />
+                <element signature="e#5219#5220#0" expanded="true" />
+                <element signature="e#6127#6128#0" expanded="true" />
+                <element signature="e#6175#6176#0" expanded="true" />
+                <element signature="e#16614#16615#0" expanded="true" />
+                <element signature="e#16657#16658#0" expanded="true" />
+                <element signature="e#16722#16723#0" expanded="true" />
+                <element signature="e#16764#16765#0" expanded="true" />
+                <element signature="e#18958#18959#0" expanded="true" />
+                <element signature="e#19007#19008#0" expanded="true" />
+                <element signature="e#19204#19205#0" expanded="true" />
+                <element signature="e#19254#19255#0" expanded="true" />
+                <element signature="e#22897#22898#0" expanded="true" />
+                <element signature="e#22943#22944#0" expanded="true" />
+                <element signature="e#23048#23049#0" expanded="true" />
+                <element signature="e#23097#23098#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Help.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/CartItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="106" column="5" lean-forward="true" selection-start-line="73" selection-start-column="4" selection-end-line="106" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -66,7 +109,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/ProductItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
+            <state relative-caret-position="2492">
               <caret line="188" selection-start-line="188" selection-end-line="188" />
               <folding>
                 <element signature="e#3807#3808#0" expanded="true" />
@@ -86,7 +129,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/fxml_filer/help.fxml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
@@ -94,24 +137,6 @@
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/Product.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-255">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/IMatDataHandler.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="234" column="22" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
-            </state>
-          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -152,8 +177,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -163,6 +188,9 @@
       <find>he</find>
       <find>helpIcon</find>
       <find>fav</find>
+      <find>geti</find>
+      <find>cartpaneW</find>
+      <find>getch</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,13 +201,15 @@
       <list>
         <option value="$PROJECT_DIR$/src/sample/css_files/main_theme.css" />
         <option value="$PROJECT_DIR$/src/sample/css_files/textTypes.css" />
-        <option value="$PROJECT_DIR$/src/sample/SearchController.java" />
         <option value="$PROJECT_DIR$/src/sample/ProductItem.java" />
         <option value="$PROJECT_DIR$/src/sample/fxml_filer/help.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/help.java" />
+        <option value="$PROJECT_DIR$/src/sample/Help.java" />
+        <option value="$PROJECT_DIR$/src/sample/SearchController.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="950" />
     <option name="width" value="980" />
     <option name="height" value="1040" />
@@ -259,7 +289,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559247130241" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559248623861" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -324,12 +354,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2409000" />
+    <option name="totallyTimeSpent" value="3897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19261745" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19261745" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -338,7 +369,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36402267" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36402267" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -349,7 +380,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32765958" />
+      <window_info active="true" anchor="bottom" id="Messages" order="13" visible="true" weight="0.32719547" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -509,29 +540,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
+    <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/ShoppingItem.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2231">
-          <caret line="364" column="19" selection-start-line="364" selection-start-column="19" selection-end-line="364" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2799#2800#0" expanded="true" />
-            <element signature="e#2840#2841#0" expanded="true" />
-            <element signature="e#2890#2891#0" expanded="true" />
-            <element signature="e#2933#2934#0" expanded="true" />
-            <element signature="e#2983#2984#0" expanded="true" />
-            <element signature="e#3021#3022#0" expanded="true" />
-            <element signature="e#3056#3057#0" expanded="true" />
-            <element signature="e#3112#3113#0" expanded="true" />
-            <element signature="e#3154#3155#0" expanded="true" />
-            <element signature="e#3208#3209#0" expanded="true" />
-          </folding>
+        <state>
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/fxml_filer/help.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/Product.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/IMatDataHandler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="234" column="22" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CartItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="106" column="5" lean-forward="true" selection-start-line="73" selection-start-column="4" selection-end-line="106" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/ProductItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
+        <state relative-caret-position="2492">
           <caret line="188" selection-start-line="188" selection-end-line="188" />
           <folding>
             <element signature="e#3807#3808#0" expanded="true" />
@@ -550,20 +597,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/ShoppingItem.class">
+    <entry file="file://$PROJECT_DIR$/src/sample/Help.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="291">
+          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/fxml_filer/help.fxml">
+    <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="132">
+          <caret line="97" column="4" selection-start-line="97" selection-start-column="4" selection-end-line="97" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2799#2800#0" expanded="true" />
+            <element signature="e#2840#2841#0" expanded="true" />
+            <element signature="e#2890#2891#0" expanded="true" />
+            <element signature="e#2933#2934#0" expanded="true" />
+            <element signature="e#2983#2984#0" expanded="true" />
+            <element signature="e#3021#3022#0" expanded="true" />
+            <element signature="e#3056#3057#0" expanded="true" />
+            <element signature="e#3112#3113#0" expanded="true" />
+            <element signature="e#3154#3155#0" expanded="true" />
+            <element signature="e#3208#3209#0" expanded="true" />
+            <element signature="e#3423#3444#0" expanded="true" />
+            <element signature="e#3570#3592#0" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
+            <element signature="e#4247#4248#0" expanded="true" />
+            <element signature="e#4940#4941#0" expanded="true" />
+            <element signature="e#4982#4983#0" expanded="true" />
+            <element signature="e#5188#5189#0" expanded="true" />
+            <element signature="e#5219#5220#0" expanded="true" />
+            <element signature="e#6127#6128#0" expanded="true" />
+            <element signature="e#6175#6176#0" expanded="true" />
+            <element signature="e#16614#16615#0" expanded="true" />
+            <element signature="e#16657#16658#0" expanded="true" />
+            <element signature="e#16722#16723#0" expanded="true" />
+            <element signature="e#16764#16765#0" expanded="true" />
+            <element signature="e#18958#18959#0" expanded="true" />
+            <element signature="e#19007#19008#0" expanded="true" />
+            <element signature="e#19204#19205#0" expanded="true" />
+            <element signature="e#19254#19255#0" expanded="true" />
+            <element signature="e#22897#22898#0" expanded="true" />
+            <element signature="e#22943#22944#0" expanded="true" />
+            <element signature="e#23048#23049#0" expanded="true" />
+            <element signature="e#23097#23098#0" expanded="true" />
+          </folding>
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
   </component>
 </project>
