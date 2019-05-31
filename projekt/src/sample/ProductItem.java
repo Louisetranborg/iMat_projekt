@@ -9,8 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
@@ -31,9 +34,6 @@ public class ProductItem extends AnchorPane {
     @FXML private ImageView removeButtonHover;
     @FXML private TextField amountBox;
     @FXML private AnchorPane productPane;
-
-
-
 
 
     @FXML
@@ -211,6 +211,16 @@ public class ProductItem extends AnchorPane {
 
     protected void setGreenButton(){
         addButton2.toFront();
+    }
+
+    @FXML
+    private void dropShadow(){
+        productPane.setEffect(new DropShadow(20.0,Color.color(00,00,00)));
+    }
+
+    @FXML
+    private void removeDropShadow(){
+        productPane.setEffect(new DropShadow(10,Color.color(00,00,00)));
     }
 
 }

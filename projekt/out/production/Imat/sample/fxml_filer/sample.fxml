@@ -119,15 +119,17 @@
                         <Image url="@../images/help_icon.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="backToStoreIcon" fitHeight="46.0" fitWidth="46.0" layoutX="1382.0" layoutY="16.0" onMouseClicked="#wizardToBack" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../images/baseline_subdirectory_arrow_left_white_48dp.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="backToStoreLabel" layoutX="1210.0" layoutY="25.0" onMouseClicked="#wizardToBack" prefHeight="30.0" text="Fortsätt handla" textFill="WHITE" visible="false">
+                  <Label fx:id="backToStoreLabel" layoutX="1210.0" layoutY="20.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#wizardToBack" prefHeight="30.0" styleClass="backToStorePaneLabel" stylesheets="@../css_files/checkout.css" text="Fortsätt handla" textFill="WHITE" visible="false">
                      <font>
                         <Font size="24.0" />
                      </font>
+                     <graphic>
+                        <ImageView fx:id="backToStoreIcon" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#wizardToBack" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/baseline_subdirectory_arrow_left_white_48dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Label>
                   <ImageView fx:id="logo" fitHeight="116.0" fitWidth="126.0" layoutX="4.0" layoutY="-21.0" onMouseClicked="#clickOnLogo" pickOnBounds="true" preserveRatio="true">
                      <image>

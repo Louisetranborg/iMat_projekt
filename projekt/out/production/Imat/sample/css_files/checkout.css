@@ -132,3 +132,13 @@
 .goBackButton: pressed{
     -fx-background-color: #725b53;
 }
+
+.backToStorePaneLabel{
+    -fx-font-family: "Avenir Book";
+    -fx-font-size: 24px;
+}
+
+.backToStorePaneLabel: hover{
+    -fx-font-family: "Avenir Book";
+    -fx-font-size: 26px;
+}

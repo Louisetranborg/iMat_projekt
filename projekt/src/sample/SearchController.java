@@ -74,20 +74,6 @@ public class SearchController implements Initializable {
 
     private ShoppingItem activeShoppingItemInDetailView;
 
-
-
-
-    @FXML
-    private void glow(){
-        closeDetailView.setEffect(new Glow(0.5));
-    }
-
-    @FXML
-    private void removeGlow(){
-        closeDetailView.setEffect(new Glow(0));
-    }
-
-
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
 
     protected Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med productItems
@@ -107,6 +93,17 @@ public class SearchController implements Initializable {
     protected ShoppingCartPane getShoppingCartPane(){
         return shoppingCartPane;
     }
+
+    @FXML
+    private void glow(){
+        closeDetailView.setEffect(new Glow(0.5));
+    }
+
+    @FXML
+    private void removeGlow(){
+        closeDetailView.setEffect(new Glow(0));
+    }
+
 
     protected void resetEveryShoppingItem() {
         for (ShoppingItem item : shoppingItemMap.values()) {
