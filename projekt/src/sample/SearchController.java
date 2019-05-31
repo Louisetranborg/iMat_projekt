@@ -256,7 +256,7 @@ public class SearchController implements Initializable {
     protected void updateHistoryPage() {
         myPage.historyOrderVbox.getChildren().clear();
         for (Order order : IMatDataHandler.getInstance().getOrders()) {
-            myPage.historyOrderVbox.getChildren().add(new OrderItem(this, order));
+            myPage.historyOrderVbox.getChildren().add(0,new OrderItem(this, order));
             //   productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
 
         }
