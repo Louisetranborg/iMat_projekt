@@ -253,9 +253,10 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
             whiteHeart.toFront();
     }
 
-    public Product getProduct(){
+    public Product getProduct() {
         return shoppingItem.getProduct();
 
+    }
     @FXML
     private void dropShadow(){
         productPane.setEffect(new DropShadow(20.0,Color.color(00,00,00)));
@@ -267,3 +268,4 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
     }
 
 }
+

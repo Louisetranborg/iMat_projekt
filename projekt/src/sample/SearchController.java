@@ -83,16 +83,6 @@ public class SearchController implements Initializable {
     }
 
     @FXML
-    private void glow() {
-        closeDetailView.setEffect(new Glow(0.5));
-    }
-
-    @FXML
-    private void removeGlow() {
-        closeDetailView.setEffect(new Glow(0));
-    }
-
-    @FXML
     private ScrollPane categoryScrollPane;
     @FXML
     private ImageView logo;
@@ -432,7 +422,7 @@ public class SearchController implements Initializable {
         shoppingCartPane.updateCart();
         updateDetailViewItem();
         productItemMap.get(shoppingItem.getProduct().getName()).updateProductItem();
-        shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInCartItem();
+        shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInCartItem(shoppingItem);
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
     }
 

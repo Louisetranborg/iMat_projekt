@@ -115,19 +115,15 @@
                         <Font name="Avenir Book" size="24.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="minSidaButton" layoutX="1297.0" layoutY="15.0" mnemonicParsing="false" onAction="#myPagesButtonClicked" prefHeight="50.0" prefWidth="128.0" styleClass="minSidaButton" text="Min sida">
+                  <Button fx:id="minSidaButton" layoutX="1305.0" layoutY="15.0" mnemonicParsing="false" onAction="#myPagesButtonClicked" prefHeight="50.0" prefWidth="120.0" styleClass="minSidaButton" text="Min sida">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <graphic>
-                        <ImageView fx:id="minSidaIcon" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../src/sample/css_files/css_images/person_black.png" />
-                           </image>
-                        </ImageView>
+                        <ImageView fx:id="minSidaIcon" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <ImageView fx:id="helpIcon" fitHeight="42.0" fitWidth="42.0" layoutX="944.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" x="300.0" y="22.0">
+                  <ImageView fx:id="helpIcon" fitHeight="42.0" fitWidth="42.0" layoutX="947.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" x="300.0" y="22.0">
                      <image>
                         <Image url="@../images/help_icon.png" />
                      </image>

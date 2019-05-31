@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+
 <fx:root fx:id="productPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" onMouseEntered="#dropShadow" onMouseExited="#removeDropShadow" prefHeight="290.0" prefWidth="250.0" styleClass="anchorPane" stylesheets="@../css_files/productItem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
      <ImageView fx:id="greenHeart" fitHeight="42.0" fitWidth="42.0" layoutX="206.0" onMouseClicked="#removeFavorite" pickOnBounds="true" preserveRatio="true">

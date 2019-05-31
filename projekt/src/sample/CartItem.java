@@ -147,7 +147,7 @@ public class CartItem extends AnchorPane {
                 if(newValue){
                     amountBox.clear();
                 } else {
-                    updateAmountInCartItem();
+                    updateAmountInCartItem(shoppingItem);
                 }
             }
         });
