@@ -13,9 +13,9 @@
    <children>
       <AnchorPane prefHeight="800.0" prefWidth="920.0">
          <children>
-            <ScrollPane prefHeight="1103.0" prefWidth="919.0" style="-fx-background-color: #FFFFFF;">
+            <ScrollPane prefHeight="1162.0" prefWidth="919.0" style="-fx-background-color: #FFFFFF;">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1075.0" prefWidth="919.0" style="-fx-background-color: #FFFFFF;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1148.0" prefWidth="915.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Label alignment="CENTER" layoutY="35.0" prefHeight="50.0" prefWidth="920.0" text="Välkommen till iMat - här finns en snabb genomgång av programmet">
                            <font>
@@ -107,6 +107,16 @@
                               <Font size="18.0" />
                            </font>
                         </TextArea>
+                        <TextArea editable="false" layoutX="131.0" layoutY="1052.0" prefHeight="74.0" prefWidth="755.0" text="Om du vill tömma hela din kundvagn kan du trycka på soptunnan. Alla varor du har i kunvagnen försvinner då." wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextArea>
+                        <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="25.0" layoutY="1052.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/EmptyCartButton.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
               </content>
