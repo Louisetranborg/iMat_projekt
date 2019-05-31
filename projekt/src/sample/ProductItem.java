@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -7,8 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -37,13 +42,6 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
     @FXML
     protected void onClick(){ //När man klickar på ett productItem skall info om produkten komma upp
         parentController.openProductDetailView(shoppingItem);
-        if (shoppingItem.getAmount()>0){
-            parentController.greenAddButtonToFrontDetail();
-            parentController.brownRemoveButtonToFrontDetail();
-        }else{
-            parentController.blackAddButtonToFrontDetail();
-            parentController.blackRemoveButtonToFrontDetail();
-        }
     }
 
     public ProductItem(ShoppingItem shoppingItem, SearchController parentController){
@@ -62,7 +60,7 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
         name.setText(shoppingItem.getProduct().getName());
         image.setImage(parentController.iMatDataHandler.getFXImage(shoppingItem.getProduct()));
         price.setText(shoppingItem.getProduct().getPrice() + " " + shoppingItem.getProduct().getUnit());
-        updateAmountInProductItem(); //Skriver in default-amount (0) i textField
+        updateProductItem(); //Skriver in default-amount (0) i textField
 
         //Lägger till som en FavoriteObserver
         parentController.addObservers(this);
@@ -72,20 +70,68 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(!amountBox.getText().isEmpty()) {
-                    shoppingItem.setAmount(Double.valueOf(amountBox.getText()));
+                String input = amountBox.getText();
+                double value = handleInput(input);
+
+                if(value > 0){
+                    shoppingItem.setAmount(value);
                     parentController.shoppingCartPane.addProductToCart(shoppingItem);
-                }
-                if(shoppingItem.getAmount() <= 0 || amountBox.getText().isEmpty()){       //Ändra om vi vill ha double-system
+                } else {
                     shoppingItem.setAmount(0);
                     parentController.shoppingCartPane.removeProductFromCart(shoppingItem);
                 }
-                parentController.updateAmount(shoppingItem);
+                parentController.updateAllItems(shoppingItem);
+            }
+        });
+
+
+        amountBox.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue){
+                    amountBox.clear();
+                } else {
+                    updateProductItem();
+                }
             }
         });
     }
 
-    protected void updateAmountInProductItem(){ //Visa värdet på amount i amountBox
+    private double extractDigits(String value){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < value.length(); i++) {
+            if (Character.isDigit(value.charAt(i)) || (String.valueOf(value.charAt(i)).equals(".") && !stringBuilder.toString().contains("."))) {
+                    stringBuilder.append(value.charAt(i));
+            }
+        }
+
+        if(!stringBuilder.toString().isEmpty()) {
+            return Double.valueOf(stringBuilder.toString());
+        } else {
+            return 0;
+        }
+
+    }
+
+    private double handleInput(String value){
+        double output = extractDigits(value);
+        String unitSuffix = shoppingItem.getProduct().getUnitSuffix();
+
+        if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
+            output = Math.round(output);
+        }
+
+        if(output < 0.1){
+            return 0;
+        } else {
+            return output;
+        }
+    }
+
+
+    protected void updateProductItem(){ //Visa värdet på amount i amountBox
+        updateButtons();
         amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
     }
 
@@ -93,14 +139,6 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
     protected void clickedOnAddButton(Event event){ //När man klickar på plusset
         parentController.mouseTrap(event); //Infoboxen skall ej komma upp
         parentController.addItemToCart(shoppingItem);
-        addButton2.toFront();
-        removeButtonBrown.setVisible(true);
-        removeButtonHover.setVisible(true);
-        removeButtonBrown.toFront();
-
-
-
-
 
     }
 
@@ -131,11 +169,20 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
     protected void clickedOnRemoveButton(Event event) {
         parentController.mouseTrap(event);
         parentController.subtractItemFromCart(shoppingItem);
+    }
+
+
+    private void updateButtons(){
         if (shoppingItem.getAmount() <= 0){
             addButton.toFront();
             removeButton.toFront();
             removeButtonBrown.setVisible(false);
             removeButtonHover.setVisible(false);
+        } else {
+            addButton2.toFront();
+            removeButtonBrown.setVisible(true);
+            removeButtonHover.setVisible(true);
+            removeButtonBrown.toFront();
         }
     }
 
@@ -157,7 +204,7 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
     }
 
     protected void changeToNormalLayout(){
-        updateAmountInProductItem();
+        updateProductItem();
         addButton.setDisable(false);
         addButton2.setDisable(false);
         addButtonHover.setDisable(false);
@@ -208,6 +255,15 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
 
     public Product getProduct(){
         return shoppingItem.getProduct();
+
+    @FXML
+    private void dropShadow(){
+        productPane.setEffect(new DropShadow(20.0,Color.color(00,00,00)));
+    }
+
+    @FXML
+    private void removeDropShadow(){
+        productPane.setEffect(new DropShadow(10,Color.color(00,00,00)));
     }
 
 }

@@ -17,3 +17,11 @@
     -fx-font-size: 18px;
     -fx-alignment: right;
 }
+
+.emptyCart{
+    -fx-background-color: #ef5350;
+}
+
+.emptyCart: hover{
+    -fx-background-color: #ff867c;
+}

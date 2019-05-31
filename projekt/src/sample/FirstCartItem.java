@@ -68,7 +68,7 @@ public class FirstCartItem extends AnchorPane implements FavoriteObserver {
                     shoppingItem.setAmount(0);
                     parentController.shoppingCartPane.removeProductFromCart(shoppingItem);
                 }
-                parentController.updateAmount(shoppingItem);
+                parentController.updateAllItems(shoppingItem);
                 parentController.updateFirstCartInWizard();
             }
         });

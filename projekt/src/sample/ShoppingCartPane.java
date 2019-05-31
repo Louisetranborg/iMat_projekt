@@ -28,6 +28,7 @@ public class ShoppingCartPane extends AnchorPane {
     @FXML private Label totalLabel;
     @FXML private Button toCheckoutButton;
     @FXML private AnchorPane cartFlowPaneWrap;
+    @FXML private Button emptyCart;
 
     private Map<String, CartItem> productCartItemMap = new HashMap<String, CartItem>();
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
@@ -129,11 +130,23 @@ public class ShoppingCartPane extends AnchorPane {
     protected void updateCart(){
         cartFlowPane.getChildren().clear();
         for(ShoppingItem shoppingItem : shoppingCart.getItems()){
-            if(!cartFlowPane.getChildren().contains(productCartItemMap.get(shoppingItem.getProduct().getName())));
-                 cartFlowPane.getChildren().add(productCartItemMap.get(shoppingItem.getProduct().getName()));
+            if(!cartFlowPane.getChildren().contains(productCartItemMap.get(shoppingItem.getProduct().getName()))) {
+                cartFlowPane.getChildren().add(0,productCartItemMap.get(shoppingItem.getProduct().getName()));
+            }
         }
         totalLabel.setText("Totalt " + decimalFormat.format(shoppingCart.getTotal()) + " kr");
     }
+
+    @FXML
+    private void clickOnEmptyCartButton(){
+        while(!shoppingCart.getItems().isEmpty()){
+            ShoppingItem removeItem = shoppingCart.getItems().get(0);
+            removeItem.setAmount(0);
+            shoppingCart.removeItem(removeItem);
+            parentController.updateAllItems(removeItem);
+        }
+    }
+
 
 }
 ;
