@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.text.DecimalFormat;
 public class CartItem extends AnchorPane {
 
     private SearchController parentController;
-    private ShoppingItem shoppingItem;
+    private Product product;
     @FXML private ImageView cartImage;
     @FXML private Label cartName;
     @FXML private TextField amountBox;
@@ -31,22 +32,18 @@ public class CartItem extends AnchorPane {
 
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
-    protected ShoppingItem getShoppingItem(){
-        return shoppingItem;
-    }
-
     protected Label getPrice(){
         return price;
     }
 
     @FXML
     private void clickedOnAddButton(){
-        parentController.addItemToCart(shoppingItem);
+        parentController.modifyAmountInCart(product, 1);
     }
 
     @FXML
     private void clickedOnRemoveButton(){
-        parentController.subtractItemFromCart(shoppingItem);
+        parentController.modifyAmountInCart(product, -1);
     }
 
     @FXML
@@ -92,7 +89,7 @@ public class CartItem extends AnchorPane {
 
     private double handleInput(String value){
         double output = extractDigits(value);
-        String unitSuffix = shoppingItem.getProduct().getUnitSuffix();
+        String unitSuffix = product.getUnitSuffix();
 
         if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
             output = Math.round(output);
@@ -105,7 +102,7 @@ public class CartItem extends AnchorPane {
         }
     }
 
-    public CartItem(ShoppingItem shoppingItem, SearchController parentController) {
+    public CartItem(Product product, SearchController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/productCartItem.fxml")); //Laddar in rätt fxml-fil
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -116,29 +113,23 @@ public class CartItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        this.shoppingItem = shoppingItem;
+        this.product = product;
         this.parentController = parentController;
-        cartImage.setImage(parentController.iMatDataHandler.getFXImage(shoppingItem.getProduct()));
-        cartName.setText(shoppingItem.getProduct().getName());
+        cartImage.setImage(parentController.iMatDataHandler.getFXImage(product));
+        cartName.setText(product.getName());
 
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 String input = amountBox.getText();
-                double value = handleInput(input);
+                double amount = handleInput(input);
 
-                if(value > 0){
-                    shoppingItem.setAmount(value);
-                    parentController.shoppingCartPane.addProductToCart(shoppingItem);
-                } else {
-                    shoppingItem.setAmount(0);
-                    parentController.shoppingCartPane.removeProductFromCart(shoppingItem);
-                }
-                parentController.updateAllItems(shoppingItem);
+               parentController.setAmountInCart(product, amount);
+
             }
         });
 
-        price.setText(shoppingItem.getTotal() + " kr");
+       // price.setText(shoppingItem.getTotal() + " kr");
 
 
         amountBox.focusedProperty().addListener(new ChangeListener<Boolean>() {
@@ -147,7 +138,8 @@ public class CartItem extends AnchorPane {
                 if(newValue){
                     amountBox.clear();
                 } else {
-                    updateAmountInCartItem(shoppingItem);
+                    //TODO OM PANIK KOLLA HIT
+                    updateAmountInCartItem(parentController.getShoppingItemOfProductInCart(product));
                 }
             }
         });

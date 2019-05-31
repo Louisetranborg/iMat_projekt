@@ -47,7 +47,7 @@ public class SearchController implements Initializable {
     @FXML
     private ImageView addButtonDetail;
     @FXML
-    private ImageView removeButton;
+    private ImageView detailRemoveButtonInactive;
     @FXML
     private TextField amountBox;
     @FXML
@@ -79,7 +79,7 @@ public class SearchController implements Initializable {
     }
 
     public void blackRemoveButtonToFrontDetail() {
-        removeButton.toFront();
+        detailRemoveButtonInactive.toFront();
     }
 
     @FXML
@@ -107,7 +107,6 @@ public class SearchController implements Initializable {
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
 
     protected Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med productItems
-    Map<String, ShoppingItem> shoppingItemMap = new HashMap<String, ShoppingItem>();        //Map med shoppingitems, endast skapa dem en gång! Både productItem och cartItem pekar på samma shoppingItem.
 
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
 
@@ -116,7 +115,7 @@ public class SearchController implements Initializable {
     public ToggleGroup menuToggleGroup;
     protected Wizard wizard;
 
-    private ShoppingItem activeInDetailview;
+    private Product activeInDetailview;
     public MyPage myPage;
 
     static boolean isUserOnMyPage = false;
@@ -136,19 +135,19 @@ public class SearchController implements Initializable {
     }
 
 
-    protected void resetEveryShoppingItem() {
+   /* protected void resetEveryShoppingItem() {
         for (ShoppingItem item : shoppingItemMap.values()) {
             item.setAmount(0);
-            updateAllItems(item);
+            updateProductAmountInAllItems(item);
             productItemMap.get(item.getProduct().getName()).setBlackButton();
         }
-    }
+    }*/
 
     //Sätter light-boxen längs fram för att visa mer info om en produkt
-    protected void openProductDetailView(ShoppingItem shoppingItem) {
-        populateProductDetailView(shoppingItem);
+    protected void openProductDetailView(Product product) {
+        populateProductDetailView(product);
         productDetailView.toFront();
-        activeInDetailview = shoppingItem;
+        activeInDetailview = product;
         updateDetailViewItem();
     }
 
@@ -166,13 +165,13 @@ public class SearchController implements Initializable {
 
     //TODO eventuellt slå ihop med en befitnligt activateLightBox metod?
     //Fyller light-boxen med rätt produkt-variabler
-    private void populateProductDetailView(ShoppingItem shoppingItem) {
-        activeShoppingItemInDetailView = shoppingItem;
-        closeUpImage.setImage(iMatDataHandler.getFXImage(shoppingItem.getProduct()));
-        closeUpName.setText(shoppingItem.getProduct().getName());
-        itemNumber.setText("Artikelnummer: " + String.valueOf(shoppingItem.getProduct().getProductId()));
-        ecoInfo.setText(isEcological(shoppingItem.getProduct()));
-        priceDetailView.setText(shoppingItem.getProduct().getPrice() + " " + shoppingItem.getProduct().getUnit());
+    private void populateProductDetailView(Product product) {
+        closeUpImage.setImage(iMatDataHandler.getFXImage(product));
+        closeUpName.setText(product.getName());
+        itemNumber.setText("Artikelnummer: " + String.valueOf(product.getProductId()));
+        ecoInfo.setText(isEcological(product));
+        priceDetailView.setText(product.getPrice() + " " + product.getUnit());
+        amountBox.textProperty().setValue(String.valueOf(0)); //TODO Fix amount to be loaded from a shoppingCart
     }
 
     private String isEcological(Product product) {
@@ -229,8 +228,8 @@ public class SearchController implements Initializable {
     private void createProductItems() {
         for (Product product : iMatDataHandler.getProducts()) {
             ShoppingItem shoppingItem = new ShoppingItem(product, 0);
-            shoppingItemMap.put(product.getName(), shoppingItem);                                                       //Här samlar vi våra shoppingItems!
-            ProductItem productItem = new ProductItem(shoppingItem, this);
+            //TODO Raden under blev ändrad , Gabriel
+            ProductItem productItem = new ProductItem(product, this);
             productItemMap.put(product.getName(), productItem);
             productFlowPane.getChildren().add(productItem);                                                             //Lägger ut alla varorna på framsidan, ändra om vi vill ha annan förstasida
         }
@@ -244,8 +243,8 @@ public class SearchController implements Initializable {
         //TODO lägg in så att productscrollpane och frontpane automatiskt dyker upp .toFront. (eventuellt en activateproductFLowPane)
         frontPane.toFront();
 
-        for (Product product1 : products) {
-            productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
+        for (Product product : products) {
+            productFlowPane.getChildren().add(productItemMap.get(product.getName()));
 
         }
     }
@@ -263,29 +262,34 @@ public class SearchController implements Initializable {
         }
     }
 
-    List<ShoppingItem> tempOrderProducts = new ArrayList<>();
+    //List<ShoppingItem> tempOrderProducts = new ArrayList<>();
+    Order currentlyShownOrder = null;
 
     protected void updateHistoryShowItems(Order order) {
         myPage.historyProductTilePane.getChildren().clear();
-        tempOrderProducts.clear();
+       // tempOrderProducts.clear();
         for (ShoppingItem item : order.getItems()) {
-            ProductItem pItem = new ProductItem(item, this);
+            //TODO Här behöver vi ändra om , Gabriel
+            ProductItem pItem = new ProductItem(item.getProduct(), this);
             pItem.changeToHistoryLayout(item);
             myPage.historyProductTilePane.getChildren().add(pItem);
 
-            tempOrderProducts.add(item);
+            //tempOrderProducts.add(item);
 
         }
+        currentlyShownOrder = order;
         myPage.historyItems.toFront();
     }
 
     protected void addAllHistoryItemsToCart() {
         System.out.println(myPage.historyProductTilePane.getChildren() + " :  ");
 
-        for (ShoppingItem item : tempOrderProducts){
-            for (int i = 0 ; i < item.getAmount(); i++) {
+        for (ShoppingItem item : currentlyShownOrder.getItems()){
+            modifyAmountInCart(item.getProduct(),item.getAmount());
+       /*     for (int i = 0 ; i < item.getAmount(); i++) {
+                //TODO Här behöver vi ändra om , Gabriel
                 addItemToCart(shoppingItemMap.get(item.getProduct().getName()));
-            }
+            }*/
 
             //   productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
 
@@ -408,6 +412,60 @@ public class SearchController implements Initializable {
 
     //När man söker skall productFlowPane uppdateras efter sökningen
 
+    public void setAmountInCart(Product p, double amount){
+        ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
+        ShoppingItem shoppingItem = getShoppingItemOfProductInCart(p);
+        if(shoppingItem == null){
+            shoppingCart.addProduct(p, 0);
+            shoppingItem = getShoppingItemOfProductInCart(p);
+        }
+
+        if(amount <= 0) {
+            shoppingCart.removeItem(getShoppingItemOfProductInCart(p));
+            //shoppingItem.setAmount(0);
+        } else{
+            shoppingItem.setAmount(amount);
+        }
+       // System.out.println(shoppingItem == null);
+        updateProductAmountInAllItems(shoppingItem);
+       // System.out.println("Product "+ p.toString() +" set to: " + amount);
+    }
+
+    //Uppdatera antal i shoppingitem. Change är förändringen i antal.
+    public void modifyAmountInCart(Product p, double change) {      // Använd getShoppingItemOfProductInCart för att ändra antal på produkten}
+        ShoppingItem shoppingItem = getShoppingItemOfProductInCart(p);
+
+        double currentAmount;
+
+        if(shoppingItem == null){
+            currentAmount = 0;
+        } else{
+            currentAmount = shoppingItem.getAmount();
+        }
+
+        setAmountInCart(p, currentAmount + change);
+    }
+
+    //Returnerar shoppingItem, OBS returnerar null om varan ej finns i varukorgen.
+    public ShoppingItem getShoppingItemOfProductInCart(Product p) {// Använd getItems för att hitta rätt shoppingitem och retunera den
+        for (ShoppingItem shoppingItem : iMatDataHandler.getShoppingCart().getItems()){
+            if (shoppingItem.getProduct().getProductId() == p.getProductId())
+                return shoppingItem;
+        }
+
+        return null;
+    }
+
+    public double getAmountOfProductInCart(Product p) {// Använd getItems för att hitta rätt shoppingitem och retunera den
+        ShoppingItem shoppingItem = getShoppingItemOfProductInCart(p);
+
+        if(shoppingItem == null)
+            return 0;
+
+        return shoppingItem.getAmount();
+    }
+
+
     //TODO Om man skriver bara 2 bokstväer(ibland) uppdateras inte categoryPageText. Exempel är "se", "ve" och "me".
     @FXML
     private void searchInSearchBox() {
@@ -418,18 +476,19 @@ public class SearchController implements Initializable {
     }
 
 
-    protected void updateAllItems(ShoppingItem shoppingItem) {     //Uppdaterar amount både i produkterna i kundvagnen och produkterna i flowpane i mitten
+    //TODO Ska man flytta denna metod till den listener i ShoppingCartPane som avfyras när varukorgen ändras? Gabriel
+    protected void updateProductAmountInAllItems(ShoppingItem shoppingItem) {     //Uppdaterar amount både i produkterna i kundvagnen och produkterna i flowpane i mitten
         shoppingCartPane.updateCart();
         updateDetailViewItem();
         productItemMap.get(shoppingItem.getProduct().getName()).updateProductItem();
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInCartItem(shoppingItem);
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
+        System.out.println("Updated All Items! - " + shoppingItem.getProduct().getName());
     }
 
-    protected void addItemToCart(ShoppingItem shoppingItem) {
-        shoppingItem.setAmount(shoppingItem.getAmount() + 1); //Ökar amount med ett
-        shoppingCartPane.addProductToCart(shoppingItem);
-        updateAllItems(shoppingItem);
+  /*  protected void addItemToCart(Product product) {
+        modifyAmountInCart(product, 1); //Ökar amount med ett
+       // updateAllItems(shoppingItem);
     }
 
     protected void subtractItemFromCart(ShoppingItem shoppingItem) {
@@ -444,13 +503,13 @@ public class SearchController implements Initializable {
 
         }
 
-        updateAllItems(shoppingItem);
-    }
+    //    updateAllItems(shoppingItem);
+    }*/
 
     @FXML
     protected void clickedOnAddButton(Event event) {
-        addItemToCart(activeInDetailview);
-        updateDetailViewItem();
+        modifyAmountInCart(activeInDetailview,1);
+        //updateDetailViewItem();
     }
 
     @FXML
@@ -477,22 +536,22 @@ public class SearchController implements Initializable {
 
     @FXML
     protected void clickedOnRemoveButton(Event event) {
-        subtractItemFromCart(activeInDetailview);
-        updateDetailViewItem();
+        modifyAmountInCart(activeInDetailview, -1);
+       // updateDetailViewItem();
     }
 
     private void updateDetailViewItem() {
         if(activeInDetailview != null) {
             updateButtons();
-            amountBox.textProperty().setValue(String.valueOf(activeInDetailview.getAmount()));
+            amountBox.textProperty().setValue(String.valueOf(getAmountOfProductInCart(activeInDetailview)));
         }
     }
 
 
     private void updateButtons(){
-        if (activeInDetailview.getAmount() <= 0) {
+        if (getAmountOfProductInCart(activeInDetailview) <= 0) {
             addButtonDetail.toFront();
-            removeButton.toFront();
+            detailRemoveButtonInactive.toFront();
             removeButtonBrown.setVisible(false);
             removeButtonHover.setVisible(false);
         } else {
@@ -599,7 +658,7 @@ public class SearchController implements Initializable {
 
     private double handleInput(String value){
         double output = extractDigits(value);
-        String unitSuffix = activeInDetailview.getProduct().getUnitSuffix();
+        String unitSuffix = activeInDetailview.getUnitSuffix();
 
         if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
             output = Math.round(output);
@@ -625,7 +684,7 @@ public class SearchController implements Initializable {
         iMatDataHandler.getCustomer().setPhoneNumber("Göteborg");*/
 
 
-        iMatDataHandler.getShoppingCart().clear();
+        //iMatDataHandler.getShoppingCart().clear();
 
 
         menuToggleGroup = new ToggleGroup();
@@ -642,7 +701,14 @@ public class SearchController implements Initializable {
         wizard = new Wizard(this);
         wizardWrap.getChildren().add(wizard);
         updateHistoryPage();
-
+        for(ShoppingItem shoppingItem: iMatDataHandler.getShoppingCart().getItems()){
+            updateProductAmountInAllItems(shoppingItem);
+        }
+        if(iMatDataHandler.getShoppingCart().getItems().isEmpty()){
+            shoppingCartPane.getToCheckoutButton().setDisable(true);
+        } else{
+            shoppingCartPane.getToCheckoutButton().setDisable(false);
+        }
         updateFavoritePage();
         updateFrontPage();
 
@@ -656,15 +722,9 @@ public class SearchController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 String input = amountBox.getText();
-                double value = handleInput(input);
-                if (value > 0) {
-                    activeInDetailview.setAmount(value);
-                    shoppingCartPane.addProductToCart(activeInDetailview);
-                } else {
-                    activeInDetailview.setAmount(0);
-                    shoppingCartPane.removeProductFromCart(activeInDetailview);
-                }
-                updateAllItems(activeInDetailview);
+                double amount = handleInput(input);
+                setAmountInCart(activeInDetailview, amount);
+               // updateAllItems(activeInDetailview);
             }
         });
 

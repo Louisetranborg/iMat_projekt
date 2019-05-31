@@ -23,7 +23,7 @@ public class CategoryItem extends MenuItem {
     }
 
     private productCategory productCategory;
-    private List<Product> newCategories;
+    private List<Product> productsInCategory;
 
     public CategoryItem(productCategory productCategory, SearchController parentController){
         super(parentController);
@@ -31,11 +31,11 @@ public class CategoryItem extends MenuItem {
         this.productCategory = productCategory;
       //  categoryButton.setToggleGroup();
         //categoryButton.setText(productCategory.name());
-        newCategories = putCategoriesInCategories(productCategory);
+        productsInCategory = getProductsOfCategory(productCategory);
 
     }
 
-    private List<Product> putCategoriesInCategories(productCategory cat){
+    private List<Product> getProductsOfCategory(productCategory cat){
         List<Product> list = new ArrayList<>();
         switch (cat){
             case MEAT:
@@ -94,7 +94,7 @@ public class CategoryItem extends MenuItem {
 
     @FXML
     protected void onClick(Event event){        //När man klickar på en kategori skall varorna i mitten uppdateras
-        parentController.updateProductPaneFromCategory(newCategories);
+        parentController.updateProductPaneFromCategory(productsInCategory);
         parentController.changeCategoryPageText(categoryButton.getText());
     }
 

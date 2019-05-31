@@ -23,7 +23,8 @@ import java.io.IOException;
 public class ProductItem extends AnchorPane implements FavoriteObserver{
 
     private SearchController parentController;
-    private ShoppingItem shoppingItem;
+    //private ShoppingItem shoppingItem;
+    Product product;
     @FXML private Label name;
     @FXML private ImageView image;
     @FXML private Label price;
@@ -41,10 +42,10 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
 
     @FXML
     protected void onClick(){ //När man klickar på ett productItem skall info om produkten komma upp
-        parentController.openProductDetailView(shoppingItem);
+        parentController.openProductDetailView(product);
     }
 
-    public ProductItem(ShoppingItem shoppingItem, SearchController parentController){
+    public ProductItem(Product product, SearchController parentController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/productItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -56,10 +57,10 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
         }
 
         this.parentController = parentController;
-        this.shoppingItem = shoppingItem;
-        name.setText(shoppingItem.getProduct().getName());
-        image.setImage(parentController.iMatDataHandler.getFXImage(shoppingItem.getProduct()));
-        price.setText(shoppingItem.getProduct().getPrice() + " " + shoppingItem.getProduct().getUnit());
+        this.product = product;
+        name.setText(product.getName());
+        image.setImage(parentController.iMatDataHandler.getFXImage(product));
+        price.setText(product.getPrice() + " " + product.getUnit());
         updateProductItem(); //Skriver in default-amount (0) i textField
 
         //Lägger till som en FavoriteObserver
@@ -71,16 +72,9 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
             @Override
             public void handle(ActionEvent event) {
                 String input = amountBox.getText();
-                double value = handleInput(input);
+                double amount = handleInput(input);
 
-                if(value > 0){
-                    shoppingItem.setAmount(value);
-                    parentController.shoppingCartPane.addProductToCart(shoppingItem);
-                } else {
-                    shoppingItem.setAmount(0);
-                    parentController.shoppingCartPane.removeProductFromCart(shoppingItem);
-                }
-                parentController.updateAllItems(shoppingItem);
+                parentController.setAmountInCart(product, amount);
             }
         });
 
@@ -116,7 +110,7 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
 
     private double handleInput(String value){
         double output = extractDigits(value);
-        String unitSuffix = shoppingItem.getProduct().getUnitSuffix();
+        String unitSuffix = product.getUnitSuffix();
 
         if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
             output = Math.round(output);
@@ -132,13 +126,14 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
 
     protected void updateProductItem(){ //Visa värdet på amount i amountBox
         updateButtons();
-        amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
+        amountBox.textProperty().setValue(String.valueOf(parentController.getAmountOfProductInCart(product)));
+        System.out.println("Updated ProductItem! - " + product.getName());
     }
 
     @FXML
     protected void clickedOnAddButton(Event event){ //När man klickar på plusset
         parentController.mouseTrap(event); //Infoboxen skall ej komma upp
-        parentController.addItemToCart(shoppingItem);
+        parentController.modifyAmountInCart(product,1);
 
     }
 
@@ -168,12 +163,12 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
     @FXML
     protected void clickedOnRemoveButton(Event event) {
         parentController.mouseTrap(event);
-        parentController.subtractItemFromCart(shoppingItem);
+        parentController.modifyAmountInCart(product, -1);
     }
 
 
     private void updateButtons(){
-        if (shoppingItem.getAmount() <= 0){
+        if (parentController.getAmountOfProductInCart(product) <= 0){
             addButton.toFront();
             removeButton.toFront();
             removeButtonBrown.setVisible(false);
@@ -231,14 +226,14 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
     @FXML
     protected void setFavorite(Event event){
         parentController.mouseTrap(event);
-        parentController.addFavorite(shoppingItem.getProduct());
+        parentController.addFavorite(product);
     }
 
 
     @FXML
     protected void removeFavorite(Event event){
         parentController.mouseTrap(event);
-        parentController.removeFavorite(shoppingItem.getProduct());
+        parentController.removeFavorite(product);
 
         //Denna rad gör så att den försvinner direkt om man är på mina favoriter.
         if(parentController.isUserOnMyPage)
@@ -254,7 +249,7 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
     }
 
     public Product getProduct() {
-        return shoppingItem.getProduct();
+        return product;
 
     }
     @FXML

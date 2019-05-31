@@ -70,7 +70,7 @@ public class ShoppingCartPane extends AnchorPane {
                } else{
                    toCheckoutButton.setDisable(false);
                }
-                updateCart();
+               // System.out.println("Update Amount!");
             }
         });
 
@@ -99,11 +99,13 @@ public class ShoppingCartPane extends AnchorPane {
     //Skapar alla våra productCartItems och lägger dem i en Map(productCartItemMap)
     protected void createProductCartItems(){
         for(Product product: parentController.iMatDataHandler.getProducts()){
-            CartItem cartItem = new CartItem(parentController.shoppingItemMap.get(product.getName()),parentController);
+            CartItem cartItem = new CartItem(product,parentController);
             productCartItemMap.put(product.getName(),cartItem);
         }
     }
 
+
+    //TODO Denna metod borde väl kunna bytas ut mot modifyAmountInCart? Gabriel
     protected void addProductToCart(ShoppingItem shoppingItem){ //Lägger endast ut ett cartItem när det behövs
         for(ShoppingItem item : shoppingCart.getItems()){
             if (shoppingItem.getProduct() == item.getProduct()) {
@@ -143,7 +145,7 @@ public class ShoppingCartPane extends AnchorPane {
             ShoppingItem removeItem = shoppingCart.getItems().get(0);
             removeItem.setAmount(0);
             shoppingCart.removeItem(removeItem);
-            parentController.updateAllItems(removeItem);
+            parentController.updateProductAmountInAllItems(removeItem);
         }
     }
 

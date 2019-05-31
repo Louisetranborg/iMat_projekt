@@ -61,6 +61,7 @@ public class FirstCartItem extends AnchorPane implements FavoriteObserver {
             @Override
             public void handle(ActionEvent event) {
                 if(!amountBox.getText().isEmpty()) {
+                    //TODO lägg in handle input. HELST GÖRA DET CENTRALT OCH PUBLIKT.
                     shoppingItem.setAmount(Double.valueOf(amountBox.getText()));
                     parentController.shoppingCartPane.addProductToCart(shoppingItem);
                 }
@@ -68,7 +69,7 @@ public class FirstCartItem extends AnchorPane implements FavoriteObserver {
                     shoppingItem.setAmount(0);
                     parentController.shoppingCartPane.removeProductFromCart(shoppingItem);
                 }
-                parentController.updateAllItems(shoppingItem);
+                parentController.updateProductAmountInAllItems(shoppingItem);
                 parentController.updateFirstCartInWizard();
             }
         });
@@ -79,14 +80,14 @@ public class FirstCartItem extends AnchorPane implements FavoriteObserver {
 
     @FXML
     private void clickedOnAddButton(){
-        parentController.addItemToCart(shoppingItem);
+        parentController.modifyAmountInCart(shoppingItem.getProduct(),1);
         //parentController.updateBiggerCartInWizard();
         parentController.updateFirstCartInWizard();
     }
 
     @FXML
     private void clickedOnRemoveButton(){
-        parentController.subtractItemFromCart(shoppingItem);
+        parentController.modifyAmountInCart(shoppingItem.getProduct(), -1);
         //parentController.updateBiggerCartInWizard();
         parentController.updateFirstCartInWizard();
     }

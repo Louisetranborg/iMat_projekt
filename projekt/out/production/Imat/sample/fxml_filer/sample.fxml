@@ -24,6 +24,7 @@
 <StackPane stylesheets="@../css_files/main_theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
    <children>
       <AnchorPane fx:id="checkoutWrap" prefHeight="777.0" prefWidth="1430.0" />
+      <AnchorPane fx:id="wizardWrap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" style="-fx-background-color: FF0000;" translateY="40.0" />
       <AnchorPane fx:id="productDetailView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeProductDetailView" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.75)rgba(0, 0, 0, 0.75);">
          <children>
             <AnchorPane layoutX="190.0" layoutY="80.0" onMouseClicked="#mouseTrap" prefHeight="695.0" prefWidth="933.0" style="-fx-background-color: #FFFFFF;">
@@ -92,7 +93,7 @@
                      <font>
                         <Font size="20.0" />
                      </font></TextField>
-                  <ImageView fx:id="removeButton" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" opacity="0.41" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="detailRemoveButtonInactive" fitHeight="80.0" fitWidth="70.0" layoutX="119.0" layoutY="555.0" onMouseClicked="#clickedOnRemoveButton" opacity="0.41" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/baseline_remove_circle_black_24dp.png" />
                      </image>
@@ -100,7 +101,6 @@
                </children>
             </AnchorPane>
          </children></AnchorPane>
-      <AnchorPane fx:id="wizardWrap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" style="-fx-background-color: FF0000;" translateY="40.0" />
       <AnchorPane fx:id="frontPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="855.0" prefWidth="1440.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Pane prefHeight="80.0" prefWidth="1440.0">

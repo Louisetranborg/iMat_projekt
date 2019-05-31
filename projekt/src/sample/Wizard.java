@@ -19,6 +19,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
+import se.chalmers.cse.dat216.project.Order;
+import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
@@ -258,14 +260,19 @@ public class Wizard extends StackPane {
         for(ShoppingItem item : parentController.iMatDataHandler.getShoppingCart().getItems())  {
             System.out.println(item.getAmount());
         }
-        IMatDataHandler.getInstance().placeOrder(true);
+
+        Order order = IMatDataHandler.getInstance().placeOrder(true);
+        for (ShoppingItem shoppingItem : order.getItems()){
+            parentController.updateProductAmountInAllItems(new ShoppingItem(shoppingItem.getProduct(), 0));
+        }
+
 
         List<ShoppingItem> orderedShoppingItems = IMatDataHandler.getInstance().getOrders().get(IMatDataHandler.getInstance().getOrders().size() - 1).getItems();
         confirmCartFlowPane.getChildren().clear();
         for(ShoppingItem shoppingItem: orderedShoppingItems){
             confirmCartFlowPane.getChildren().add(new ReceiptItem(shoppingItem));
         }
-        parentController.resetEveryShoppingItem();
+        //parentController.resetEveryShoppingItem();
 
         orderNumber.setText(String.valueOf(parentController.iMatDataHandler.getOrders().get(parentController.iMatDataHandler.getOrders().size() - 1).getOrderNumber()));
         orderDate.setText(String.valueOf(parentController.iMatDataHandler.getOrders().get(parentController.iMatDataHandler.getOrders().size() - 1).getDate()));
