@@ -21,7 +21,6 @@ public class OrderItem extends HBox {
 
     SearchController parentController;
 
-    //TODO Lägg in order som krav för konstruktor för att koppla saker.
     public OrderItem(SearchController parentController, Order order){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/orderItem.fxml"));
         fxmlLoader.setRoot(this);

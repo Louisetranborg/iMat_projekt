@@ -91,6 +91,7 @@ public class MyPage extends StackPane {
 
     @FXML
     protected void onClickAddHistoryToCart(){
+        parentController.addAllHistoryItemsToCart();
         //parentController.addItemsToCart();
     }
 

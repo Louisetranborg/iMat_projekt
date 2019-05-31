@@ -62,40 +62,51 @@ public class SearchController implements Initializable {
     private Label priceDetailView;
     @FXML
     private Label categoryPageText;
-    @FXML private ScrollPane categoryScrollPane;
-    @FXML private ImageView logo;
-    @FXML private ImageView addButtonGreenDetail;
-    @FXML private ImageView addButtonGreenHoverDetail;
-    @FXML private ImageView removeButtonBrown;
-    @FXML private ImageView removeButtonHover;
-    @FXML private ImageView closeDetailView;
-    @FXML private ImageView helpIcon;
-    @FXML private ImageView minSidaIcon;
+    @FXML
+    private ScrollPane categoryScrollPane;
+    @FXML
+    private ImageView logo;
+    @FXML
+    private ImageView addButtonGreenDetail;
+    @FXML
+    private ImageView addButtonGreenHoverDetail;
+    @FXML
+    private ImageView removeButtonBrown;
+    @FXML
+    private ImageView removeButtonHover;
+    @FXML
+    private ImageView closeDetailView;
+    @FXML
+    private ImageView helpIcon;
+    @FXML
+    private ImageView minSidaIcon;
 
 
-
-    public void greenAddButtonToFrontDetail(){
+    public void greenAddButtonToFrontDetail() {
         addButtonGreenDetail.toFront();
     }
-    public void blackAddButtonToFrontDetail(){
+
+    public void blackAddButtonToFrontDetail() {
         addButtonDetail.toFront();
     }
-    public void brownRemoveButtonToFrontDetail(){
+
+    public void brownRemoveButtonToFrontDetail() {
         removeButtonBrown.toFront();
     }
-    public void blackRemoveButtonToFrontDetail(){
+
+    public void blackRemoveButtonToFrontDetail() {
         removeButton.toFront();
     }
+
     @FXML
-    private void glow(){
+    private void glow() {
         closeDetailView.setEffect(new Glow(0.5));
     }
 
     @FXML
-    private void removeGlow(){
+    private void removeGlow() {
         closeDetailView.setEffect(new Glow(0));
     }
-
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
@@ -115,7 +126,7 @@ public class SearchController implements Initializable {
 
     static boolean isUserOnMyPage = false;
 
-    protected ShoppingCartPane getShoppingCartPane(){
+    protected ShoppingCartPane getShoppingCartPane() {
         return shoppingCartPane;
     }
 
@@ -131,8 +142,8 @@ public class SearchController implements Initializable {
     protected void openProductDetailView(ShoppingItem shoppingItem) {
         populateProductDetailView(shoppingItem);
         productDetailView.toFront();
-        activeInDetailview = shoppingItem;
-        updateAmountInDetailView();
+        activeInDetailview = shoppingItemMap.get(shoppingItem.getProduct().getName());
+        updateAmountInDetailView(shoppingItem);
     }
 
     //Stänger light-boxen och återgår till föregående sida
@@ -166,7 +177,7 @@ public class SearchController implements Initializable {
 
     }
 
-    public void changeCategoryPageText(String string){
+    public void changeCategoryPageText(String string) {
         categoryPageText.setText(string);
     }
 
@@ -177,8 +188,7 @@ public class SearchController implements Initializable {
         for (CategoryItem.productCategory productCategory : CategoryItem.productCategory.values()) {
             MenuItem categoryItem = new CategoryItem(productCategory, this);
             menuVbox.getChildren().add(categoryItem);
-            if(productCategory.name() == "ALL_CATEGORIES")
-            {
+            if (productCategory.name() == "ALL_CATEGORIES") {
                 categoryItem.categoryButton.fire();
             }
         }
@@ -190,8 +200,7 @@ public class SearchController implements Initializable {
         for (SettingsItem.SettingsCategory settings : SettingsItem.SettingsCategory.values()) {
             MenuItem settingsItem = new SettingsItem(this, settings);
             menuVbox.getChildren().add(settingsItem);
-            if(settings.name() == "HISTORY")
-            {
+            if (settings.name() == "HISTORY") {
                 settingsItem.categoryButton.fire();
             }
         }
@@ -220,15 +229,8 @@ public class SearchController implements Initializable {
         }
     }
 
-    /*private void createOrderList(){
-        for(Order order : iMatDataHandler.getOrders()){
-            OrderItem orderItem = new OrderItem(this, order);
-            orderItemMap.put(order, orderItem);
-        }
-    }*/
-
     //Uppdaterar productFlowPane utifrån vilken kategori man väljer
-    protected void updateProductPaneFromCategory( List<Product> products) {
+    protected void updateProductPaneFromCategory(List<Product> products) {
         productFlowPane.getChildren().clear();
         productScrollPane.setVvalue(0);
 
@@ -241,31 +243,49 @@ public class SearchController implements Initializable {
         }
     }
 
-    protected void updatePersonalDataPage(){
+    protected void updatePersonalDataPage() {
         myPage.loadCustomerInfo();
     }
 
-    protected void updateHistoryPage(){
+    protected void updateHistoryPage() {
         myPage.historyOrderVbox.getChildren().clear();
         for (Order order : IMatDataHandler.getInstance().getOrders()) {
             myPage.historyOrderVbox.getChildren().add(new OrderItem(this, order));
-         //   productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
+            //   productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
 
         }
     }
 
-    protected void updateHistoryShowItems(Order order){
+    List<ShoppingItem> tempOrderProducts = new ArrayList<>();
+
+    protected void updateHistoryShowItems(Order order) {
         myPage.historyProductTilePane.getChildren().clear();
+        tempOrderProducts.clear();
         for (ShoppingItem item : order.getItems()) {
-            ProductItem pItem = new ProductItem(item,this) ;
+            ProductItem pItem = new ProductItem(item, this);
             pItem.changeToHistoryLayout(item);
             myPage.historyProductTilePane.getChildren().add(pItem);
+
+            tempOrderProducts.add(item);
 
         }
         myPage.historyItems.toFront();
     }
 
-    protected void updateFavoritePage(){
+    protected void addAllHistoryItemsToCart() {
+        System.out.println(myPage.historyProductTilePane.getChildren() + " :  ");
+
+        for (ShoppingItem item : tempOrderProducts){
+            for (int i = 0 ; i < item.getAmount(); i++) {
+                addItemToCart(shoppingItemMap.get(item.getProduct().getName()));
+            }
+
+            //   productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
+
+        }
+    }
+
+    protected void updateFavoritePage() {
         myPage.historyTilePane.getChildren().clear();
         for (Product favorite : iMatDataHandler.favorites()) {
             myPage.historyTilePane.getChildren().add(productItemMap.get(favorite.getName()));
@@ -274,15 +294,18 @@ public class SearchController implements Initializable {
 
     //Updaterar startsidan och lägger sig längst fram i synlighetshierarkin.
     @FXML
-    public void updateFrontPage() { //TODO Göra om funktionaliteten från en engångsupdate till en standard update?
+    public void updateFrontPage() {
         productFlowPane.getChildren().clear();
         productScrollPane.setVvalue(0);
+
+        //Används för att toggla texten i MyPage-knappen mellan "Min Sida" och "Handla"
         isUserOnMyPage = false;
+        updateMyPageButton();
+
         //TODO eventuellt bestämma vart dessa ska samlas. Förslagsvis här då och andra metoder för kalla på denna. Här kanske man kör ihop activateShoppingview också.
         productScrollPane.setContent(productFlowPane);
-      //  frontPane.toFront();
         fillCategoryPane();
-        updateMyPageButton();
+
         wizardWrap.setVisible(false);
 
         for (Product product : iMatDataHandler.getProducts()) {
@@ -330,22 +353,22 @@ public class SearchController implements Initializable {
     @FXML
     protected void myPagesButtonClicked() {
 
-       // String url = "sample/css_files/css_images/person_black.png";
-        if(isUserOnMyPage != true){
+        // String url = "sample/css_files/css_images/person_black.png";
+        if (isUserOnMyPage != true) {
             changeViewToMyPage();
 
-        } else{
+        } else {
             updateFrontPage();
         }
         updateMyPageButton();
     }
 
-    public void updateMyPageButton(){
-        if(isUserOnMyPage == true){
+    public void updateMyPageButton() {
+        if (isUserOnMyPage == true) {
             minSidaButton.setText("Handla");
             minSidaIcon.setImage(new Image("sample/css_files/css_images/search_icon.png"));
 
-        } else{
+        } else {
             minSidaButton.setText("Min Sida");
             minSidaIcon.setImage(new Image("sample/css_files/css_images/person_black.png"));
         }
@@ -354,7 +377,7 @@ public class SearchController implements Initializable {
     //TODO eventuellt ha en update för varje stor sida. e.g updateFrontPane, updateMyPage, updateCheckout osv. och skrota alla små metoder som vi inte håller koll på.
 
     //Byter view från mypage till productflowpane
-    protected  void changeViewToMyPage(){
+    protected void changeViewToMyPage() {
         productScrollPane.setContent(myPage);
         myPage.historyPage.toFront();
         changeCategoryPageText("Historik");
@@ -379,21 +402,20 @@ public class SearchController implements Initializable {
 
     //När man söker skall productFlowPane uppdateras efter sökningen
 
-    //TODO Om man skriver bara 2 bokstväer(ibland) uppdateras inte categoryPageText. Exempel är "se".
+    //TODO Om man skriver bara 2 bokstväer(ibland) uppdateras inte categoryPageText. Exempel är "se", "ve" och "me".
     @FXML
     private void searchInSearchBox() {
         updateProductPaneFromString(searchBox.getCharacters().toString());
         categoryPageText.setText("Sökresultat för ''" + searchBox.getCharacters().toString() + "''");
         productScrollPane.setContent(productFlowPane);
         menuToggleGroup.selectToggle(null);
-        //TODO låg tidigare en searchClean.fire() här.
     }
 
 
     protected void updateAmount(ShoppingItem shoppingItem) {     //Uppdaterar amount både i produkterna i kundvagnen och produkterna i flowpane i mitten
         shoppingCartPane.updateCart();
         productItemMap.get(shoppingItem.getProduct().getName()).updateAmountInProductItem();
-        shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInCartItem();
+        shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInCartItem(shoppingItem);
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
     }
 
@@ -410,7 +432,7 @@ public class SearchController implements Initializable {
 
         }
 
-        if((shoppingItem.getAmount() <= 0)){
+        if ((shoppingItem.getAmount() <= 0)) {
             shoppingItem.setAmount(0);
             shoppingCartPane.removeProductFromCart(shoppingItem);
 
@@ -423,7 +445,7 @@ public class SearchController implements Initializable {
     protected void clickedOnAddButton(Event event) {
         mouseTrap(event); //Infoboxen skall ej komma upp
         addItemToCart(activeInDetailview);
-        updateAmountInDetailView();
+        updateAmountInDetailView(shoppingItemMap.get(activeInDetailview.getProduct().getName()));
         addButtonGreenDetail.toFront();
         removeButtonBrown.toFront();
         removeButtonBrown.setVisible(true);
@@ -431,24 +453,24 @@ public class SearchController implements Initializable {
     }
 
     @FXML
-    protected void hoverOnAddButton(Event event){
+    protected void hoverOnAddButton(Event event) {
         addButtonGreenHoverDetail.toFront();
 
     }
 
     @FXML
-    protected void hoverOffAddButton(Event event){
+    protected void hoverOffAddButton(Event event) {
         addButtonGreenHoverDetail.toBack();
 
     }
 
     @FXML
-    protected void hoverOnRemoveButton(Event event){
+    protected void hoverOnRemoveButton(Event event) {
         removeButtonHover.toFront();
     }
 
     @FXML
-    protected void hoverOffRemoveButton(Event event){
+    protected void hoverOffRemoveButton(Event event) {
         removeButtonHover.toBack();
     }
 
@@ -456,8 +478,8 @@ public class SearchController implements Initializable {
     protected void clickedOnRemoveButton(Event event) {
         mouseTrap(event);
         subtractItemFromCart(activeInDetailview);
-        updateAmountInDetailView();
-        if (activeInDetailview.getAmount()<1){
+        updateAmountInDetailView(activeInDetailview);
+        if (activeInDetailview.getAmount() < 1) {
             addButtonDetail.toFront();
             removeButton.toFront();
             removeButtonBrown.setVisible(false);
@@ -465,8 +487,12 @@ public class SearchController implements Initializable {
         }
     }
 
-    private void updateAmountInDetailView() {
-        amountBox.textProperty().setValue(String.valueOf(activeInDetailview.getAmount()));
+    //TODO göra om denna så att den hämtar amount från kassan istället.
+    private void updateAmountInDetailView(ShoppingItem shoppingItem) {
+        amountBox.textProperty().setValue(String.valueOf(shoppingItemMap.get(shoppingItem.getProduct().getName()).getAmount()));
+        System.out.println(String.valueOf(shoppingItemMap.get(shoppingItem.getProduct().getName()).getAmount()));
+        System.out.println(String.valueOf(shoppingItemMap.get(shoppingItem.getProduct().getName()).getAmount()));
+        System.out.println(String.valueOf(shoppingItemMap.get(shoppingItem.getProduct().getName())));
     }
 
     protected void wizardToFront() {
@@ -502,26 +528,26 @@ public class SearchController implements Initializable {
             firstCartItem.updateAmountBoxInFirstCartItem();
         }
         wizard.updateTotalPriceInStep1();
-        if(iMatDataHandler.getShoppingCart().getItems().isEmpty()){
+        if (iMatDataHandler.getShoppingCart().getItems().isEmpty()) {
             wizardToBack();
         }
     }
 
-    protected void setBackToStoreIconDisabled(){
+    protected void setBackToStoreIconDisabled() {
         backToStoreIcon.setDisable(true);
         backToStoreIcon.opacityProperty().setValue(0.5);
     }
 
-    protected void setBackToStoreLabelDisabled(){
+    protected void setBackToStoreLabelDisabled() {
         backToStoreLabel.setDisable(true);
     }
 
-    protected void setBackToStoreIconAble(){
+    protected void setBackToStoreIconAble() {
         backToStoreIcon.setDisable(false);
         backToStoreIcon.opacityProperty().setValue(1);
     }
 
-    protected void setBackToStoreLabelAble(){
+    protected void setBackToStoreLabelAble() {
         backToStoreLabel.setDisable(false);
     }
 
@@ -533,6 +559,7 @@ public class SearchController implements Initializable {
     }
 
     //TODO undersöka en eventuell ihopkoppling av activateshoppingview och updateFrontPage. Så att det finns en tydlig funktion för att byta "view" åt alla håll.
+    //TODO Istället göra en closeWizard som anropas i wizard?
     protected void activateShoppingView() {
         searchBox.setVisible(true);
         minSidaButton.setVisible(true);
@@ -566,7 +593,6 @@ public class SearchController implements Initializable {
         //Avstånd mellan productItems i y-led
         myPage = new MyPage(this);
         createProductItems();                                                                                           //kalla på metod som skapar varorna
-        //createOrderList();
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
         shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!
 
@@ -577,11 +603,6 @@ public class SearchController implements Initializable {
         updateFavoritePage();
         updateFrontPage();
 
-
-
-
-        //TODO Låg tidigare en allcategories.fire() här.
-
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -590,7 +611,11 @@ public class SearchController implements Initializable {
                 if (activeInDetailview.getAmount() < 1) {       //Ändra om vi vill ha double-system
                     shoppingCartPane.removeProductFromCart(activeInDetailview);
                 }
-                updateAmount(activeInDetailview);
+                //TODO lite hotfix för att summman ska stämma men ändå få pliancyn.
+                activeInDetailview.setAmount(activeInDetailview.getAmount() - 1);
+                //TODO Om man klickar upp detailview och skriver in med siffror och klickar enter. Blir inte addButton grön.
+                // greenAddButtonToFrontDetail();
+                addItemToCart(activeInDetailview);
             }
         });
 
@@ -621,31 +646,31 @@ public class SearchController implements Initializable {
 
     List<FavoriteObserver> favoriteState = new ArrayList();
 
-    public void addObservers(FavoriteObserver fo){
+    public void addObservers(FavoriteObserver fo) {
         favoriteState.add(fo);
     }
 
-    public void removeObservers(FavoriteObserver fo){
+    public void removeObservers(FavoriteObserver fo) {
         favoriteState.remove(fo);
     }
 
-    public void updateFavoriteItems(Product product, Boolean isFavorite){
-        for (FavoriteObserver fo : favoriteState){
+    public void updateFavoriteItems(Product product, Boolean isFavorite) {
+        for (FavoriteObserver fo : favoriteState) {
             if (fo.getProduct() == product)
                 fo.update(product, isFavorite);
         }
     }
 
-    protected void addFavorite(Product p){
+    protected void addFavorite(Product p) {
         iMatDataHandler.addFavorite(p);
         updateFavoriteItems(p, true);
     }
 
-    protected void addAllToFavourite(Product p){
+    protected void addAllToFavourite(Product p) {
 
     }
 
-    protected void removeFavorite(Product p){
+    protected void removeFavorite(Product p) {
         iMatDataHandler.removeFavorite(p);
         updateFavoriteItems(p, false);
     }

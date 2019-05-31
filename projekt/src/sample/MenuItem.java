@@ -16,7 +16,7 @@ public class MenuItem extends AnchorPane {
     protected RadioButton categoryButton;   //Detta är kategoriknappen med dess kategorinamn
 
     public MenuItem(SearchController parentController){
-        fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/categoryItem.fxml")); //Laddar in rätt fxml-fil //TODO byt namn på fxml till menuItem om det funkar.
+        fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/menuItem.fxml")); //Laddar in rätt fxml-fil
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -26,7 +26,6 @@ public class MenuItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        //  this.productCategory = productCategory;
         this.parentController = parentController;
         categoryButton.setToggleGroup(parentController.menuToggleGroup); //Gör så att endast en knapp kan vara nedtryckt åt gången
         categoryButton.getStyleClass().remove("radio-button"); //Tar bort utseendet för radio-button

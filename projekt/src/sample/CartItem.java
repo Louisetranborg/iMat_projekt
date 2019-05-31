@@ -67,7 +67,7 @@ public class CartItem extends AnchorPane {
         removeButtonHover.toBack();
     }
 
-    protected void updateAmountInCartItem(){
+    protected void updateAmountInCartItem(ShoppingItem shoppingItem){
         amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
     }
 

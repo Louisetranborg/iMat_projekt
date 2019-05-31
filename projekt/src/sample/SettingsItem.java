@@ -44,8 +44,6 @@ public class SettingsItem extends MenuItem {
 
     public void onClickFavorites() {
         parentController.myPage.favoritePage.toFront();
-
-        //TODO flytta denna till de ställen där man lägger till favorit istället.
         parentController.updateFavoritePage();
     }
 

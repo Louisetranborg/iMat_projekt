@@ -40,6 +40,8 @@ public class ShoppingCartPane extends AnchorPane {
         return cartFlowPaneWrap;
     }
 
+
+    //TODO Ersätt eventuellt med activateWizard.
     @FXML
     private void clickOnToCheckoutButton(){
         parentController.wizardToFront();
@@ -72,8 +74,6 @@ public class ShoppingCartPane extends AnchorPane {
         });
 
         //Gör så att man inte kan skrolla horisontiellt i kategorierna
-
-
         cartScrollPane.addEventFilter(ScrollEvent.SCROLL,new EventHandler<ScrollEvent>() {
             @Override
             public void handle(ScrollEvent event) {
@@ -83,7 +83,7 @@ public class ShoppingCartPane extends AnchorPane {
             }
         });
 
-
+        //Todo ta bort raden under om vi behåller shoppingcart mellan omstart av program.
         toCheckoutButton.setDisable(true);
         totalLabel.setText("Totalt " + decimalFormat.format(shoppingCart.getTotal()));
 
@@ -93,6 +93,8 @@ public class ShoppingCartPane extends AnchorPane {
         return toCheckoutButton;
     }
 
+
+    //TODO överväg att flytta ut till initialize
     //Skapar alla våra productCartItems och lägger dem i en Map(productCartItemMap)
     protected void createProductCartItems(){
         for(Product product: parentController.iMatDataHandler.getProducts()){
@@ -102,14 +104,20 @@ public class ShoppingCartPane extends AnchorPane {
     }
 
     protected void addProductToCart(ShoppingItem shoppingItem){ //Lägger endast ut ett cartItem när det behövs
-        if(!shoppingCart.getItems().contains(shoppingItem)){
-            //TODO Måste göra om denna funktionalitet. med t.ex : new ShoppingItem(shoppingItem.getProduct(), shoppingItem.getAmount())
-            //TODO Den kopplar annars mot product direkt och amount tas därför bort när man kör metoden resetEveryShoppingItem i SearchController.
-            shoppingCart.addItem(shoppingItem);
+        for(ShoppingItem item : shoppingCart.getItems()){
+            if (shoppingItem.getProduct() == item.getProduct()) {
+                return;
+                //TODO Måste göra om denna funktionalitet. med t.ex : new ShoppingItem(shoppingItem.getProduct(), shoppingItem.getAmount())
+                //TODO Den kopplar annars mot product direkt och amount tas därför bort när man kör metoden resetEveryShoppingItem i SearchController.
+
+            }
         }
+        System.out.println(shoppingCart.getItems());
+        shoppingCart.addItem(shoppingItem);
     }
 
     protected void removeProductFromCart(ShoppingItem shoppingItem){
+        //TODO Skriva den mer specifikt så att vi släpper skriva över den. Den gör productItems addButton svart när man tar bort en produkt från varukorgen.
         parentController.productItemMap.get(shoppingItem.getProduct().getName()).setBlackButton();
         shoppingCart.removeItem(shoppingItem);
     }
@@ -121,10 +129,11 @@ public class ShoppingCartPane extends AnchorPane {
     protected void updateCart(){
         cartFlowPane.getChildren().clear();
         for(ShoppingItem shoppingItem : shoppingCart.getItems()){
-            cartFlowPane.getChildren().add(productCartItemMap.get(shoppingItem.getProduct().getName()));
+            if(!cartFlowPane.getChildren().contains(productCartItemMap.get(shoppingItem.getProduct().getName())));
+                 cartFlowPane.getChildren().add(productCartItemMap.get(shoppingItem.getProduct().getName()));
         }
         totalLabel.setText("Totalt " + decimalFormat.format(shoppingCart.getTotal()) + " kr");
     }
 
-
 }
+;
