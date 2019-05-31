@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -16,7 +22,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" stylesheets="@../css_files/checkout.css" type="StackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" stylesheets="@../css_files/checkout.css" type="StackPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="mainWizard" prefHeight="775.0" prefWidth="1440.0" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -96,26 +102,25 @@
             </AnchorPane>
             <AnchorPane fx:id="paymentInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" visible="false">
                <children>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="438.0" prefHeight="36.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="CVC">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="330.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Kortinnehavare:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="276.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Kortnummer:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="384.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Utgångsdatum:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
+                  <DatePicker fx:id="datePicker" editable="false" layoutX="280.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="2019-01-01" styleClass="text18" stylesheets="@../css_files/textTypes.css" />
+                  <ToggleButton fx:id="visaButton" layoutX="280.0" layoutY="156.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="126.0" styleClass="cardNotError">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/visa.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </ToggleButton>
+                  <ToggleButton fx:id="mastercardButton" layoutX="415.0" layoutY="156.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="126.0" styleClass="cardNotError">
+                     <graphic>
+                        <ImageView fitHeight="119.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/mastercard.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </ToggleButton>
                   <TextField fx:id="cardnumberTextField" layoutX="280.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
                      <font>
                         <Font size="14.0" />
@@ -156,12 +161,32 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="612.0" styleClass="text36" stylesheets="@../css_files/textTypes.css" text="Leverans och betalning">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="438.0" prefHeight="36.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="CVC">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="330.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Kortinnehavare:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="276.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Kortnummer:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="384.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Utgångsdatum:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label focusTraversable="false" layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="612.0" styleClass="text36" stylesheets="@../css_files/textTypes.css" text="Leverans och betalning">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="confirmPaymentButton" layoutX="599.0" layoutY="530.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep4" prefHeight="80.0" prefWidth="371.0" styleClass="confirmedPaymentButton" text="Genomför köp på 9999 kr">
+                  <Button fx:id="confirmPaymentButton" layoutX="599.0" layoutY="530.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToStep4" onMouseClicked="#goToStep4" prefHeight="80.0" prefWidth="371.0" styleClass="confirmedPaymentButton" text="Genomför köp på 9999 kr">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -171,83 +196,64 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Leveransdag:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Leveransdag:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="datePicker" editable="false" layoutX="280.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="2019-01-01" styleClass="text18" stylesheets="@../css_files/textTypes.css" />
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="188.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Korttyp:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="188.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Korttyp:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <ToggleButton fx:id="visaButton" layoutX="280.0" layoutY="156.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="126.0" styleClass="cardNotError">
-                     <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/visa.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </ToggleButton>
-                  <ToggleButton fx:id="mastercardButton" layoutX="415.0" layoutY="156.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="126.0" styleClass="cardNotError">
-                     <graphic>
-                        <ImageView fitHeight="119.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/mastercard.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </ToggleButton>
-                  <Label layoutX="623.0" layoutY="32.0" prefHeight="44.0" prefWidth="347.0" styleClass="text36" stylesheets="@../css_files/textTypes.css" text="Beställningsöversikt">
+                  <Label focusTraversable="false" layoutX="623.0" layoutY="32.0" prefHeight="44.0" prefWidth="347.0" styleClass="text36" stylesheets="@../css_files/textTypes.css" text="Beställningsöversikt">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Summa varor:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="623.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Summa varor:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Frakt:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="623.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Frakt:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/textTypes.css" text="Totalsumma:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="623.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/textTypes.css" text="Totalsumma:">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/textTypes.css" text="Varav moms:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="623.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/textTypes.css" text="Varav moms:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sum2" layoutX="834.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="XXX">
+                  <Label fx:id="sum2" focusTraversable="false" layoutX="834.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="XXX">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="shipping2" layoutX="834.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="XXX">
+                  <Label fx:id="shipping2" focusTraversable="false" layoutX="834.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="XXX">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalSum2" layoutX="834.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/textTypes.css" text="XXX">
+                  <Label fx:id="totalSum2" focusTraversable="false" layoutX="834.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/textTypes.css" text="XXX">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="moms2" layoutX="834.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/textTypes.css" text="XXX">
+                  <Label fx:id="moms2" focusTraversable="false" layoutX="834.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/textTypes.css" text="XXX">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                   <Line endX="581.7423095703125" endY="105.17573547363281" layoutX="22.0" layoutY="1.0" startX="581.7423095703125" startY="447.81512451171875" />
                   <Line endX="371.0" endY="391.0" startX="346.0" startY="414.0" />
-                  <Label fx:id="errorMessageStep3" alignment="TOP_LEFT" layoutX="280.0" layoutY="476.0" prefHeight="80.0" prefWidth="260.0" stylesheets="@../css_files/textTypes.css" text="Fyll i samtliga textfält korrekt! Håll pekaren över felaktiga fält för mer information. " textFill="RED" visible="false" wrapText="true">
+                  <Label fx:id="errorMessageStep3" alignment="TOP_LEFT" focusTraversable="false" layoutX="280.0" layoutY="476.0" prefHeight="80.0" prefWidth="260.0" stylesheets="@../css_files/textTypes.css" text="Fyll i samtliga textfält korrekt! Håll pekaren över felaktiga fält för mer information. " textFill="RED" visible="false" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -335,22 +341,22 @@
             </AnchorPane>
             <AnchorPane fx:id="personalInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane">
                <children>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Förnamn:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Förnamn:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="154.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Efternamn:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="154.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Efternamn:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="208.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Telefonnummer:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="208.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Telefonnummer:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="262.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Email-adress:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="262.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Email-adress:">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -375,31 +381,6 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="400.0" styleClass="text36" stylesheets="@../css_files/textTypes.css" text="Personuppgifter">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="710.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep3" prefHeight="60.0" prefWidth="260.0" styleClass="nextButton" text="Nästa steg">
-                     <font>
-                        <Font name="Roboto Regular" size="24.0" />
-                     </font>
-                  </Button>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="316.0" prefHeight="36.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Postnummer:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="370.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Ort:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="424.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Adress:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
                   <TextField fx:id="postCode" layoutX="280.0" layoutY="316.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css">
                      <font>
                         <Font size="18.0" />
@@ -415,58 +396,83 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
+                  <Label focusTraversable="false" layoutX="70.0" layoutY="30.0" prefHeight="44.0" prefWidth="400.0" styleClass="text36" stylesheets="@../css_files/textTypes.css" text="Personuppgifter">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="710.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep3" prefHeight="60.0" prefWidth="260.0" styleClass="nextButton" text="Nästa steg">
+                     <font>
+                        <Font name="Roboto Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="316.0" prefHeight="36.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Postnummer:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="370.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Ort:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="424.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Adress:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                   <Button layoutX="70.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goToStep1" prefHeight="60.0" prefWidth="260.0" styleClass="goBackButton" text="Tillbaka">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Label layoutX="623.0" layoutY="31.0" prefHeight="44.0" prefWidth="347.0" styleClass="text36" stylesheets="@../css_files/textTypes.css" text="Beställningsöversikt">
+                  <Label focusTraversable="false" layoutX="623.0" layoutY="31.0" prefHeight="44.0" prefWidth="347.0" styleClass="text36" stylesheets="@../css_files/textTypes.css" text="Beställningsöversikt">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Summa varor:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="623.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Summa varor:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Frakt:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="623.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Frakt:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/textTypes.css" text="Totalsumma:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="623.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/textTypes.css" text="Totalsumma:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="623.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/textTypes.css" text="Varav moms:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="623.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/textTypes.css" text="Varav moms:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sum1" layoutX="834.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="XXX">
+                  <Label fx:id="sum1" focusTraversable="false" layoutX="834.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="XXX">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="shipping1" layoutX="834.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="XXX">
+                  <Label fx:id="shipping1" focusTraversable="false" layoutX="834.0" layoutY="160.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="XXX">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalSum1" layoutX="834.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/textTypes.css" text="9">
+                  <Label fx:id="totalSum1" focusTraversable="false" layoutX="834.0" layoutY="220.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-bold" stylesheets="@../css_files/textTypes.css" text="9">
                      <font>
                         <Font name="AvenirLTStd-Roman" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="moms1" layoutX="834.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/textTypes.css" text="9">
+                  <Label fx:id="moms1" focusTraversable="false" layoutX="834.0" layoutY="280.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24-opacity" stylesheets="@../css_files/textTypes.css" text="9">
                      <font>
                         <Font name="Avenir Book" size="24.0" />
                      </font>
                   </Label>
                   <Line endX="581.7423095703125" endY="105.17573547363281" layoutX="22.0" layoutY="1.0" startX="581.7423095703125" startY="447.81512451171875" />
-                  <Label fx:id="errorMessageStep2" alignment="TOP_LEFT" layoutX="280.0" layoutY="476.0" prefHeight="80.0" prefWidth="260.0" text="Fyll i samtliga textfält korrekt! Håll pekaren över felaktiga fält för mer information. " textFill="RED" visible="false" wrapText="true">
+                  <Label fx:id="errorMessageStep2" alignment="TOP_LEFT" focusTraversable="false" layoutX="280.0" layoutY="476.0" prefHeight="80.0" prefWidth="260.0" text="Fyll i samtliga textfält korrekt! Håll pekaren över felaktiga fält för mer information. " textFill="RED" visible="false" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
