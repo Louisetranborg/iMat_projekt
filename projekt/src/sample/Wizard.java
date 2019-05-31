@@ -24,9 +24,11 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import java.io.IOException;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 
 public class Wizard extends StackPane {
@@ -112,6 +114,7 @@ public class Wizard extends StackPane {
 
         shipping1.setText("45 kr");
         shipping2.setText("45 kr");
+
 
         checkoutScrollPane.addEventFilter(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() {
             @Override
@@ -209,6 +212,18 @@ public class Wizard extends StackPane {
                 highlightCardIsNotSelectedError();
             }
         });
+
+
+        datePicker.setDayCellFactory(picker -> new DateCell(){
+            public void updateItem(LocalDate date, boolean empty){
+                super.updateItem(date, empty);
+                LocalDate day = LocalDate.now().plusDays(2);
+
+                setDisable(empty || date.compareTo(day) < 0);
+            }
+
+        });
+
     }
 
     private int extractDigits(String string){
