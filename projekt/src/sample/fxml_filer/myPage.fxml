@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -41,84 +42,6 @@
             </TilePane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="personalDataPage" prefHeight="741.0" prefWidth="1030.0" style="-fx-background-color: #FFFFFF;">
-         <children>
-            <TextField fx:id="cardNumberField" layoutX="187.0" layoutY="254.0" prefHeight="42.0" prefWidth="576.0" />
-            <TextField fx:id="deliveryField" layoutX="187.0" layoutY="182.0" prefHeight="42.0" prefWidth="576.0" />
-            <TextField fx:id="cardCvcField" layoutX="541.0" layoutY="322.0" prefHeight="42.0" prefWidth="123.0" />
-            <TextField fx:id="socialSecField" layoutX="187.0" layoutY="117.0" prefHeight="42.0" prefWidth="576.0" />
-            <TextField fx:id="surnameField" layoutX="496.0" layoutY="37.0" prefHeight="42.0" prefWidth="264.0" />
-            <TextField fx:id="firstnameFIeld" layoutX="186.0" layoutY="37.0" prefHeight="42.0" prefWidth="180.0" />
-            <RadioButton fx:id="swishRadioButton" layoutX="669.0" layoutY="432.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="147.0" text="Swish">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="directPaymentRadioButton" layoutX="388.0" layoutY="432.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="250.0" text="Direktbetalning">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="invoiceRadioButton" layoutX="218.0" layoutY="432.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="147.0" text="Faktura">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </RadioButton>
-            <Label layoutX="55.0" layoutY="444.0" prefHeight="42.0" prefWidth="147.0" text="Betalningssätt:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="121.0" layoutY="384.0" prefHeight="42.0" prefWidth="147.0" text="Epost:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="475.0" layoutY="322.0" prefHeight="42.0" prefWidth="48.0" text="CVC:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="298.0" layoutY="322.0" prefHeight="42.0" prefWidth="48.0" text="/">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="47.0" layoutY="322.0" prefHeight="42.0" prefWidth="129.0" text="Utgångsdatum:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="71.0" layoutY="250.0" prefHeight="42.0" prefWidth="123.0" text="Kortnummer:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="52.0" layoutY="185.0" prefHeight="42.0" prefWidth="147.0" text="Leveransadress:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="52.0" layoutY="112.0" prefHeight="42.0" prefWidth="147.0" text="Personnummer:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="388.0" layoutY="37.0" prefHeight="42.0" prefWidth="103.0" text="Efternamn:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="101.0" layoutY="37.0" prefHeight="42.0" prefWidth="78.0" text="Förnamn:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="cardMonthField" layoutX="187.0" layoutY="322.0" prefHeight="42.0" prefWidth="92.0" />
-            <TextField fx:id="cardYearField" layoutX="334.0" layoutY="322.0" prefHeight="42.0" prefWidth="92.0" />
-            <TextField fx:id="emailField" layoutX="187.0" layoutY="384.0" prefHeight="42.0" prefWidth="576.0" />
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="historyItems" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <TilePane fx:id="historyProductTilePane" hgap="35.0" layoutX="30.0" layoutY="103.0" prefColumns="4" prefHeight="599.0" prefRows="4" prefWidth="900.0" vgap="35.0">
@@ -128,6 +51,98 @@
             </TilePane>
             <Button layoutX="40.0" layoutY="25.0" mnemonicParsing="false" onAction="#onClickBackToHistory" prefHeight="55.0" prefWidth="250.0" styleClass="goBackButton" stylesheets="@../css_files/checkout.css" text="Tillbaka till historik" />
             <Button layoutX="611.0" layoutY="28.0" mnemonicParsing="false" onAction="#onClickAddHistoryToCart" prefHeight="55.0" prefWidth="250.0" styleClass="nextButton" stylesheets="@../css_files/checkout.css" text="Lägg till hela köpet" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="personalDataPage" prefHeight="741.0" prefWidth="1030.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../../../../src/sample/css_files/main_theme.css">
+         <children>
+            <TextField fx:id="firstnameField" layoutX="163.0" layoutY="37.0" prefHeight="42.0" prefWidth="250.0" />
+            <TextField fx:id="surnameField" layoutX="163.0" layoutY="103.0" prefHeight="42.0" prefWidth="250.0" />
+            <TextField fx:id="phoneNumberField" layoutX="164.0" layoutY="171.0" prefHeight="42.0" prefWidth="250.0" />
+            <TextField fx:id="emailField" layoutX="166.0" layoutY="236.0" prefHeight="42.0" prefWidth="250.0" />
+            <TextField fx:id="deliveryField" layoutX="165.0" layoutY="296.0" prefHeight="42.0" prefWidth="250.0" />
+            <TextField fx:id="zipCodeField" layoutX="163.0" layoutY="362.0" prefHeight="42.0" prefWidth="250.0" />
+            <TextField fx:id="cityField" layoutX="163.0" layoutY="424.0" prefHeight="42.0" prefWidth="250.0" />
+            <ImageView fx:id="visaImage" fitHeight="69.0" fitWidth="103.0" layoutX="613.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../src/sample/images/visa.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="mastercardImage" fitHeight="69.0" fitWidth="103.0" layoutX="709.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../src/sample/images/mastercard.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="cardNumberField" layoutX="613.0" layoutY="103.0" prefHeight="42.0" prefWidth="250.0" />
+            <TextField fx:id="cardHolderField" layoutX="614.0" layoutY="171.0" prefHeight="42.0" prefWidth="250.0" />
+            <TextField fx:id="cardMonthField" layoutX="615.0" layoutY="236.0" prefHeight="42.0" prefWidth="92.0" />
+            <TextField fx:id="cardYearField" layoutX="739.0" layoutY="236.0" prefHeight="42.0" prefWidth="92.0" />
+            <Button fx:id="saveChangesButton" layoutX="692.0" layoutY="416.0" mnemonicParsing="false" onAction="#onClickSaveChanges" onKeyPressed="#onClickSaveChanges" prefHeight="59.0" prefWidth="173.0" styleClass="nextButton" stylesheets="@../../../../../src/sample/css_files/checkout.css" text="Spara" />
+            <Label focusTraversable="false" layoutX="478.0" layoutY="36.0" prefHeight="42.0" prefWidth="147.0" text="Betalningssätt:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="100.0" layoutY="236.0" prefHeight="42.0" prefWidth="147.0" text="Epost:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="719.0" layoutY="236.0" prefHeight="42.0" prefWidth="48.0" text="/">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="472.0" layoutY="236.0" prefHeight="42.0" prefWidth="129.0" text="Utgångsdatum:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="490.0" layoutY="103.0" prefHeight="42.0" prefWidth="123.0" text="Kortnummer:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="93.0" layoutY="296.0" prefHeight="42.0" prefWidth="84.0" text="Adress: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="29.0" layoutY="171.0" prefHeight="42.0" prefWidth="147.0" text="Telefonnummer: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="66.0" layoutY="103.0" prefHeight="42.0" prefWidth="103.0" text="Efternamn:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="78.0" layoutY="36.0" prefHeight="42.0" prefWidth="78.0" styleClass="text24" stylesheets="@../../../../../src/sample/css_files/main_theme.css" text="Förnamn:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="51.0" layoutY="362.0" prefHeight="42.0" prefWidth="129.0" text="Postnummer: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="123.0" layoutY="424.0" prefHeight="42.0" prefWidth="57.0" text="Ort:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label focusTraversable="false" layoutX="472.0" layoutY="171.0" prefHeight="42.0" prefWidth="141.0" text="Kortinnehavare: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Line endX="450.0" layoutX="222.0" layoutY="150.0" rotate="90.0" translateY="100.0" />
+            <Label fx:id="successfulChange" focusTraversable="false" layoutX="609.0" layoutY="353.0" text="Dina uppgifter sparades!" textFill="#3e8019" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
