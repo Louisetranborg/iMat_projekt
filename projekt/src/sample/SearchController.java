@@ -564,7 +564,6 @@ public class SearchController implements Initializable {
 
 
     protected void wizardToFront() {
-
         wizardWrap.toFront();
         wizard.start();
         updateFirstCartInWizard();
@@ -789,7 +788,6 @@ public class SearchController implements Initializable {
     }
 
     protected void addAllToFavourite(Product p) {
-
     }
 
     protected void removeFavorite(Product p) {

@@ -57,7 +57,6 @@ public class Wizard extends StackPane {
     @FXML private TextField cardholderTextField;
     @FXML private ToggleButton visaButton;
     @FXML private ToggleButton mastercardButton;
-    @FXML private TextField cardnumberTextField;
     @FXML private TextField validMonthTextField;
     @FXML private TextField validYearTextField;
     @FXML private TextField cvcTextField;
@@ -67,6 +66,10 @@ public class Wizard extends StackPane {
     @FXML private Label moms2;
     @FXML private Label errorMessageStep3;
     @FXML private Button confirmPaymentButton;
+    @FXML private TextField cardnumberTextField;
+    @FXML private TextField cardnumberTextField2;
+    @FXML private TextField cardnumberTextField3;
+    @FXML private TextField cardnumberTextField4;
 
 
     @FXML private AnchorPane receiptPane;
@@ -158,6 +161,7 @@ public class Wizard extends StackPane {
             }
         });
 
+        /*
         cardnumberTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -169,6 +173,8 @@ public class Wizard extends StackPane {
                 }
             }
         });
+
+         */
 
         visaButton.getStyleClass().clear();
         visaButton.getStyleClass().add("cardNotError");
@@ -217,6 +223,67 @@ public class Wizard extends StackPane {
 
         });
 
+        implemetCardnumberFormat(cardnumberTextField, cardnumberTextField2);
+        implemetCardnumberFormat(cardnumberTextField2, cardnumberTextField3);
+        implemetCardnumberFormat(cardnumberTextField3, cardnumberTextField4);
+
+        implemetCardnumberFormatGoBack(cardnumberTextField4, cardnumberTextField3);
+        implemetCardnumberFormatGoBack(cardnumberTextField3, cardnumberTextField2);
+        implemetCardnumberFormatGoBack(cardnumberTextField2, cardnumberTextField);
+
+        cardnumberTextField4.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 4){
+                    cardnumberTextField4.setText(oldValue);
+                }
+            }
+        });
+
+        cardnumberTextField3.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 4){
+                    cardnumberTextField3.setText(oldValue);
+                }
+            }
+        });
+
+        cardnumberTextField2.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 4){
+                    cardnumberTextField2.setText(oldValue);
+                }
+            }
+        });
+
+        cardnumberTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 4){
+                    cardnumberTextField.setText(oldValue);
+                }
+            }
+        });
+
+    }
+
+    private void implemetCardnumberFormat(TextField tf1, TextField tf2){
+        tf1.textProperty().addListener((obs, oldText, newText) -> {
+            if(oldText.length() < 4 && newText.length() >= 4){
+                tf2.requestFocus();
+            }
+        });
+    }
+
+    private void implemetCardnumberFormatGoBack(TextField tf1, TextField tf2){
+        tf1.textProperty().addListener((obs, oldText, newText) -> {
+            if((oldText.length() > 0 && newText.length() == 0)){
+                tf2.requestFocus();
+                tf2.positionCaret(4);
+            }
+        });
     }
 
     private int extractDigits(String string){

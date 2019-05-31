@@ -94,7 +94,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paymentInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" visible="false">
+            <AnchorPane fx:id="paymentInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane">
                <children>
                   <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="438.0" prefHeight="36.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="CVC">
                      <font>
@@ -121,17 +121,17 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="cardholderTextField3" layoutX="346.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
+                  <TextField fx:id="cardnumberTextField2" layoutX="346.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="cardholderTextField2" layoutX="413.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
+                  <TextField fx:id="cardnumberTextField3" layoutX="413.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="cardholderTextField1" layoutX="480.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
+                  <TextField fx:id="cardnumberTextField4" layoutX="480.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -333,7 +333,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="personalInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane">
+            <AnchorPane fx:id="personalInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" visible="false">
                <children>
                   <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Förnamn:">
                      <font>
