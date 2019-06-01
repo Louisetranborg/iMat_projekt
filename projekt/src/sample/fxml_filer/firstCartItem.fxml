@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="900.0" styleClass="cartItem" stylesheets="@../css_files/checkout.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="74.0" prefWidth="900.0" styleClass="cartItem" stylesheets="@../css_files/checkout.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="image" fitHeight="68.0" fitWidth="80.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true">
+      <ImageView fx:id="image" fitHeight="72.0" fitWidth="86.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true">
          <image>
             <Image url="@../images/baseline_add_circle_black_24dp.png" />
          </image>
@@ -19,37 +19,37 @@
             <Font name="Avenir Book" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="amountBox" layoutX="585.0" layoutY="19.0" prefHeight="32.0" prefWidth="50.0" styleClass="textField" stylesheets="@../css_files/textTypes.css">
+      <TextField fx:id="amountBox" layoutX="585.0" layoutY="22.0" prefHeight="32.0" prefWidth="50.0" styleClass="textField" stylesheets="@../css_files/textTypes.css">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <ImageView fx:id="removeButtonHover" fitHeight="150.0" fitWidth="46.0" layoutX="532.0" layoutY="12.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="removeButtonHover" fitHeight="150.0" fitWidth="46.0" layoutX="532.0" layoutY="15.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/remove_main.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="removeButton" fitHeight="150.0" fitWidth="46.0" layoutX="532.0" layoutY="12.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="removeButton" fitHeight="150.0" fitWidth="46.0" layoutX="532.0" layoutY="15.0" onMouseClicked="#clickedOnRemoveButton" onMouseEntered="#hoverOnRemoveButton" onMouseExited="#hoverOffRemoveButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/remove_dark.png" />
          </image>
       </ImageView>
-      <Label fx:id="price" alignment="CENTER_RIGHT" layoutX="779.0" layoutY="40.0" prefHeight="23.0" prefWidth="107.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="pris">
+      <Label fx:id="price" alignment="CENTER_RIGHT" layoutX="779.0" layoutY="42.0" prefHeight="23.0" prefWidth="107.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="pris">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="854.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="whiteHeart" fitHeight="36.0" fitWidth="36.0" layoutX="854.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/favorite_icon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="addButtonHover" fitHeight="150.0" fitWidth="46.0" layoutX="641.0" layoutY="12.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="addButtonHover" fitHeight="150.0" fitWidth="46.0" layoutX="641.0" layoutY="15.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/primarGronAdd.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="addButton" fitHeight="150.0" fitWidth="46.0" layoutX="641.0" layoutY="12.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="addButton" fitHeight="150.0" fitWidth="46.0" layoutX="641.0" layoutY="15.0" onMouseClicked="#clickedOnAddButton" onMouseEntered="#hoverOnAddButton" onMouseExited="#hoverOffAddButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/darkAdd.png" />
          </image>
