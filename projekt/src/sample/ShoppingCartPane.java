@@ -151,4 +151,3 @@ public class ShoppingCartPane extends AnchorPane {
 
 
 }
-;

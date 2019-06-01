@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -57,6 +59,7 @@ public class FirstCartItem extends AnchorPane implements FavoriteObserver {
 
 
 
+        /*
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -74,8 +77,70 @@ public class FirstCartItem extends AnchorPane implements FavoriteObserver {
             }
         });
 
+         */
+
         price.setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
 
+        amountBox.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue){
+                    amountBox.clear();
+                }
+                else{
+                    parentController.updateProductAmountInAllItems(shoppingItem);
+                    parentController.updateFirstCartInWizard();
+                }
+            }
+        });
+
+        amountBox.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String input = amountBox.getText();
+                double amount = handleInput(input);
+
+                parentController.setAmountInCart(shoppingItem.getProduct(), amount);
+                parentController.updateProductAmountInAllItems(shoppingItem);
+                parentController.updateFirstCartInWizard();
+
+            }
+        });
+
+
+
+    }
+
+    private double extractDigits(String value){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < value.length(); i++) {
+            if (Character.isDigit(value.charAt(i)) || (String.valueOf(value.charAt(i)).equals(".") && !stringBuilder.toString().contains("."))) {
+                stringBuilder.append(value.charAt(i));
+            }
+        }
+
+        if(!stringBuilder.toString().isEmpty()) {
+            return Double.valueOf(stringBuilder.toString());
+        } else {
+            return 0;
+        }
+
+    }
+
+    private double handleInput(String value){
+        double output = extractDigits(value);
+        String unitSuffix = shoppingItem.getProduct().getUnitSuffix();
+
+        if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
+            output = Math.round(output);
+        }
+
+        if(output < 0.1){
+            return 0;
+        } else {
+            return output;
+        }
     }
 
     @FXML
@@ -94,6 +159,7 @@ public class FirstCartItem extends AnchorPane implements FavoriteObserver {
 
     protected void updateAmountBoxInFirstCartItem(){
         amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
+        price.setText(String.valueOf(decimalFormat.format(shoppingItem.getTotal())));
     }
 
     @FXML
@@ -140,6 +206,25 @@ public class FirstCartItem extends AnchorPane implements FavoriteObserver {
 
     public Product getProduct(){
         return shoppingItem.getProduct();
+    }
+
+    private void implementOnlyDigitsAllowed(TextField textField){
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!containsDigitsOnly(newValue) || !textField.getText().contains(".")){
+                    textField.setText(oldValue);
+                }
+            }
+        });
+    }
+
+    private boolean containsDigitsOnly(String string){
+        for(Character c : string.toCharArray()){
+            if(!Character.isDigit(c)){
+                return false;
+            }
+        } return true;
     }
 
 
