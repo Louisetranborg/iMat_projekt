@@ -209,7 +209,7 @@ public class Wizard extends StackPane {
             }
         });
 
-
+        //TODO denna uppdaterar bara första gångne jag gör köp. Inte andra.
         datePicker.setDayCellFactory(picker -> new DateCell(){
             public void updateItem(LocalDate date, boolean empty){
                 super.updateItem(date, empty);
@@ -413,15 +413,24 @@ public class Wizard extends StackPane {
         }
 
 
-        List<ShoppingItem> orderedShoppingItems = IMatDataHandler.getInstance().getOrders().get(IMatDataHandler.getInstance().getOrders().size() - 1).getItems();
+        List<ShoppingItem> orderedShoppingItems = order.getItems();
         confirmCartFlowPane.getChildren().clear();
         for(ShoppingItem shoppingItem: orderedShoppingItems){
             confirmCartFlowPane.getChildren().add(new ReceiptItem(shoppingItem));
         }
         //parentController.resetEveryShoppingItem();
+        String month = order.getDate().toString().substring(4,7);
+        //System.out.println(month);
 
-        orderNumber.setText(String.valueOf(parentController.iMatDataHandler.getOrders().get(parentController.iMatDataHandler.getOrders().size() - 1).getOrderNumber()));
-        orderDate.setText(String.valueOf(parentController.iMatDataHandler.getOrders().get(parentController.iMatDataHandler.getOrders().size() - 1).getDate()));
+        int day = Integer.valueOf(order.getDate().toString().substring(8,10));
+        String time = order.getDate().toString().substring(11,16);
+        int year = Integer.valueOf(order.getDate().toString().substring(25,29));
+
+        //TODO Ändra så att det faktiskt fungerar för andra datum och månader.
+        orderDate.setText(day + "/" + parentController.convertMonthStringToInt(month) + " - " + year + " | " + time);
+
+
+        orderNumber.setText(String.valueOf(order.getOrderNumber()));
         deliveryAdr.setText(adress.getText() + ", " + city.getText());
         clearCheckoutInfo();
         parentController.updateHistoryPage();
