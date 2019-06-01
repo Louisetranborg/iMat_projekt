@@ -112,7 +112,6 @@ public class MyPage extends StackPane {
 
     @FXML
     protected void onClickSaveChanges(){
-
         customer.setFirstName(firstnameField.getText());
         customer.setLastName(surnameField.getText());
         customer.setMobilePhoneNumber(phoneNumberField.getText());
