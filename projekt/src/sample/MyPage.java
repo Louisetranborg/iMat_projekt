@@ -291,14 +291,8 @@ public class MyPage extends StackPane {
     }
 
     @FXML
-    protected void onClick(){
-
-    }
-
-    @FXML
     protected void onClickBackToHistory(){
-        parentController.updateHistoryPage();
-
+        parentController.productScrollPane.setVvalue(parentController.actualVValue);
         //TODO fixa så att man endast kallar en activate/showHistoryPage.
         parentController.myPage.historyPage.toFront();
     }
@@ -306,7 +300,6 @@ public class MyPage extends StackPane {
     @FXML
     protected void onClickAddHistoryToCart(){
         parentController.addAllHistoryItemsToCart();
-        //parentController.addItemsToCart();
     }
 
     public void loadCustomerInfo(){

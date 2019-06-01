@@ -33,7 +33,7 @@ public class SearchController implements Initializable {
     @FXML
     private Button minSidaButton;                                         //Detta är min sida-knappen
     @FXML
-    private ScrollPane productScrollPane;                                 //ScrollPane för produkterna i mitten av sidan
+    public ScrollPane productScrollPane;                                 //ScrollPane för produkterna i mitten av sidan
     @FXML
     private AnchorPane productDetailView;                                 //Detta är vår light-box som visar mer info om produkterna
     @FXML
@@ -262,17 +262,15 @@ public class SearchController implements Initializable {
         myPage.historyOrderVbox.getChildren().clear();
         for (Order order : IMatDataHandler.getInstance().getOrders()) {
             myPage.historyOrderVbox.getChildren().add(0,new OrderItem(this, order));
-            //   productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
-
         }
     }
 
-    //List<ShoppingItem> tempOrderProducts = new ArrayList<>();
     Order currentlyShownOrder = null;
+    public double actualVValue;
 
     protected void updateHistoryShowItems(Order order) {
         myPage.historyProductTilePane.getChildren().clear();
-       // tempOrderProducts.clear();
+        productScrollPane.setVvalue(0);
         for (ShoppingItem item : order.getItems()) {
             //TODO Här behöver vi ändra om , Gabriel
             ProductItem pItem = new ProductItem(item.getProduct(), this);
@@ -304,7 +302,7 @@ public class SearchController implements Initializable {
     protected void updateFavoritePage() {
         myPage.historyTilePane.getChildren().clear();
         for (Product favorite : iMatDataHandler.favorites()) {
-            myPage.historyTilePane.getChildren().add(productItemMap.get(favorite.getName()));
+            myPage.historyTilePane.getChildren().add(0,productItemMap.get(favorite.getName()));
         }
     }
 

@@ -79,6 +79,7 @@ public class SettingsItem extends MenuItem {
                 break;
         }
         parentController.changeCategoryPageText(categoryButton.getText());
+        parentController.productScrollPane.setVvalue(0);
 
         System.out.println(categoryButton.getToggleGroup().getToggles());
 

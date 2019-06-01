@@ -66,6 +66,7 @@ public class OrderItem extends HBox {
 
     @FXML
     private void onClickShowItems(){
+        parentController.actualVValue = parentController.productScrollPane.getVvalue();
         parentController.updateHistoryShowItems(order);
     }
 }
