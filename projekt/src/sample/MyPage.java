@@ -1,5 +1,9 @@
 package sample;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.SequentialTransition;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -11,10 +15,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +51,9 @@ public class MyPage extends StackPane {
 
     Customer customer;
     CreditCard card;
+
+    Timeline transitionRemoveSuccessfulChange;
+    SequentialTransition transition;
 
 
     SearchController parentController;
@@ -77,6 +86,12 @@ public class MyPage extends StackPane {
 
         visaButton.setToggleGroup(cardtoggleGroup);
         mastercardButton.setToggleGroup(cardtoggleGroup);
+
+        transitionRemoveSuccessfulChange = new Timeline(
+                new KeyFrame(Duration.seconds(3), new KeyValue(successfulChange.opacityProperty(), 0))
+        );
+
+        transition = new SequentialTransition(transitionRemoveSuccessfulChange);
 
     }
 
@@ -133,6 +148,7 @@ public class MyPage extends StackPane {
         card.setValidYear(Integer.parseInt(cardYearField.getText()));
 
         successfulChange.setVisible(true);
-
+        transition.play();
     }
+
 }
