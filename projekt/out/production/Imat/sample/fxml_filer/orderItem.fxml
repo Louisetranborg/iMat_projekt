@@ -14,7 +14,7 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #EEEEEE; -fx-border-color: #338a3e; -fx-border-radius: 3px;" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="date" alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="144.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="23 May">
+      <Label fx:id="date" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="58.0" prefWidth="85.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="23 May">
          <font>
             <Font size="22.0" />
          </font>
@@ -22,7 +22,8 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </HBox.margin>
       </Label>
-      <Label fx:id="amount" alignment="CENTER" contentDisplay="CENTER" prefHeight="57.0" prefWidth="72.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="5 st">
+      <Pane minWidth="50.0" />
+      <Label fx:id="amount" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="57.0" prefWidth="58.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="5 st">
          <font>
             <Font size="22.0" />
          </font>
@@ -30,7 +31,8 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </HBox.margin>
       </Label>
-      <Label fx:id="price" alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="131.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="23,00 kr">
+      <Pane minWidth="35.0" />
+      <Label fx:id="price" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="59.0" prefWidth="120.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="23,00 kr">
          <font>
             <Font size="22.0" />
          </font>
