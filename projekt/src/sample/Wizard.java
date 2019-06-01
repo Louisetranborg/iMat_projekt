@@ -17,11 +17,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
-
-import se.chalmers.cse.dat216.project.Order;
-import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ShoppingItem;
+import se.chalmers.cse.dat216.project.*;
 
 import java.io.IOException;
 
@@ -365,14 +361,20 @@ public class Wizard extends StackPane {
     }
 
     protected void setCheckoutInfoBasedOnPersonalInfo(){
-        firstName.setText(parentController.iMatDataHandler.getCustomer().getFirstName());
-        lastName.setText(parentController.iMatDataHandler.getCustomer().getLastName());
-        telNumber.setText(parentController.iMatDataHandler.getCustomer().getMobilePhoneNumber());
-        mail.setText(parentController.iMatDataHandler.getCustomer().getEmail());
-        postCode.setText(parentController.iMatDataHandler.getCustomer().getPostCode());
-        city.setText(parentController.iMatDataHandler.getCustomer().getPostAddress());
-        adress.setText(parentController.iMatDataHandler.getCustomer().getAddress());
-        cardholderTextField.setText(parentController.iMatDataHandler.getCustomer().getFirstName() + " " + parentController.iMatDataHandler.getCustomer().getLastName());
+        Customer customer = parentController.iMatDataHandler.getCustomer();
+        CreditCard creditCard = parentController.iMatDataHandler.getCreditCard();
+        firstName.setText(customer.getFirstName());
+        lastName.setText(customer.getLastName());
+        telNumber.setText(customer.getMobilePhoneNumber());
+        mail.setText(customer.getEmail());
+        postCode.setText(customer.getPostCode());
+        city.setText(customer.getPostAddress());
+        adress.setText(customer.getAddress());
+        cardholderTextField.setText(customer.getFirstName() + " " + customer.getLastName());
+        cardnumberTextField.setText(creditCard.getCardNumber());
+        validMonthTextField.setText(Integer.toString(creditCard.getValidMonth()));
+        validYearTextField.setText(Integer.toString(creditCard.getValidYear()));
+        datePicker.setValue(LocalDate.now());
     }
 
     /*

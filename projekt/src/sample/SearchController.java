@@ -345,13 +345,15 @@ public class SearchController implements Initializable {
         updateFrontPage();
         productFlowPane.getChildren().clear();
 
+        String translatedString = translateCategories(string);
+
         for (Product product : products) {
             productFlowPane.getChildren().add(productItemMap.get(product.getName()));
         }
         //Följande for-loopar är för att varorna inom en kategori skall komma upp om man söker på denna kategori
         //Exempelvis om man söker på pasta, så skall alla pastasorter komma upp, trots att de inte innehåller pasta i sin rubrik, utan för att de ingår i den kategorin
         for (ProductCategory productCategory : ProductCategory.values()) {                                                 //Loopar igenom alla kategorierna
-            if (productCategory.toString().toLowerCase().contains(string.toLowerCase())) {                                //Kollar om ens string matchar med någon kategori
+            if (productCategory.toString().toLowerCase().contains(translatedString.toLowerCase())) {                                //Kollar om ens string matchar med någon kategori
                 List<Product> productsByCategory = iMatDataHandler.getProducts(productCategory);                        //Skapar en lista med alla produkter inom denna kategori
                 for (Product product : productsByCategory) {                                                                   //Loopar igenom denna lista med produkter
                     productFlowPane.getChildren().add(productItemMap.get(product.getName()));                           //Lägger till dem i productFlowPane
@@ -359,6 +361,41 @@ public class SearchController implements Initializable {
             }
         }
     }
+
+    //översätter sökrutan till kategorierna för sökfunktion
+    protected String translateCategories(String string){
+        switch (string){
+            case "Pasta": return "pasta";
+            case "baljväxt" : return "pod";
+            case "baljväxter" : return "pod";
+            case "bröd" : return "bread";
+            case "bär" : return "berry";
+            case "citrus" : return "citrus_fruit";
+            case "varm dricka" : return "hot_drinks";
+            case "kall dricka" : return "cold_drinks";
+            case "exotisk" : return "exotic_fruit";
+            case "exotisk frukt" : return "exotic_fruit";
+            case "fisk" : return "fish";
+            case "kål" : return "cabbage";
+            case "kött" : return "meat";
+            case "mejeri" : return "dairies";
+            case "melon" : return "melons";
+            case "nötter" : return "nuts_and_seeds";
+            case "fröer" : return "nuts_and_seeds";
+            case "potatis" : return "potato_rice";
+            case "ris" : return "potato_rice";
+            case "rotfrukt" : return "root_vegetable";
+            case "rotfrukter" : return "root_vegetable";
+            case "frukt" : return "fruit";
+            case "godis" : return "sweet";
+            case "sött" : return "sweet";
+            case "ört" : return "herb";
+            case "örter" : return "herb";
+            case "grönsaker" : return "vegetable_fruit";
+            default: return string;
+        }
+    }
+
 
 
     //Byter view från productFlowpane till myPage.
