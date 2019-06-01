@@ -115,12 +115,13 @@ public class MyPage extends StackPane {
         registerCaretListener(cardnumberTextField3);
         registerCaretListener(cardnumberTextField4);
 
-        implemetOnlyDigitsAllowed(cardnumberTextField);
-        implemetOnlyDigitsAllowed(cardnumberTextField2);
-        implemetOnlyDigitsAllowed(cardnumberTextField3);
-        implemetOnlyDigitsAllowed(cardnumberTextField4);
+        implementOnlyDigitsAllowed(cardnumberTextField);
+        implementOnlyDigitsAllowed(cardnumberTextField2);
+        implementOnlyDigitsAllowed(cardnumberTextField3);
+        implementOnlyDigitsAllowed(cardnumberTextField4);
 
-
+        implementOnlyDigitsAllowed(cardYearField);
+        implementOnlyDigitsAllowed(cardMonthField);
 
         cardnumberTextField4.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -154,6 +155,33 @@ public class MyPage extends StackPane {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if(newValue.length() > 4){
                     cardnumberTextField.setText(oldValue);
+                }
+            }
+        });
+
+        cardMonthField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 2){
+                    cardMonthField.setText(oldValue);
+                }
+            }
+        });
+
+        cardYearField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 2){
+                    cardYearField.setText(oldValue);
+                }
+            }
+        });
+
+        zipCodeField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 6){
+                    zipCodeField.setText(oldValue);
                 }
             }
         });
@@ -195,7 +223,7 @@ public class MyPage extends StackPane {
         });
     }
 
-    private void implemetOnlyDigitsAllowed(TextField textField){
+    private void implementOnlyDigitsAllowed(TextField textField){
         textField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -205,8 +233,6 @@ public class MyPage extends StackPane {
             }
         });
     }
-
-
 
     private boolean containsDigitsOnly(String string){
         for(Character c : string.toCharArray()){
@@ -228,10 +254,39 @@ public class MyPage extends StackPane {
 
     private void fillCreditCardNumberTextField(){
         if(!creditCard.getCardNumber().isEmpty()){
-            cardnumberTextField.setText(creditCard.getCardNumber().substring(0,4));
-            cardnumberTextField2.setText(creditCard.getCardNumber().substring(4,8));
-            cardnumberTextField3.setText(creditCard.getCardNumber().substring(8,12));
-            cardnumberTextField4.setText(creditCard.getCardNumber().substring(12,16));
+            int length = creditCard.getCardNumber().length();
+            if(length >= 4) {
+                cardnumberTextField.setText(creditCard.getCardNumber().substring(0, 4));
+            }
+            if(length >= 8) {
+                cardnumberTextField2.setText(creditCard.getCardNumber().substring(4, 8));
+            }
+            if(length >= 12) {
+                cardnumberTextField3.setText(creditCard.getCardNumber().substring(8, 12));
+            }
+            if(length == 16) {
+                cardnumberTextField4.setText(creditCard.getCardNumber().substring(12, 16));
+            }
+        }
+    }
+
+    private void saveSelectedCardType(){
+        if(mastercardButton.isSelected()){
+            creditCard.setCardType("Mastercard");
+        }
+        if(visaButton.isSelected()){
+            creditCard.setCardType("Visa");
+        }
+    }
+
+    private void selectChosenCardType(){
+        if(!creditCard.getCardType().isEmpty()) {
+            if (creditCard.getCardType().equals("Mastercard")) {
+                mastercardButton.setSelected(true);
+            }
+            if (creditCard.getCardType().equals("Visa")) {
+                visaButton.setSelected(true);
+            }
         }
     }
 
@@ -266,6 +321,7 @@ public class MyPage extends StackPane {
         cardMonthField.setText(Integer.toString(creditCard.getValidMonth()));
         cardYearField.setText(Integer.toString(creditCard.getValidYear()));
         fillCreditCardNumberTextField();
+        selectChosenCardType();
 
     }
 
@@ -280,6 +336,7 @@ public class MyPage extends StackPane {
         customer.setPostAddress(cityField.getText());
 
         saveCardNumber();
+        saveSelectedCardType();
 
         creditCard.setHoldersName(cardHolderField.getText());
 

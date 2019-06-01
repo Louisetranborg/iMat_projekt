@@ -279,8 +279,6 @@ public class Wizard extends StackPane {
         implemetOnlyDigitsAllowed(validMonthTextField);
         implemetOnlyDigitsAllowed(validYearTextField);
         implemetOnlyDigitsAllowed(cvcTextField);
-        implemetOnlyDigitsAllowed(telNumber);
-        implemetOnlyDigitsAllowed(postCode);
 
     }
 
@@ -340,10 +338,30 @@ public class Wizard extends StackPane {
 
     private void fillCreditCardNumberTextField(){
         if(!parentController.iMatDataHandler.getCreditCard().getCardNumber().isEmpty()){
-            cardnumberTextField.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(0,4));
-            cardnumberTextField2.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(4,8));
-            cardnumberTextField3.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(8,12));
-            cardnumberTextField4.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(12,16));
+            int length = parentController.iMatDataHandler.getCreditCard().getCardNumber().length();
+            if(length >= 4) {
+                cardnumberTextField.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(0, 4));
+            }
+            if(length >= 8) {
+                cardnumberTextField2.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(4, 8));
+            }
+            if(length >= 12) {
+                cardnumberTextField3.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(8, 12));
+            }
+            if(length == 16) {
+                cardnumberTextField4.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(12, 16));
+            }
+        }
+    }
+
+    private void selectChosenCardType(){
+        if(!parentController.iMatDataHandler.getCreditCard().getCardType().isEmpty()) {
+            if(parentController.iMatDataHandler.getCreditCard().getCardType().equals("Mastercard")) {
+                mastercardButton.setSelected(true);
+            }
+            if(parentController.iMatDataHandler.getCreditCard().getCardType().equals("Visa")) {
+                visaButton.setSelected(true);
+            }
         }
     }
 
@@ -422,6 +440,9 @@ public class Wizard extends StackPane {
         validYearTextField.clear();
         validMonthTextField.clear();
         cardnumberTextField.clear();
+        cardnumberTextField2.clear();
+        cardnumberTextField3.clear();
+        cardnumberTextField4.clear();
         cardholderTextField.clear();
     }
 
@@ -441,6 +462,7 @@ public class Wizard extends StackPane {
         validYearTextField.setText(Integer.toString(creditCard.getValidYear()));
         datePicker.setValue(LocalDate.now());
         fillCreditCardNumberTextField();
+        selectChosenCardType();
     }
 
     /*
@@ -835,7 +857,7 @@ public class Wizard extends StackPane {
         }
         if(!containsDigitsOnly(textField) && (textField.equals(postCode) || textField.equals(telNumber) || textField.equals(validMonthTextField)
             || textField.equals(validYearTextField) || textField.equals(cvcTextField))){
-            errorMessage.append("Textfältet får endast innehålla siffror, bindestreck och mellanslag.\n");
+            errorMessage.append("Textfältet får endast innehålla siffror.\n");
         }
         if(!isEmailFormat(textField) && textField.equals(mail)){
             errorMessage.append("Textfältet måste innehålla en giltlig email-adress.\n");

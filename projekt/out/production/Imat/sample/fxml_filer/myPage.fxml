@@ -19,7 +19,7 @@
    <children>
       <AnchorPane fx:id="historyPage" style="-fx-background-color: #FFFFFF;">
          <children>
-            <Label layoutX="77.0" layoutY="20.0" stylesheets="@../css_files/main_theme.css" text="Datum:              Antal varor:      Pris:">
+            <Label layoutX="77.0" layoutY="20.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Datum:      Antal varor:       Pris:">
                <font>
                   <Font size="18.0" />
                </font>
