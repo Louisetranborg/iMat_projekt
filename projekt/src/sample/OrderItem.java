@@ -16,7 +16,7 @@ public class OrderItem extends HBox {
     @FXML Label date;
     //@FXML Label ;
     Order order;
-    int totalAmountPrice;
+    double totalAmountPrice;
     int totalAmount;
 
     SearchController parentController;
@@ -41,6 +41,7 @@ public class OrderItem extends HBox {
             totalAmountPrice += item.getTotal();
             totalAmount += item.getAmount();
         }
+        totalAmountPrice += 45;
 
         //TODO Ändra så att det faktiskt fungerar för andra datum och månader.
         date.setText(order.getDate().toString().substring(0,7));

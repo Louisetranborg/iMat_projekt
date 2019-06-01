@@ -322,7 +322,7 @@ public class Wizard extends StackPane {
     }
 
     private void confirmOrder(){
-        totalPrice.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal()) + " kr");
+        totalPrice.setText(decimalFormat.format(parentController.iMatDataHandler.getShoppingCart().getTotal() + 45) + " kr");
         //totalAmount.setText(String.valueOf(calculateTotalAmount()));
         for(ShoppingItem item : parentController.iMatDataHandler.getShoppingCart().getItems())  {
             System.out.println(item.getAmount());

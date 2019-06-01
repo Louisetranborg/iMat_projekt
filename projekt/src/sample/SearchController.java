@@ -101,7 +101,7 @@ public class SearchController implements Initializable {
     @FXML
     private ImageView minSidaIcon;
 
-    private ShoppingItem activeShoppingItemInDetailView;
+    @FXML private Label sideMenuDescription;
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
@@ -313,6 +313,8 @@ public class SearchController implements Initializable {
         isUserOnMyPage = false;
         updateMyPageButton();
 
+        sideMenuDescription.setText("Sortiment");
+
         //TODO eventuellt bestämma vart dessa ska samlas. Förslagsvis här då och andra metoder för kalla på denna. Här kanske man kör ihop activateShoppingview också.
         productScrollPane.setContent(productFlowPane);
         fillCategoryPane();
@@ -376,7 +378,7 @@ public class SearchController implements Initializable {
     public void updateMyPageButton() {
         if (isUserOnMyPage == true) {
             minSidaButton.setText("Handla");
-            minSidaIcon.setImage(new Image("sample/css_files/css_images/search_icon.png"));
+            minSidaIcon.setImage(new Image("sample/images/shoppingMall.png"));
 
         } else {
             minSidaButton.setText("Min Sida");
@@ -392,6 +394,7 @@ public class SearchController implements Initializable {
         myPage.historyPage.toFront();
         changeCategoryPageText("Historik");
         isUserOnMyPage = true;
+        sideMenuDescription.setText("Min Sida");
 
         try {
             fillSettingsPane();

@@ -156,7 +156,7 @@
                      </padding></FlowPane>
                </content>
             </ScrollPane>
-            <Label layoutX="9.0" layoutY="80.0" prefHeight="60.0" prefWidth="251.0" text="Sortiment" underline="true">
+            <Label fx:id="sideMenuDescription" layoutX="9.0" layoutY="80.0" prefHeight="60.0" prefWidth="251.0" text="Sortiment" underline="true">
                <font>
                   <Font name="Avenir Book" size="36.0" />
                </font>
