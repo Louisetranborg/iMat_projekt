@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -22,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" stylesheets="@../css_files/checkout.css" type="StackPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" stylesheets="@../css_files/checkout.css" type="StackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="mainWizard" prefHeight="775.0" prefWidth="1440.0" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -100,7 +94,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paymentInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane">
+            <AnchorPane fx:id="paymentInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" visible="false">
                <children>
                   <DatePicker fx:id="datePicker" editable="false" layoutX="280.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="2019-01-01" styleClass="text18" stylesheets="@../css_files/textTypes.css" />
                   <ToggleButton fx:id="visaButton" layoutX="280.0" layoutY="156.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="126.0" styleClass="cardNotError">
@@ -339,7 +333,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="personalInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" visible="false">
+            <AnchorPane fx:id="personalInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane">
                <children>
                   <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Förnamn:">
                      <font>
@@ -381,17 +375,17 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="postCode" layoutX="280.0" layoutY="316.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css">
+                  <TextField fx:id="postCode" layoutX="280.0" layoutY="370.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="city" layoutX="280.0" layoutY="370.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css">
+                  <TextField fx:id="city" layoutX="280.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="adress" layoutX="280.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css">
+                  <TextField fx:id="adress" layoutX="280.0" layoutY="316.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -406,17 +400,17 @@
                         <Font name="Roboto Regular" size="24.0" />
                      </font>
                   </Button>
-                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="316.0" prefHeight="36.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Postnummer:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="370.0" prefHeight="36.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Postnummer:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="370.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Ort:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="424.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Ort:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="424.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Adress:">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="316.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Adress:">
                      <font>
                         <Font size="24.0" />
                      </font>
