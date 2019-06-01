@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="920.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane prefHeight="775.0" prefWidth="920.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1148.0" prefWidth="915.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Label alignment="CENTER" layoutX="-2.0" layoutY="25.0" prefHeight="50.0" prefWidth="920.0" text="Välkommen till iMat - här finns en snabb genomgång av programmet">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <TextArea editable="false" layoutX="25.0" layoutY="110.0" prefHeight="95.0" prefWidth="860.0" text="För att hitta en vara du letar efter kan du antingen klicka på kategorierna som finns längst med vänstersida av programmet, eller söka på produkten du letar efter i sökrutan högst upp. Tryck på en kategori för att lämna hjälpsidan." wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <TextArea editable="false" layoutX="131.0" layoutY="233.0" prefHeight="75.0" prefWidth="755.0" text="Om du hittar en vara du vill ha trycker på plusknappen för att den ska läggas till i din kundvagn." wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="25.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_add_circle_black_24dp.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="25.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/darkAdd.png" />
+                     </image>
+                  </ImageView>
+                  <TextArea editable="false" layoutX="131.0" layoutY="433.0" prefHeight="75.0" prefWidth="755.0" text="Det gröna pluset visar att varan finns i din kunvagn. Vill du lägga till ännu fler av den varan är det bara att trycka på plussymbolen." wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <TextArea editable="false" layoutX="131.0" layoutY="333.0" prefHeight="75.0" prefWidth="755.0" text="Du kan även skriva in antalet du vill ha i textrutan och sen trycka enter för att varan ska läggas till." wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <ImageView fitHeight="44.0" fitWidth="121.0" layoutX="5.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/overblick_plus_minus.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="25.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/remove_dark.png" />
+                     </image>
+                  </ImageView>
+                  <TextArea editable="false" layoutX="131.0" layoutY="533.0" prefHeight="101.0" prefWidth="755.0" text="Om du vill ta bort en vara från varukorgen trycker du på den bruna minusknappen, den kommer bli grå när du har noll antal av varan i korgen. Du kan även skriva in 0 i textfältet och sen trycka enter för att tömma kundvagnen på den produkten." wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="25.0" layoutY="652.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/baseline_favorite_border_black_36dp.png" />
+                     </image>
+                  </ImageView>
+                  <TextArea editable="false" layoutX="131.0" layoutY="653.0" prefHeight="75.0" prefWidth="755.0" text="Om du gillar en vara extra mycket kan du trycka på hjärtikonen för att markera den som favorit. Hjärtat kommer då att bli grönt. Varan kommer sen gå att hitta under &quot;Min sida&quot;" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <ImageView fitHeight="53.0" fitWidth="121.0" layoutX="7.0" layoutY="762.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Min_sida.PNG" />
+                     </image>
+                  </ImageView>
+                  <TextArea editable="false" layoutX="131.0" layoutY="752.0" prefHeight="75.0" prefWidth="755.0" text="För att komma till &quot;Min sida&quot; trycker du bara på denna symbol. Under &quot;Min sida&quot; hittar du din historik, dina favoriter och du kan ändra dina personuppgifter så som adress, epost osv. " wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <ImageView fitHeight="67.0" fitWidth="86.0" layoutX="25.0" layoutY="855.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logga_svart.PNG" />
+                     </image>
+                  </ImageView>
+                  <TextArea editable="false" layoutX="131.0" layoutY="852.0" prefHeight="75.0" prefWidth="755.0" text="Du kan alltid trycka på iMats logga för att ta dig tillbaka till startsidan." wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <ImageView fitHeight="52.0" fitWidth="102.0" layoutX="15.0" layoutY="961.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/till_kassa.PNG" />
+                     </image>
+                  </ImageView>
+                  <TextArea editable="false" layoutX="131.0" layoutY="952.0" prefHeight="74.0" prefWidth="755.0" text="När du är nöjd med din kundvagn och vill gå och betala trycker du på &quot;Till kassa&quot;-knappen för att komma till kassan. Om kundvagnen är tom är denna inaktiv och går inte att klicka på." wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <TextArea editable="false" layoutX="131.0" layoutY="1052.0" prefHeight="74.0" prefWidth="755.0" text="Om du vill tömma hela din kundvagn kan du trycka på sopptunnan. Alla varor du har i kunvagnen försvinner då." wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="25.0" layoutY="1052.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/EmptyCartButton.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</fx:root>
