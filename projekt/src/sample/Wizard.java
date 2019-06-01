@@ -370,7 +370,7 @@ public class Wizard extends StackPane {
         telNumber.setText(parentController.iMatDataHandler.getCustomer().getMobilePhoneNumber());
         mail.setText(parentController.iMatDataHandler.getCustomer().getEmail());
         postCode.setText(parentController.iMatDataHandler.getCustomer().getPostCode());
-        city.setText(parentController.iMatDataHandler.getCustomer().getPhoneNumber());
+        city.setText(parentController.iMatDataHandler.getCustomer().getPostAddress());
         adress.setText(parentController.iMatDataHandler.getCustomer().getAddress());
         cardholderTextField.setText(parentController.iMatDataHandler.getCustomer().getFirstName() + " " + parentController.iMatDataHandler.getCustomer().getLastName());
     }
