@@ -1,31 +1,37 @@
 package sample;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.SequentialTransition;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyPage extends StackPane {
 
     @FXML VBox settingsPane;
-    @FXML
-    AnchorPane historyPage;
+    @FXML AnchorPane historyPage;
     @FXML AnchorPane favoritePage;
     @FXML AnchorPane personalDataPage;
     @FXML VBox historyOrderVbox;
-    @FXML
-    TilePane historyTilePane;
+    @FXML TilePane historyTilePane;
     @FXML TilePane historyProductTilePane;
     @FXML AnchorPane historyItems;
     @FXML Label successfulChange;
@@ -40,15 +46,19 @@ public class MyPage extends StackPane {
     @FXML TextField cardHolderField;
     @FXML TextField cardMonthField;
     @FXML TextField cardYearField;
-    @FXML ImageView visaImage;
-    @FXML ImageView mastercardImage;
+    @FXML ToggleButton visaButton;
+    @FXML ToggleButton mastercardButton;
 
     Customer customer;
     CreditCard card;
 
+    Timeline transitionRemoveSuccessfulChange;
+    SequentialTransition transition;
+
 
     SearchController parentController;
     private List<ShoppingList> shoppingLists = new ArrayList<>();
+    ToggleGroup cardtoggleGroup = new ToggleGroup();
 
     protected List<ShoppingList> getShoppingLists(){
         return shoppingLists;
@@ -73,6 +83,15 @@ public class MyPage extends StackPane {
         } catch(IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        visaButton.setToggleGroup(cardtoggleGroup);
+        mastercardButton.setToggleGroup(cardtoggleGroup);
+
+        transitionRemoveSuccessfulChange = new Timeline(
+                new KeyFrame(Duration.seconds(3), new KeyValue(successfulChange.opacityProperty(), 0))
+        );
+
+        transition = new SequentialTransition(transitionRemoveSuccessfulChange);
 
     }
 
@@ -129,6 +148,7 @@ public class MyPage extends StackPane {
         card.setValidYear(Integer.parseInt(cardYearField.getText()));
 
         successfulChange.setVisible(true);
-
+        transition.play();
     }
+
 }
