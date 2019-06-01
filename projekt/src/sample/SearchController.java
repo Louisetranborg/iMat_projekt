@@ -740,6 +740,8 @@ public class SearchController implements Initializable {
         wizard = new Wizard(this);
         wizardWrap.getChildren().add(wizard);
         updateHistoryPage();
+
+        //Renderar ut rätt på skärmen när den har laddad aktuella varor från kundkorgen.
         for(ShoppingItem shoppingItem: iMatDataHandler.getShoppingCart().getItems()){
             updateProductAmountInAllItems(shoppingItem);
         }
