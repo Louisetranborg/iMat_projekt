@@ -39,18 +39,21 @@ public class SettingsItem extends MenuItem {
 
     public void onClickHistory() {
         parentController.myPage.historyPage.toFront();
+        parentController.helpWrap.toBack();
     }
 
 
     public void onClickFavorites() {
         parentController.myPage.favoritePage.toFront();
         parentController.updateFavoritePage();
+        parentController.helpWrap.toBack();
     }
 
 
     public void onClickPersonalAccount() {
         parentController.updatePersonalDataPage();
         parentController.myPage.personalDataPage.toFront();
+        parentController.helpWrap.toBack();
     }
 
     private void onClickBack(){
