@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -48,6 +49,7 @@ public class MyPage extends StackPane {
 
     SearchController parentController;
     private List<ShoppingList> shoppingLists = new ArrayList<>();
+    ToggleGroup cardtoggleGroup = new ToggleGroup();
 
     protected List<ShoppingList> getShoppingLists(){
         return shoppingLists;
@@ -72,6 +74,9 @@ public class MyPage extends StackPane {
         } catch(IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        visaButton.setToggleGroup(cardtoggleGroup);
+        mastercardButton.setToggleGroup(cardtoggleGroup);
 
     }
 
