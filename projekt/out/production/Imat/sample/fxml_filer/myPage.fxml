@@ -60,7 +60,6 @@
             <TextField fx:id="deliveryField" layoutX="200.0" layoutY="380.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
             <TextField fx:id="zipCodeField" layoutX="200.0" layoutY="450.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
             <TextField fx:id="cityField" layoutX="200.0" layoutY="520.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
-            <TextField fx:id="cardNumberField" layoutX="650.0" layoutY="196.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
             <TextField fx:id="cardHolderField" layoutX="650.0" layoutY="264.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
             <TextField fx:id="cardMonthField" layoutX="650.0" layoutY="329.0" prefHeight="36.0" prefWidth="92.0" styleClass="text18" />
             <TextField fx:id="cardYearField" layoutX="771.0" layoutY="329.0" prefHeight="36.0" prefWidth="92.0" styleClass="text18" />
@@ -149,6 +148,26 @@
                   </ImageView>
                </graphic>
             </ToggleButton>
+            <TextField fx:id="cardnumberTextField" layoutX="650.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="cardnumberTextField2" layoutX="714.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="cardnumberTextField3" layoutX="778.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="cardnumberTextField4" layoutX="841.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
          </children>
          <stylesheets>
             <URL value="@../../../../../src/sample/css_files/main_theme.css" />

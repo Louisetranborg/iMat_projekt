@@ -4,6 +4,9 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -11,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
@@ -42,15 +46,19 @@ public class MyPage extends StackPane {
     @FXML TextField deliveryField;
     @FXML TextField zipCodeField;
     @FXML TextField cityField;
-    @FXML TextField cardNumberField;
     @FXML TextField cardHolderField;
     @FXML TextField cardMonthField;
     @FXML TextField cardYearField;
     @FXML ToggleButton visaButton;
     @FXML ToggleButton mastercardButton;
+    @FXML private TextField cardnumberTextField;
+    @FXML private TextField cardnumberTextField2;
+    @FXML private TextField cardnumberTextField3;
+    @FXML private TextField cardnumberTextField4;
+
 
     Customer customer;
-    CreditCard card;
+    CreditCard creditCard;
 
     Timeline transitionRemoveSuccessfulChange;
     SequentialTransition transition;
@@ -76,7 +84,7 @@ public class MyPage extends StackPane {
 
         this.parentController = parentController;
         customer = parentController.iMatDataHandler.getCustomer();
-        card = parentController.iMatDataHandler.getCreditCard();
+        creditCard = parentController.iMatDataHandler.getCreditCard();
 
         try{
             fxmlLoader.load();
@@ -93,6 +101,138 @@ public class MyPage extends StackPane {
 
         transition = new SequentialTransition(transitionRemoveSuccessfulChange);
 
+
+        implementCardnumberFormat(cardnumberTextField, cardnumberTextField2);
+        implementCardnumberFormat(cardnumberTextField2, cardnumberTextField3);
+        implementCardnumberFormat(cardnumberTextField3, cardnumberTextField4);
+
+        implementCardnumberFormatGoBack(cardnumberTextField4, cardnumberTextField3);
+        implementCardnumberFormatGoBack(cardnumberTextField3, cardnumberTextField2);
+        implementCardnumberFormatGoBack(cardnumberTextField2, cardnumberTextField);
+
+        registerCaretListener(cardnumberTextField);
+        registerCaretListener(cardnumberTextField2);
+        registerCaretListener(cardnumberTextField3);
+        registerCaretListener(cardnumberTextField4);
+
+        implemetOnlyDigitsAllowed(cardnumberTextField);
+        implemetOnlyDigitsAllowed(cardnumberTextField2);
+        implemetOnlyDigitsAllowed(cardnumberTextField3);
+        implemetOnlyDigitsAllowed(cardnumberTextField4);
+
+
+
+        cardnumberTextField4.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 4){
+                    cardnumberTextField4.setText(oldValue);
+                }
+            }
+        });
+
+        cardnumberTextField3.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 4){
+                    cardnumberTextField3.setText(oldValue);
+                }
+            }
+        });
+
+        cardnumberTextField2.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 4){
+                    cardnumberTextField2.setText(oldValue);
+                }
+            }
+        });
+
+        cardnumberTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 4){
+                    cardnumberTextField.setText(oldValue);
+                }
+            }
+        });
+
+    }
+
+    private void implementCardnumberFormat(TextField tf1, TextField tf2){
+        tf1.textProperty().addListener((obs, oldText, newText) -> {
+            if(oldText.length() < 4 && newText.length() >= 4){
+                tf2.requestFocus();
+            }
+        });
+    }
+
+    private void implementCardnumberFormatGoBack(TextField tf1, TextField tf2){
+        tf1.textProperty().addListener((obs, oldText, newText) -> {
+            if((oldText.length() > 0 && newText.length() == 0)){
+                tf2.requestFocus();
+                tf2.positionCaret(4);
+            }
+        });
+    }
+
+    private void registerCaretListener(TextField textField){
+        textField.caretPositionProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if((int)newValue != textField.getText().length()){
+                    textField.positionCaret(textField.getText().length());
+                }
+            }
+        });
+
+        textField.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                textField.positionCaret(textField.getText().length());
+            }
+        });
+    }
+
+    private void implemetOnlyDigitsAllowed(TextField textField){
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!containsDigitsOnly(newValue)){
+                    textField.setText(oldValue);
+                }
+            }
+        });
+    }
+
+
+
+    private boolean containsDigitsOnly(String string){
+        for(Character c : string.toCharArray()){
+            if(!Character.isDigit(c)){
+                return false;
+            }
+        } return true;
+    }
+
+    private void saveCardNumber(){
+        StringBuilder cardNumber = new StringBuilder();
+        cardNumber.append(cardnumberTextField.getCharacters());
+        cardNumber.append(cardnumberTextField2.getCharacters());
+        cardNumber.append(cardnumberTextField3.getCharacters());
+        cardNumber.append(cardnumberTextField4.getCharacters());
+
+        creditCard.setCardNumber(cardNumber.toString());
+    }
+
+    private void fillCreditCardNumberTextField(){
+        if(!creditCard.getCardNumber().isEmpty()){
+            cardnumberTextField.setText(creditCard.getCardNumber().substring(0,4));
+            cardnumberTextField2.setText(creditCard.getCardNumber().substring(4,8));
+            cardnumberTextField3.setText(creditCard.getCardNumber().substring(8,12));
+            cardnumberTextField4.setText(creditCard.getCardNumber().substring(12,16));
+        }
     }
 
     @FXML
@@ -122,10 +262,10 @@ public class MyPage extends StackPane {
         deliveryField.setText(customer.getAddress());
         zipCodeField.setText(customer.getPostCode());
         cityField.setText(customer.getPostAddress());
-        cardNumberField.setText(card.getCardNumber());
-        cardHolderField.setText(card.getHoldersName());
-        cardMonthField.setText(Integer.toString(card.getValidMonth()));
-        cardYearField.setText(Integer.toString(card.getValidYear()));
+        cardHolderField.setText(creditCard.getHoldersName());
+        cardMonthField.setText(Integer.toString(creditCard.getValidMonth()));
+        cardYearField.setText(Integer.toString(creditCard.getValidYear()));
+        fillCreditCardNumberTextField();
 
     }
 
@@ -139,13 +279,13 @@ public class MyPage extends StackPane {
         customer.setPostCode(zipCodeField.getText());
         customer.setPostAddress(cityField.getText());
 
-        //card.setCardType();
-        card.setCardNumber(cardNumberField.getText());
-        card.setHoldersName(cardHolderField.getText());
+        saveCardNumber();
+
+        creditCard.setHoldersName(cardHolderField.getText());
 
 
-        card.setValidMonth(Integer.parseInt(cardMonthField.getText()));
-        card.setValidYear(Integer.parseInt(cardYearField.getText()));
+        creditCard.setValidMonth(Integer.parseInt(cardMonthField.getText()));
+        creditCard.setValidYear(Integer.parseInt(cardYearField.getText()));
 
         successfulChange.setVisible(true);
         transition.play();

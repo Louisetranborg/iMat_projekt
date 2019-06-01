@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -219,13 +220,25 @@ public class Wizard extends StackPane {
 
         });
 
-        implemetCardnumberFormat(cardnumberTextField, cardnumberTextField2);
-        implemetCardnumberFormat(cardnumberTextField2, cardnumberTextField3);
-        implemetCardnumberFormat(cardnumberTextField3, cardnumberTextField4);
+        implementCardnumberFormat(cardnumberTextField, cardnumberTextField2);
+        implementCardnumberFormat(cardnumberTextField2, cardnumberTextField3);
+        implementCardnumberFormat(cardnumberTextField3, cardnumberTextField4);
 
-        implemetCardnumberFormatGoBack(cardnumberTextField4, cardnumberTextField3);
-        implemetCardnumberFormatGoBack(cardnumberTextField3, cardnumberTextField2);
-        implemetCardnumberFormatGoBack(cardnumberTextField2, cardnumberTextField);
+        implementCardnumberFormatGoBack(cardnumberTextField4, cardnumberTextField3);
+        implementCardnumberFormatGoBack(cardnumberTextField3, cardnumberTextField2);
+        implementCardnumberFormatGoBack(cardnumberTextField2, cardnumberTextField);
+
+        registerCaretListener(cardnumberTextField);
+        registerCaretListener(cardnumberTextField2);
+        registerCaretListener(cardnumberTextField3);
+        registerCaretListener(cardnumberTextField4);
+
+        implemetOnlyDigitsAllowed(cardnumberTextField);
+        implemetOnlyDigitsAllowed(cardnumberTextField2);
+        implemetOnlyDigitsAllowed(cardnumberTextField3);
+        implemetOnlyDigitsAllowed(cardnumberTextField4);
+
+
 
         cardnumberTextField4.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -263,9 +276,15 @@ public class Wizard extends StackPane {
             }
         });
 
+        implemetOnlyDigitsAllowed(validMonthTextField);
+        implemetOnlyDigitsAllowed(validYearTextField);
+        implemetOnlyDigitsAllowed(cvcTextField);
+        implemetOnlyDigitsAllowed(telNumber);
+        implemetOnlyDigitsAllowed(postCode);
+
     }
 
-    private void implemetCardnumberFormat(TextField tf1, TextField tf2){
+    private void implementCardnumberFormat(TextField tf1, TextField tf2){
         tf1.textProperty().addListener((obs, oldText, newText) -> {
             if(oldText.length() < 4 && newText.length() >= 4){
                 tf2.requestFocus();
@@ -273,13 +292,59 @@ public class Wizard extends StackPane {
         });
     }
 
-    private void implemetCardnumberFormatGoBack(TextField tf1, TextField tf2){
+    private void implementCardnumberFormatGoBack(TextField tf1, TextField tf2){
         tf1.textProperty().addListener((obs, oldText, newText) -> {
             if((oldText.length() > 0 && newText.length() == 0)){
                 tf2.requestFocus();
                 tf2.positionCaret(4);
             }
         });
+    }
+
+    private void registerCaretListener(TextField textField){
+        textField.caretPositionProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if((int)newValue != textField.getText().length()){
+                    textField.positionCaret(textField.getText().length());
+                }
+            }
+        });
+
+        textField.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                textField.positionCaret(textField.getText().length());
+            }
+        });
+    }
+
+    private void implemetOnlyDigitsAllowed(TextField textField){
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!containsDigitsOnly(newValue)){
+                    textField.setText(oldValue);
+                }
+            }
+        });
+    }
+
+    private boolean containsDigitsOnly(String string){
+        for(Character c : string.toCharArray()){
+            if(!Character.isDigit(c)){
+                return false;
+            }
+        } return true;
+    }
+
+    private void fillCreditCardNumberTextField(){
+        if(!parentController.iMatDataHandler.getCreditCard().getCardNumber().isEmpty()){
+            cardnumberTextField.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(0,4));
+            cardnumberTextField2.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(4,8));
+            cardnumberTextField3.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(8,12));
+            cardnumberTextField4.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(12,16));
+        }
     }
 
     private int extractDigits(String string){
@@ -375,6 +440,7 @@ public class Wizard extends StackPane {
         validMonthTextField.setText(Integer.toString(creditCard.getValidMonth()));
         validYearTextField.setText(Integer.toString(creditCard.getValidYear()));
         datePicker.setValue(LocalDate.now());
+        fillCreditCardNumberTextField();
     }
 
     /*
