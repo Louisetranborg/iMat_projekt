@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -19,13 +20,11 @@ import java.util.List;
 public class MyPage extends StackPane {
 
     @FXML VBox settingsPane;
-    @FXML
-    AnchorPane historyPage;
+    @FXML AnchorPane historyPage;
     @FXML AnchorPane favoritePage;
     @FXML AnchorPane personalDataPage;
     @FXML VBox historyOrderVbox;
-    @FXML
-    TilePane historyTilePane;
+    @FXML TilePane historyTilePane;
     @FXML TilePane historyProductTilePane;
     @FXML AnchorPane historyItems;
     @FXML Label successfulChange;
@@ -40,8 +39,8 @@ public class MyPage extends StackPane {
     @FXML TextField cardHolderField;
     @FXML TextField cardMonthField;
     @FXML TextField cardYearField;
-    @FXML ImageView visaImage;
-    @FXML ImageView mastercardImage;
+    @FXML ToggleButton visaButton;
+    @FXML ToggleButton mastercardButton;
 
     Customer customer;
     CreditCard card;

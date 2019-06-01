@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -52,34 +53,24 @@
       </AnchorPane>
       <AnchorPane fx:id="personalDataPage" prefHeight="668.0" prefWidth="1030.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <TextField fx:id="firstnameField" layoutX="163.0" layoutY="79.0" prefHeight="42.0" prefWidth="250.0" styleClass="text18" />
-            <TextField fx:id="surnameField" layoutX="163.0" layoutY="159.0" prefHeight="42.0" prefWidth="250.0" styleClass="text18" />
-            <TextField fx:id="phoneNumberField" layoutX="164.0" layoutY="239.0" prefHeight="42.0" prefWidth="250.0" styleClass="text18" />
-            <TextField fx:id="emailField" layoutX="166.0" layoutY="319.0" prefHeight="42.0" prefWidth="250.0" styleClass="text18" />
-            <TextField fx:id="deliveryField" layoutX="165.0" layoutY="399.0" prefHeight="42.0" prefWidth="250.0" styleClass="text18" />
-            <TextField fx:id="zipCodeField" layoutX="163.0" layoutY="479.0" prefHeight="42.0" prefWidth="250.0" styleClass="text18" />
-            <TextField fx:id="cityField" layoutX="165.0" layoutY="559.0" prefHeight="42.0" prefWidth="250.0" styleClass="text18" />
-            <ImageView fx:id="visaImage" fitHeight="69.0" fitWidth="103.0" layoutX="645.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../src/sample/images/visa.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="mastercardImage" fitHeight="69.0" fitWidth="103.0" layoutX="741.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../src/sample/images/mastercard.png" />
-               </image>
-            </ImageView>
-            <TextField fx:id="cardNumberField" layoutX="645.0" layoutY="196.0" prefHeight="42.0" prefWidth="250.0" styleClass="text18" />
-            <TextField fx:id="cardHolderField" layoutX="646.0" layoutY="264.0" prefHeight="42.0" prefWidth="250.0" styleClass="text18" />
-            <TextField fx:id="cardMonthField" layoutX="647.0" layoutY="329.0" prefHeight="42.0" prefWidth="92.0" styleClass="text18" />
-            <TextField fx:id="cardYearField" layoutX="771.0" layoutY="329.0" prefHeight="42.0" prefWidth="92.0" styleClass="text18" />
+            <TextField fx:id="firstnameField" layoutX="200.0" layoutY="100.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
+            <TextField fx:id="surnameField" layoutX="200.0" layoutY="170.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
+            <TextField fx:id="phoneNumberField" layoutX="200.0" layoutY="240.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
+            <TextField fx:id="emailField" layoutX="200.0" layoutY="310.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
+            <TextField fx:id="deliveryField" layoutX="200.0" layoutY="380.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
+            <TextField fx:id="zipCodeField" layoutX="200.0" layoutY="450.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
+            <TextField fx:id="cityField" layoutX="200.0" layoutY="520.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
+            <TextField fx:id="cardNumberField" layoutX="650.0" layoutY="196.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
+            <TextField fx:id="cardHolderField" layoutX="650.0" layoutY="264.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
+            <TextField fx:id="cardMonthField" layoutX="650.0" layoutY="329.0" prefHeight="36.0" prefWidth="92.0" styleClass="text18" />
+            <TextField fx:id="cardYearField" layoutX="771.0" layoutY="329.0" prefHeight="36.0" prefWidth="92.0" styleClass="text18" />
             <Button fx:id="saveChangesButton" layoutX="724.0" layoutY="509.0" mnemonicParsing="false" onAction="#onClickSaveChanges" onKeyPressed="#onClickSaveChanges" prefHeight="59.0" prefWidth="173.0" styleClass="nextButton" stylesheets="@../../../../../src/sample/css_files/checkout.css" text="Spara" />
-            <Label focusTraversable="false" layoutX="510.0" layoutY="129.0" prefHeight="42.0" prefWidth="147.0" styleClass="text18" text="Betalningssätt:">
+            <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="466.0" layoutY="129.0" prefHeight="42.0" prefWidth="180.0" styleClass="text24" text="Betalningssätt:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label focusTraversable="false" layoutX="100.0" layoutY="319.0" prefHeight="42.0" prefWidth="147.0" styleClass="text18" text="Epost:">
+            <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutY="310.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" text="Epost: ">
                <font>
                   <Font size="18.0" />
                </font>
@@ -89,57 +80,75 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label focusTraversable="false" layoutX="504.0" layoutY="329.0" prefHeight="42.0" prefWidth="129.0" styleClass="text18" text="Utgångsdatum:">
+            <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="466.0" layoutY="329.0" prefHeight="42.0" prefWidth="180.0" styleClass="text24" text="Utgångsdatum:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label focusTraversable="false" layoutX="522.0" layoutY="196.0" prefHeight="42.0" prefWidth="123.0" styleClass="text18" text="Kortnummer:">
+            <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="466.0" layoutY="196.0" prefHeight="42.0" prefWidth="180.0" styleClass="text24" text="Kortnummer:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label focusTraversable="false" layoutX="93.0" layoutY="399.0" prefHeight="42.0" prefWidth="84.0" styleClass="text18" text="Adress: ">
+            <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutY="380.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" text="Adress: ">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label focusTraversable="false" layoutX="29.0" layoutY="239.0" prefHeight="42.0" prefWidth="147.0" styleClass="text18" text="Telefonnummer: ">
+            <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutY="240.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" text="Telefonnummer: ">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label focusTraversable="false" layoutX="66.0" layoutY="159.0" prefHeight="42.0" prefWidth="103.0" styleClass="text18" text="Efternamn:">
+            <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutY="170.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" text="Efternamn: ">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label focusTraversable="false" layoutX="78.0" layoutY="79.0" prefHeight="42.0" prefWidth="78.0" styleClass="text18" stylesheets="@../../../../../src/sample/css_files/main_theme.css" text="Förnamn:">
+            <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../../../../../src/sample/css_files/main_theme.css" text="Förnamn: ">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label focusTraversable="false" layoutX="51.0" layoutY="479.0" prefHeight="42.0" prefWidth="129.0" styleClass="text18" text="Postnummer: ">
+            <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutY="450.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" text="Postnummer: ">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label focusTraversable="false" layoutX="123.0" layoutY="559.0" prefHeight="42.0" prefWidth="57.0" styleClass="text18" text="Ort:">
+            <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutY="520.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" text="Ort: ">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label focusTraversable="false" layoutX="504.0" layoutY="264.0" prefHeight="42.0" prefWidth="141.0" styleClass="text18" text="Kortinnehavare: ">
+            <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="466.0" layoutY="264.0" prefHeight="42.0" prefWidth="180.0" styleClass="text24" text="Kortinnehavare: ">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <Line endX="578.6465454101562" layoutX="177.0" layoutY="238.0" rotate="90.0" translateY="100.0" />
-            <Label fx:id="successfulChange" focusTraversable="false" layoutX="609.0" layoutY="353.0" text="Dina uppgifter sparades!" textFill="#3e8019" visible="false">
+            <Label fx:id="successfulChange" focusTraversable="false" layoutX="609.0" layoutY="450.0" text="Dina uppgifter sparades!" textFill="#3e8019" visible="false">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+            <ToggleButton fx:id="visaButton" layoutX="650.0" layoutY="79.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" styleClass="cardNotError" stylesheets="@../css_files/checkout.css">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/visa.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </ToggleButton>
+            <ToggleButton fx:id="mastercardButton" layoutX="780.0" layoutY="79.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" styleClass="cardNotError" stylesheets="@../css_files/checkout.css">
+               <graphic>
+                  <ImageView fitHeight="119.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/mastercard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </ToggleButton>
          </children>
          <stylesheets>
             <URL value="@../../../../../src/sample/css_files/main_theme.css" />
