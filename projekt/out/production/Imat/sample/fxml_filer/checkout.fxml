@@ -121,7 +121,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <TextField fx:id="cardnumberTextField1" layoutX="280.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
+                  <TextField fx:id="cardnumberTextField" layoutX="280.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
                      <font>
                         <Font size="14.0" />
                      </font>

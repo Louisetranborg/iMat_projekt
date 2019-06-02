@@ -72,7 +72,7 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
             @Override
             public void handle(ActionEvent event) {
                 String input = amountBox.getText();
-                double amount = parentController.handleInput(input, product);
+                double amount = handleInput(input);
 
                 parentController.setAmountInCart(product, amount);
             }
@@ -106,6 +106,21 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
             return 0;
         }
 
+    }
+
+    private double handleInput(String value){
+        double output = extractDigits(value);
+        String unitSuffix = product.getUnitSuffix();
+
+        if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
+            output = Math.round(output);
+        }
+
+        if(output < 0.1){
+            return 0;
+        } else {
+            return output;
+        }
     }
 
 

@@ -87,6 +87,21 @@ public class CartItem extends AnchorPane {
 
     }
 
+    private double handleInput(String value){
+        double output = extractDigits(value);
+        String unitSuffix = product.getUnitSuffix();
+
+        if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
+            output = Math.round(output);
+        }
+
+        if(output < 0.1){
+            return 0;
+        } else {
+            return output;
+        }
+    }
+
     public CartItem(Product product, SearchController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/productCartItem.fxml")); //Laddar in rätt fxml-fil
         fxmlLoader.setRoot(this);
@@ -107,7 +122,7 @@ public class CartItem extends AnchorPane {
             @Override
             public void handle(ActionEvent event) {
                 String input = amountBox.getText();
-                double amount = parentController.handleInput(input,product);
+                double amount = handleInput(input);
 
                parentController.setAmountInCart(product, amount);
 
