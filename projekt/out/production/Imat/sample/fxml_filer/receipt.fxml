@@ -18,16 +18,6 @@
                     <Font size="24.0" />
                 </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="211.0" layoutY="269.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Leveransadress:">
-                <font>
-                    <Font size="24.0" />
-                </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="211.0" layoutY="329.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Leveransdatum:">
-                <font>
-                    <Font size="24.0" />
-                </font>
-            </Label>
             <Label fx:id="orderNumber" layoutX="421.0" layoutY="149.0" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="12">
                 <font>
                     <Font size="18.0" />
@@ -38,22 +28,12 @@
                     <Font size="18.0" />
                 </font>
             </Label>
-            <Label fx:id="deliveryAdr" layoutX="421.0" layoutY="269.0" prefHeight="36.0" prefWidth="300.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="Villie byaväg 215 (213 23)">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Label>
-            <Label layoutX="421.0" layoutY="329.0" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="2019-05-31">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="211.0" layoutY="389.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Totalsumma:">
+            <Label alignment="CENTER_RIGHT" layoutX="211.0" layoutY="269.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Totalsumma:">
                 <font>
                     <Font size="24.0" />
                 </font>
             </Label>
-            <Label fx:id="totalPrice" layoutX="421.0" layoutY="389.0" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="0">
+            <Label fx:id="totalPrice" layoutX="421.0" layoutY="269.0" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="0">
                 <font>
                     <Font size="18.0" />
                 </font>

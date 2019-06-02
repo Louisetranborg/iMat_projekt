@@ -65,6 +65,7 @@ public class OrderItem extends HBox {
 
     @FXML
     private void onClickShowReceipt(){
+        parentController.actualVValue = parentController.productScrollPane.getVvalue();
         parentController.productScrollPane.setContent(new ReceiptPage(order, parentController));
     }
 }
