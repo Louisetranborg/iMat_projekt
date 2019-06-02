@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d977eb2e-c848-43e5-b1cd-b9f0378fa775" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/ShoppingCartPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ShoppingCartPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/PersonalDataPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/PersonalDataPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Wizard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,13 +17,22 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="592" column="4" selection-start-line="592" selection-start-column="4" selection-end-line="607" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/PersonalDataPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="383" selection-start-line="383" selection-end-line="383" />
+            <state relative-caret-position="103">
+              <caret line="97" column="8" lean-forward="true" selection-start-line="97" selection-start-column="8" selection-end-line="106" selection-end-column="11" />
               <folding>
-                <element signature="e#9094#9095#0" expanded="true" />
-                <element signature="e#9179#9180#0" expanded="true" />
+                <element signature="e#10737#10738#0" expanded="true" />
+                <element signature="e#10822#10823#0" expanded="true" />
                 <element signature="e#8215#8216#0" expanded="true" />
                 <element signature="e#8253#8254#0" expanded="true" />
                 <element signature="e#8476#8477#0" expanded="true" />
@@ -36,16 +45,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Wizard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="355" column="21" selection-start-line="355" selection-start-column="21" selection-end-line="355" selection-end-column="21" />
+            <state relative-caret-position="328">
+              <caret line="253" column="39" selection-start-line="253" selection-start-column="39" selection-end-line="253" selection-end-column="39" />
               <folding>
                 <element signature="e#3151#3174#0" expanded="true" />
                 <element signature="e#3247#3248#0" expanded="true" />
                 <element signature="e#3293#3294#0" expanded="true" />
                 <element signature="e#7526#7804#0" expanded="true" />
                 <element signature="e#7803#7804#0" expanded="true" />
-                <element signature="e#10626#10627#0" expanded="true" />
-                <element signature="e#10711#10712#0" expanded="true" />
+                <element signature="e#11629#11630#0" expanded="true" />
+                <element signature="e#11714#11715#0" expanded="true" />
                 <element signature="e#24234#24235#0" expanded="true" />
                 <element signature="e#24355#24356#0" expanded="true" />
                 <element signature="e#28735#28736#0" expanded="true" />
@@ -60,22 +69,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/ShoppingCartPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="82" column="37" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>saveEma</find>
-      <find>toCheckoutButton</find>
       <find>datePicker</find>
+      <find>toCheckoutButton</find>
+      <find>saveEma</find>
+      <find>digits</find>
+      <find>digit</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -85,6 +87,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/sample/ShoppingCartPane.java" />
+        <option value="$PROJECT_DIR$/src/sample/PersonalDataPage.java" />
         <option value="$PROJECT_DIR$/src/sample/Wizard.java" />
       </list>
     </option>
@@ -256,13 +259,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ShoppingCartPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="82" column="37" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SettingsItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/FirstCartItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CartItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="592" column="4" selection-start-line="592" selection-start-column="4" selection-end-line="607" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/PersonalDataPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="383" selection-start-line="383" selection-end-line="383" />
+        <state relative-caret-position="103">
+          <caret line="97" column="8" lean-forward="true" selection-start-line="97" selection-start-column="8" selection-end-line="106" selection-end-column="11" />
           <folding>
-            <element signature="e#9094#9095#0" expanded="true" />
-            <element signature="e#9179#9180#0" expanded="true" />
+            <element signature="e#10737#10738#0" expanded="true" />
+            <element signature="e#10822#10823#0" expanded="true" />
             <element signature="e#8215#8216#0" expanded="true" />
             <element signature="e#8253#8254#0" expanded="true" />
             <element signature="e#8476#8477#0" expanded="true" />
@@ -271,25 +309,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ShoppingCartPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="82" column="37" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Wizard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="355" column="21" selection-start-line="355" selection-start-column="21" selection-end-line="355" selection-end-column="21" />
+        <state relative-caret-position="328">
+          <caret line="253" column="39" selection-start-line="253" selection-start-column="39" selection-end-line="253" selection-end-column="39" />
           <folding>
             <element signature="e#3151#3174#0" expanded="true" />
             <element signature="e#3247#3248#0" expanded="true" />
             <element signature="e#3293#3294#0" expanded="true" />
             <element signature="e#7526#7804#0" expanded="true" />
             <element signature="e#7803#7804#0" expanded="true" />
-            <element signature="e#10626#10627#0" expanded="true" />
-            <element signature="e#10711#10712#0" expanded="true" />
+            <element signature="e#11629#11630#0" expanded="true" />
+            <element signature="e#11714#11715#0" expanded="true" />
             <element signature="e#24234#24235#0" expanded="true" />
             <element signature="e#24355#24356#0" expanded="true" />
             <element signature="e#28735#28736#0" expanded="true" />

@@ -245,6 +245,37 @@ public class Wizard extends StackPane {
         parentController.implementOnlyDigitsAllowed(cvcTextField);
         parentController.implementOnlyDigitsAllowed(postCode);
 
+        validMonthTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(validMonthTextField.getText().length() > 1) {
+                    if (extractDigits(validMonthTextField.getText()) > 12) {
+                        validMonthTextField.setText("12");
+                    }
+                    if (extractDigits(validMonthTextField.getText()) == 0) {
+                        validMonthTextField.setText("01");
+                    }
+                }
+            }
+        });
+
+    }
+
+    private double extractDigits(String value){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < value.length(); i++) {
+            if (Character.isDigit(value.charAt(i)) || String.valueOf(value.charAt(i)).equals(".")) {
+                stringBuilder.append(value.charAt(i));
+            }
+        }
+
+        if(!stringBuilder.toString().isEmpty()) {
+            return Double.valueOf(stringBuilder.toString());
+        } else {
+            return 0;
+        }
+
     }
 
     private void implementCardnumberFormat(TextField tf1, TextField tf2){
