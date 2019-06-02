@@ -64,28 +64,6 @@ public class SearchController implements Initializable {
     private Label priceDetailView;
     @FXML
     private Label categoryPageText;
-
-    @FXML
-    public AnchorPane helpWrap;
-
-
-
-    public void greenAddButtonToFrontDetail() {
-        addButtonGreenDetail.toFront();
-    }
-
-    public void blackAddButtonToFrontDetail() {
-        addButtonDetail.toFront();
-    }
-
-    public void brownRemoveButtonToFrontDetail() {
-        removeButtonBrown.toFront();
-    }
-
-    public void blackRemoveButtonToFrontDetail() {
-        detailRemoveButtonInactive.toFront();
-    }
-
     @FXML
     private ScrollPane categoryScrollPane;
     @FXML
@@ -107,6 +85,22 @@ public class SearchController implements Initializable {
 
     @FXML private Label sideMenuDescription;
 
+    public void greenAddButtonToFrontDetail() {
+        addButtonGreenDetail.toFront();
+    }
+
+    public void blackAddButtonToFrontDetail() {
+        addButtonDetail.toFront();
+    }
+
+    public void brownRemoveButtonToFrontDetail() {
+        removeButtonBrown.toFront();
+    }
+
+    public void blackRemoveButtonToFrontDetail() {
+        detailRemoveButtonInactive.toFront();
+    }
+
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
 
@@ -121,7 +115,11 @@ public class SearchController implements Initializable {
     protected Wizard wizard;
 
     private Product activeInDetailview;
-    public MyPage myPage;
+   // public MyPage myPage;
+    public HistoryPage historyPage;
+    public FavoritePage favoritePage;
+    public PersonalDataPage personalDataPage;
+    public HistoryItems historyItems;
 
     static boolean isUserOnMyPage = false;
 
@@ -244,6 +242,7 @@ public class SearchController implements Initializable {
     protected void updateProductPaneFromCategory(List<Product> products) {
         productFlowPane.getChildren().clear();
         productScrollPane.setVvalue(0);
+        productScrollPane.setContent(productFlowPane);
 
         //TODO lägg in så att productscrollpane och frontpane automatiskt dyker upp .toFront. (eventuellt en activateproductFLowPane)
         frontPane.toFront();
@@ -255,13 +254,13 @@ public class SearchController implements Initializable {
     }
 
     protected void updatePersonalDataPage() {
-        myPage.loadCustomerInfo();
+        personalDataPage.loadCustomerInfo();
     }
 
     protected void updateHistoryPage() {
-        myPage.historyOrderVbox.getChildren().clear();
+        historyPage.historyOrderVbox.getChildren().clear();
         for (Order order : IMatDataHandler.getInstance().getOrders()) {
-            myPage.historyOrderVbox.getChildren().add(0,new OrderItem(this, order));
+            historyPage.historyOrderVbox.getChildren().add(0,new OrderItem(this, order));
         }
     }
 
@@ -269,23 +268,23 @@ public class SearchController implements Initializable {
     public double actualVValue;
 
     protected void updateHistoryShowItems(Order order) {
-        myPage.historyProductTilePane.getChildren().clear();
+        historyItems.historyProductTilePane.getChildren().clear();
         productScrollPane.setVvalue(0);
         for (ShoppingItem item : order.getItems()) {
             //TODO Här behöver vi ändra om , Gabriel
             ProductItem pItem = new ProductItem(item.getProduct(), this);
             pItem.changeToHistoryLayout(item);
-            myPage.historyProductTilePane.getChildren().add(pItem);
+            historyItems.historyProductTilePane.getChildren().add(pItem);
 
             //tempOrderProducts.add(item);
 
         }
         currentlyShownOrder = order;
-        myPage.historyItems.toFront();
+        historyItems.toFront();
     }
 
     protected void addAllHistoryItemsToCart() {
-        System.out.println(myPage.historyProductTilePane.getChildren() + " :  ");
+        System.out.println(historyItems.historyProductTilePane.getChildren() + " :  ");
 
         for (ShoppingItem item : currentlyShownOrder.getItems()){
             modifyAmountInCart(item.getProduct(),item.getAmount());
@@ -300,9 +299,9 @@ public class SearchController implements Initializable {
     }
 
     protected void updateFavoritePage() {
-        myPage.historyTilePane.getChildren().clear();
+        favoritePage.historyTilePane.getChildren().clear();
         for (Product favorite : iMatDataHandler.favorites()) {
-            myPage.historyTilePane.getChildren().add(0,productItemMap.get(favorite.getName()));
+            favoritePage.historyTilePane.getChildren().add(0,productItemMap.get(favorite.getName()));
         }
     }
 
@@ -334,7 +333,6 @@ public class SearchController implements Initializable {
     @FXML
     private void clickOnLogo() {
         updateFrontPage();
-        helpWrap.toBack();
         //TODO låg tidigare en allCategories.fire() här.
     }
 
@@ -414,7 +412,6 @@ public class SearchController implements Initializable {
             updateFrontPage();
         }
         updateMyPageButton();
-        helpWrap.toBack();
     }
 
     public void updateMyPageButton() {
@@ -426,15 +423,15 @@ public class SearchController implements Initializable {
             minSidaButton.setText("Min Sida");
             minSidaIcon.setImage(new Image("sample/css_files/css_images/person_black.png"));
         }
-        helpWrap.toBack();
     }
 
     //TODO eventuellt ha en update för varje stor sida. e.g updateFrontPane, updateMyPage, updateCheckout osv. och skrota alla små metoder som vi inte håller koll på.
 
     //Byter view från mypage till productflowpane
     protected void changeViewToMyPage() {
-        productScrollPane.setContent(myPage);
-        myPage.historyPage.toFront();
+        productScrollPane.setContent(historyPage);
+        productScrollPane.setVvalue(0);
+        historyPage.toFront();
         changeCategoryPageText("Historik");
         isUserOnMyPage = true;
         sideMenuDescription.setText("Min Sida");
@@ -528,6 +525,7 @@ public class SearchController implements Initializable {
         updateDetailViewItem();
         productItemMap.get(shoppingItem.getProduct().getName()).updateProductItem();
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInCartItem(shoppingItem);
+        updateFirstCartInWizard();
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
         System.out.println("Updated All Items! - " + shoppingItem.getProduct().getName());
     }
@@ -747,6 +745,21 @@ public class SearchController implements Initializable {
         return 0;
     }
 
+    public double handleInput(String value, Product product){
+        double output = extractDigits(value);
+        String unitSuffix = product.getUnitSuffix();
+
+        if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
+            output = Math.round(output);
+        }
+
+        if(output < 0.1){
+            return 0;
+        } else {
+            return output;
+        }
+    }
+
 
     //Vår initialize-metod, typ som en kontruktor
     @Override
@@ -769,10 +782,16 @@ public class SearchController implements Initializable {
         productFlowPane.setHgap(40);                                                                                    //Avstånd mellan productItems i x-led
         productFlowPane.setVgap(40);
         //Avstånd mellan productItems i y-led
-        myPage = new MyPage(this);
+       // myPage = new MyPage(this);
+        historyPage = new HistoryPage();
+        favoritePage = new FavoritePage();
+        personalDataPage = new PersonalDataPage(this);
+        historyItems = new HistoryItems(this);
+
+        personalDataPage.setUpPersonalDataPage();
+
         createProductItems();                                                                                           //kalla på metod som skapar varorna
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
-        helpWrap.getChildren().add(help);
         shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!
 
         wizard = new Wizard(this);
@@ -840,6 +859,37 @@ public class SearchController implements Initializable {
 
     }
 
+    public void implementOnlyDigitsAllowed(TextField textField){
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                System.out.println(oldValue + " : " + newValue);
+                if(!containsDigitsOnly(newValue)){
+                    textField.setText(oldValue);
+                }
+            }
+        });
+    }
+
+    public void implementMaxLimitInTextfield(TextField textField, int maxLimit){
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > maxLimit){
+                    textField.setText(oldValue);
+                }
+            }
+        });
+    }
+
+    private boolean containsDigitsOnly(String string){
+        for(Character c : string.toCharArray()){
+            if(!Character.isDigit(c)){
+                return false;
+            }
+        } return true;
+    }
+
     //
     //
     //-----------------------Metoder som har med Favoriter att göra ----------------------------------------------------------------
@@ -877,8 +927,8 @@ public class SearchController implements Initializable {
 
     @FXML
     void toHelpPage(){
-        productFlowPane.getChildren().clear();
-        helpWrap.toFront();
+        //productFlowPane.getChildren().clear();
+        productScrollPane.setContent(help);
     }
 
 

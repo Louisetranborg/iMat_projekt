@@ -63,7 +63,7 @@ public class Wizard extends StackPane {
     @FXML private Label moms2;
     @FXML private Label errorMessageStep3;
     @FXML private Button confirmPaymentButton;
-    @FXML private TextField cardnumberTextField;
+    @FXML private TextField cardnumberTextField1;
     @FXML private TextField cardnumberTextField2;
     @FXML private TextField cardnumberTextField3;
     @FXML private TextField cardnumberTextField4;
@@ -220,65 +220,34 @@ public class Wizard extends StackPane {
 
         });
 
-        implementCardnumberFormat(cardnumberTextField, cardnumberTextField2);
+        implementCardnumberFormat(cardnumberTextField1, cardnumberTextField2);
         implementCardnumberFormat(cardnumberTextField2, cardnumberTextField3);
         implementCardnumberFormat(cardnumberTextField3, cardnumberTextField4);
 
         implementCardnumberFormatGoBack(cardnumberTextField4, cardnumberTextField3);
         implementCardnumberFormatGoBack(cardnumberTextField3, cardnumberTextField2);
-        implementCardnumberFormatGoBack(cardnumberTextField2, cardnumberTextField);
+        implementCardnumberFormatGoBack(cardnumberTextField2, cardnumberTextField1);
 
-        registerCaretListener(cardnumberTextField);
+        registerCaretListener(cardnumberTextField1);
         registerCaretListener(cardnumberTextField2);
         registerCaretListener(cardnumberTextField3);
         registerCaretListener(cardnumberTextField4);
 
-        implemetOnlyDigitsAllowed(cardnumberTextField);
-        implemetOnlyDigitsAllowed(cardnumberTextField2);
-        implemetOnlyDigitsAllowed(cardnumberTextField3);
-        implemetOnlyDigitsAllowed(cardnumberTextField4);
+        parentController.implementOnlyDigitsAllowed(cardnumberTextField1);
+        parentController.implementOnlyDigitsAllowed(cardnumberTextField2);
+        parentController.implementOnlyDigitsAllowed(cardnumberTextField3);
+        parentController.implementOnlyDigitsAllowed(cardnumberTextField4);
+
+        parentController.implementMaxLimitInTextfield(cardnumberTextField4, 4);
+        parentController.implementMaxLimitInTextfield(cardnumberTextField3, 4);
+        parentController.implementMaxLimitInTextfield(cardnumberTextField2, 4);
+        parentController.implementMaxLimitInTextfield(cardnumberTextField1, 4);
 
 
-
-        cardnumberTextField4.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.length() > 4){
-                    cardnumberTextField4.setText(oldValue);
-                }
-            }
-        });
-
-        cardnumberTextField3.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.length() > 4){
-                    cardnumberTextField3.setText(oldValue);
-                }
-            }
-        });
-
-        cardnumberTextField2.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.length() > 4){
-                    cardnumberTextField2.setText(oldValue);
-                }
-            }
-        });
-
-        cardnumberTextField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.length() > 4){
-                    cardnumberTextField.setText(oldValue);
-                }
-            }
-        });
-
-        implemetOnlyDigitsAllowed(validMonthTextField);
-        implemetOnlyDigitsAllowed(validYearTextField);
-        implemetOnlyDigitsAllowed(cvcTextField);
+        parentController.implementOnlyDigitsAllowed(validMonthTextField);
+        parentController.implementOnlyDigitsAllowed(validYearTextField);
+        parentController.implementOnlyDigitsAllowed(cvcTextField);
+        parentController.implementOnlyDigitsAllowed(postCode);
 
     }
 
@@ -317,30 +286,11 @@ public class Wizard extends StackPane {
         });
     }
 
-    private void implemetOnlyDigitsAllowed(TextField textField){
-        textField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(!containsDigitsOnly(newValue)){
-                    textField.setText(oldValue);
-                }
-            }
-        });
-    }
-
-    private boolean containsDigitsOnly(String string){
-        for(Character c : string.toCharArray()){
-            if(!Character.isDigit(c)){
-                return false;
-            }
-        } return true;
-    }
-
     private void fillCreditCardNumberTextField(){
         if(!parentController.iMatDataHandler.getCreditCard().getCardNumber().isEmpty()){
             int length = parentController.iMatDataHandler.getCreditCard().getCardNumber().length();
             if(length >= 4) {
-                cardnumberTextField.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(0, 4));
+                cardnumberTextField1.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(0, 4));
             }
             if(length >= 8) {
                 cardnumberTextField2.setText(parentController.iMatDataHandler.getCreditCard().getCardNumber().substring(4, 8));
@@ -448,7 +398,7 @@ public class Wizard extends StackPane {
         cvcTextField.clear();
         validYearTextField.clear();
         validMonthTextField.clear();
-        cardnumberTextField.clear();
+        cardnumberTextField1.clear();
         cardnumberTextField2.clear();
         cardnumberTextField3.clear();
         cardnumberTextField4.clear();
@@ -466,7 +416,7 @@ public class Wizard extends StackPane {
         city.setText(customer.getPostAddress());
         adress.setText(customer.getAddress());
         cardholderTextField.setText(customer.getFirstName() + " " + customer.getLastName());
-        cardnumberTextField.setText(creditCard.getCardNumber());
+        cardnumberTextField1.setText(creditCard.getCardNumber());
         validMonthTextField.setText(Integer.toString(creditCard.getValidMonth()));
         validYearTextField.setText(Integer.toString(creditCard.getValidYear()));
         datePicker.setValue(LocalDate.now());
@@ -649,7 +599,7 @@ public class Wizard extends StackPane {
         hideErrorIcon(postCode);
         hideErrorIcon(mail);
         hideErrorIcon(datePicker.getEditor());
-        hideErrorIcon(cardnumberTextField);
+        hideErrorIcon(cardnumberTextField1);
         hideErrorIcon(cardholderTextField);
         hideErrorIcon(validMonthTextField);
         hideErrorIcon(validYearTextField);
@@ -665,7 +615,7 @@ public class Wizard extends StackPane {
         resetBordersOnTextField(postCode);
         resetBordersOnTextField(mail);
         resetBordersOnTextField(datePicker.getEditor());
-        resetBordersOnTextField(cardnumberTextField);
+        resetBordersOnTextField(cardnumberTextField1);
         resetBordersOnTextField(cardholderTextField);
         resetBordersOnTextField(validYearTextField);
         resetBordersOnTextField(validMonthTextField);
@@ -720,9 +670,11 @@ public class Wizard extends StackPane {
     }
 
     private boolean isStep3Complete(){
-        return !isEmpty(datePicker.getEditor()) && !isEmpty(cardnumberTextField) && !isEmpty(cardholderTextField) && !isEmpty(validMonthTextField)
-                && !isEmpty(validYearTextField) && !isEmpty(cvcTextField) &&isCardTypeSelected() && containsDigitsOnly(validYearTextField)
-                && containsDigitsOnly(validMonthTextField) && containsDigitsOnly(cvcTextField);
+        return !isEmpty(datePicker.getEditor()) && !isEmpty(cardnumberTextField1)  && !isEmpty(cardnumberTextField2)
+                && !isEmpty(cardnumberTextField3)  && !isEmpty(cardnumberTextField4) && !isEmpty(cardholderTextField)
+                && !isEmpty(validMonthTextField)   && !isEmpty(validYearTextField) && !isEmpty(cvcTextField)
+                && isCardTypeSelected() && containsDigitsOnly(validYearTextField) && containsDigitsOnly(validMonthTextField)
+                && containsDigitsOnly(cvcTextField);
     }
 
     private void handleErrorStep3(){
@@ -734,7 +686,10 @@ public class Wizard extends StackPane {
 
         highlightEmptyError(datePicker.getEditor());
         highlightEmptyError(cardholderTextField);
-        highlightEmptyError(cardnumberTextField);
+        highlightEmptyError(cardnumberTextField1);
+        highlightEmptyError(cardnumberTextField2);
+        highlightEmptyError(cardnumberTextField3);
+        highlightEmptyError(cardnumberTextField4);
         highlightEmptyOrDigitsOnlyError(validMonthTextField);
         highlightEmptyOrDigitsOnlyError(validYearTextField);
         highlightEmptyOrDigitsOnlyError(cvcTextField);
@@ -841,9 +796,8 @@ public class Wizard extends StackPane {
         errorIconMap.put(postCode,errorPostCodeIcon);
         errorIconMap.put(city,errorCityIcon);
         errorIconMap.put(adress,errorAdressIcon);
-
         errorIconMap.put(datePicker.getEditor(),errorDatePickerIcon);
-        errorIconMap.put(cardnumberTextField,errorCardNumberIcon);
+        errorIconMap.put(cardnumberTextField1,errorCardNumberIcon);
         errorIconMap.put(cardholderTextField, errorCardHolderIcon);
         errorIconMap.put(validMonthTextField,errorValidMonthIcon);
         errorIconMap.put(validYearTextField,errorValidYearIcon);

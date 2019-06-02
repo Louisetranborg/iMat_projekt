@@ -58,21 +58,14 @@ public class FirstCartItem extends AnchorPane implements FavoriteObserver {
         parentController.updateFavoriteItems(getProduct(), parentController.iMatDataHandler.isFavorite(getProduct()));
 
 
-
         /*
         amountBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(!amountBox.getText().isEmpty()) {
-                    //TODO lägg in handle input. HELST GÖRA DET CENTRALT OCH PUBLIKT.
-                    shoppingItem.setAmount(Double.valueOf(amountBox.getText()));
-                    parentController.shoppingCartPane.addProductToCart(shoppingItem);
-                }
-                if(shoppingItem.getAmount() <= 0 || amountBox.getText().isEmpty()){       //Ändra om vi vill ha double-system
-                    shoppingItem.setAmount(0);
-                    parentController.shoppingCartPane.removeProductFromCart(shoppingItem);
-                }
-                parentController.updateProductAmountInAllItems(shoppingItem);
+                String input = amountBox.getText();
+                double amount = parentController.handleInput(input, shoppingItem.getProduct());
+
+                parentController.setAmountInCart(shoppingItem.getProduct(), amount);
                 parentController.updateFirstCartInWizard();
             }
         });
@@ -160,6 +153,7 @@ public class FirstCartItem extends AnchorPane implements FavoriteObserver {
     protected void updateAmountBoxInFirstCartItem(){
         amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
         price.setText(String.valueOf(decimalFormat.format(shoppingItem.getTotal())));
+        amountBox.textProperty().setValue(String.valueOf(parentController.getAmountOfProductInCart(shoppingItem.getProduct())));
     }
 
     @FXML
