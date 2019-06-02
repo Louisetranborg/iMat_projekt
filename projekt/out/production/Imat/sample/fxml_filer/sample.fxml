@@ -78,7 +78,7 @@
                         <Image url="@../images/baseline_add_circle_black_24dp.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="amountBox" layoutX="206.0" layoutY="566.0" prefHeight="48.0" prefWidth="59.0">
+                  <TextField fx:id="amountBox" layoutX="206.0" layoutY="566.0" prefHeight="48.0" prefWidth="59.0" styleClass="text18" stylesheets="@../css_files/textTypes.css">
                      <font>
                         <Font size="20.0" />
                      </font></TextField>
