@@ -678,7 +678,7 @@ public class Wizard extends StackPane {
                 && containsDigitsOnly(cvcTextField) && isComplete(cardnumberTextField1, getMinAllowedLength(cardnumberTextField1))
                 && isComplete(cardnumberTextField2, getMinAllowedLength(cardnumberTextField2)) && isComplete(cardnumberTextField3, getMinAllowedLength(cardnumberTextField3))
                 && isComplete(cardnumberTextField4, getMinAllowedLength(cardnumberTextField4)) && isComplete(cvcTextField, getMinAllowedLength(cvcTextField))
-                && isComplete(validMonthTextField,getMinAllowedLength(validMonthTextField)) && isComplete(validYearTextField,getMinAllowedLength(validYearTextField));
+                && isComplete(validYearTextField,getMinAllowedLength(validYearTextField));
     }
 
     private void handleErrorStep3(){
@@ -704,7 +704,6 @@ public class Wizard extends StackPane {
         errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(cardnumberTextField3, 4);
         errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(cardnumberTextField4, 4);
         errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(validYearTextField, 2);
-        errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(validMonthTextField,2);
 
 
     }
@@ -804,7 +803,7 @@ public class Wizard extends StackPane {
             return 10;
         } else if (textField.equals(postCode)) {
             return 5;
-        } else if (textField.equals(validYearTextField) || textField.equals(validMonthTextField)) {
+        } else if (textField.equals(validYearTextField)) {
             return 2;
         } else{
             return 0;

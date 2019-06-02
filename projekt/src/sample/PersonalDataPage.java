@@ -268,7 +268,7 @@ public class PersonalDataPage extends AnchorPane {
 
     private void savePhoneIfItsPossible(){
         if(containsDigitsOnly(phoneNumberField)){
-            customer.setPhoneNumber(phoneNumberField.getText());
+            customer.setMobilePhoneNumber(phoneNumberField.getText());
             setGreenBordersOnTextField(phoneNumberField);
         }
     }

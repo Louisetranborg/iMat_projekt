@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ccaa39d-d536-4c08-b996-798cff984ce6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/sample/fxml_filer/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxml_filer/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/PersonalDataPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/PersonalDataPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Wizard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,13 +18,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="592" column="4" selection-start-line="592" selection-start-column="4" selection-end-line="607" selection-end-column="5" />
+            <state relative-caret-position="343">
+              <caret line="602" column="56" selection-start-line="602" selection-start-column="56" selection-end-line="602" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
@@ -35,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/PersonalDataPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="357" column="13" selection-start-line="357" selection-start-column="13" selection-end-line="357" selection-end-column="13" />
+            <state relative-caret-position="-1903">
+              <caret line="270" column="69" selection-start-line="270" selection-start-column="69" selection-end-line="270" selection-end-column="69" />
               <folding>
                 <element signature="e#11368#11369#0" expanded="true" />
                 <element signature="e#11453#11454#0" expanded="true" />
@@ -49,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Wizard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="357" column="16" selection-start-line="357" selection-start-column="16" selection-end-line="357" selection-end-column="16" />
+            <state relative-caret-position="156">
+              <caret line="680" column="16" selection-start-line="680" selection-start-column="16" selection-end-line="680" selection-end-column="16" />
               <folding>
                 <element signature="e#3151#3174#0" expanded="true" />
                 <element signature="e#3247#3248#0" expanded="true" />
@@ -80,11 +81,21 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>digit</find>
       <find>master</find>
+      <find>selectcho</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/sample/PersonalDataPage.java" />
+        <option value="$PROJECT_DIR$/src/sample/Wizard.java" />
+      </list>
+    </option>
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -229,10 +240,39 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="27" column="57" lean-forward="true" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="602" column="56" selection-start-line="602" selection-start-column="56" selection-end-line="602" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/PersonalDataPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1903">
+          <caret line="270" column="69" selection-start-line="270" selection-start-column="69" selection-end-line="270" selection-end-column="69" />
+          <folding>
+            <element signature="e#11368#11369#0" expanded="true" />
+            <element signature="e#11453#11454#0" expanded="true" />
+            <element signature="e#15727#15728#0" expanded="true" />
+            <element signature="e#15765#15766#0" expanded="true" />
+            <element signature="e#15988#15989#0" expanded="true" />
+            <element signature="e#16026#16027#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Wizard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="357" column="16" selection-start-line="357" selection-start-column="16" selection-end-line="357" selection-end-column="16" />
+        <state relative-caret-position="156">
+          <caret line="680" column="16" selection-start-line="680" selection-start-column="16" selection-end-line="680" selection-end-column="16" />
           <folding>
             <element signature="e#3151#3174#0" expanded="true" />
             <element signature="e#3247#3248#0" expanded="true" />
@@ -251,13 +291,6 @@
             <element signature="e#34911#34912#0" expanded="true" />
             <element signature="e#34972#34973#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="27" column="57" lean-forward="true" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
         </state>
       </provider>
     </entry>
