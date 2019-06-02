@@ -469,7 +469,7 @@ public class Wizard extends StackPane {
         cardnumberTextField.setText(creditCard.getCardNumber());
         validMonthTextField.setText(Integer.toString(creditCard.getValidMonth()));
         validYearTextField.setText(Integer.toString(creditCard.getValidYear()));
-        datePicker.setValue(LocalDate.now());
+        datePicker.setValue(LocalDate.now().plusDays(2));
         fillCreditCardNumberTextField();
         selectChosenCardType();
     }
@@ -666,6 +666,9 @@ public class Wizard extends StackPane {
         resetBordersOnTextField(mail);
         resetBordersOnTextField(datePicker.getEditor());
         resetBordersOnTextField(cardnumberTextField);
+        resetBordersOnTextField(cardnumberTextField2);
+        resetBordersOnTextField(cardnumberTextField3);
+        resetBordersOnTextField(cardnumberTextField4);
         resetBordersOnTextField(cardholderTextField);
         resetBordersOnTextField(validYearTextField);
         resetBordersOnTextField(validMonthTextField);
@@ -720,7 +723,8 @@ public class Wizard extends StackPane {
     }
 
     private boolean isStep3Complete(){
-        return !isEmpty(datePicker.getEditor()) && !isEmpty(cardnumberTextField) && !isEmpty(cardholderTextField) && !isEmpty(validMonthTextField)
+        return !isEmpty(datePicker.getEditor()) && !isEmpty(cardnumberTextField) && !isEmpty(cardnumberTextField2) && !isEmpty(cardnumberTextField3)
+                && !isEmpty(cardnumberTextField4) && !isEmpty(cardholderTextField) && !isEmpty(validMonthTextField)
                 && !isEmpty(validYearTextField) && !isEmpty(cvcTextField) &&isCardTypeSelected() && containsDigitsOnly(validYearTextField)
                 && containsDigitsOnly(validMonthTextField) && containsDigitsOnly(cvcTextField);
     }
@@ -735,6 +739,9 @@ public class Wizard extends StackPane {
         highlightEmptyError(datePicker.getEditor());
         highlightEmptyError(cardholderTextField);
         highlightEmptyError(cardnumberTextField);
+        highlightEmptyError(cardnumberTextField2);
+        highlightEmptyError(cardnumberTextField3);
+        highlightEmptyError(cardnumberTextField4);
         highlightEmptyOrDigitsOnlyError(validMonthTextField);
         highlightEmptyOrDigitsOnlyError(validYearTextField);
         highlightEmptyOrDigitsOnlyError(cvcTextField);
@@ -844,6 +851,9 @@ public class Wizard extends StackPane {
 
         errorIconMap.put(datePicker.getEditor(),errorDatePickerIcon);
         errorIconMap.put(cardnumberTextField,errorCardNumberIcon);
+        errorIconMap.put(cardnumberTextField2,errorCardNumberIcon);
+        errorIconMap.put(cardnumberTextField3,errorCardNumberIcon);
+        errorIconMap.put(cardnumberTextField4,errorCardNumberIcon);
         errorIconMap.put(cardholderTextField, errorCardHolderIcon);
         errorIconMap.put(validMonthTextField,errorValidMonthIcon);
         errorIconMap.put(validYearTextField,errorValidYearIcon);
@@ -869,7 +879,7 @@ public class Wizard extends StackPane {
             errorMessage.append("Textfältet får endast innehålla siffror.\n");
         }
         if(!isEmailFormat(textField) && textField.equals(mail)){
-            errorMessage.append("Textfältet måste innehålla en giltlig email-adress.\n");
+            errorMessage.append("Textfältet måste innehålla en giltxlig email-adress.\n");
         }
         ImageView errorIcon = errorIconMap.get(textField);
         tooltip.setText(errorMessage.toString());
