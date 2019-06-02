@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.Button?>
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="915.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane prefHeight="775.0" prefWidth="915.0" style="-fx-background-color: #FFFFFF;" styleClass="scrollPane" stylesheets="@../css_files/main_theme.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -111,15 +110,6 @@
                      </image>
                   </ImageView>
                   <Label layoutX="70.0" layoutY="78.0" prefHeight="142.0" prefWidth="770.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="För att hitta en vara du letar efter kan du antingen klicka på kategorierna som finns längst med vänstersida av programmet, eller söka på produkten du letar efter i sökrutan högst upp. Tryck på en kategori för att lämna hjälpsidan." wrapText="true" />
-                  <Button fx:id="closeHelpButton" layoutX="851.0" layoutY="3.0" mnemonicParsing="false" onAction="#closeHelp" onMouseEntered="#glow" onMouseExited="#removeGlow" prefHeight="30.0" prefWidth="25.0" style="-fx-background-color: #FFFFFF;">
-                     <graphic>
-                        <ImageView fitHeight="43.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/baseline_close_black_36dp.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                </children>
             </AnchorPane>
          </content>
