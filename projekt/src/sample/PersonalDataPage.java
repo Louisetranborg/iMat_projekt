@@ -36,7 +36,7 @@ public class PersonalDataPage extends AnchorPane {
     @FXML TextField cardYearField;
     @FXML ToggleButton visaButton;
     @FXML ToggleButton mastercardButton;
-    @FXML private TextField cardnumberTextField;
+    @FXML private TextField cardnumberTextField1;
     @FXML private TextField cardnumberTextField2;
     @FXML private TextField cardnumberTextField3;
     @FXML private TextField cardnumberTextField4;
@@ -48,6 +48,8 @@ public class PersonalDataPage extends AnchorPane {
     SequentialTransition transition;
     ToggleGroup cardtoggleGroup = new ToggleGroup();
 
+    SearchController parentController;
+
     public PersonalDataPage(SearchController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/personalDataPage.fxml"));
         fxmlLoader.setRoot(this);
@@ -58,6 +60,7 @@ public class PersonalDataPage extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        this.parentController = parentController;
 
         customer = parentController.iMatDataHandler.getCustomer();
         creditCard = parentController.iMatDataHandler.getCreditCard();
@@ -72,91 +75,37 @@ public class PersonalDataPage extends AnchorPane {
 
         transition = new SequentialTransition(transitionRemoveSuccessfulChange);
 
+    }
 
-        implementCardnumberFormat(cardnumberTextField, cardnumberTextField2);
+    public void setUpPersonalDataPage(){
+        implementCardnumberFormat(cardnumberTextField1, cardnumberTextField2);
         implementCardnumberFormat(cardnumberTextField2, cardnumberTextField3);
         implementCardnumberFormat(cardnumberTextField3, cardnumberTextField4);
 
         implementCardnumberFormatGoBack(cardnumberTextField4, cardnumberTextField3);
         implementCardnumberFormatGoBack(cardnumberTextField3, cardnumberTextField2);
-        implementCardnumberFormatGoBack(cardnumberTextField2, cardnumberTextField);
+        implementCardnumberFormatGoBack(cardnumberTextField2, cardnumberTextField1);
 
-        registerCaretListener(cardnumberTextField);
+        registerCaretListener(cardnumberTextField1);
         registerCaretListener(cardnumberTextField2);
         registerCaretListener(cardnumberTextField3);
         registerCaretListener(cardnumberTextField4);
 
-        implementOnlyDigitsAllowed(cardnumberTextField);
-        implementOnlyDigitsAllowed(cardnumberTextField2);
-        implementOnlyDigitsAllowed(cardnumberTextField3);
-        implementOnlyDigitsAllowed(cardnumberTextField4);
+        parentController.implementOnlyDigitsAllowed(cardnumberTextField1);
+        parentController.implementOnlyDigitsAllowed(cardnumberTextField2);
+        parentController.implementOnlyDigitsAllowed(cardnumberTextField3);
+        parentController.implementOnlyDigitsAllowed(cardnumberTextField4);
 
-        implementOnlyDigitsAllowed(cardYearField);
-        implementOnlyDigitsAllowed(cardMonthField);
+        parentController.implementOnlyDigitsAllowed(cardYearField);
+        parentController.implementOnlyDigitsAllowed(cardMonthField);
 
-        cardnumberTextField4.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.length() > 4){
-                    cardnumberTextField4.setText(oldValue);
-                }
-            }
-        });
-
-        cardnumberTextField3.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.length() > 4){
-                    cardnumberTextField3.setText(oldValue);
-                }
-            }
-        });
-
-        cardnumberTextField2.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.length() > 4){
-                    cardnumberTextField2.setText(oldValue);
-                }
-            }
-        });
-
-        cardnumberTextField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.length() > 4){
-                    cardnumberTextField.setText(oldValue);
-                }
-            }
-        });
-
-        cardMonthField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.length() > 2){
-                    cardMonthField.setText(oldValue);
-                }
-            }
-        });
-
-        cardYearField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.length() > 2){
-                    cardYearField.setText(oldValue);
-                }
-            }
-        });
-
-        zipCodeField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.length() > 6){
-                    zipCodeField.setText(oldValue);
-                }
-            }
-        });
-
+        parentController.implementMaxLimitInTextfield(cardnumberTextField4, 4);
+        parentController.implementMaxLimitInTextfield(cardnumberTextField3, 4);
+        parentController.implementMaxLimitInTextfield(cardnumberTextField2, 4);
+        parentController.implementMaxLimitInTextfield(cardnumberTextField1, 4);
+        parentController.implementMaxLimitInTextfield(cardMonthField, 2);
+        parentController.implementMaxLimitInTextfield(cardYearField, 2);
+        parentController.implementMaxLimitInTextfield(zipCodeField, 2);
     }
 
 
@@ -234,28 +183,9 @@ public class PersonalDataPage extends AnchorPane {
         });
     }
 
-    private void implementOnlyDigitsAllowed(TextField textField){
-        textField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(!containsDigitsOnly(newValue)){
-                    textField.setText(oldValue);
-                }
-            }
-        });
-    }
-
-    private boolean containsDigitsOnly(String string){
-        for(Character c : string.toCharArray()){
-            if(!Character.isDigit(c)){
-                return false;
-            }
-        } return true;
-    }
-
     private void saveCardNumber(){
         StringBuilder cardNumber = new StringBuilder();
-        cardNumber.append(cardnumberTextField.getCharacters());
+        cardNumber.append(cardnumberTextField1.getCharacters());
         cardNumber.append(cardnumberTextField2.getCharacters());
         cardNumber.append(cardnumberTextField3.getCharacters());
         cardNumber.append(cardnumberTextField4.getCharacters());
@@ -267,7 +197,7 @@ public class PersonalDataPage extends AnchorPane {
         if(!creditCard.getCardNumber().isEmpty()){
             int length = creditCard.getCardNumber().length();
             if(length >= 4) {
-                cardnumberTextField.setText(creditCard.getCardNumber().substring(0, 4));
+                cardnumberTextField1.setText(creditCard.getCardNumber().substring(0, 4));
             }
             if(length >= 8) {
                 cardnumberTextField2.setText(creditCard.getCardNumber().substring(4, 8));

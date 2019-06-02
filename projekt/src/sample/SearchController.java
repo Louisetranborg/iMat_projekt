@@ -533,6 +533,7 @@ public class SearchController implements Initializable {
         updateDetailViewItem();
         productItemMap.get(shoppingItem.getProduct().getName()).updateProductItem();
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInCartItem(shoppingItem);
+        updateFirstCartInWizard();
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
         System.out.println("Updated All Items! - " + shoppingItem.getProduct().getName());
     }
@@ -752,6 +753,21 @@ public class SearchController implements Initializable {
         return 0;
     }
 
+    public double handleInput(String value, Product product){
+        double output = extractDigits(value);
+        String unitSuffix = product.getUnitSuffix();
+
+        if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
+            output = Math.round(output);
+        }
+
+        if(output < 0.1){
+            return 0;
+        } else {
+            return output;
+        }
+    }
+
 
     //Vår initialize-metod, typ som en kontruktor
     @Override
@@ -779,6 +795,8 @@ public class SearchController implements Initializable {
         favoritePage = new FavoritePage();
         personalDataPage = new PersonalDataPage(this);
         historyItems = new HistoryItems(this);
+
+        personalDataPage.setUpPersonalDataPage();
 
         createProductItems();                                                                                           //kalla på metod som skapar varorna
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
@@ -848,6 +866,37 @@ public class SearchController implements Initializable {
             }
         });
 
+    }
+
+    public void implementOnlyDigitsAllowed(TextField textField){
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                System.out.println(oldValue + " : " + newValue);
+                if(!containsDigitsOnly(newValue)){
+                    textField.setText(oldValue);
+                }
+            }
+        });
+    }
+
+    public void implementMaxLimitInTextfield(TextField textField, int maxLimit){
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > maxLimit){
+                    textField.setText(oldValue);
+                }
+            }
+        });
+    }
+
+    private boolean containsDigitsOnly(String string){
+        for(Character c : string.toCharArray()){
+            if(!Character.isDigit(c)){
+                return false;
+            }
+        } return true;
     }
 
     //
