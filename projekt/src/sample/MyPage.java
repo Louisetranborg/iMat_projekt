@@ -9,16 +9,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
@@ -55,6 +53,7 @@ public class MyPage extends StackPane {
     @FXML private TextField cardnumberTextField2;
     @FXML private TextField cardnumberTextField3;
     @FXML private TextField cardnumberTextField4;
+    @FXML private Label errorLabel;
 
 
     Customer customer;
@@ -183,6 +182,13 @@ public class MyPage extends StackPane {
                 if(newValue.length() > 6){
                     zipCodeField.setText(oldValue);
                 }
+            }
+        });
+
+        emailField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                highlightEmailFormatError(emailField);
             }
         });
 
@@ -316,29 +322,121 @@ public class MyPage extends StackPane {
         fillCreditCardNumberTextField();
         selectChosenCardType();
 
+        resetGreenBordersOnTextField(emailField);
+        resetGreenBordersOnTextField(firstnameField);
+        resetGreenBordersOnTextField(surnameField);
+        resetGreenBordersOnTextField(phoneNumberField);
+        resetGreenBordersOnTextField(deliveryField);
+        resetGreenBordersOnTextField(zipCodeField);
+        resetGreenBordersOnTextField(cityField);
+        resetGreenBordersOnTextField(cardHolderField);
+        resetGreenBordersOnTextField(cardYearField);
+        resetGreenBordersOnTextField(cardMonthField);
+        resetGreenBordersOnTextField(cardnumberTextField);
+        resetGreenBordersOnTextField(cardnumberTextField2);
+        resetGreenBordersOnTextField(cardnumberTextField3);
+        resetGreenBordersOnTextField(cardnumberTextField4);
+    }
+
+    private void saveEmailIfItsPossible(){
+        if(isEmailFormat(emailField)){
+            customer.setAddress(emailField.getText());
+            setGreenBordersOnTextField(emailField);
+        }
     }
 
     @FXML
     protected void onClickSaveChanges(){
+        setGreenBordersOnTextField(firstnameField);
         customer.setFirstName(firstnameField.getText());
+        setGreenBordersOnTextField(surnameField);
         customer.setLastName(surnameField.getText());
+
+        setGreenBordersOnTextField(phoneNumberField);
         customer.setMobilePhoneNumber(phoneNumberField.getText());
-        customer.setEmail(emailField.getText());
+
+        saveEmailIfItsPossible();
+
+        setGreenBordersOnTextField(deliveryField);
         customer.setAddress(deliveryField.getText());
+        setGreenBordersOnTextField(zipCodeField);
         customer.setPostCode(zipCodeField.getText());
+        setGreenBordersOnTextField(cityField);
         customer.setPostAddress(cityField.getText());
 
         saveCardNumber();
         saveSelectedCardType();
 
+        setGreenBordersOnTextField(cardHolderField);
         creditCard.setHoldersName(cardHolderField.getText());
-
-
+        setGreenBordersOnTextField(cardMonthField);
         creditCard.setValidMonth(Integer.parseInt(cardMonthField.getText()));
+        setGreenBordersOnTextField(cardYearField);
         creditCard.setValidYear(Integer.parseInt(cardYearField.getText()));
 
         successfulChange.setVisible(true);
         transition.play();
+
+        setGreenBordersOnTextField(cardnumberTextField);
+        setGreenBordersOnTextField(cardnumberTextField2);
+        setGreenBordersOnTextField(cardnumberTextField3);
+        setGreenBordersOnTextField(cardnumberTextField4);
+
+        errorLabel.setVisible(false);
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------Felhantering
+
+    private boolean isEmailFormat(TextField textField){       //returnar true om textfieldens text innehåller @ och punkt
+        if(textField.getText().contains("@") && textField.getText().contains(".")){
+            return true;
+        }
+        return false;
+    }
+
+    private void highlightEmailFormatError(TextField textField){     //visar vilken textfield som är fel om den är empty eller ej i email-format
+        if(!isEmailFormat(textField)){
+            setRedBordersOnTextField(textField);
+            showErrorMessage(textField);
+            errorLabel.setVisible(true);
+        } else {
+            resetBordersOnTextField(textField);
+            errorLabel.setVisible(false);
+        }
+    }
+
+    private void setRedBordersOnTextField(TextField textField){
+        textField.setStyle("-fx-border-width: 3px; -fx-border-color: #FF0000;");
+    }
+
+    private void resetBordersOnTextField(TextField textField){
+        textField.setStyle("");
+    }
+
+    private void setGreenBordersOnTextField(TextField textField){
+        textField.setStyle("-fx-border-width: 3px; -fx-border-color: #66bb6a;");
+    }
+
+    private void resetGreenBordersOnTextField(TextField textField){
+        textField.setStyle("");
+    }
+
+    private void showErrorMessage(TextField textField){
+        StringBuilder errorMessage = new StringBuilder();
+        Tooltip tooltip = new Tooltip();
+        /*
+        if(!containsDigitsOnly(textField) && (textField.equals(postCode) || textField.equals(telNumber) || textField.equals(validMonthTextField)
+                || textField.equals(validYearTextField) || textField.equals(cvcTextField))){
+            errorMessage.append("Textfältet får endast innehålla siffror.\n");
+        }
+
+         */
+        if(!isEmailFormat(textField) && textField.equals(emailField)){
+            errorMessage.append("Textfältet måste innehålla en giltig email-adress för att kunna sparas.\n");
+        }
+        tooltip.setText(errorMessage.toString());
+        tooltip.setFont(new Font(18));
+        Tooltip.install(textField, tooltip);
     }
 
 }

@@ -94,7 +94,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paymentInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane">
+            <AnchorPane fx:id="paymentInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" visible="false">
                <children>
                   <DatePicker fx:id="datePicker" editable="false" layoutX="280.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="260.0" promptText="2019-01-01" styleClass="text18" stylesheets="@../css_files/textTypes.css" />
                   <ToggleButton fx:id="visaButton" layoutX="280.0" layoutY="156.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="126.0" styleClass="cardNotError">
@@ -348,7 +348,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="personalInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" visible="false">
+            <AnchorPane fx:id="personalInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane">
                <children>
                   <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Förnamn:">
                      <font>
@@ -506,17 +506,17 @@
                         <Image url="@../images/red_error.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="errorPostCodeIcon" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="errorPostCodeIcon" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../images/red_error.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="errorCityIcon" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="errorCityIcon" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../images/red_error.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="errorAdressIcon" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="errorAdressIcon" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../images/red_error.png" />
                      </image>

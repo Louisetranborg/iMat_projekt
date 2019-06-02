@@ -125,7 +125,7 @@
                </font>
             </Label>
             <Line endX="578.6465454101562" layoutX="177.0" layoutY="238.0" rotate="90.0" translateY="100.0" />
-            <Label fx:id="successfulChange" focusTraversable="false" layoutX="609.0" layoutY="450.0" text="Dina uppgifter sparades!" textFill="#3e8019" visible="false">
+            <Label fx:id="successfulChange" focusTraversable="false" layoutX="609.0" layoutY="450.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="Gröna fält är sparade!" textFill="#3e8019" visible="false">
                <font>
                   <Font size="24.0" />
                </font>
@@ -168,6 +168,11 @@
                   <Font size="14.0" />
                </font>
             </TextField>
+            <Label fx:id="errorLabel" focusTraversable="false" layoutX="539.0" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="380.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="Fyll i rödmarkerade fält korrekt för att kunna spara dem. Håll musen över felaktiga fält för mer information." textFill="RED" visible="false" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children>
          <stylesheets>
             <URL value="@../../../../../src/sample/css_files/main_theme.css" />

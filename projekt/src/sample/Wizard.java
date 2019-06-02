@@ -882,7 +882,7 @@ public class Wizard extends StackPane {
             errorMessage.append("Textfältet får endast innehålla siffror.\n");
         }
         if(!isEmailFormat(textField) && textField.equals(mail)){
-            errorMessage.append("Textfältet måste innehålla en giltxlig email-adress.\n");
+            errorMessage.append("Textfältet måste innehålla en giltig email-adress.\n");
         }
         ImageView errorIcon = errorIconMap.get(textField);
         tooltip.setText(errorMessage.toString());
