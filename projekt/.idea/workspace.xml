@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d977eb2e-c848-43e5-b1cd-b9f0378fa775" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Imat/sample/fxml_filer/checkout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Imat/sample/fxml_filer/checkout.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/MyPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MyPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Wizard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/fxml_filer/checkout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxml_filer/checkout.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/fxml_filer/myPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxml_filer/myPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Imat/sample/fxml_filer/personalDataPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Imat/sample/fxml_filer/personalDataPage.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,8 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="616" column="15" selection-start-line="616" selection-start-column="15" selection-end-line="616" selection-end-column="15" />
+            <state relative-caret-position="-1043">
+              <caret line="535" column="15" selection-start-line="535" selection-start-column="15" selection-end-line="535" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -34,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/SettingsItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+            <state relative-caret-position="311">
+              <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -43,29 +39,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/ShoppingCartPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1890">
-              <caret line="149" column="5" selection-start-line="149" selection-start-column="5" selection-end-line="149" selection-end-column="5" />
+            <state relative-caret-position="1545">
+              <caret line="118" column="5" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
               <folding>
-                <element signature="e#1413#1414#0" expanded="true" />
-                <element signature="e#1461#1462#0" expanded="true" />
+                <element signature="e#1246#1247#0" expanded="true" />
+                <element signature="e#1294#1295#0" expanded="true" />
+                <element signature="e#2922#2923#0" expanded="true" />
+                <element signature="e#2961#2962#0" expanded="true" />
+                <element signature="e#3497#3498#0" expanded="true" />
+                <element signature="e#3538#3539#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/MyPage.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/PersonalDataPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="55" column="38" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
-              <folding>
-                <element signature="e#8430#8431#0" expanded="true" />
-                <element signature="e#8515#8516#0" expanded="true" />
-                <element signature="e#14078#14079#0" expanded="true" />
-                <element signature="e#14116#14117#0" expanded="true" />
-                <element signature="e#14281#14282#0" expanded="true" />
-                <element signature="e#14319#14320#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1032">
+              <caret line="300" column="47" selection-start-line="300" selection-start-column="47" selection-end-line="300" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -74,7 +66,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/css_files/checkout.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="83">
-              <caret line="105" column="26" lean-forward="true" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="33" />
+              <caret line="105" column="26" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -82,20 +74,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Wizard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-286">
-              <caret line="797" column="5" lean-forward="true" selection-start-line="797" selection-start-column="5" selection-end-line="797" selection-end-column="5" />
+            <state relative-caret-position="-1805">
+              <caret line="691" column="5" selection-start-line="691" selection-start-column="5" selection-end-line="691" selection-end-column="5" />
               <folding>
-                <element signature="e#7429#7707#0" expanded="true" />
-                <element signature="e#7706#7707#0" expanded="true" />
-                <element signature="e#11498#11499#0" expanded="true" />
-                <element signature="e#11583#11584#0" expanded="true" />
-                <element signature="e#19327#19328#0" expanded="true" />
-                <element signature="e#19359#19360#0" expanded="true" />
-                <element signature="e#26957#26958#0" expanded="true" />
-                <element signature="e#27078#27079#0" expanded="true" />
-                <element signature="e#31164#31165#0" expanded="true" />
-                <element signature="e#31202#31203#0" expanded="true" />
-                <element signature="e#32748#32770#0" expanded="true" />
                 <element signature="e#32513#32514#0" expanded="true" />
                 <element signature="e#32573#32574#0" expanded="true" />
                 <element signature="e#32627#32628#0" expanded="true" />
@@ -373,8 +354,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/SettingsItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+        <state relative-caret-position="311">
+          <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -394,8 +375,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/SearchController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="616" column="15" selection-start-line="616" selection-start-column="15" selection-end-line="616" selection-end-column="15" />
+        <state relative-caret-position="-1043">
+          <caret line="535" column="15" selection-start-line="535" selection-start-column="15" selection-end-line="535" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -448,40 +429,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ShoppingCartPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1890">
-          <caret line="149" column="5" selection-start-line="149" selection-start-column="5" selection-end-line="149" selection-end-column="5" />
-          <folding>
-            <element signature="e#1413#1414#0" expanded="true" />
-            <element signature="e#1461#1462#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/css_files/checkout.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="83">
-          <caret line="105" column="26" lean-forward="true" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="33" />
+          <caret line="105" column="26" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Wizard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-286">
-          <caret line="797" column="5" lean-forward="true" selection-start-line="797" selection-start-column="5" selection-end-line="797" selection-end-column="5" />
+        <state relative-caret-position="-1805">
+          <caret line="691" column="5" selection-start-line="691" selection-start-column="5" selection-end-line="691" selection-end-column="5" />
           <folding>
-            <element signature="e#7429#7707#0" expanded="true" />
-            <element signature="e#7706#7707#0" expanded="true" />
-            <element signature="e#11498#11499#0" expanded="true" />
-            <element signature="e#11583#11584#0" expanded="true" />
-            <element signature="e#19327#19328#0" expanded="true" />
-            <element signature="e#19359#19360#0" expanded="true" />
-            <element signature="e#26957#26958#0" expanded="true" />
-            <element signature="e#27078#27079#0" expanded="true" />
-            <element signature="e#31164#31165#0" expanded="true" />
-            <element signature="e#31202#31203#0" expanded="true" />
-            <element signature="e#32748#32770#0" expanded="true" />
             <element signature="e#32513#32514#0" expanded="true" />
             <element signature="e#32573#32574#0" expanded="true" />
             <element signature="e#32627#32628#0" expanded="true" />
@@ -492,8 +451,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/MyPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="55" column="38" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
+        <state relative-caret-position="1012">
+          <caret line="384" column="35" selection-start-line="384" selection-start-column="35" selection-end-line="384" selection-end-column="35" />
           <folding>
             <element signature="e#8430#8431#0" expanded="true" />
             <element signature="e#8515#8516#0" expanded="true" />
@@ -502,6 +461,28 @@
             <element signature="e#14281#14282#0" expanded="true" />
             <element signature="e#14319#14320#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ShoppingCartPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1545">
+          <caret line="118" column="5" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
+          <folding>
+            <element signature="e#1246#1247#0" expanded="true" />
+            <element signature="e#1294#1295#0" expanded="true" />
+            <element signature="e#2922#2923#0" expanded="true" />
+            <element signature="e#2961#2962#0" expanded="true" />
+            <element signature="e#3497#3498#0" expanded="true" />
+            <element signature="e#3538#3539#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/PersonalDataPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1032">
+          <caret line="300" column="47" selection-start-line="300" selection-start-column="47" selection-end-line="300" selection-end-column="47" />
         </state>
       </provider>
     </entry>

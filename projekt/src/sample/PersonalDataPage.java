@@ -112,6 +112,7 @@ public class PersonalDataPage extends AnchorPane {
         parentController.implementMaxLimitInTextfield(cardMonthField, 2);
         parentController.implementMaxLimitInTextfield(cardYearField, 2);
         parentController.implementMaxLimitInTextfield(zipCodeField, 5);
+
     }
 
 
@@ -128,6 +129,21 @@ public class PersonalDataPage extends AnchorPane {
         cardYearField.setText(Integer.toString(creditCard.getValidYear()));
         fillCreditCardNumberTextField();
         selectChosenCardType();
+
+        resetGreenBordersOnTextField(emailField);
+        resetGreenBordersOnTextField(firstnameField);
+        resetGreenBordersOnTextField(surnameField);
+        resetGreenBordersOnTextField(phoneNumberField);
+        resetGreenBordersOnTextField(deliveryField);
+        resetGreenBordersOnTextField(zipCodeField);
+        resetGreenBordersOnTextField(cityField);
+        resetGreenBordersOnTextField(cardHolderField);
+        resetGreenBordersOnTextField(cardYearField);
+        resetGreenBordersOnTextField(cardMonthField);
+        resetGreenBordersOnTextField(cardnumberTextField1);
+        resetGreenBordersOnTextField(cardnumberTextField2);
+        resetGreenBordersOnTextField(cardnumberTextField3);
+        resetGreenBordersOnTextField(cardnumberTextField4);
 
     }
 
@@ -243,21 +259,6 @@ public class PersonalDataPage extends AnchorPane {
                 tf2.requestFocus();
             }
         });
-
-        resetGreenBordersOnTextField(emailField);
-        resetGreenBordersOnTextField(firstnameField);
-        resetGreenBordersOnTextField(surnameField);
-        resetGreenBordersOnTextField(phoneNumberField);
-        resetGreenBordersOnTextField(deliveryField);
-        resetGreenBordersOnTextField(zipCodeField);
-        resetGreenBordersOnTextField(cityField);
-        resetGreenBordersOnTextField(cardHolderField);
-        resetGreenBordersOnTextField(cardYearField);
-        resetGreenBordersOnTextField(cardMonthField);
-        resetGreenBordersOnTextField(cardnumberTextField1);
-        resetGreenBordersOnTextField(cardnumberTextField2);
-        resetGreenBordersOnTextField(cardnumberTextField3);
-        resetGreenBordersOnTextField(cardnumberTextField4);
     }
 
     private void saveEmailIfItsPossible(){
