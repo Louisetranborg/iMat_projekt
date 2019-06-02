@@ -64,28 +64,6 @@ public class SearchController implements Initializable {
     private Label priceDetailView;
     @FXML
     private Label categoryPageText;
-
-    @FXML
-    public AnchorPane helpWrap;
-
-
-
-    public void greenAddButtonToFrontDetail() {
-        addButtonGreenDetail.toFront();
-    }
-
-    public void blackAddButtonToFrontDetail() {
-        addButtonDetail.toFront();
-    }
-
-    public void brownRemoveButtonToFrontDetail() {
-        removeButtonBrown.toFront();
-    }
-
-    public void blackRemoveButtonToFrontDetail() {
-        detailRemoveButtonInactive.toFront();
-    }
-
     @FXML
     private ScrollPane categoryScrollPane;
     @FXML
@@ -106,6 +84,22 @@ public class SearchController implements Initializable {
     private ImageView minSidaIcon;
 
     @FXML private Label sideMenuDescription;
+
+    public void greenAddButtonToFrontDetail() {
+        addButtonGreenDetail.toFront();
+    }
+
+    public void blackAddButtonToFrontDetail() {
+        addButtonDetail.toFront();
+    }
+
+    public void brownRemoveButtonToFrontDetail() {
+        removeButtonBrown.toFront();
+    }
+
+    public void blackRemoveButtonToFrontDetail() {
+        detailRemoveButtonInactive.toFront();
+    }
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
@@ -248,6 +242,7 @@ public class SearchController implements Initializable {
     protected void updateProductPaneFromCategory(List<Product> products) {
         productFlowPane.getChildren().clear();
         productScrollPane.setVvalue(0);
+        productScrollPane.setContent(productFlowPane);
 
         //TODO lägg in så att productscrollpane och frontpane automatiskt dyker upp .toFront. (eventuellt en activateproductFLowPane)
         frontPane.toFront();
@@ -338,7 +333,6 @@ public class SearchController implements Initializable {
     @FXML
     private void clickOnLogo() {
         updateFrontPage();
-        helpWrap.toBack();
         //TODO låg tidigare en allCategories.fire() här.
     }
 
@@ -418,7 +412,6 @@ public class SearchController implements Initializable {
             updateFrontPage();
         }
         updateMyPageButton();
-        helpWrap.toBack();
     }
 
     public void updateMyPageButton() {
@@ -430,7 +423,6 @@ public class SearchController implements Initializable {
             minSidaButton.setText("Min Sida");
             minSidaIcon.setImage(new Image("sample/css_files/css_images/person_black.png"));
         }
-        helpWrap.toBack();
     }
 
     //TODO eventuellt ha en update för varje stor sida. e.g updateFrontPane, updateMyPage, updateCheckout osv. och skrota alla små metoder som vi inte håller koll på.
@@ -800,7 +792,6 @@ public class SearchController implements Initializable {
 
         createProductItems();                                                                                           //kalla på metod som skapar varorna
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
-        helpWrap.getChildren().add(help);
         shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!
 
         wizard = new Wizard(this);
@@ -936,8 +927,8 @@ public class SearchController implements Initializable {
 
     @FXML
     void toHelpPage(){
-        productFlowPane.getChildren().clear();
-        helpWrap.toFront();
+        //productFlowPane.getChildren().clear();
+        productScrollPane.setContent(help);
     }
 
 

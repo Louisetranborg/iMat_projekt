@@ -39,21 +39,18 @@ public class SettingsItem extends MenuItem {
 
     public void onClickHistory() {
         parentController.productScrollPane.setContent(parentController.historyPage);
-        parentController.helpWrap.toBack();
     }
 
 
     public void onClickFavorites() {
         parentController.productScrollPane.setContent(parentController.favoritePage);
         parentController.updateFavoritePage();
-        parentController.helpWrap.toBack();
     }
 
 
     public void onClickPersonalAccount() {
         parentController.updatePersonalDataPage();
         parentController.productScrollPane.setContent(parentController.personalDataPage);
-        parentController.helpWrap.toBack();
     }
 
     @FXML
