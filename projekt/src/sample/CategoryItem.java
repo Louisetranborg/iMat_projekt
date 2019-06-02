@@ -29,8 +29,6 @@ public class CategoryItem extends MenuItem {
         super(parentController);
 
         this.productCategory = productCategory;
-      //  categoryButton.setToggleGroup();
-        //categoryButton.setText(productCategory.name());
         productsInCategory = getProductsOfCategory(productCategory);
 
     }

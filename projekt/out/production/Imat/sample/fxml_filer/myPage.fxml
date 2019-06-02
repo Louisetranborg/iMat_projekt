@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -15,7 +23,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<fx:root type="StackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root type="StackPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="historyPage" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -61,8 +69,8 @@
             <TextField fx:id="zipCodeField" layoutX="200.0" layoutY="450.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
             <TextField fx:id="cityField" layoutX="200.0" layoutY="520.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
             <TextField fx:id="cardHolderField" layoutX="650.0" layoutY="264.0" prefHeight="36.0" prefWidth="250.0" styleClass="text18" />
-            <TextField fx:id="cardMonthField" layoutX="650.0" layoutY="329.0" prefHeight="36.0" prefWidth="92.0" promptText="MM" styleClass="text18" />
-            <TextField fx:id="cardYearField" layoutX="771.0" layoutY="329.0" prefHeight="36.0" prefWidth="92.0" promptText="ÅÅ" styleClass="text18" />
+            <TextField fx:id="cardMonthField" layoutX="650.0" layoutY="329.0" prefHeight="36.0" prefWidth="92.0" styleClass="text18" />
+            <TextField fx:id="cardYearField" layoutX="771.0" layoutY="329.0" prefHeight="36.0" prefWidth="92.0" styleClass="text18" />
             <Button fx:id="saveChangesButton" layoutX="724.0" layoutY="509.0" mnemonicParsing="false" onAction="#onClickSaveChanges" onKeyPressed="#onClickSaveChanges" prefHeight="59.0" prefWidth="173.0" styleClass="nextButton" stylesheets="@../../../../../src/sample/css_files/checkout.css" text="Spara" />
             <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="466.0" layoutY="129.0" prefHeight="42.0" prefWidth="180.0" styleClass="text24" text="Betalningssätt:">
                <font>
@@ -125,7 +133,7 @@
                </font>
             </Label>
             <Line endX="578.6465454101562" layoutX="177.0" layoutY="238.0" rotate="90.0" translateY="100.0" />
-            <Label fx:id="successfulChange" focusTraversable="false" layoutX="609.0" layoutY="450.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="Gröna fält är sparade!" textFill="#3e8019" visible="false">
+            <Label fx:id="successfulChange" focusTraversable="false" layoutX="609.0" layoutY="450.0" text="Dina uppgifter sparades!" textFill="#3e8019" visible="false">
                <font>
                   <Font size="24.0" />
                </font>
@@ -168,11 +176,6 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Label fx:id="errorLabel" focusTraversable="false" layoutX="539.0" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="380.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="Fyll i rödmarkerade fält korrekt för att kunna spara dem. Håll musen över felaktiga fält för mer information." textFill="RED" visible="false" wrapText="true">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
          </children>
          <stylesheets>
             <URL value="@../../../../../src/sample/css_files/main_theme.css" />

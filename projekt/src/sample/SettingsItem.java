@@ -38,26 +38,19 @@ public class SettingsItem extends MenuItem {
 
 
     public void onClickHistory() {
-        parentController.myPage.historyPage.toFront();
-        parentController.helpWrap.toBack();
+        parentController.productScrollPane.setContent(parentController.historyPage);
     }
 
 
     public void onClickFavorites() {
-        parentController.myPage.favoritePage.toFront();
+        parentController.productScrollPane.setContent(parentController.favoritePage);
         parentController.updateFavoritePage();
-        parentController.helpWrap.toBack();
     }
 
 
     public void onClickPersonalAccount() {
         parentController.updatePersonalDataPage();
-        parentController.myPage.personalDataPage.toFront();
-        parentController.helpWrap.toBack();
-    }
-
-    private void onClickBack(){
-        parentController.updateFrontPage();
+        parentController.productScrollPane.setContent(parentController.personalDataPage);
     }
 
     @FXML
@@ -71,22 +64,11 @@ public class SettingsItem extends MenuItem {
             case PERSONAL_DATA:
                 onClickPersonalAccount();
                 break;
-         /*   case SHOPPING_LIST:
-                onClickSavedCarts();
-                break;*/
             case FAVORITES:
                 onClickFavorites();
                 break;
         }
         parentController.changeCategoryPageText(categoryButton.getText());
         parentController.productScrollPane.setVvalue(0);
-
-        System.out.println(categoryButton.getToggleGroup().getToggles());
-
-        // if(settings != SettingsCategory.BACK)
-        // parentController.updateSettingsPaneFromSettings();
-        //System.out.println(parentController.settingsScrollPane.getContent());
-
-
     }
 }

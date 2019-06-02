@@ -64,28 +64,6 @@ public class SearchController implements Initializable {
     private Label priceDetailView;
     @FXML
     private Label categoryPageText;
-
-    @FXML
-    public AnchorPane helpWrap;
-
-
-
-    public void greenAddButtonToFrontDetail() {
-        addButtonGreenDetail.toFront();
-    }
-
-    public void blackAddButtonToFrontDetail() {
-        addButtonDetail.toFront();
-    }
-
-    public void brownRemoveButtonToFrontDetail() {
-        removeButtonBrown.toFront();
-    }
-
-    public void blackRemoveButtonToFrontDetail() {
-        detailRemoveButtonInactive.toFront();
-    }
-
     @FXML
     private ScrollPane categoryScrollPane;
     @FXML
@@ -107,13 +85,11 @@ public class SearchController implements Initializable {
 
     @FXML private Label sideMenuDescription;
 
-
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();                                                    //Vår iMatDataHandler
 
     protected Map<String, ProductItem> productItemMap = new HashMap<String, ProductItem>();                               //Map som fylls med productItems
 
     ShoppingCartPane shoppingCartPane = new ShoppingCartPane(iMatDataHandler.getShoppingCart(), this);                   //Detta är vår kundvagn
-    Help help = new Help(this);
 
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
@@ -121,7 +97,10 @@ public class SearchController implements Initializable {
     protected Wizard wizard;
 
     private Product activeInDetailview;
-    public MyPage myPage;
+    public HistoryPage historyPage;
+    public FavoritePage favoritePage;
+    public PersonalDataPage personalDataPage;
+    public HistoryItems historyItems;
 
     static boolean isUserOnMyPage = false;
 
@@ -138,15 +117,6 @@ public class SearchController implements Initializable {
     private void removeGlow(){
         closeDetailView.setEffect(new Glow(0));
     }
-
-
-   /* protected void resetEveryShoppingItem() {
-        for (ShoppingItem item : shoppingItemMap.values()) {
-            item.setAmount(0);
-            updateProductAmountInAllItems(item);
-            productItemMap.get(item.getProduct().getName()).setBlackButton();
-        }
-    }*/
 
     //Sätter light-boxen längs fram för att visa mer info om en produkt
     protected void openProductDetailView(Product product) {
@@ -221,12 +191,6 @@ public class SearchController implements Initializable {
         blankSpace.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
 
         VBox.setVgrow(blankSpace, Priority.ALWAYS); //Fyller ut tomrummet mellan settingsItem och Tillbaka-knappen.
-
-        /*Button back = new Button();
-        back.setCenterShape(true);
-        back.setText("Back to Store");
-        menuVbox.getChildren().addAll(blankSpace, back);*/
-
     }
 
     //Tillverkar alla möjliga productItems och lägger dem i vår Map(productItemMap)
@@ -244,6 +208,7 @@ public class SearchController implements Initializable {
     protected void updateProductPaneFromCategory(List<Product> products) {
         productFlowPane.getChildren().clear();
         productScrollPane.setVvalue(0);
+        productScrollPane.setContent(productFlowPane);
 
         //TODO lägg in så att productscrollpane och frontpane automatiskt dyker upp .toFront. (eventuellt en activateproductFLowPane)
         frontPane.toFront();
@@ -255,13 +220,13 @@ public class SearchController implements Initializable {
     }
 
     protected void updatePersonalDataPage() {
-        myPage.loadCustomerInfo();
+        personalDataPage.loadCustomerInfo();
     }
 
     protected void updateHistoryPage() {
-        myPage.historyOrderVbox.getChildren().clear();
+        historyPage.historyOrderVbox.getChildren().clear();
         for (Order order : IMatDataHandler.getInstance().getOrders()) {
-            myPage.historyOrderVbox.getChildren().add(0,new OrderItem(this, order));
+            historyPage.historyOrderVbox.getChildren().add(0,new OrderItem(this, order));
         }
     }
 
@@ -269,40 +234,30 @@ public class SearchController implements Initializable {
     public double actualVValue;
 
     protected void updateHistoryShowItems(Order order) {
-        myPage.historyProductTilePane.getChildren().clear();
+        historyItems.historyProductTilePane.getChildren().clear();
         productScrollPane.setVvalue(0);
         for (ShoppingItem item : order.getItems()) {
             //TODO Här behöver vi ändra om , Gabriel
             ProductItem pItem = new ProductItem(item.getProduct(), this);
             pItem.changeToHistoryLayout(item);
-            myPage.historyProductTilePane.getChildren().add(pItem);
-
-            //tempOrderProducts.add(item);
-
+            historyItems.historyProductTilePane.getChildren().add(pItem);
         }
         currentlyShownOrder = order;
-        myPage.historyItems.toFront();
+        historyItems.toFront();
     }
 
     protected void addAllHistoryItemsToCart() {
-        System.out.println(myPage.historyProductTilePane.getChildren() + " :  ");
+        System.out.println(historyItems.historyProductTilePane.getChildren() + " :  ");
 
         for (ShoppingItem item : currentlyShownOrder.getItems()){
             modifyAmountInCart(item.getProduct(),item.getAmount());
-       /*     for (int i = 0 ; i < item.getAmount(); i++) {
-                //TODO Här behöver vi ändra om , Gabriel
-                addItemToCart(shoppingItemMap.get(item.getProduct().getName()));
-            }*/
-
-            //   productFlowPane.getChildren().add(productItemMap.get(product1.getName()));
-
         }
     }
 
     protected void updateFavoritePage() {
-        myPage.historyTilePane.getChildren().clear();
+        favoritePage.historyTilePane.getChildren().clear();
         for (Product favorite : iMatDataHandler.favorites()) {
-            myPage.historyTilePane.getChildren().add(0,productItemMap.get(favorite.getName()));
+            favoritePage.historyTilePane.getChildren().add(0,productItemMap.get(favorite.getName()));
         }
     }
 
@@ -334,8 +289,6 @@ public class SearchController implements Initializable {
     @FXML
     private void clickOnLogo() {
         updateFrontPage();
-        helpWrap.toBack();
-        //TODO låg tidigare en allCategories.fire() här.
     }
 
 
@@ -400,8 +353,6 @@ public class SearchController implements Initializable {
         }
     }
 
-
-
     //Byter view från productFlowpane till myPage.
     @FXML
     protected void myPagesButtonClicked() {
@@ -414,7 +365,6 @@ public class SearchController implements Initializable {
             updateFrontPage();
         }
         updateMyPageButton();
-        helpWrap.toBack();
     }
 
     public void updateMyPageButton() {
@@ -426,15 +376,15 @@ public class SearchController implements Initializable {
             minSidaButton.setText("Min Sida");
             minSidaIcon.setImage(new Image("sample/css_files/css_images/person_black.png"));
         }
-        helpWrap.toBack();
     }
 
     //TODO eventuellt ha en update för varje stor sida. e.g updateFrontPane, updateMyPage, updateCheckout osv. och skrota alla små metoder som vi inte håller koll på.
 
     //Byter view från mypage till productflowpane
     protected void changeViewToMyPage() {
-        productScrollPane.setContent(myPage);
-        myPage.historyPage.toFront();
+        productScrollPane.setContent(historyPage);
+        productScrollPane.setVvalue(0);
+        historyPage.toFront();
         changeCategoryPageText("Historik");
         isUserOnMyPage = true;
         sideMenuDescription.setText("Min Sida");
@@ -445,16 +395,6 @@ public class SearchController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
-    //Onödig atm, kanske kommer till användning senare.
-   /* protected void updateProductPaneFromSettings() throws IOException{       //Uppdaterar productFlowPane utifrån kategorierna
-        //settingsScrollPane.toBack();
-        productScrollPane.setContent(myPage);
-        fillCategoryPane();
-
-
-    }*/
 
     //När man söker skall productFlowPane uppdateras efter sökningen
 
@@ -468,13 +408,10 @@ public class SearchController implements Initializable {
 
         if(amount <= 0) {
             shoppingCart.removeItem(getShoppingItemOfProductInCart(p));
-            //shoppingItem.setAmount(0);
         } else{
             shoppingItem.setAmount(amount);
         }
-       // System.out.println(shoppingItem == null);
         updateProductAmountInAllItems(shoppingItem);
-       // System.out.println("Product "+ p.toString() +" set to: " + amount);
     }
 
     //Uppdatera antal i shoppingitem. Change är förändringen i antal.
@@ -526,31 +463,15 @@ public class SearchController implements Initializable {
     protected void updateProductAmountInAllItems(ShoppingItem shoppingItem) {     //Uppdaterar amount både i produkterna i kundvagnen och produkterna i flowpane i mitten
         shoppingCartPane.updateCart();
         updateDetailViewItem();
+        wizard.updateFirstCartItems();
         productItemMap.get(shoppingItem.getProduct().getName()).updateProductItem();
+
         shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInCartItem(shoppingItem);
-        shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
+        wizard.getProductFirstCartItemMap().get(shoppingItem.getProduct().getName()).updateAmountInFirstCartItem(shoppingItem);
+
+        //shoppingCartPane.getProductCartItemMap().get(shoppingItem.getProduct().getName()).getPrice().setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
         System.out.println("Updated All Items! - " + shoppingItem.getProduct().getName());
     }
-
-  /*  protected void addItemToCart(Product product) {
-        modifyAmountInCart(product, 1); //Ökar amount med ett
-       // updateAllItems(shoppingItem);
-    }
-
-    protected void subtractItemFromCart(ShoppingItem shoppingItem) {
-        if (shoppingItem.getAmount() > 0) {
-            shoppingItem.setAmount(shoppingItem.getAmount() - 1);
-
-        }
-
-        if ((shoppingItem.getAmount() <= 0)) {
-            shoppingItem.setAmount(0);
-            shoppingCartPane.removeProductFromCart(shoppingItem);
-
-        }
-
-    //    updateAllItems(shoppingItem);
-    }*/
 
     @FXML
     protected void clickedOnAddButton(Event event) {
@@ -583,7 +504,6 @@ public class SearchController implements Initializable {
     @FXML
     protected void clickedOnRemoveButton(Event event) {
         modifyAmountInCart(activeInDetailview, -1);
-       // updateDetailViewItem();
     }
 
     private void updateDetailViewItem() {
@@ -612,7 +532,6 @@ public class SearchController implements Initializable {
     protected void wizardToFront() {
         wizardWrap.toFront();
         wizard.start();
-        updateFirstCartInWizard();
         activateWizardView();
         wizard.setCheckoutInfoBasedOnPersonalInfo();
         wizard.resetErrorHandler();
@@ -631,19 +550,6 @@ public class SearchController implements Initializable {
         backToStoreLabel.setVisible(true);
         backToStoreLabel.setDisable(false);
         wizardWrap.setVisible(true);
-    }
-
-    protected void updateFirstCartInWizard() {
-        wizard.getFirstCart().getChildren().clear();
-        for (ShoppingItem shoppingItem : IMatDataHandler.getInstance().getShoppingCart().getItems()) {
-            FirstCartItem firstCartItem = new FirstCartItem(shoppingItem, this);
-            wizard.getFirstCart().getChildren().add(firstCartItem);
-            firstCartItem.updateAmountBoxInFirstCartItem();
-        }
-        wizard.updateTotalPriceInStep1();
-        if (iMatDataHandler.getShoppingCart().getItems().isEmpty()) {
-            wizardToBack();
-        }
     }
 
     protected void setBackToStoreIconDisabled() {
@@ -747,37 +653,48 @@ public class SearchController implements Initializable {
         return 0;
     }
 
+    public double handleInput(String value, Product product){
+        double output = extractDigits(value);
+        String unitSuffix = product.getUnitSuffix();
+
+        if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
+            output = Math.round(output);
+        }
+
+        if(output < 0.1){
+            return 0;
+        } else {
+            return output;
+        }
+    }
+
 
     //Vår initialize-metod, typ som en kontruktor
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       /* iMatDataHandler.getCustomer().setFirstName("Hjördis");                                                          //Sätter namnet till Hjördis sålänge.
-        iMatDataHandler.getCustomer().setLastName("Johansson");
-        iMatDataHandler.getCustomer().setMobilePhoneNumber("073-333 33 33");
-        iMatDataHandler.getCustomer().setEmail("hjördis.johansson@gmail.se");
-        iMatDataHandler.getCustomer().setPostCode("333 33");
-        iMatDataHandler.getCustomer().setAddress("Kallebäcksvägen 3");
-        iMatDataHandler.getCustomer().setPhoneNumber("Göteborg");*/
-
-
-        //iMatDataHandler.getShoppingCart().clear();
-
 
         menuToggleGroup = new ToggleGroup();
 
-
-        productFlowPane.setHgap(40);                                                                                    //Avstånd mellan productItems i x-led
+        //Avstånd mellan productItems i y-led oh x-led
+        productFlowPane.setHgap(40);
         productFlowPane.setVgap(40);
-        //Avstånd mellan productItems i y-led
-        myPage = new MyPage(this);
+
+        historyPage = new HistoryPage();
+        favoritePage = new FavoritePage();
+        personalDataPage = new PersonalDataPage(this);
+        historyItems = new HistoryItems(this);
+
+        personalDataPage.setUpPersonalDataPage();
+
         createProductItems();                                                                                           //kalla på metod som skapar varorna
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
-        helpWrap.getChildren().add(help);
-        shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!
 
         wizard = new Wizard(this);
         wizardWrap.getChildren().add(wizard);
         updateHistoryPage();
+
+        shoppingCartPane.createProductCartItems();  //För att ej få nullpointer, kan ej skapas innan productItems!
+        wizard.createFirstProductCartItems();
 
         //Renderar ut rätt på skärmen när den har laddad aktuella varor från kundkorgen.
         for(ShoppingItem shoppingItem: iMatDataHandler.getShoppingCart().getItems()){
@@ -803,7 +720,6 @@ public class SearchController implements Initializable {
                 String input = amountBox.getText();
                 double amount = handleInput(input);
                 setAmountInCart(activeInDetailview, amount);
-               // updateAllItems(activeInDetailview);
             }
         });
 
@@ -840,6 +756,37 @@ public class SearchController implements Initializable {
 
     }
 
+    public void implementOnlyDigitsAllowed(TextField textField){
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                System.out.println(oldValue + " : " + newValue);
+                if(!containsDigitsOnly(newValue)){
+                    textField.setText(oldValue);
+                }
+            }
+        });
+    }
+
+    public void implementMaxLimitInTextfield(TextField textField, int maxLimit){
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > maxLimit){
+                    textField.setText(oldValue);
+                }
+            }
+        });
+    }
+
+    private boolean containsDigitsOnly(String string){
+        for(Character c : string.toCharArray()){
+            if(!Character.isDigit(c)){
+                return false;
+            }
+        } return true;
+    }
+
     //
     //
     //-----------------------Metoder som har med Favoriter att göra ----------------------------------------------------------------
@@ -867,9 +814,6 @@ public class SearchController implements Initializable {
         updateFavoriteItems(p, true);
     }
 
-    protected void addAllToFavourite(Product p) {
-    }
-
     protected void removeFavorite(Product p) {
         iMatDataHandler.removeFavorite(p);
         updateFavoriteItems(p, false);
@@ -877,8 +821,8 @@ public class SearchController implements Initializable {
 
     @FXML
     void toHelpPage(){
-        //productFlowPane.getChildren().clear();
-        helpWrap.toFront();
+        Help help = new Help(this, productScrollPane.getContent());
+        productScrollPane.setContent(help);
     }
 
 

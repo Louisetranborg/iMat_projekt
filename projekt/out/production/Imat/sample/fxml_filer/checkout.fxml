@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1440.0" stylesheets="@../css_files/checkout.css" type="StackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -115,7 +105,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
-                  <TextField fx:id="cardnumberTextField" layoutX="280.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
+                  <TextField fx:id="cardnumberTextField1" layoutX="280.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="60.0" promptText="XXXX" styleClass="text14" stylesheets="@../css_files/textTypes.css">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -282,26 +272,26 @@
                         <Image url="@../images/red_error.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="errorCardNumberIcon" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../images/red_error.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="errorCardNumberIcon2" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../images/red_error.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="errorCardNumberIcon3" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../images/red_error.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="errorCardNumberIcon4" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../images/red_error.png" />
-                     </image>
-                  </ImageView>
+                   <ImageView fx:id="errorCardNumberIcon1" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                       <image>
+                           <Image url="@../images/red_error.png" />
+                       </image>
+                   </ImageView>
+                   <ImageView fx:id="errorCardNumberIcon2" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                       <image>
+                           <Image url="@../images/red_error.png" />
+                       </image>
+                   </ImageView>
+                   <ImageView fx:id="errorCardNumberIcon3" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                       <image>
+                           <Image url="@../images/red_error.png" />
+                       </image>
+                   </ImageView>
+                   <ImageView fx:id="errorCardNumberIcon4" fitHeight="40.0" fitWidth="40.0" layoutX="540.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                       <image>
+                           <Image url="@../images/red_error.png" />
+                       </image>
+                   </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="firstCartPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" visible="false">
@@ -348,7 +338,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="personalInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane">
+            <AnchorPane fx:id="personalInfoPane" layoutX="200.0" layoutY="100.0" prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" >
                <children>
                   <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="70.0" layoutY="100.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Förnamn:">
                      <font>

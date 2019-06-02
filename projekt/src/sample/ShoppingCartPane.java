@@ -33,15 +33,6 @@ public class ShoppingCartPane extends AnchorPane {
     private Map<String, CartItem> productCartItemMap = new HashMap<String, CartItem>();
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
-    protected FlowPane getCartFlowPane(){
-        return cartFlowPane;
-    }
-
-    protected AnchorPane getCartFlowPaneWrap(){
-        return cartFlowPaneWrap;
-    }
-
-
     //TODO Ersätt eventuellt med activateWizard.
     @FXML
     private void clickOnToCheckoutButton(){
@@ -101,28 +92,8 @@ public class ShoppingCartPane extends AnchorPane {
         for(Product product: parentController.iMatDataHandler.getProducts()){
             CartItem cartItem = new CartItem(product,parentController);
             productCartItemMap.put(product.getName(),cartItem);
+            //parentController.getShoppingItemOfProductInCart();
         }
-    }
-
-
-    //TODO Denna metod borde väl kunna bytas ut mot modifyAmountInCart? Gabriel
-    protected void addProductToCart(ShoppingItem shoppingItem){ //Lägger endast ut ett cartItem när det behövs
-        for(ShoppingItem item : shoppingCart.getItems()){
-            if (shoppingItem.getProduct() == item.getProduct()) {
-                return;
-                //TODO Måste göra om denna funktionalitet. med t.ex : new ShoppingItem(shoppingItem.getProduct(), shoppingItem.getAmount())
-                //TODO Den kopplar annars mot product direkt och amount tas därför bort när man kör metoden resetEveryShoppingItem i SearchController.
-
-            }
-        }
-        System.out.println(shoppingCart.getItems());
-        shoppingCart.addItem(shoppingItem);
-    }
-
-    protected void removeProductFromCart(ShoppingItem shoppingItem){
-        //TODO Skriva den mer specifikt så att vi släpper skriva över den. Den gör productItems addButton svart när man tar bort en produkt från varukorgen.
-        parentController.productItemMap.get(shoppingItem.getProduct().getName()).setBlackButton();
-        shoppingCart.removeItem(shoppingItem);
     }
 
     protected Map<String,CartItem> getProductCartItemMap(){
@@ -132,9 +103,7 @@ public class ShoppingCartPane extends AnchorPane {
     protected void updateCart(){
         cartFlowPane.getChildren().clear();
         for(ShoppingItem shoppingItem : shoppingCart.getItems()){
-            if(!cartFlowPane.getChildren().contains(productCartItemMap.get(shoppingItem.getProduct().getName()))) {
                 cartFlowPane.getChildren().add(0,productCartItemMap.get(shoppingItem.getProduct().getName()));
-            }
         }
         totalLabel.setText("Totalt " + decimalFormat.format(shoppingCart.getTotal()) + " kr");
     }
@@ -151,3 +120,4 @@ public class ShoppingCartPane extends AnchorPane {
 
 
 }
+;

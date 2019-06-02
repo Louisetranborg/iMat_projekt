@@ -23,7 +23,6 @@ import java.io.IOException;
 public class ProductItem extends AnchorPane implements FavoriteObserver{
 
     private SearchController parentController;
-    //private ShoppingItem shoppingItem;
     Product product;
     @FXML private Label name;
     @FXML private ImageView image;
@@ -72,7 +71,7 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
             @Override
             public void handle(ActionEvent event) {
                 String input = amountBox.getText();
-                double amount = handleInput(input);
+                double amount = parentController.handleInput(input, product);
 
                 parentController.setAmountInCart(product, amount);
             }
@@ -89,38 +88,6 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
                 }
             }
         });
-    }
-
-    private double extractDigits(String value){
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i = 0; i < value.length(); i++) {
-            if (Character.isDigit(value.charAt(i)) || (String.valueOf(value.charAt(i)).equals(".") && !stringBuilder.toString().contains("."))) {
-                    stringBuilder.append(value.charAt(i));
-            }
-        }
-
-        if(!stringBuilder.toString().isEmpty()) {
-            return Double.valueOf(stringBuilder.toString());
-        } else {
-            return 0;
-        }
-
-    }
-
-    private double handleInput(String value){
-        double output = extractDigits(value);
-        String unitSuffix = product.getUnitSuffix();
-
-        if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
-            output = Math.round(output);
-        }
-
-        if(output < 0.1){
-            return 0;
-        } else {
-            return output;
-        }
     }
 
 
@@ -196,24 +163,6 @@ public class ProductItem extends AnchorPane implements FavoriteObserver{
         removeButtonHover.setVisible(false);
         amountBox.setDisable(true);
         amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
-    }
-
-    protected void changeToNormalLayout(){
-        updateProductItem();
-        addButton.setDisable(false);
-        addButton2.setDisable(false);
-        addButtonHover.setDisable(false);
-        removeButton.setDisable(false);
-        removeButtonBrown.setDisable(false);
-        removeButtonHover.setDisable(false);
-    }
-
-    protected void setBlackButton(){
-        addButton.toFront();
-    }
-
-    protected void setGreenButton(){
-        addButton2.toFront();
     }
 
     //Våra ShoppingItem kan tydligen bara vara på ett ställe samtidigt. Därför kollar vi vart användaren befinner sig och uppdaterar sidan efter det.

@@ -68,38 +68,7 @@ public class CartItem extends AnchorPane {
 
     protected void updateAmountInCartItem(ShoppingItem shoppingItem){
         amountBox.textProperty().setValue(String.valueOf(shoppingItem.getAmount()));
-    }
-
-    private double extractDigits(String value){
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i = 0; i < value.length(); i++) {
-            if (Character.isDigit(value.charAt(i)) || String.valueOf(value.charAt(i)).equals(".")) {
-                stringBuilder.append(value.charAt(i));
-            }
-        }
-
-        if(!stringBuilder.toString().isEmpty()) {
-            return Double.valueOf(stringBuilder.toString());
-        } else {
-            return 0;
-        }
-
-    }
-
-    private double handleInput(String value){
-        double output = extractDigits(value);
-        String unitSuffix = product.getUnitSuffix();
-
-        if(unitSuffix.equals("st") || unitSuffix.equals("förp") || unitSuffix.equals("burk")){
-            output = Math.round(output);
-        }
-
-        if(output < 0.1){
-            return 0;
-        } else {
-            return output;
-        }
+        price.setText(decimalFormat.format(shoppingItem.getTotal()) + " kr");
     }
 
     public CartItem(Product product, SearchController parentController) {
@@ -122,15 +91,12 @@ public class CartItem extends AnchorPane {
             @Override
             public void handle(ActionEvent event) {
                 String input = amountBox.getText();
-                double amount = handleInput(input);
+                double amount = parentController.handleInput(input,product);
 
                parentController.setAmountInCart(product, amount);
 
             }
         });
-
-       // price.setText(shoppingItem.getTotal() + " kr");
-
 
         amountBox.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override

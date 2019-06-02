@@ -6,19 +6,15 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
-import sun.java2d.pipe.SpanShapeRenderer;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 
 public class OrderItem extends HBox {
 
     @FXML Label amount;
     @FXML Label price;
     @FXML Label date;
-    //@FXML Label ;
     Order order;
     double totalAmountPrice;
     int totalAmount;
@@ -40,7 +36,6 @@ public class OrderItem extends HBox {
         this.order = order;
 
 
-       // order.getDate().
         for(ShoppingItem item : order.getItems()) {
             System.out.println(item.toString() + " : " + item.getTotal() + " : " + item.getAmount());
 
@@ -50,11 +45,8 @@ public class OrderItem extends HBox {
         totalAmountPrice += 45;
 
         String month = order.getDate().toString().substring(4,7);
-        //System.out.println(month);
 
         int day = Integer.valueOf(order.getDate().toString().substring(8,10));
-        //System.out.println("\n" + day);
-        //String time = order.getDate().toString().substring(12,20);
 
         //TODO Ändra så att det faktiskt fungerar för andra datum och månader.
         date.setText(day + "/" + parentController.convertMonthStringToInt(month));
@@ -67,6 +59,7 @@ public class OrderItem extends HBox {
     @FXML
     private void onClickShowItems(){
         parentController.actualVValue = parentController.productScrollPane.getVvalue();
+        parentController.productScrollPane.setContent(parentController.historyItems);
         parentController.updateHistoryShowItems(order);
     }
 }
