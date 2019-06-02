@@ -3,9 +3,7 @@ package sample;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -15,6 +13,7 @@ import se.chalmers.cse.dat216.project.*;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ShoppingCartPane extends AnchorPane {
@@ -29,6 +28,7 @@ public class ShoppingCartPane extends AnchorPane {
     @FXML private Button toCheckoutButton;
     @FXML private AnchorPane cartFlowPaneWrap;
     @FXML private Button emptyCart;
+    @FXML private AnchorPane deleteCartAnchorPane;
 
     private Map<String, CartItem> productCartItemMap = new HashMap<String, CartItem>();
     private DecimalFormat decimalFormat = new DecimalFormat("#.##");
@@ -110,6 +110,26 @@ public class ShoppingCartPane extends AnchorPane {
 
     @FXML
     private void clickOnEmptyCartButton(){
+        if(!productCartItemMap.isEmpty()) {
+            deleteCartAnchorPane.setDisable(false);
+            deleteCartAnchorPane.setVisible(true);
+        }
+    }
+
+    @FXML
+    private void pressedYesDeleteCart(){
+        deleteCartItems();
+        deleteCartAnchorPane.setDisable(true);
+        deleteCartAnchorPane.setVisible(false);
+    }
+
+    @FXML
+    private void pressedNoKeepCart(){
+        deleteCartAnchorPane.setVisible(false);
+        deleteCartAnchorPane.setDisable(true);
+    }
+
+    private void deleteCartItems(){
         while(!shoppingCart.getItems().isEmpty()){
             ShoppingItem removeItem = shoppingCart.getItems().get(0);
             removeItem.setAmount(0);
