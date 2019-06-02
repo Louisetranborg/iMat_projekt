@@ -822,6 +822,7 @@ public class SearchController implements Initializable {
     @FXML
     void toHelpPage(){
         Help help = new Help(this, productScrollPane.getContent());
+        productScrollPane.setVvalue(0);
         productScrollPane.setContent(help);
         changeCategoryPageText("Hjälpsida");
     }
