@@ -170,15 +170,13 @@ public class PersonalDataPage extends AnchorPane {
 
         setGreenBordersOnTextField(cardHolderField);
         creditCard.setHoldersName(cardHolderField.getText());
-        setGreenBordersOnTextField(cardMonthField);
 
         setGreenBordersOnTextField(cardnumberTextField1);
         setGreenBordersOnTextField(cardnumberTextField2);
         setGreenBordersOnTextField(cardnumberTextField3);
         setGreenBordersOnTextField(cardnumberTextField4);
 
-        if(cardMonthField.getText()  == ""){
-            System.out.println(cardMonthField.getText() + ": null");
+        if(cardMonthField.getText().equals("")){
             creditCard.setValidMonth(0);
         }
         else{
@@ -186,12 +184,13 @@ public class PersonalDataPage extends AnchorPane {
         }
         setGreenBordersOnTextField(cardYearField);
 
-        if (cardYearField.getText() == ""){
+        if (cardYearField.getText().equals("")){
             creditCard.setValidYear(0);
         }
         else{
             creditCard.setValidYear(Integer.parseInt(cardYearField.getText()));
         }
+        setGreenBordersOnTextField(cardMonthField);
 
         successfulChange.setVisible(true);
         transition.play();
