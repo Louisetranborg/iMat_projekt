@@ -16,6 +16,7 @@
     -fx-font-family: "Avenir Book";
     -fx-font-size: 18px;
     -fx-background-color: #FFFFFF;
+
     }
 
     .header{
@@ -151,11 +152,25 @@
         -text-decoration: underline;
     }
 
-    .detailviewBox{
+    .detailviewBox {
         -fx-border-radius: 15px;
         -fx-background-radius: 5px;
+    }
 
     .textField {
         -fx-font-family: "Avenir Book";
         -fx-font-size: 16px;
     }
+
+    .warningCartNo{
+        -fx-background-color:#a1887f;
+        -fx-text-fill: #000000;
+        -fx-font-family: "Avenir Book";
+        -fx-font-size: 18px;
+
+    }
+
+    .warningCartNo: hover{
+        -fx-background-color: #d3b8ae;
+    }
+
