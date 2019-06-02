@@ -354,7 +354,6 @@ public class Wizard extends StackPane {
         city.clear();
         postCode.clear();
         mail.clear();
-        datePicker.getEditor().clear();
         cvcTextField.clear();
         validYearTextField.clear();
         validMonthTextField.clear();

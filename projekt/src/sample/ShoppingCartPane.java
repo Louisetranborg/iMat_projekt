@@ -58,8 +58,10 @@ public class ShoppingCartPane extends AnchorPane {
             public void shoppingCartChanged(CartEvent cartEvent) {
                if(shoppingCart.getItems().isEmpty()){
                    toCheckoutButton.setDisable(true);
+                   emptyCart.setDisable(true);
                } else{
                    toCheckoutButton.setDisable(false);
+                   emptyCart.setDisable(false);
                }
                // System.out.println("Update Amount!");
             }
@@ -77,6 +79,9 @@ public class ShoppingCartPane extends AnchorPane {
 
         //Todo ta bort raden under om vi behåller shoppingcart mellan omstart av program.
         toCheckoutButton.setDisable(true);
+        if(shoppingCart.getItems().isEmpty()){
+            emptyCart.setDisable(true);
+        }
         totalLabel.setText("Totalt " + decimalFormat.format(shoppingCart.getTotal()));
 
     }
