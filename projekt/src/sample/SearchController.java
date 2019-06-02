@@ -823,6 +823,7 @@ public class SearchController implements Initializable {
     void toHelpPage(){
         Help help = new Help(this, productScrollPane.getContent());
         productScrollPane.setContent(help);
+        changeCategoryPageText("Hjälpsida");
     }
 
 
