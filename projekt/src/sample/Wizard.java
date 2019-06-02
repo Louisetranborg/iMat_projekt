@@ -243,7 +243,7 @@ public class Wizard extends StackPane {
         parentController.implementOnlyDigitsAllowed(validMonthTextField);
         parentController.implementOnlyDigitsAllowed(validYearTextField);
         parentController.implementOnlyDigitsAllowed(cvcTextField);
-        parentController.implementOnlyDigitsAllowed(postCode);
+        //parentController.implementOnlyDigitsAllowed(postCode);
 
         validMonthTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -255,6 +255,15 @@ public class Wizard extends StackPane {
                     if (extractDigits(validMonthTextField.getText()) == 0) {
                         validMonthTextField.setText("01");
                     }
+                }
+            }
+        });
+
+        postCode.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.length() > 6){
+                    postCode.setText(oldValue);
                 }
             }
         });
@@ -336,8 +345,12 @@ public class Wizard extends StackPane {
             if(parentController.iMatDataHandler.getCreditCard().getCardType().equals("Mastercard")) {
                 mastercardButton.setSelected(true);
             }
-            if(parentController.iMatDataHandler.getCreditCard().getCardType().equals("Visa")) {
+            else if(parentController.iMatDataHandler.getCreditCard().getCardType().equals("Visa")) {
                 visaButton.setSelected(true);
+            }
+            else{
+                mastercardButton.setSelected(false);
+                visaButton.setSelected(false);
             }
         }
     }
@@ -634,7 +647,8 @@ public class Wizard extends StackPane {
 
     private boolean isStep2Complete(){
         return !isEmpty(firstName) && !isEmpty(lastName) && !isEmpty(postCode) && !isEmpty(telNumber) && !isEmpty(mail) && !isEmpty(city)
-                && !isEmpty(adress) && containsDigitsOnly(postCode) && isEmailFormat(mail) && containsDigitsOnly(telNumber);
+                && !isEmpty(adress) && containsDigitsOnly(postCode) && isEmailFormat(mail) && containsDigitsOnly(telNumber) && isComplete(telNumber, getMinAllowedLength(telNumber))
+                && isComplete(postCode,getMinAllowedLength(postCode));
     }
 
     private void handleErrorsStep2(){
@@ -648,9 +662,12 @@ public class Wizard extends StackPane {
         highlightEmptyError(lastName);
         highlightEmptyError(adress);
         highlightEmptyError(city);
-        highlightEmptyOrDigitsOnlyError(postCode);
-        highlightEmptyOrDigitsOnlyError(telNumber);
+        //highlightEmptyOrDigitsOnlyError(postCode);
+        //highlightEmptyOrDigitsOnlyError(telNumber);
         highlightEmptyOrEmailFormatError(mail);
+        errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(telNumber, 10);
+        errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(postCode, 5);
+
     }
 
     private boolean isStep3Complete(){
@@ -658,7 +675,10 @@ public class Wizard extends StackPane {
                 && !isEmpty(cardnumberTextField3)  && !isEmpty(cardnumberTextField4) && !isEmpty(cardholderTextField)
                 && !isEmpty(validMonthTextField)   && !isEmpty(validYearTextField) && !isEmpty(cvcTextField)
                 && isCardTypeSelected() && containsDigitsOnly(validYearTextField) && containsDigitsOnly(validMonthTextField)
-                && containsDigitsOnly(cvcTextField);
+                && containsDigitsOnly(cvcTextField) && isComplete(cardnumberTextField1, getMinAllowedLength(cardnumberTextField1))
+                && isComplete(cardnumberTextField2, getMinAllowedLength(cardnumberTextField2)) && isComplete(cardnumberTextField3, getMinAllowedLength(cardnumberTextField3))
+                && isComplete(cardnumberTextField4, getMinAllowedLength(cardnumberTextField4)) && isComplete(cvcTextField, getMinAllowedLength(cvcTextField))
+                && isComplete(validMonthTextField,getMinAllowedLength(validMonthTextField)) && isComplete(validYearTextField,getMinAllowedLength(validYearTextField));
     }
 
     private void handleErrorStep3(){
@@ -670,14 +690,22 @@ public class Wizard extends StackPane {
 
         highlightEmptyError(datePicker.getEditor());
         highlightEmptyError(cardholderTextField);
-        highlightEmptyError(cardnumberTextField1);
-        highlightEmptyError(cardnumberTextField2);
-        highlightEmptyError(cardnumberTextField3);
-        highlightEmptyError(cardnumberTextField4);
+        //highlightEmptyError(cardnumberTextField1);
+        //highlightEmptyError(cardnumberTextField2);
+        //highlightEmptyError(cardnumberTextField3);
+        //highlightEmptyError(cardnumberTextField4);
         highlightEmptyOrDigitsOnlyError(validMonthTextField);
         highlightEmptyOrDigitsOnlyError(validYearTextField);
-        highlightEmptyOrDigitsOnlyError(cvcTextField);
+        //highlightEmptyOrDigitsOnlyError(cvcTextField);
         highlightCardIsNotSelectedError();
+        errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(cvcTextField, 3);
+        errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(cardnumberTextField1, 4);
+        errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(cardnumberTextField2, 4);
+        errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(cardnumberTextField3, 4);
+        errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(cardnumberTextField4, 4);
+        errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(validYearTextField, 2);
+        errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(validMonthTextField,2);
+
 
     }
 
@@ -687,6 +715,17 @@ public class Wizard extends StackPane {
             showErrorIcon(textField);
             showErrorMessage(textField);
         } else {
+            resetBordersOnTextField(textField);
+            hideErrorIcon(textField);
+        }
+    }
+
+    private void errorMeasureIfOnlyDigitsRequiredOrEmptyOrNotEnoughtChars(TextField textField, int completeLenght){
+        if(!containsDigitsOnly(textField) || textField.getText().isEmpty() || !isComplete(textField, completeLenght)){
+            setRedBordersOnTextField(textField);
+            showErrorIcon(textField);
+            showErrorMessage(textField);
+        } else{
             resetBordersOnTextField(textField);
             hideErrorIcon(textField);
         }
@@ -752,6 +791,27 @@ public class Wizard extends StackPane {
         }
     }
 
+    private boolean isComplete(TextField textField, int completeLength){
+        return textField.getText().length() >= getMinAllowedLength(textField);
+    }
+
+    private int getMinAllowedLength(TextField textField) {
+        if (textField.equals(cvcTextField)) {
+            return 3;
+        } else if (textField.equals(cardnumberTextField1) || textField.equals(cardnumberTextField2) || textField.equals(cardnumberTextField3) || textField.equals(cardnumberTextField4)) {
+            return 4;
+        } else if (textField.equals(telNumber)) {
+            return 10;
+        } else if (textField.equals(postCode)) {
+            return 5;
+        } else if (textField.equals(validYearTextField) || textField.equals(validMonthTextField)) {
+            return 2;
+        } else{
+            return 0;
+        }
+
+    }
+
     //------------------------------------------------------------------------------------------------------------------ Felhantering med icons
 
     @FXML private ImageView errorFirstNameIcon;
@@ -808,10 +868,22 @@ public class Wizard extends StackPane {
         if(isEmpty(textField)){
             errorMessage.append("Textfältet får ej vara tomt.\n");
         }
+        if(textField.equals(telNumber) || textField.equals(postCode) || textField.equals(cvcTextField) || textField.equals(cardnumberTextField1) || textField.equals(cardnumberTextField2) || textField.equals(cardnumberTextField3) || textField.equals(cardnumberTextField4) || textField.equals(validMonthTextField) || textField.equals(validYearTextField)){
+            if(!containsDigitsOnly(textField)){
+                errorMessage.append("Fältet får endast innehålla siffror, bindestreck och mellanslag\n");
+            }
+
+            if(!isComplete(textField, getMinAllowedLength(textField))){
+                errorMessage.append("Fältet måste innehålla minst " + (getMinAllowedLength(textField)) + " siffror\n");
+            }
+        }
+        /*
         if(!containsDigitsOnly(textField) && (textField.equals(postCode) || textField.equals(telNumber) || textField.equals(validMonthTextField)
             || textField.equals(validYearTextField) || textField.equals(cvcTextField))){
             errorMessage.append("Textfältet får endast innehålla siffror.\n");
         }
+
+         */
         if(!isEmailFormat(textField) && textField.equals(mail)){
             errorMessage.append("Textfältet måste innehålla en giltig email-adress.\n");
         }

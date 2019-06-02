@@ -158,7 +158,7 @@ public class PersonalDataPage extends AnchorPane {
         parentController.implementMaxLimitInTextfield(cardnumberTextField1, 4);
         parentController.implementMaxLimitInTextfield(cardMonthField, 2);
         parentController.implementMaxLimitInTextfield(cardYearField, 2);
-        parentController.implementMaxLimitInTextfield(zipCodeField, 5);
+        parentController.implementMaxLimitInTextfield(zipCodeField, 6);
 
     }
 
@@ -349,8 +349,12 @@ public class PersonalDataPage extends AnchorPane {
             if (creditCard.getCardType().equals("Mastercard")) {
                 mastercardButton.setSelected(true);
             }
-            if (creditCard.getCardType().equals("Visa")) {
+            else if (creditCard.getCardType().equals("Visa")) {
                 visaButton.setSelected(true);
+            }
+            else{
+                mastercardButton.setSelected(false);
+                visaButton.setSelected(false);
             }
         }
     }
