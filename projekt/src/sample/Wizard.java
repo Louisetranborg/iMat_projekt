@@ -376,11 +376,19 @@ public class Wizard extends StackPane {
         city.setText(customer.getPostAddress());
         adress.setText(customer.getAddress());
         cardholderTextField.setText(customer.getFirstName() + " " + customer.getLastName());
-        //TODO. förmodligen ändra så att det fylls i alla fyra.
         cardnumberTextField1.setText(creditCard.getCardNumber());
-        validMonthTextField.setText(Integer.toString(creditCard.getValidMonth()));
-        validYearTextField.setText(Integer.toString(creditCard.getValidYear()));
-        //TODO lägg in änringen om 2 dagar från now.
+
+        if(creditCard.getValidMonth() == 0){
+            validMonthTextField.clear();
+        } else {
+            validMonthTextField.setText(Integer.toString(creditCard.getValidMonth()));
+        }
+        if(creditCard.getValidYear() == 0){
+            validYearTextField.clear();
+        } else {
+            validYearTextField.setText(Integer.toString(creditCard.getValidYear()));
+        }
+
         datePicker.setValue(LocalDate.now().plusDays(2));
         fillCreditCardNumberTextField();
         selectChosenCardType();
