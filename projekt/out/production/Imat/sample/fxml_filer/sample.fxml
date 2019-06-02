@@ -58,7 +58,7 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="priceDetailView" layoutX="45.0" layoutY="485.0" prefHeight="58.0" prefWidth="433.0" styleClass="detailviewPrice" text="Namn">
+                  <Label fx:id="priceDetailView" layoutX="45.0" layoutY="480.0" prefHeight="58.0" prefWidth="433.0" styleClass="text48" stylesheets="@../css_files/textTypes.css" text="Namn">
                      <font>
                         <Font size="17.0" />
                      </font>
