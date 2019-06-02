@@ -38,13 +38,13 @@ public class SettingsItem extends MenuItem {
 
 
     public void onClickHistory() {
-        parentController.myPage.historyPage.toFront();
+        parentController.productScrollPane.setContent(parentController.historyPage);
         parentController.helpWrap.toBack();
     }
 
 
     public void onClickFavorites() {
-        parentController.myPage.favoritePage.toFront();
+        parentController.productScrollPane.setContent(parentController.favoritePage);
         parentController.updateFavoritePage();
         parentController.helpWrap.toBack();
     }
@@ -52,12 +52,8 @@ public class SettingsItem extends MenuItem {
 
     public void onClickPersonalAccount() {
         parentController.updatePersonalDataPage();
-        parentController.myPage.personalDataPage.toFront();
+        parentController.productScrollPane.setContent(parentController.personalDataPage);
         parentController.helpWrap.toBack();
-    }
-
-    private void onClickBack(){
-        parentController.updateFrontPage();
     }
 
     @FXML
@@ -71,9 +67,6 @@ public class SettingsItem extends MenuItem {
             case PERSONAL_DATA:
                 onClickPersonalAccount();
                 break;
-         /*   case SHOPPING_LIST:
-                onClickSavedCarts();
-                break;*/
             case FAVORITES:
                 onClickFavorites();
                 break;

@@ -13,31 +13,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 
 import java.io.IOException;
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.List;
 
-public class MyPage extends StackPane {
+public class PersonalDataPage extends AnchorPane {
 
-    @FXML VBox settingsPane;
-    @FXML AnchorPane historyPage;
-    @FXML AnchorPane favoritePage;
-    @FXML AnchorPane personalDataPage;
-    @FXML VBox historyOrderVbox;
-    @FXML TilePane historyTilePane;
-    @FXML TilePane historyProductTilePane;
-    @FXML AnchorPane historyItems;
     @FXML Label successfulChange;
     @FXML TextField firstnameField;
     @FXML TextField surnameField;
@@ -56,41 +41,27 @@ public class MyPage extends StackPane {
     @FXML private TextField cardnumberTextField3;
     @FXML private TextField cardnumberTextField4;
 
-
     Customer customer;
     CreditCard creditCard;
 
     Timeline transitionRemoveSuccessfulChange;
     SequentialTransition transition;
-
-
-    SearchController parentController;
-    private List<ShoppingList> shoppingLists = new ArrayList<>();
     ToggleGroup cardtoggleGroup = new ToggleGroup();
 
-    protected List<ShoppingList> getShoppingLists(){
-        return shoppingLists;
-    }
-
-
-    protected void addNewShoppingList(ShoppingList shoppingList){       //lägger till en ny inköpslista och lägger den i flowpane
-        shoppingLists.add(shoppingList);
-    }
-
-    public MyPage(SearchController parentController){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/myPage.fxml"));
+    public PersonalDataPage(SearchController parentController) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml_filer/personalDataPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
-        this.parentController = parentController;
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+
         customer = parentController.iMatDataHandler.getCustomer();
         creditCard = parentController.iMatDataHandler.getCreditCard();
 
-        try{
-            fxmlLoader.load();
-        } catch(IOException exception) {
-            throw new RuntimeException(exception);
-        }
 
         visaButton.setToggleGroup(cardtoggleGroup);
         mastercardButton.setToggleGroup(cardtoggleGroup);
@@ -186,6 +157,46 @@ public class MyPage extends StackPane {
             }
         });
 
+    }
+
+
+    public void loadCustomerInfo(){
+        firstnameField.setText(customer.getFirstName());
+        surnameField.setText(customer.getLastName());
+        phoneNumberField.setText(customer.getMobilePhoneNumber());
+        emailField.setText(customer.getEmail());
+        deliveryField.setText(customer.getAddress());
+        zipCodeField.setText(customer.getPostCode());
+        cityField.setText(customer.getPostAddress());
+        cardHolderField.setText(creditCard.getHoldersName());
+        cardMonthField.setText(Integer.toString(creditCard.getValidMonth()));
+        cardYearField.setText(Integer.toString(creditCard.getValidYear()));
+        fillCreditCardNumberTextField();
+        selectChosenCardType();
+
+    }
+
+    @FXML
+    protected void onClickSaveChanges(){
+        customer.setFirstName(firstnameField.getText());
+        customer.setLastName(surnameField.getText());
+        customer.setMobilePhoneNumber(phoneNumberField.getText());
+        customer.setEmail(emailField.getText());
+        customer.setAddress(deliveryField.getText());
+        customer.setPostCode(zipCodeField.getText());
+        customer.setPostAddress(cityField.getText());
+
+        saveCardNumber();
+        saveSelectedCardType();
+
+        creditCard.setHoldersName(cardHolderField.getText());
+
+
+        creditCard.setValidMonth(Integer.parseInt(cardMonthField.getText()));
+        creditCard.setValidYear(Integer.parseInt(cardYearField.getText()));
+
+        successfulChange.setVisible(true);
+        transition.play();
     }
 
     private void implementCardnumberFormat(TextField tf1, TextField tf2){
@@ -289,56 +300,4 @@ public class MyPage extends StackPane {
             }
         }
     }
-
-    @FXML
-    protected void onClickBackToHistory(){
-        parentController.productScrollPane.setVvalue(parentController.actualVValue);
-        //TODO fixa så att man endast kallar en activate/showHistoryPage.
-        parentController.myPage.historyPage.toFront();
-    }
-
-    @FXML
-    protected void onClickAddHistoryToCart(){
-        parentController.addAllHistoryItemsToCart();
-    }
-
-    public void loadCustomerInfo(){
-        firstnameField.setText(customer.getFirstName());
-        surnameField.setText(customer.getLastName());
-        phoneNumberField.setText(customer.getMobilePhoneNumber());
-        emailField.setText(customer.getEmail());
-        deliveryField.setText(customer.getAddress());
-        zipCodeField.setText(customer.getPostCode());
-        cityField.setText(customer.getPostAddress());
-        cardHolderField.setText(creditCard.getHoldersName());
-        cardMonthField.setText(Integer.toString(creditCard.getValidMonth()));
-        cardYearField.setText(Integer.toString(creditCard.getValidYear()));
-        fillCreditCardNumberTextField();
-        selectChosenCardType();
-
-    }
-
-    @FXML
-    protected void onClickSaveChanges(){
-        customer.setFirstName(firstnameField.getText());
-        customer.setLastName(surnameField.getText());
-        customer.setMobilePhoneNumber(phoneNumberField.getText());
-        customer.setEmail(emailField.getText());
-        customer.setAddress(deliveryField.getText());
-        customer.setPostCode(zipCodeField.getText());
-        customer.setPostAddress(cityField.getText());
-
-        saveCardNumber();
-        saveSelectedCardType();
-
-        creditCard.setHoldersName(cardHolderField.getText());
-
-
-        creditCard.setValidMonth(Integer.parseInt(cardMonthField.getText()));
-        creditCard.setValidYear(Integer.parseInt(cardYearField.getText()));
-
-        successfulChange.setVisible(true);
-        transition.play();
-    }
-
 }

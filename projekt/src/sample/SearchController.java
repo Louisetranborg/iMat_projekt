@@ -121,7 +121,11 @@ public class SearchController implements Initializable {
     protected Wizard wizard;
 
     private Product activeInDetailview;
-    public MyPage myPage;
+   // public MyPage myPage;
+    public HistoryPage historyPage;
+    public FavoritePage favoritePage;
+    public PersonalDataPage personalDataPage;
+    public HistoryItems historyItems;
 
     static boolean isUserOnMyPage = false;
 
@@ -255,13 +259,13 @@ public class SearchController implements Initializable {
     }
 
     protected void updatePersonalDataPage() {
-        myPage.loadCustomerInfo();
+        personalDataPage.loadCustomerInfo();
     }
 
     protected void updateHistoryPage() {
-        myPage.historyOrderVbox.getChildren().clear();
+        historyPage.historyOrderVbox.getChildren().clear();
         for (Order order : IMatDataHandler.getInstance().getOrders()) {
-            myPage.historyOrderVbox.getChildren().add(0,new OrderItem(this, order));
+            historyPage.historyOrderVbox.getChildren().add(0,new OrderItem(this, order));
         }
     }
 
@@ -269,23 +273,23 @@ public class SearchController implements Initializable {
     public double actualVValue;
 
     protected void updateHistoryShowItems(Order order) {
-        myPage.historyProductTilePane.getChildren().clear();
+        historyItems.historyProductTilePane.getChildren().clear();
         productScrollPane.setVvalue(0);
         for (ShoppingItem item : order.getItems()) {
             //TODO Här behöver vi ändra om , Gabriel
             ProductItem pItem = new ProductItem(item.getProduct(), this);
             pItem.changeToHistoryLayout(item);
-            myPage.historyProductTilePane.getChildren().add(pItem);
+            historyItems.historyProductTilePane.getChildren().add(pItem);
 
             //tempOrderProducts.add(item);
 
         }
         currentlyShownOrder = order;
-        myPage.historyItems.toFront();
+        historyItems.toFront();
     }
 
     protected void addAllHistoryItemsToCart() {
-        System.out.println(myPage.historyProductTilePane.getChildren() + " :  ");
+        System.out.println(historyItems.historyProductTilePane.getChildren() + " :  ");
 
         for (ShoppingItem item : currentlyShownOrder.getItems()){
             modifyAmountInCart(item.getProduct(),item.getAmount());
@@ -300,9 +304,9 @@ public class SearchController implements Initializable {
     }
 
     protected void updateFavoritePage() {
-        myPage.historyTilePane.getChildren().clear();
+        favoritePage.historyTilePane.getChildren().clear();
         for (Product favorite : iMatDataHandler.favorites()) {
-            myPage.historyTilePane.getChildren().add(0,productItemMap.get(favorite.getName()));
+            favoritePage.historyTilePane.getChildren().add(0,productItemMap.get(favorite.getName()));
         }
     }
 
@@ -433,8 +437,9 @@ public class SearchController implements Initializable {
 
     //Byter view från mypage till productflowpane
     protected void changeViewToMyPage() {
-        productScrollPane.setContent(myPage);
-        myPage.historyPage.toFront();
+        productScrollPane.setContent(historyPage);
+        productScrollPane.setVvalue(0);
+        historyPage.toFront();
         changeCategoryPageText("Historik");
         isUserOnMyPage = true;
         sideMenuDescription.setText("Min Sida");
@@ -769,7 +774,12 @@ public class SearchController implements Initializable {
         productFlowPane.setHgap(40);                                                                                    //Avstånd mellan productItems i x-led
         productFlowPane.setVgap(40);
         //Avstånd mellan productItems i y-led
-        myPage = new MyPage(this);
+       // myPage = new MyPage(this);
+        historyPage = new HistoryPage();
+        favoritePage = new FavoritePage();
+        personalDataPage = new PersonalDataPage(this);
+        historyItems = new HistoryItems(this);
+
         createProductItems();                                                                                           //kalla på metod som skapar varorna
         cartPaneWrap.getChildren().add(shoppingCartPane);                                                               //Lägger till vår varukorg
         helpWrap.getChildren().add(help);
