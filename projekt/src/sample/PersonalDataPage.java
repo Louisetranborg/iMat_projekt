@@ -94,6 +94,39 @@ public class PersonalDataPage extends AnchorPane {
                 highlightDigitsOnlyError(phoneNumberField);
             }
         });
+
+        cardMonthField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(cardMonthField.getText().length() > 1) {
+                    if (extractDigits(cardMonthField.getText()) > 12) {
+                        cardMonthField.setText("12");
+                    }
+                    if (extractDigits(cardMonthField.getText()) == 0) {
+                        cardMonthField.setText("01");
+                    }
+                }
+            }
+        });
+
+
+    }
+
+    private double extractDigits(String value){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < value.length(); i++) {
+            if (Character.isDigit(value.charAt(i)) || String.valueOf(value.charAt(i)).equals(".")) {
+                stringBuilder.append(value.charAt(i));
+            }
+        }
+
+        if(!stringBuilder.toString().isEmpty()) {
+            return Double.valueOf(stringBuilder.toString());
+        } else {
+            return 0;
+        }
+
     }
 
 
@@ -125,7 +158,7 @@ public class PersonalDataPage extends AnchorPane {
         parentController.implementMaxLimitInTextfield(cardnumberTextField1, 4);
         parentController.implementMaxLimitInTextfield(cardMonthField, 2);
         parentController.implementMaxLimitInTextfield(cardYearField, 2);
-        parentController.implementMaxLimitInTextfield(zipCodeField, 5);
+        parentController.implementMaxLimitInTextfield(zipCodeField, 6);
 
     }
 
@@ -139,8 +172,17 @@ public class PersonalDataPage extends AnchorPane {
         zipCodeField.setText(customer.getPostCode());
         cityField.setText(customer.getPostAddress());
         cardHolderField.setText(creditCard.getHoldersName());
-        cardMonthField.setText(Integer.toString(creditCard.getValidMonth()));
-        cardYearField.setText(Integer.toString(creditCard.getValidYear()));
+
+        if(creditCard.getValidMonth() == 0){
+            cardMonthField.clear();
+        } else {
+            cardMonthField.setText(Integer.toString(creditCard.getValidMonth()));
+        }
+        if(creditCard.getValidYear() == 0){
+            cardYearField.clear();
+        } else {
+            cardYearField.setText(Integer.toString(creditCard.getValidYear()));
+        }
         fillCreditCardNumberTextField();
         selectChosenCardType();
         clearGreenBorderOnAllFields();
@@ -307,8 +349,12 @@ public class PersonalDataPage extends AnchorPane {
             if (creditCard.getCardType().equals("Mastercard")) {
                 mastercardButton.setSelected(true);
             }
-            if (creditCard.getCardType().equals("Visa")) {
+            else if (creditCard.getCardType().equals("Visa")) {
                 visaButton.setSelected(true);
+            }
+            else{
+                mastercardButton.setSelected(false);
+                visaButton.setSelected(false);
             }
         }
     }
