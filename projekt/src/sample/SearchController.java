@@ -877,7 +877,7 @@ public class SearchController implements Initializable {
 
     @FXML
     void toHelpPage(){
-        productFlowPane.getChildren().clear();
+        //productFlowPane.getChildren().clear();
         helpWrap.toFront();
     }
 
