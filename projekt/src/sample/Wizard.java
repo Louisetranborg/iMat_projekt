@@ -833,6 +833,9 @@ public class Wizard extends StackPane {
     @FXML private ImageView errorDatePickerIcon;
     @FXML private ImageView errorCardTypeIcon;
     @FXML private ImageView errorCardNumberIcon;
+    @FXML private ImageView errorCardNumberIcon2;
+    @FXML private ImageView errorCardNumberIcon3;
+    @FXML private ImageView errorCardNumberIcon4;
     @FXML private ImageView errorCardHolderIcon;
     @FXML private ImageView errorValidMonthIcon;
     @FXML private ImageView errorValidYearIcon;
@@ -851,9 +854,9 @@ public class Wizard extends StackPane {
 
         errorIconMap.put(datePicker.getEditor(),errorDatePickerIcon);
         errorIconMap.put(cardnumberTextField,errorCardNumberIcon);
-        errorIconMap.put(cardnumberTextField2,errorCardNumberIcon);
-        errorIconMap.put(cardnumberTextField3,errorCardNumberIcon);
-        errorIconMap.put(cardnumberTextField4,errorCardNumberIcon);
+        errorIconMap.put(cardnumberTextField2,errorCardNumberIcon2);
+        errorIconMap.put(cardnumberTextField3,errorCardNumberIcon3);
+        errorIconMap.put(cardnumberTextField4,errorCardNumberIcon4);
         errorIconMap.put(cardholderTextField, errorCardHolderIcon);
         errorIconMap.put(validMonthTextField,errorValidMonthIcon);
         errorIconMap.put(validYearTextField,errorValidYearIcon);
