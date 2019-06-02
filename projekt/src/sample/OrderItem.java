@@ -62,4 +62,9 @@ public class OrderItem extends HBox {
         parentController.productScrollPane.setContent(parentController.historyItems);
         parentController.updateHistoryShowItems(order);
     }
+
+    @FXML
+    private void onClickShowReceipt(){
+        parentController.productScrollPane.setContent(new ReceiptPage(order, parentController));
+    }
 }

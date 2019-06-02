@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<fx:root prefHeight="675.0" prefWidth="1040.0" styleClass="anchorPane" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+        <children>
+            <Label alignment="CENTER_RIGHT" layoutX="211.0" layoutY="149.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Order#:">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="211.0" layoutY="209.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Orderdatum:">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="211.0" layoutY="269.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Leveransadress:">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="211.0" layoutY="329.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Leveransdatum:">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+            <Label fx:id="orderNumber" layoutX="421.0" layoutY="149.0" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="12">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <Label fx:id="orderDate" layoutX="421.0" layoutY="209.0" prefHeight="41.0" prefWidth="300.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="2019-05-22 (23:55)">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <Label fx:id="deliveryAdr" layoutX="421.0" layoutY="269.0" prefHeight="36.0" prefWidth="300.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="Villie byaväg 215 (213 23)">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <Label layoutX="421.0" layoutY="329.0" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="2019-05-31">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="211.0" layoutY="389.0" prefHeight="32.0" prefWidth="200.0" styleClass="text24" stylesheets="@../css_files/textTypes.css" text="Totalsumma:">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+            <Label fx:id="totalPrice" layoutX="421.0" layoutY="389.0" prefHeight="36.0" prefWidth="260.0" styleClass="text18" stylesheets="@../css_files/textTypes.css" text="0">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <Button layoutX="40.0" layoutY="25.0" mnemonicParsing="false" onAction="#onClickBackToHistory" prefHeight="55.0" prefWidth="250.0" styleClass="goBackButton" stylesheets="@../css_files/checkout.css" text="Tillbaka till historik" />
+        </children>
+</fx:root>
