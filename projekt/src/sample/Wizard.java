@@ -805,8 +805,6 @@ public class Wizard extends StackPane {
             return 5;
         } else if (textField.equals(validYearTextField)) {
             return 2;
-        } else if (textField.equals(validMonthTextField)){
-            return 1;
         } else{
             return 0;
         }
@@ -875,10 +873,7 @@ public class Wizard extends StackPane {
             }
 
             if(!isComplete(textField, getMinAllowedLength(textField))){
-                if (getMinAllowedLength(textField) == 1)
-                    errorMessage.append("Fältet måste innehålla minst " + (getMinAllowedLength(textField)) + " siffra\n");
-                else
-                    errorMessage.append("Fältet måste innehålla minst " + (getMinAllowedLength(textField)) + " siffror\n");
+                errorMessage.append("Fältet måste innehålla minst " + (getMinAllowedLength(textField)) + " siffror\n");
             }
         }
         /*
